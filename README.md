@@ -30,10 +30,12 @@ Desktop and mobile are separate pages. `device.js` (first script on every page) 
 | * - Mobile.dc.html | Mobile versions of the pages above |
 | CaseStudy.dc.html, CaseStudyMobile.dc.html, SiteFooter.dc.html, MobileChrome.dc.html, BlockoutThumb.dc.html, Insanitation Content v2.dc.html | Shared sections loaded by the pages |
 | support.js | Page runtime (required) |
-| device.js | Desktop / mobile routing |
+| device.js | Desktop / mobile routing, desktop fit-to-window, registers the session cache |
+| sw.js | Session cache (service worker): keeps everything loaded so pages never reload from the network; wiped after 5 min idle or when the visitor leaves |
 | transition.js, skeleton.js, ins-fx.js, achievements.js | Page transitions, image loading shimmer, Insanitation effects, achievements |
 
 ## Notes
+- The session cache only runs on the published https site (not on localhost). After you push an update, a visitor mid-session keeps the cached version until they go idle for 5 minutes or close the site.
 - The Insanitation trailer and map tour stream from Steam and use hls.js from jsDelivr; fonts load from Google Fonts. Everything else is local.
 - File names contain spaces; GitHub Pages serves them fine (links are already relative).
 - Swap the resume by replacing the two PDFs in `assets/resume/` with files of the same name.

@@ -45,4 +45,18 @@
     };
     fit(); addEventListener('resize', fit); addEventListener('load', fit);
   }
+  // Session cache (sw.js): only on the published site, never in the editor preview or local dev
+  const live = 'serviceWorker' in navigator && location.protocol === 'https:' && !/claudeusercontent|localhost|127\.0\.0\.1/.test(location.hostname);
+  if (live) {
+    const base = location.pathname.replace(/[^/]*$/, '');
+    navigator.serviceWorker.register(base + 'sw.js', { scope: base }).catch(() => {});
+    const send = (type) => { const c = navigator.serviceWorker.controller; if (c) c.postMessage({ type }); };
+    const IDLE = 5 * 60 * 1000; let last = Date.now(), pinged = 0, idleT;
+    const arm = () => { clearTimeout(idleT); idleT = setTimeout(() => send('clear'), IDLE); };
+    const active = () => { last = Date.now(); arm(); if (last - pinged > 30000) { pinged = last; send('ping'); } };
+    ['pointerdown', 'keydown', 'scroll', 'wheel', 'touchstart', 'mousemove'].forEach(ev => addEventListener(ev, active, { passive: true, capture: true }));
+    document.addEventListener('visibilitychange', () => { if (document.visibilityState === 'visible') { if (Date.now() - last > IDLE) send('clear'); active(); } });
+    addEventListener('pagehide', () => send('bye'));
+    arm();
+  }
 })();
