@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<div style="display:flex;flex-direction:column;gap:40px;color:#2E2A33;font-family:'Louis George Cafe',sans-serif">
+
+  <!-- OVERVIEW -->
+  <sc-if value="{{ isOverview }}" hint-placeholder-val="{{ false }}">
+    <figure style="margin:0 0 28px;display:flex;flex-direction:column;gap:12px">
+      <div style="position:relative;aspect-ratio:16/9;overflow:hidden;background:#2E2A33;border:2.5px solid #2E2A33;border-radius:22px 8px 24px 6px/8px 22px 6px 24px;box-shadow:6px 8px 0 #2E2A33">
+        <video ref="{{ trailerRef }}" poster="assets/ins/keyart-2400.jpg" playsInline="{{ true }}" controls="{{ true }}" preload="metadata" aria-label="Insanitation Gameplay Preview Trailer" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block"></video>
+      </div>
+      <figcaption style="display:flex;justify-content:space-between;align-items:center;gap:16px;font:600 14px 'Azeret Mono',monospace;color:#4A4350"><span><span style="color:#A63B07;font-weight:700">TRAILER</span> · Gameplay Preview · press play</span><a href="https://store.steampowered.com/app/3590370/Insanitation/" target="_blank" style="color:#A63B07;font-weight:700">Watch on Steam ↗</a></figcaption>
+    </figure>
+    <div style="display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:28px">
+      <div style="display:flex;flex-direction:column;gap:16px;padding:28px;background:#FFFFFF;border:2.5px solid #2E2A33;border-radius:22px 8px 24px 6px/8px 22px 6px 24px;box-shadow:5px 6px 0 #2E2A33">
+        <span style="font:700 13px 'Azeret Mono',monospace;letter-spacing:.14em;color:#A63B07">THE PITCH</span>
+        <p style="margin:0;font:500 21px/1.5 'Louis George Cafe',sans-serif;color:#2E2A33;text-wrap:pretty">A party game where Keepers and Cats battle for control of the house. Keepers score by cleaning up and keeping things in order, while Cats score by trashing everything in sight. Scores are tallied at the end of each round, and whichever team has the most control of the house wins.</p>
+        <p style="margin:0;font:400 16px/1.55 'Louis George Cafe',sans-serif;color:#4A4350;text-wrap:pretty">What sets it apart: the visual style, the choice of levels, and the wide range of tools and tricks both Keepers and Cats have to work with.</p>
+        <div style="display:flex;align-items:flex-end;justify-content:flex-end;gap:12px;margin-top:auto"><img src="assets/ins/keeper-lean.png" alt="A bored Keeper in rubber gloves leaning on a counter" style="display:block;height:170px;width:auto"><img src="assets/ins/cat-sit.png" alt="A smug tabby cat sitting" style="display:block;height:150px;width:auto"></div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:14px;padding:28px;background:#FFFFFF;border:2.5px solid #2E2A33;border-radius:22px 8px 24px 6px/8px 22px 6px 24px;box-shadow:5px 6px 0 #2E2A33">
+        <span style="font:700 13px 'Azeret Mono',monospace;letter-spacing:.14em;color:#08795B">ONE MATCH</span>
+        <ol style="margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:8px">
+          <li style="display:flex;gap:12px;align-items:center;font:500 16px 'Louis George Cafe',sans-serif"><span style="width:26px;height:26px;flex-shrink:0;display:grid;place-items:center;border:1.5px solid #0E9F78;color:#08795B;font:700 14px 'Azeret Mono',monospace">1</span>Couch co-op, or host / join an online lobby</li>
+          <li style="display:flex;gap:12px;align-items:center;font:500 16px 'Louis George Cafe',sans-serif"><span style="width:26px;height:26px;flex-shrink:0;display:grid;place-items:center;border:1.5px solid #0E9F78;color:#08795B;font:700 14px 'Azeret Mono',monospace">2</span>Pick a level</li>
+          <li style="display:flex;gap:12px;align-items:center;font:500 16px 'Louis George Cafe',sans-serif"><span style="width:26px;height:26px;flex-shrink:0;display:grid;place-items:center;border:1.5px solid #0E9F78;color:#08795B;font:700 14px 'Azeret Mono',monospace">3</span>Customize: team, cosmetics and name</li>
+          <li style="display:flex;gap:12px;align-items:center;font:500 16px 'Louis George Cafe',sans-serif"><span style="width:26px;height:26px;flex-shrink:0;display:grid;place-items:center;border:1.5px solid #0E9F78;color:#08795B;font:700 14px 'Azeret Mono',monospace">4</span>Play: 30 seconds to 5 minutes</li>
+          <li style="display:flex;gap:12px;align-items:center;font:500 16px 'Louis George Cafe',sans-serif"><span style="width:26px;height:26px;flex-shrink:0;display:grid;place-items:center;border:1.5px solid #0E9F78;color:#08795B;font:700 14px 'Azeret Mono',monospace">5</span>Scores tallied, then right into the next one</li>
+        </ol>
+      </div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:14px">
+      <span style="font:700 13px 'Azeret Mono',monospace;letter-spacing:.14em;color:#A63B07">MY DESIGN PILLARS</span>
+      <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px">
+        <div style="display:flex;flex-direction:column;gap:10px;padding:24px;background:#FFFFFF;border:2.5px solid #2E2A33;border-radius:22px 8px 24px 6px/8px 22px 6px 24px;box-shadow:5px 6px 0 #2E2A33"><span style="font:700 26px 'Fredoka',sans-serif;color:#A63B07">01</span><h4 style="margin:0;font:700 22px 'Fredoka',sans-serif;text-transform:uppercase">Modularity</h4><p style="margin:0;font:400 16px/1.55 'Louis George Cafe',sans-serif;color:#4A4350;text-wrap:pretty">Keep things modular, like Lego bricks. Build enough good pieces and before you know it you can assemble anything.</p></div>
+        <div style="display:flex;flex-direction:column;gap:10px;padding:24px;background:#FFFFFF;border:2.5px solid #2E2A33;border-radius:22px 8px 24px 6px/8px 22px 6px 24px;box-shadow:5px 6px 0 #2E2A33"><span style="font:700 26px 'Fredoka',sans-serif;color:#A63B07">02</span><h4 style="margin:0;font:700 22px 'Fredoka',sans-serif;text-transform:uppercase">In-world reasoning</h4><p style="margin:0;font:400 16px/1.55 'Louis George Cafe',sans-serif;color:#4A4350;text-wrap:pretty">Everything should have a reason for being where it is. Why would this be placed here, and is there a meaning behind it?</p></div>
+        <div style="display:flex;flex-direction:column;gap:10px;padding:24px;background:#FFFFFF;border:2.5px solid #2E2A33;border-radius:22px 8px 24px 6px/8px 22px 6px 24px;box-shadow:5px 6px 0 #2E2A33"><span style="font:700 26px 'Fredoka',sans-serif;color:#A63B07">03</span><h4 style="margin:0;font:700 22px 'Fredoka',sans-serif;text-transform:uppercase">Novelty</h4><p style="margin:0;font:400 16px/1.55 'Louis George Cafe',sans-serif;color:#4A4350;text-wrap:pretty">What makes this unique and exciting, and what makes it worth playing again?</p></div>
+      </div>
+    </div>
+    <div style="display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:28px">
+      <div style="display:flex;flex-direction:column;gap:16px;padding:28px;background:#FFFFFF;border:2.5px solid #2E2A33;border-radius:22px 8px 24px 6px/8px 22px 6px 24px;box-shadow:5px 6px 0 #2E2A33">
+        <span style="font:700 13px 'Azeret Mono',monospace;letter-spacing:.14em;color:#A63B07">MY ROLE · LEAD LEVEL DESIGNER + PROGRAMMER</span>
+        <div style="display:flex;height:34px;font:700 13px 'Azeret Mono',monospace;letter-spacing:.06em"><span style="flex:1;display:grid;place-items:center;background:#C2470A;color:#FFFFFF">LEVEL DESIGN 50%</span><span style="flex:1;display:grid;place-items:center;background:#08795B;color:#FFFFFF">PROGRAMMING 50%</span></div>
+        <ul style="margin:0;padding-left:20px;display:flex;flex-direction:column;gap:8px;font:400 16px/1.5 'Louis George Cafe',sans-serif;color:#4A4350">
+          <li><strong style="color:#2E2A33">Owned:</strong> level ideation, the high-level concept and setting for each level.</li>
+          <li><strong style="color:#2E2A33">Owned:</strong> building and placing every interactable, every wall and most of the props, then finalizing prop placement with the art team.</li>
+          <li><strong style="color:#2E2A33">Owned:</strong> the level variant selection system. Each variant gets a weighted chance, and one that goes too long unpicked gets flagged and forced.</li>
+          <li><strong style="color:#2E2A33">Collaborated:</strong> the controller icon swap system. I retrofitted another programmer's base with detection, swapping, time-outs and prompt timing.</li>
+          <li><strong style="color:#2E2A33">Collaborated:</strong> movement for the AI NPCs that fill in when there aren't enough players.</li>
+          <li><strong style="color:#2E2A33">Led:</strong> the level work. For each level I walked the team through the layout, the assets it needed and where items go.</li>
+        </ul>
+        <p style="margin:0;padding-top:12px;border-top:1px solid #2E2A33;font:600 16px/1.5 'Louis George Cafe',sans-serif;color:#2E2A33">My call: which levels to make, how many, and how many variants each one gets. My personal highlight: the Tutorial. <span style="font-weight:400;color:#4A4350">· August 2024 – present</span></p>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:12px;padding:28px;background:#FFFFFF;border:2.5px solid #2E2A33;border-radius:22px 8px 24px 6px/8px 22px 6px 24px;box-shadow:5px 6px 0 #2E2A33">
+        <span style="font:700 13px 'Azeret Mono',monospace;letter-spacing:.14em;color:#A63B07">THE TEAM · 8</span>
+        <sc-for list="{{ team }}" as="m" hint-placeholder-count="8">
+          <div style="display:flex;justify-content:space-between;gap:12px;padding:6px 0;border-bottom:1px dashed #2E2A33;font:500 16px 'Louis George Cafe',sans-serif"><span style="color:{{ m.c }};font-weight:{{ m.fw }}">{{ m.n }}</span><span style="color:#4A4350;text-align:right">{{ m.r }}</span></div>
+        </sc-for>
+      </div>
+    </div>
+      <div style="display:flex;flex-direction:column;gap:22px;padding:28px 32px 0;background:#FFFFFF;border:2.5px solid #2E2A33;border-radius:22px 8px 24px 6px/8px 22px 6px 24px;box-shadow:5px 6px 0 #2E2A33;margin-top:28px">
+      <div style="display:flex;justify-content:space-between;align-items:baseline;gap:20px">
+        <span style="font:700 13px 'Azeret Mono',monospace;letter-spacing:.14em;color:#08795B">THE CAST · PICK A SIDE</span>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px;align-items:end">
+        <div style="display:flex;flex-direction:column;gap:12px"><span style="display:flex;flex-direction:column;gap:4px"><span style="font:700 15px 'Fredoka',sans-serif;letter-spacing:.1em;text-transform:uppercase;color:#2E2A33">Keepers</span><span style="font:400 15px/1.4 'Louis George Cafe',sans-serif;color:#4A4350">The last line of defense, restoring order faster than the Cats can destroy it.</span></span><div style="display:flex;align-items:flex-end;gap:2px"><img src="assets/ins/keeper-1.png" alt="Keeper colour variant 1" loading="lazy" style="display:block;height:200px;width:auto;transition:transform 220ms cubic-bezier(.34,1.56,.64,1)" style-hover="transform:translateY(-8px)"><img src="assets/ins/keeper-2.png" alt="Keeper colour variant 2" loading="lazy" style="display:block;height:200px;width:auto;transition:transform 220ms cubic-bezier(.34,1.56,.64,1)" style-hover="transform:translateY(-8px)"><img src="assets/ins/keeper-3.png" alt="Keeper colour variant 3" loading="lazy" style="display:block;height:200px;width:auto;transition:transform 220ms cubic-bezier(.34,1.56,.64,1)" style-hover="transform:translateY(-8px)"><img src="assets/ins/keeper-4.png" alt="Keeper colour variant 4" loading="lazy" style="display:block;height:200px;width:auto;transition:transform 220ms cubic-bezier(.34,1.56,.64,1)" style-hover="transform:translateY(-8px)"></div></div>
+        <div style="display:flex;flex-direction:column;gap:12px"><span style="display:flex;flex-direction:column;gap:4px"><span style="font:700 15px 'Fredoka',sans-serif;letter-spacing:.1em;text-transform:uppercase;color:#2E2A33">Cats</span><span style="font:400 15px/1.4 'Louis George Cafe',sans-serif;color:#4A4350">The cat every owner dreads, wrecking the house and getting away with it.</span></span><div style="display:flex;align-items:flex-end;gap:6px"><img src="assets/ins/catcolor-sit-1.png" alt="Cat colour variant 1" loading="lazy" style="display:block;height:130px;width:auto;transition:transform 220ms cubic-bezier(.34,1.56,.64,1)" style-hover="transform:translateY(-8px)"><img src="assets/ins/catcolor-sit-2.png" alt="Cat colour variant 2" loading="lazy" style="display:block;height:130px;width:auto;transition:transform 220ms cubic-bezier(.34,1.56,.64,1)" style-hover="transform:translateY(-8px)"><img src="assets/ins/catcolor-sit-3.png" alt="Cat colour variant 3" loading="lazy" style="display:block;height:130px;width:auto;transition:transform 220ms cubic-bezier(.34,1.56,.64,1)" style-hover="transform:translateY(-8px)"><img src="assets/ins/catcolor-sit-4.png" alt="Cat colour variant 4" loading="lazy" style="display:block;height:130px;width:auto;transition:transform 220ms cubic-bezier(.34,1.56,.64,1)" style-hover="transform:translateY(-8px)"></div></div>
+        <div style="display:flex;flex-direction:column;gap:12px"><span style="display:flex;align-items:center;gap:10px;font:700 15px 'Fredoka',sans-serif;letter-spacing:.1em;text-transform:uppercase;color:#2E2A33">RoboCats<span style="font:700 13px 'Azeret Mono',monospace;letter-spacing:.12em;color:#FFFFFF;background:#08795B;padding:3px 7px">TUTORIAL ONLY</span></span><div style="display:flex;align-items:flex-end;gap:6px"><img src="assets/ins/robocat-sit-1.png" alt="RoboCat tutorial bot, variant 1" loading="lazy" style="display:block;height:130px;width:auto;transition:transform 220ms cubic-bezier(.34,1.56,.64,1)" style-hover="transform:translateY(-8px)"><img src="assets/ins/robocat-sit-2.png" alt="RoboCat tutorial bot, variant 2" loading="lazy" style="display:block;height:130px;width:auto;transition:transform 220ms cubic-bezier(.34,1.56,.64,1)" style-hover="transform:translateY(-8px)"><img src="assets/ins/robocat-sit-3.png" alt="RoboCat tutorial bot, variant 3" loading="lazy" style="display:block;height:130px;width:auto;transition:transform 220ms cubic-bezier(.34,1.56,.64,1)" style-hover="transform:translateY(-8px)"><img src="assets/ins/robocat-sit-4.png" alt="RoboCat tutorial bot, variant 4" loading="lazy" style="display:block;height:130px;width:auto;transition:transform 220ms cubic-bezier(.34,1.56,.64,1)" style-hover="transform:translateY(-8px)"></div></div>
+      </div>
+      <div style="height:2px;background:linear-gradient(90deg,rgba(14,159,120,0),rgba(14,159,120,.6) 20%,rgba(14,159,120,.6) 80%,rgba(14,159,120,0))"></div>
+    </div>
+</sc-if>
+
+  <!-- LEVELS -->
+  <sc-if value="{{ isLevels }}" hint-placeholder-val="{{ false }}">
+    <div style="display:flex;align-items:center;gap:48px;flex-wrap:wrap">
+      <p style="margin:0;font:500 20px/1.5 'Louis George Cafe',sans-serif;color:#2E2A33;flex:1;min-width:0;max-width:760px;text-wrap:pretty">Every level started from the same question: where would you find a cat, and what can that place teach the Cats and Keepers? The answer picks the setting, the setting decides what the level teaches, and the Hotel brings it all together.</p>
+      <figure style="margin:0;flex:0 0 440px;display:flex;flex-direction:column;gap:10px;transform:rotate(1.5deg)">
+      <div style="position:relative;aspect-ratio:16/9;overflow:hidden;background:#2E2A33;border:2.5px solid #2E2A33;border-radius:22px 8px 24px 6px/8px 22px 6px 24px;box-shadow:5px 6px 0 #2E2A33">
+        <video src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3590370/extras/33514d860ac8a850da22e45197632948.webm?t=1784247031" poster="assets/ins/keyart-2400.jpg" ref="{{ vidRef }}" autoPlay="{{ true }}" muted="{{ true }}" loop="{{ true }}" playsInline="{{ true }}" controls="{{ true }}" preload="metadata" aria-label="Insanitation gameplay: Cats and Keepers battling across the maps" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block"></video>
+      </div>
+      <figcaption style="display:flex;justify-content:space-between;align-items:center;gap:16px;font:600 13px 'Azeret Mono',monospace;color:#4A4350"><span><span style="color:#A63B07;font-weight:700">LIVE</span> · a tour of the maps</span></figcaption>
+    </figure>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:16px">
+      <sc-for list="{{ levels }}" as="l" hint-placeholder-count="7">
+        <div style="position:relative;display:flex;flex-direction:column;gap:10px;padding:20px;background:#FFFFFF;border:1px solid #2E2A33;border-top:3px solid {{ l.top }};opacity:{{ l.op }}">
+          <div style="display:flex;justify-content:space-between;align-items:center;gap:8px"><span style="font:700 14px 'Azeret Mono',monospace;color:#A63B07">{{ l.n }}</span><span style="font:700 13px 'Azeret Mono',monospace;letter-spacing:.08em;color:{{ l.tagC }}">{{ l.tag }}</span></div>
+          <h4 style="margin:0;font:700 21px/1.1 'Fredoka',sans-serif;text-transform:uppercase">{{ l.name }}</h4>
+          <span style="font:400 16px/1.4 'Louis George Cafe',sans-serif;color:#4A4350">{{ l.theme }}</span>
+          <span style="margin-top:auto;padding-top:10px;border-top:1px solid #2E2A33;font:500 16px/1.4 'Louis George Cafe',sans-serif;color:#4A4350"><span style="color:#08795B;font-weight:700">Teaches </span>{{ l.teach }}</span>
+        </div>
+      </sc-for>
+    </div>
+    <div style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:28px">
+      <div style="display:flex;flex-direction:column;gap:14px;padding:28px;background:#FFFFFF;border:2.5px solid #2E2A33;border-radius:22px 8px 24px 6px/8px 22px 6px 24px;box-shadow:5px 6px 0 #2E2A33">
+        <span style="font:700 13px 'Azeret Mono',monospace;letter-spacing:.14em;color:#A63B07">RULES FOR EVERY LEVEL</span>
+        <ul style="margin:0;padding-left:20px;display:flex;flex-direction:column;gap:10px;font:400 16px/1.5 'Louis George Cafe',sans-serif;color:#4A4350">
+          <li><strong style="color:#2E2A33">Opposite corners.</strong> Keepers spawn in one corner, Cats in the other, so both teams get a breather before the chaos starts.</li>
+          <li><strong style="color:#2E2A33">Loops, not dead ends.</strong> Keep a constant loop going and cut dead ends wherever possible, so both teams move fluidly through the space.</li>
+          <li><strong style="color:#2E2A33">Balanced from the first second.</strong> Every level begins with each interactable set up so neither side starts with the advantage.</li>
+          <li><strong style="color:#2E2A33">Built around the biggest props.</strong> Keeper size, the bed and the bathtub set the room metrics.</li>
+        </ul>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:14px;padding:28px;background:#FFFFFF;border:2.5px solid #2E2A33;border-radius:22px 8px 24px 6px/8px 22px 6px 24px;box-shadow:5px 6px 0 #2E2A33">
+        <span style="font:700 13px 'Azeret Mono',monospace;letter-spacing:.14em;color:#08795B">HOW A VARIANT IS MADE</span>
+        <p style="margin:0;font:400 16px/1.55 'Louis George Cafe',sans-serif;color:#4A4350;text-wrap:pretty">The outer shell stays 100% intact, but the entire interior changes. That might mean inverting the level, moving walls and rooms around, or removing walls entirely. The time of day shifts too.</p>
+        <p style="margin:0;font:400 16px/1.55 'Louis George Cafe',sans-serif;color:#4A4350;text-wrap:pretty">When I changed a layout I'd often duplicate the original first, so I kept a saved copy of the idea to use later for a variant. Returning players recognize the place but have to learn it all over again.</p>
+        <span style="font:600 14px 'Azeret Mono',monospace;color:#4A4350">Apartment, Basement and Cat Cafe · 3 variants each = 9</span>
+      </div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:14px">
+      <span style="font:700 13px 'Azeret Mono',monospace;letter-spacing:.14em;color:#A63B07">FEATURED LEVELS</span>
+      <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px">
+        <sc-for list="{{ featured }}" as="fl" hint-placeholder-count="3">
+          <div style="display:flex;flex-direction:column;background:#FFFFFF;border:1px solid #2E2A33">
+            <div style="aspect-ratio:16/10;display:grid;place-items:center;background:repeating-linear-gradient(135deg,#FBE9B7 0 12px,#F7DFA0 12px 24px);font:500 14px 'Azeret Mono',monospace;color:#4A4350">[ top-down map coming ]</div>
+            <div style="display:flex;flex-direction:column;gap:8px;padding:20px">
+              <span style="font:700 14px 'Azeret Mono',monospace;letter-spacing:.1em;color:#08795B">{{ fl.why }}</span>
+              <h4 style="margin:0;font:700 22px 'Fredoka',sans-serif;text-transform:uppercase">{{ fl.name }}</h4>
+              <p style="margin:0;font:400 16px/1.5 'Louis George Cafe',sans-serif;color:#4A4350;text-wrap:pretty">{{ fl.note }}</p>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+    <div style="display:flex;gap:20px;align-items:flex-start;padding:24px 28px;border:1.5px dashed #E8601C;background:rgba(232,96,28,.06)">
+      <span style="flex-shrink:0;font:700 13px 'Azeret Mono',monospace;letter-spacing:.12em;color:#A63B07;padding-top:3px">THE FRYER HACK</span>
+      <p style="margin:0;font:400 17px/1.55 'Louis George Cafe',sans-serif;color:#2E2A33;text-wrap:pretty">I wanted a fryer for the Cat Cafe, but there wasn't one at the time. So I modeled one in ProBuilder, placed it over the sink object, and dirtied the water to a nice oily brown. Voilà, a fryer.</p>
+    </div>
+  </sc-if>
+
+  <!-- SYSTEMS -->
+  <sc-if value="{{ isSystems }}" hint-placeholder-val="{{ false }}">
+    <div style="display:flex;flex-direction:column;gap:22px;padding:32px;background:#FFFFFF;border:2.5px solid #2E2A33;border-radius:22px 8px 24px 6px/8px 22px 6px 24px;box-shadow:5px 6px 0 #2E2A33">
+      <div style="display:flex;flex-direction:column;gap:8px"><span style="font:700 13px 'Azeret Mono',monospace;letter-spacing:.14em;color:#A63B07">SYSTEM 01 · SO_LevelData.cs</span><h3 style="margin:0;font:700 34px/1.05 'Fredoka',sans-serif;text-transform:uppercase">Weighted level variant selection</h3>
+      <p style="margin:0;font:400 17px/1.55 'Louis George Cafe',sans-serif;color:#4A4350;max-width:860px;text-wrap:pretty">At the start, the game only had four levels: Tutorial, Crazy Cat Lady's Apartment, Basement and Boss's House. With that few, replayability was a real problem. Variants were my answer, and this system decides which version of a level loads each time, using weights, cooldowns and a pity timer.</p></div>
+      <div style="display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:24px;align-items:start">
+        <div style="display:flex;flex-direction:column;gap:14px;padding:22px;background:#FFFFFF;border:1.5px solid #E8601C">
+          <div style="display:flex;justify-content:space-between;align-items:center"><span style="font:700 13px 'Azeret Mono',monospace;letter-spacing:.12em;color:#A63B07">TRY IT · CAT CAFE</span><span style="font:600 13px 'Azeret Mono',monospace;color:#4A4350">Rolls: {{ rolls }}</span></div>
+          <div style="position:relative;height:96px;display:grid;place-items:center;background:linear-gradient(180deg,#221F27,#3A3540 50%,#221F27);border:1px solid #33456F;overflow:hidden">
+            <span style="font:700 34px 'Fredoka',sans-serif;letter-spacing:.04em;text-transform:uppercase;color:{{ reelC }};transform:{{ reelT }};transition:transform 60ms linear">{{ reel }}</span>
+            <sc-if value="{{ pityHit }}" hint-placeholder-val="{{ false }}"><span style="position:absolute;right:10px;top:10px;padding:4px 8px;background:#FF5A5A;color:#FFFFFF;font:700 13px 'Azeret Mono',monospace;letter-spacing:.1em">PITY!</span></sc-if>
+          </div>
+          <button type="button" onClick="{{ roll }}" style="height:52px;border:0;background:{{ rollBg }};color:#FFFFFF;font:700 17px 'Fredoka',sans-serif;letter-spacing:.1em;text-transform:uppercase;cursor:pointer">{{ rollTxt }}</button>
+          <div style="display:flex;flex-direction:column;gap:10px">
+            <sc-for list="{{ entries }}" as="e" hint-placeholder-count="4">
+              <div style="display:grid;grid-template-columns:86px minmax(0,1fr) 92px;gap:12px;align-items:center;font:500 14px 'Azeret Mono',monospace">
+                <span style="color:{{ e.c }};font-weight:700">{{ e.name }}</span>
+                <span style="position:relative;height:10px;background:#F7DFA0"><span style="position:absolute;left:0;top:0;bottom:0;width:{{ e.pity }};background:{{ e.barC }};transition:width 300ms ease-out"></span></span>
+                <span style="color:#4A4350;text-align:right">{{ e.missTxt }}</span>
+              </div>
+            </sc-for>
+            <span style="font:500 14px 'Azeret Mono',monospace;color:#4A4350">Bars = misses toward each variant's pity threshold. Grey = on cooldown.</span>
+          </div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:14px">
+          <ol style="margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:12px">
+            <li style="display:flex;gap:14px"><span style="flex-shrink:0;width:28px;height:28px;display:grid;place-items:center;background:#C2470A;color:#FFFFFF;font:700 13px 'Azeret Mono',monospace">1</span><span style="font:400 16px/1.5 'Louis George Cafe',sans-serif;color:#4A4350"><strong style="color:#2E2A33">Pity check first.</strong> Any entry off cooldown whose miss counter has reached its threshold is forced. Most misses wins; a pity pick skips the roll entirely.</span></li>
+            <li style="display:flex;gap:14px"><span style="flex-shrink:0;width:28px;height:28px;display:grid;place-items:center;background:#C2470A;color:#FFFFFF;font:700 13px 'Azeret Mono',monospace">2</span><span style="font:400 16px/1.5 'Louis George Cafe',sans-serif;color:#4A4350"><strong style="color:#2E2A33">Base roll.</strong> One random number. Under 0.60, the base level loads. The base chance is absolute.</span></li>
+            <li style="display:flex;gap:14px"><span style="flex-shrink:0;width:28px;height:28px;display:grid;place-items:center;background:#C2470A;color:#FFFFFF;font:700 13px 'Azeret Mono',monospace">3</span><span style="font:400 16px/1.5 'Louis George Cafe',sans-serif;color:#4A4350"><strong style="color:#2E2A33">Variant roll.</strong> The leftover slice is split between variants off cooldown, by weight. Variant chances are relative weights; only the base's number is absolute.</span></li>
+          </ol>
+          <table style="width:100%;border-collapse:collapse;font:500 14px 'Azeret Mono',monospace">
+            <thead><tr style="color:#A63B07;text-align:left"><th style="padding:8px 6px;border-bottom:1px solid #2E2A33">Entry</th><th style="padding:8px 6px;border-bottom:1px solid #2E2A33">Per roll</th><th style="padding:8px 6px;border-bottom:1px solid #2E2A33">Measured*</th><th style="padding:8px 6px;border-bottom:1px solid #2E2A33">Pity at</th></tr></thead>
+            <tbody>
+              <tr><td style="padding:8px 6px;border-bottom:1px solid #2E2A33">Base</td><td style="padding:8px 6px;border-bottom:1px solid #2E2A33">60.0%</td><td style="padding:8px 6px;border-bottom:1px solid #2E2A33">56.8%</td><td style="padding:8px 6px;border-bottom:1px solid #2E2A33">off</td></tr>
+              <tr><td style="padding:8px 6px;border-bottom:1px solid #2E2A33">Variant 1</td><td style="padding:8px 6px;border-bottom:1px solid #2E2A33">17.1%</td><td style="padding:8px 6px;border-bottom:1px solid #2E2A33">17.8%</td><td style="padding:8px 6px;border-bottom:1px solid #2E2A33">10 misses</td></tr>
+              <tr><td style="padding:8px 6px;border-bottom:1px solid #2E2A33">Variant 2</td><td style="padding:8px 6px;border-bottom:1px solid #2E2A33">14.3%</td><td style="padding:8px 6px;border-bottom:1px solid #2E2A33">15.0%</td><td style="padding:8px 6px;border-bottom:1px solid #2E2A33">15 misses</td></tr>
+              <tr><td style="padding:8px 6px">Variant 3</td><td style="padding:8px 6px">8.6%</td><td style="padding:8px 6px">10.4%</td><td style="padding:8px 6px">20 misses</td></tr>
+            </tbody>
+          </table>
+          <span style="font:500 16px/1.5 'Louis George Cafe',sans-serif;color:#4A4350">*Over 2 million simulated rolls. Pity decides about one roll in nineteen: it's part of the design, not a rare safety net.</span>
+        </div>
+      </div>
+      <details style="border-top:1px solid #2E2A33;padding-top:14px">
+        <summary style="cursor:pointer;font:700 14px 'Azeret Mono',monospace;letter-spacing:.08em;color:#A63B07">Deep dive: resets &amp; edge cases</summary>
+        <ul style="margin:14px 0 0;padding-left:20px;display:flex;flex-direction:column;gap:8px;font:400 16px/1.55 'Louis George Cafe',sans-serif;color:#4A4350;max-width:900px">
+          <li>The picked entry's miss counter resets and its 1-roll cooldown starts. Every other entry's counter goes up, even ones sitting out on cooldown.</li>
+          <li>A variant on cooldown hands its slice to the other variants, never to the base. Right after Variant 1 lands, the odds are Base 60 / V1 0 / V2 25 / V3 15.</li>
+          <li>Longest measured drought: Base 16 rolls, V1 13, V2 17, V3 21.</li>
+          <li>If two variants pass their threshold at once, only the one with more misses fires; the other waits a roll. Back-to-back pity is normal.</li>
+          <li>If every variant is on cooldown, the base loads. Counters reset on play mode or first load and aren't saved between sessions; each level tracks its own.</li>
+          <li>Setting a cooldown at or above a variant's threshold makes it deterministic, so the editor warns you to keep thresholds above cooldowns.</li>
+        </ul>
+      </details>
+      <details style="border-top:1px solid #2E2A33;padding-top:14px">
+        <summary style="cursor:pointer;font:700 14px 'Azeret Mono',monospace;letter-spacing:.08em;color:#A63B07">Code: the two-tier roll (RollLevelSelect, lines 150–174)</summary>
+        <pre style="margin:14px 0 0;padding:18px;overflow:auto;background:#2E2A33;border:1px solid #2E2A33;font:500 14px/1.6 'Azeret Mono',monospace;color:#E8ECF4">{{ codeRoll }}</pre>
+        <p style="margin:10px 0 0;font:400 16px/1.5 'Louis George Cafe',sans-serif;color:#4A4350">Line 162 is the base check. Line 164 rescales the leftover roll back to 0–1, which turns variant weights into shares of the remainder. Lines 167–174 walk the cumulative weights.</p>
+      </details>
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:22px;padding:32px;background:#FFFFFF;border:2.5px solid #2E2A33;border-radius:22px 8px 24px 6px/8px 22px 6px 24px;box-shadow:5px 6px 0 #2E2A33">
+      <div style="display:flex;flex-direction:column;gap:8px"><span style="font:700 13px 'Azeret Mono',monospace;letter-spacing:.14em;color:#08795B">SYSTEM 02 · InputSwapDetector.cs</span><h3 style="margin:0;font:700 34px/1.05 'Fredoka',sans-serif;text-transform:uppercase">Controller-aware input prompts</h3>
+      <p style="margin:0;font:400 17px/1.55 'Louis George Cafe',sans-serif;color:#4A4350;max-width:860px;text-wrap:pretty">Players switching between controller types didn't know which button to press, because every prompt defaulted to Xbox no matter what they were holding.</p></div>
+      <div style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:24px;align-items:start">
+        <div data-keys-local="" onMouseMove="{{ mouseIn }}" style="display:flex;flex-direction:column;gap:14px;padding:22px;background:#FFFFFF;border:1.5px solid #0E9F78">
+          <div style="display:flex;justify-content:space-between;align-items:center;gap:10px"><span style="font:700 13px 'Azeret Mono',monospace;letter-spacing:.12em;color:#08795B">TRY IT · PRESS A KEY, MOVE THE MOUSE OR A STICK</span></div>
+          <div style="display:flex;flex-direction:column;gap:10px">
+            <div style="display:flex;align-items:center;gap:14px;padding:10px 12px;background:#2E2A33;color:#FFF6DE">
+              <span style="position:relative;width:48px;height:48px;flex-shrink:0"><img src="assets/input/kbm-e.svg" alt="E key" style="position:absolute;inset:0;width:48px;height:48px;display:block;opacity:{{ pr0.kbm }};transform:scale({{ pr0.kbmS }});transition:opacity 200ms ease-out,transform 260ms cubic-bezier(.34,1.56,.64,1)"><img src="assets/input/xbox-a.svg" alt="Xbox A button" style="position:absolute;inset:0;width:48px;height:48px;display:block;opacity:{{ pr0.xbox }};transform:scale({{ pr0.xboxS }});transition:opacity 200ms ease-out,transform 260ms cubic-bezier(.34,1.56,.64,1)"><img src="assets/input/ps-cross.svg" alt="PlayStation Cross button" style="position:absolute;inset:0;width:48px;height:48px;display:block;opacity:{{ pr0.ps }};transform:scale({{ pr0.psS }});transition:opacity 200ms ease-out,transform 260ms cubic-bezier(.34,1.56,.64,1)"></span>
+              <span style="font:500 16px 'Louis George Cafe',sans-serif">{{ pr0.action }}</span>
+            </div>
+            <div style="display:flex;align-items:center;gap:14px;padding:10px 12px;background:#2E2A33;color:#FFF6DE">
+              <span style="position:relative;width:48px;height:48px;flex-shrink:0"><img src="assets/input/kbm-lmb.svg" alt="Left mouse button" style="position:absolute;inset:0;width:48px;height:48px;display:block;opacity:{{ pr1.kbm }};transform:scale({{ pr1.kbmS }});transition:opacity 200ms ease-out,transform 260ms cubic-bezier(.34,1.56,.64,1)"><img src="assets/input/xbox-x.svg" alt="Xbox X button" style="position:absolute;inset:0;width:48px;height:48px;display:block;opacity:{{ pr1.xbox }};transform:scale({{ pr1.xboxS }});transition:opacity 200ms ease-out,transform 260ms cubic-bezier(.34,1.56,.64,1)"><img src="assets/input/ps-square.svg" alt="PlayStation Square button" style="position:absolute;inset:0;width:48px;height:48px;display:block;opacity:{{ pr1.ps }};transform:scale({{ pr1.psS }});transition:opacity 200ms ease-out,transform 260ms cubic-bezier(.34,1.56,.64,1)"></span>
+              <span style="font:500 16px 'Louis George Cafe',sans-serif">{{ pr1.action }}</span>
+            </div>
+            <div style="display:flex;align-items:center;gap:14px;padding:10px 12px;background:#2E2A33;color:#FFF6DE">
+              <span style="position:relative;width:48px;height:48px;flex-shrink:0"><img src="assets/input/kbm-esc.svg" alt="Escape key" style="position:absolute;inset:0;width:48px;height:48px;display:block;opacity:{{ pr2.kbm }};transform:scale({{ pr2.kbmS }});transition:opacity 200ms ease-out,transform 260ms cubic-bezier(.34,1.56,.64,1)"><img src="assets/input/xbox-menu.svg" alt="Xbox Menu button" style="position:absolute;inset:0;width:48px;height:48px;display:block;opacity:{{ pr2.xbox }};transform:scale({{ pr2.xboxS }});transition:opacity 200ms ease-out,transform 260ms cubic-bezier(.34,1.56,.64,1)"><img src="assets/input/ps-options.svg" alt="PlayStation Options button" style="position:absolute;inset:0;width:48px;height:48px;display:block;opacity:{{ pr2.ps }};transform:scale({{ pr2.psS }});transition:opacity 200ms ease-out,transform 260ms cubic-bezier(.34,1.56,.64,1)"></span>
+              <span style="font:500 16px 'Louis George Cafe',sans-serif">{{ pr2.action }}</span>
+            </div>
+          </div>
+          <div style="display:flex;gap:8px;flex-wrap:wrap">
+            <sc-for list="{{ devices }}" as="d" hint-placeholder-count="3">
+              <button type="button" onClick="{{ d.pick }}" style="padding:8px 12px;border:1px solid {{ d.bd }};background:{{ d.bg }};color:{{ d.fg }};font:600 13px 'Azeret Mono',monospace;cursor:pointer">{{ d.label }}</button>
+            </sc-for>
+          </div>
+          <span style="font:500 14px 'Azeret Mono',monospace;color:#4A4350">› {{ inputLog }}</span>
+        </div>
+        <ul style="margin:0;padding-left:20px;display:flex;flex-direction:column;gap:10px;font:400 16px/1.5 'Louis George Cafe',sans-serif;color:#4A4350">
+          <li><strong style="color:#2E2A33">One listener for everything.</strong> A single PassThrough input action fires on every stick, button, key and mouse event, so no swap gets missed.</li>
+          <li><strong style="color:#2E2A33">Reads the device.</strong> Each event reports which device sent it. "Sony", "DualShock" or "DualSense" means PlayStation; "Microsoft" or "Xbox" means Xbox; unknown pads fall back to Xbox.</li>
+          <li><strong style="color:#2E2A33">No flicker.</strong> A 0.5s cooldown, an analog dead zone and a blacklist for Enter and Start stop accidental swaps.</li>
+          <li><strong style="color:#2E2A33">Per player in couch co-op.</strong> Each player's device is the first one paired to them, captured when they join, so everyone on one PC sees their own buttons.</li>
+          <li><strong style="color:#2E2A33">The trickiest part:</strong> making the values hold across scenes and locking each player's controller type at the start of a level, especially in couch co-op with multiple controllers on one device.</li>
+        </ul>
+      </div>
+      <figure style="margin:0;display:flex;flex-direction:column;gap:8px">
+        <img src="assets/ins/readyup-mockup.png" alt="Character select screen: four player cards with 'Press ▶ to ready up' prompts above each" loading="lazy" style="display:block;width:100%;height:auto;border:1px solid #2E2A33">
+        <figcaption style="font:500 14px 'Azeret Mono',monospace;color:#4A4350">Character select mockup · each player's "Press ▶ to ready up" prompt follows the controller they're holding</figcaption>
+      </figure>
+      <details style="border-top:1px solid #2E2A33;padding-top:14px">
+        <summary style="cursor:pointer;font:700 14px 'Azeret Mono',monospace;letter-spacing:.08em;color:#08795B">Code: device detection</summary>
+        <pre style="margin:14px 0 0;padding:18px;overflow:auto;background:#2E2A33;border:1px solid #2E2A33;font:500 14px/1.6 'Azeret Mono',monospace;color:#E8ECF4">{{ codeInput }}</pre>
+      </details>
+    </div>
+  </sc-if>
+
+  <!-- PROCESS -->
+  <sc-if value="{{ isProcess }}" hint-placeholder-val="{{ false }}">
+    <p style="margin:0;font:500 20px/1.5 'Louis George Cafe',sans-serif;color:#2E2A33;max-width:880px;text-wrap:pretty">Every level went through the same loop. Playtest early and often, and only polish once the space works.</p>
+    <div style="display:flex;align-items:flex-start;justify-content:center;gap:6px;padding:24px 0 8px">
+      <div style="display:flex;align-items:center;gap:6px;margin-top:168px"><div style="flex:0 1 178px;min-width:0;box-sizing:border-box;display:flex;flex-direction:column;gap:8px;padding:18px 18px 20px;background:#FFFFFF;border:2.5px solid #2E2A33;border-radius:22px 8px 24px 6px/8px 22px 6px 24px;box-shadow:5px 6px 0 #2E2A33"><span style="font:700 13px 'Azeret Mono',monospace;color:#C2470A">01</span><span style="font:700 20px/1.1 'Fredoka',sans-serif;text-transform:uppercase;color:#2E2A33">Sketch</span><span style="font:400 15px/1.45 'Louis George Cafe',sans-serif;color:#4A4350">Rough layout on paper or a drawing site.</span></div><div style="flex:0 0 auto;display:flex;flex-direction:column;align-items:center;gap:4px;padding:0 4px"><svg width="40" height="22" viewBox="0 0 56 22" aria-hidden="true"><path d="M2 11 H44" stroke="#2E2A33" stroke-width="4" stroke-linecap="round" fill="none"></path><path d="M38 3 L52 11 L38 19" stroke="#2E2A33" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none"></path></svg></div><div style="flex:0 1 178px;min-width:0;box-sizing:border-box;display:flex;flex-direction:column;gap:8px;padding:18px 18px 20px;background:#FFFFFF;border:2.5px solid #2E2A33;border-radius:22px 8px 24px 6px/8px 22px 6px 24px;box-shadow:5px 6px 0 #2E2A33"><span style="font:700 13px 'Azeret Mono',monospace;color:#C2470A">02</span><span style="font:700 20px/1.1 'Fredoka',sans-serif;text-transform:uppercase;color:#2E2A33">Graybox</span><span style="font:400 15px/1.45 'Louis George Cafe',sans-serif;color:#4A4350">ProBuilder blockout of the shell and rooms.</span></div><div style="flex:0 0 auto;display:flex;flex-direction:column;align-items:center;gap:4px;padding:0 4px"><svg width="40" height="22" viewBox="0 0 56 22" aria-hidden="true"><path d="M2 11 H44" stroke="#2E2A33" stroke-width="4" stroke-linecap="round" fill="none"></path><path d="M38 3 L52 11 L38 19" stroke="#2E2A33" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none"></path></svg></div></div>
+      <div style="flex:0 0 420px;display:flex;flex-direction:column;align-items:center;gap:14px">
+        <div role="img" aria-label="Playtest and Iterate form a loop that repeats until the level feels good" style="position:relative;width:420px;height:420px">
+          <svg width="420" height="420" viewBox="0 0 420 420" aria-hidden="true" style="position:absolute;inset:0;overflow:visible">
+            <defs>
+              <marker id="ouroHeadG" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="4.2" markerHeight="4.2" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 Z" fill="#08795B" stroke="#2E2A33" stroke-width="1.2"></path></marker>
+              <marker id="ouroHeadO" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="4.2" markerHeight="4.2" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 Z" fill="#C2470A" stroke="#2E2A33" stroke-width="1.2"></path></marker>
+            </defs>
+            <path d="M262 74 A150 150 0 0 1 262 346" stroke="#2E2A33" stroke-width="17" stroke-linecap="round" fill="none"></path>
+            <path d="M262 74 A150 150 0 0 1 262 346" stroke="#0E9F78" stroke-width="10" stroke-linecap="round" fill="none" marker-end="url(#ouroHeadG)"></path>
+            <path d="M158 346 A150 150 0 0 1 158 74" stroke="#2E2A33" stroke-width="17" stroke-linecap="round" fill="none"></path>
+            <path d="M158 346 A150 150 0 0 1 158 74" stroke="#E2711D" stroke-width="10" stroke-linecap="round" fill="none" marker-end="url(#ouroHeadO)"></path>
+            <circle cx="210" cy="210" r="150" stroke="#FFFFFF" stroke-width="3" stroke-dasharray="3 22" stroke-linecap="round" fill="none" opacity=".9"><animate attributeName="stroke-dashoffset" from="0" to="-50" dur="1.4s" repeatCount="indefinite"></animate></circle>
+          </svg>
+          <div style="position:absolute;left:50%;top:0;transform:translateX(-50%);width:190px;display:flex;flex-direction:column;align-items:center;gap:4px;padding:12px 14px;background:#E6F6EF;border:2.5px solid #2E2A33;border-radius:999px;box-shadow:4px 5px 0 #2E2A33;text-align:center"><span style="font:700 19px/1 'Fredoka',sans-serif;text-transform:uppercase;color:#08795B">Playtest</span><span style="font:400 13px/1.3 'Louis George Cafe',sans-serif;color:#4A4350">Watch it get played</span></div>
+          <div style="position:absolute;left:50%;bottom:0;transform:translateX(-50%);width:190px;display:flex;flex-direction:column;align-items:center;gap:4px;padding:12px 14px;background:#FFF1E2;border:2.5px solid #2E2A33;border-radius:999px;box-shadow:4px 5px 0 #2E2A33;text-align:center"><span style="font:700 19px/1 'Fredoka',sans-serif;text-transform:uppercase;color:#C2470A">Iterate</span><span style="font:400 13px/1.3 'Louis George Cafe',sans-serif;color:#4A4350">Fix what you saw</span></div>
+          <span style="position:absolute;right:-8px;top:50%;transform:translateY(-50%);font:700 12px 'Azeret Mono',monospace;letter-spacing:.1em;color:#08795B;background:#FFFAEC;padding:4px 6px">NOTES</span>
+          <span style="position:absolute;left:-8px;top:50%;transform:translateY(-50%);font:700 12px 'Azeret Mono',monospace;letter-spacing:.1em;color:#C2470A;background:#FFFAEC;padding:4px 6px">CHANGES</span>
+          <div style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:200px;display:flex;flex-direction:column;align-items:center;gap:6px;text-align:center">
+            <span style="font:700 13px 'Azeret Mono',monospace;color:#C2470A">03</span>
+            <span style="font:700 40px/1 'Fredoka',sans-serif;color:#2E2A33">↻</span>
+            <span style="font:700 17px/1.2 'Fredoka',sans-serif;text-transform:uppercase;color:#2E2A33">Repeat until it feels good</span>
+            <span style="font:400 14px/1.4 'Louis George Cafe',sans-serif;color:#4A4350">Rooms move, spaces widen, dead ends get cut.</span>
+          </div>
+        </div>
+        <div style="display:flex;flex-direction:column;align-items:center;gap:6px">
+          <svg width="22" height="34" viewBox="0 0 22 34" aria-hidden="true"><path d="M11 32 V10" stroke="#2E2A33" stroke-width="4" stroke-linecap="round" fill="none"></path><path d="M3 16 L11 3 L19 16" stroke="#2E2A33" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none"></path></svg>
+          <div style="width:300px;display:flex;flex-direction:column;gap:6px;padding:14px 16px;background:rgba(255,250,236,.85);border:2.5px dashed #2E2A33;border-radius:14px;text-align:center"><span style="font:700 13px 'Azeret Mono',monospace;letter-spacing:.1em;color:#C2470A">+ INTERACTABLES</span><span style="font:400 14px/1.4 'Louis George Cafe',sans-serif;color:#4A4350">Dropped in mid-loop once the space works, then the loop runs again with the real mechanics.</span></div>
+        </div>
+      </div>
+      <div style="display:flex;align-items:center;gap:6px;margin-top:168px"><div style="flex:0 0 auto;display:flex;flex-direction:column;align-items:center;gap:4px;padding:0 4px"><svg width="40" height="22" viewBox="0 0 56 22" aria-hidden="true"><path d="M2 11 H44" stroke="#2E2A33" stroke-width="4" stroke-linecap="round" fill="none"></path><path d="M38 3 L52 11 L38 19" stroke="#2E2A33" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none"></path></svg><span style="font:700 11px 'Azeret Mono',monospace;letter-spacing:.1em;color:#08795B;white-space:nowrap">FEELS GOOD</span></div><div style="flex:0 1 178px;min-width:0;box-sizing:border-box;display:flex;flex-direction:column;gap:8px;padding:18px 18px 20px;background:#FFFFFF;border:2.5px solid #2E2A33;border-radius:22px 8px 24px 6px/8px 22px 6px 24px;box-shadow:5px 6px 0 #2E2A33"><span style="font:700 13px 'Azeret Mono',monospace;color:#08795B">04</span><span style="font:700 20px/1.1 'Fredoka',sans-serif;text-transform:uppercase;color:#2E2A33">Polish</span><span style="font:400 15px/1.45 'Louis George Cafe',sans-serif;color:#4A4350">Textures, props and final models, with Art.</span></div></div>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px">
+      <div style="display:flex;flex-direction:column;gap:10px;padding:24px;background:#FFFFFF;border:2.5px solid #2E2A33;border-radius:22px 8px 24px 6px/8px 22px 6px 24px;box-shadow:5px 6px 0 #2E2A33"><span style="font:700 13px 'Azeret Mono',monospace;letter-spacing:.14em;color:#A63B07">METRICS</span><p style="margin:0;font:400 16px/1.55 'Louis George Cafe',sans-serif;color:#4A4350">Keeper size and the biggest interactables, the bed and the bathtub, set the minimum room and doorway sizes.</p></div>
+      <div style="display:flex;flex-direction:column;gap:10px;padding:24px;background:#FFFFFF;border:2.5px solid #2E2A33;border-radius:22px 8px 24px 6px/8px 22px 6px 24px;box-shadow:5px 6px 0 #2E2A33"><span style="font:700 13px 'Azeret Mono',monospace;letter-spacing:.14em;color:#A63B07">TOOLS</span><p style="margin:0;font:400 16px/1.55 'Louis George Cafe',sans-serif;color:#4A4350">ProBuilder for every graybox; Google Images for reference.</p></div>
+      <div style="display:flex;flex-direction:column;gap:10px;padding:24px;background:#FFFFFF;border:2.5px solid #2E2A33;border-radius:22px 8px 24px 6px/8px 22px 6px 24px;box-shadow:5px 6px 0 #2E2A33"><span style="font:700 13px 'Azeret Mono',monospace;letter-spacing:.14em;color:#A63B07">WORKING WITH ART</span><p style="margin:0;font:400 16px/1.55 'Louis George Cafe',sans-serif;color:#4A4350">I walked the artists through the vision, the asset list, the layout and the item placement, then finalized props together.</p></div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:12px;padding:28px;background:#FFFFFF;border:2.5px solid #2E2A33;border-radius:22px 8px 24px 6px/8px 22px 6px 24px;box-shadow:5px 6px 0 #2E2A33">
+      <span style="font:700 13px 'Azeret Mono',monospace;letter-spacing:.14em;color:#08795B">THE HARDEST PART</span>
+      <p style="margin:0;font:500 19px/1.5 'Louis George Cafe',sans-serif;color:#2E2A33;text-wrap:pretty">Creating new levels that felt fun, novel and engaging with a limited set of tools and interactables, then communicating each new element to players in a way they'd remember going forward.</p>
+      <p style="margin:0;font:400 16px/1.55 'Louis George Cafe',sans-serif;color:#4A4350;text-wrap:pretty">The trade-off: some level ideas got cut entirely because the tools and interactables they needed didn't exist. Other times I found a workaround, like the Cat Cafe fryer.</p>
+    </div>
+  </sc-if>
+
+  <!-- PLAYTESTING -->
+  <sc-if value="{{ isPlaytest }}" hint-placeholder-val="{{ false }}">
+    <div style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:28px">
+      <div style="display:flex;flex-direction:column;gap:16px;padding:28px;background:#FFFFFF;border:2.5px solid #2E2A33;border-radius:22px 8px 24px 6px/8px 22px 6px 24px;box-shadow:5px 6px 0 #2E2A33">
+        <span style="font:700 13px 'Azeret Mono',monospace;letter-spacing:.14em;color:#A63B07">40+ PLAYTESTS · THE SETUP</span>
+        <div style="display:flex;gap:10px;flex-wrap:wrap">
+          <span style="padding:8px 12px;background:#107C10;color:#FFFFFF;font:700 13px 'Azeret Mono',monospace">XBOX</span><span style="padding:8px 12px;background:#107C10;color:#FFFFFF;font:700 13px 'Azeret Mono',monospace">XBOX</span><span style="padding:8px 12px;background:#107C10;color:#FFFFFF;font:700 13px 'Azeret Mono',monospace">XBOX</span><span style="padding:8px 12px;background:#FFFFFF;color:#2E2A33;border:2px solid #2E2A33;font:700 13px 'Azeret Mono',monospace">KEYBOARD + MOUSE</span>
+        </div>
+        <ul style="margin:0;padding-left:20px;display:flex;flex-direction:column;gap:8px;font:400 16px/1.5 'Louis George Cafe',sans-serif;color:#4A4350">
+          <li>All in person, in couch co-op with four controllers: usually three Xbox and one keyboard and mouse.</li>
+          <li>Everyone starts on the Tutorial to get a feel for the level flow.</li>
+          <li>Then I sit back with a pen and paper and watch them play.</li>
+          <li>I only answer questions that would leave someone completely stuck. Otherwise, they figure it out on their own.</li>
+        </ul>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:16px">
+        <span style="font:700 13px 'Azeret Mono',monospace;letter-spacing:.14em;color:#A63B07">WHAT PLAYTESTS CHANGED</span>
+        <div style="display:flex;flex-direction:column;gap:30px;padding-top:12px">
+        <div class="ins-wobble" style="position:relative;display:grid;grid-template-columns:minmax(0,1fr) 34px minmax(0,1fr);align-items:stretch;gap:0;padding:0;background:#FFFFFF;border:2.5px solid #2E2A33;border-radius:22px 8px 24px 6px/8px 22px 6px 24px;box-shadow:5px 6px 0 #2E2A33;transform:rotate(-.6deg);overflow:visible">
+          <span style="position:absolute;left:18px;top:-15px;padding:4px 12px;background:#FFC43D;border:2px solid #2E2A33;border-radius:10px 3px 10px 3px;font:700 15px 'Fredoka',sans-serif;letter-spacing:.06em;text-transform:uppercase;color:#2E2A33;transform:rotate(-2deg)">Basement</span>
+          <div style="display:flex;flex-direction:column;gap:6px;padding:26px 20px 20px 22px;background:#FFF1E2;border-radius:20px 0 0 4px/6px 0 0 22px">
+            <span style="font:700 12px 'Azeret Mono',monospace;letter-spacing:.14em;color:#A63B07">SAW</span>
+            <span style="font:400 16px/1.45 'Louis George Cafe',sans-serif;color:#2E2A33;text-wrap:pretty">The original layout’s dead ends caused confusion and frustration.</span>
+          </div>
+          <div aria-hidden="true" style="display:grid;place-items:center;background:linear-gradient(90deg,#FFF1E2 50%,#E6F6EF 50%)"><span style="width:30px;height:30px;border-radius:50%;background:#2E2A33;color:#FFF6DE;display:grid;place-items:center;font:700 16px 'Fredoka',sans-serif">→</span></div>
+          <div style="display:flex;flex-direction:column;gap:6px;padding:26px 22px 20px 20px;background:#E6F6EF;border-radius:0 20px 22px 0/0 6px 6px 0">
+            <span style="font:700 12px 'Azeret Mono',monospace;letter-spacing:.14em;color:#08795B">CHANGED</span>
+            <span style="font:400 16px/1.45 'Louis George Cafe',sans-serif;color:#2E2A33;text-wrap:pretty">Cut nearly every dead end so both teams keep moving.</span>
+          </div>
+        </div>
+        <div class="ins-wobble" style="position:relative;display:grid;grid-template-columns:minmax(0,1fr) 34px minmax(0,1fr);align-items:stretch;gap:0;padding:0;background:#FFFFFF;border:2.5px solid #2E2A33;border-radius:22px 8px 24px 6px/8px 22px 6px 24px;box-shadow:5px 6px 0 #2E2A33;transform:rotate(.5deg);overflow:visible">
+          <span style="position:absolute;left:18px;top:-15px;padding:4px 12px;background:#FFC43D;border:2px solid #2E2A33;border-radius:10px 3px 10px 3px;font:700 15px 'Fredoka',sans-serif;letter-spacing:.06em;text-transform:uppercase;color:#2E2A33;transform:rotate(-2deg)">Outside</span>
+          <div style="display:flex;flex-direction:column;gap:6px;padding:26px 20px 20px 22px;background:#FFF1E2;border-radius:20px 0 0 4px/6px 0 0 22px">
+            <span style="font:700 12px 'Azeret Mono',monospace;letter-spacing:.14em;color:#A63B07">ASKED</span>
+            <span style="font:400 16px/1.45 'Louis George Cafe',sans-serif;color:#2E2A33;text-wrap:pretty">“Where would you expect to find a cat out here?”</span>
+          </div>
+          <div aria-hidden="true" style="display:grid;place-items:center;background:linear-gradient(90deg,#FFF1E2 50%,#E6F6EF 50%)"><span style="width:30px;height:30px;border-radius:50%;background:#2E2A33;color:#FFF6DE;display:grid;place-items:center;font:700 16px 'Fredoka',sans-serif">→</span></div>
+          <div style="display:flex;flex-direction:column;gap:6px;padding:26px 22px 20px 20px;background:#E6F6EF;border-radius:0 20px 22px 0/0 6px 6px 0">
+            <span style="font:700 12px 'Azeret Mono',monospace;letter-spacing:.14em;color:#08795B">BUILT</span>
+            <span style="font:400 16px/1.45 'Louis George Cafe',sans-serif;color:#2E2A33;text-wrap:pretty">The topiary garden, bouncing ideas off playtesters the whole way.</span>
+          </div>
+        </div>
+        </div>
+      </div>
+    </div>
+  </sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1296,&quot;height&quot;:1400},&quot;tab&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;overview&quot;,&quot;levels&quot;,&quot;systems&quot;,&quot;process&quot;,&quot;playtest&quot;],&quot;default&quot;:&quot;overview&quot;,&quot;tsType&quot;:&quot;string&quot;}}">
+class Component extends DCLogic {
+  state = { misses: [0, 0, 0, 0], cd: [0, 0, 0, 0], rolls: 0, spinning: false, reel: 'Ready', landed: -1, pity: false, dev: 'xbox', log: 'Default: Xbox prompts' };
+  E = [{ n: 'Base', w: .6, thr: 0, cdl: 0, c: '#C2470A', lc: '#FF8A5A' }, { n: 'Variant 1', w: .30, thr: 10, cdl: 1, c: '#08795B', lc: '#3FD3A0' }, { n: 'Variant 2', w: .25, thr: 15, cdl: 1, c: '#1F6FD1', lc: '#7FB2FF' }, { n: 'Variant 3', w: .15, thr: 20, cdl: 1, c: '#9A4A12', lc: '#FFB38A' }];
+  pick() {
+    const s = this.state, E = this.E;
+    let best = -1;
+    E.forEach((e, i) => { if (s.cd[i] <= 0 && e.thr > 0 && s.misses[i] >= e.thr && (best < 0 || s.misses[i] > s.misses[best])) best = i; });
+    if (best >= 0) return { i: best, pity: true };
+    const r = Math.random(); let tot = 0;
+    for (let i = 1; i < E.length; i++) if (s.cd[i] <= 0) tot += E[i].w;
+    if (r < E[0].w || tot <= 0) return { i: 0, pity: false };
+    const sr = (r - E[0].w) / (1 - E[0].w); let cum = 0, last = 0;
+    for (let i = 1; i < E.length; i++) { if (s.cd[i] > 0) continue; last = i; cum += E[i].w / tot; if (sr < cum) return { i, pity: false }; }
+    return { i: last, pity: false };
+  }
+  roll = () => {
+    if (this.state.spinning) return;
+    const res = this.pick(); let t = 0;
+    this.setState({ spinning: true, pity: false });
+    clearInterval(this.spin);
+    this.spin = setInterval(() => {
+      t++; this.setState({ reel: this.E[t % 4].n, reelT: t % 2 ? 'translateY(-4px)' : 'translateY(4px)' });
+      if (t >= 12) {
+        clearInterval(this.spin);
+        this.setState(s => ({ spinning: false, reel: this.E[res.i].n, landed: res.i, pity: res.pity, rolls: s.rolls + 1, reelT: 'none',
+          misses: s.misses.map((m, k) => k === res.i ? 0 : m + 1), cd: s.cd.map((c, k) => k === res.i ? this.E[k].cdl : Math.max(0, c - 1)) }));
+      }
+    }, 55);
+  };
+  // input prompts demo (mirrors InputSwapDetector: cooldown, dead zone, Enter/Start blacklist, HID string match)
+  swap(dev, why) { const now = performance.now(); if (dev === this.state.dev) return; if (now - (this.lastSwap || 0) < 500) return; this.lastSwap = now; this.setState({ dev, log: why }); }
+  onKey = (e) => { if (!this.props.tab || this.props.tab !== 'systems') return; if (e.key === 'Enter') return; this.swap('kbm', `Keyboard detected (${e.key === ' ' ? 'Space' : e.key})`); };
+  mouseIn = () => this.swap('kbm', 'Mouse detected → keyboard prompts');
+  poll = () => {
+    this.raf = requestAnimationFrame(this.poll);
+    const pads = navigator.getGamepads ? navigator.getGamepads() : [];
+    for (const p of pads) { if (!p) continue;
+      const moved = p.axes.some(a => Math.abs(a) > .3) || [6, 7].some(i => p.buttons[i] && p.buttons[i].value > .3);
+      if (!moved) continue; const id = p.id.toLowerCase();
+      const dev = /sony|dualshock|dualsense|054c/.test(id) ? 'ps' : 'xbox';
+      this.swap(dev, `${dev === 'ps' ? 'PlayStation' : 'Xbox'} pad detected (stick moved)`); }
+  };
+  vidRef = React.createRef(); trailerRef = React.createRef();
+  TRAILER = 'https://video.akamai.steamstatic.com/store_trailers/3590370/1879351801/f47eca84dd4db0e458c7b2d551a2b20685fab06c/1784244198/hls_264_master.m3u8?t=1784247031';
+  killTrailer() {
+    if (this.trailerIO) { this.trailerIO.disconnect(); this.trailerIO = null; }
+    if (this.trailerVis) { document.removeEventListener('visibilitychange', this.trailerVis); this.trailerVis = null; }
+    if (this.hls) { try { this.hls.destroy(); } catch (_) {} this.hls = null; }
+    const o = this.hlsVid; if (o) { try { o.pause(); o.removeAttribute('src'); o.load(); } catch (_) {} } this.hlsVid = null;
+    if (window.__qsTrailer && window.__qsTrailer !== this) { try { window.__qsTrailer.killTrailer(); } catch (_) {} }
+  }
+  kickTrailer() {
+    const v = this.trailerRef.current;
+    if (this.hlsVid && this.hlsVid !== v) this.killTrailer();
+    if (!v || v.__hls) return;
+    this.killTrailer(); window.__qsTrailer = this; this.hlsVid = v; v.__hls = true; v.autoplay = false; v.removeAttribute('autoplay'); v.loop = false; v.controls = true; v.volume = 0.3;
+    const io = new IntersectionObserver(([e]) => { if (!e.isIntersecting && !v.paused) v.pause(); }, { threshold: 0.25 }); io.observe(v); this.trailerIO = io;
+    const vis = () => { if (document.hidden && !v.paused) v.pause(); }; document.addEventListener('visibilitychange', vis); this.trailerVis = vis;
+    v.addEventListener('play', () => document.querySelectorAll('video').forEach(o => { if (o !== v && !o.muted) o.pause(); })); v.addEventListener('ended', () => { v.autoplay = false; v.removeAttribute('autoplay'); v.pause(); v.currentTime = 0; }, { once: true });
+    const go = () => {};
+    const safari = /^((?!chrome|chromium|crios|edg|android).)*safari/i.test(navigator.userAgent);
+    if (safari && v.canPlayType('application/vnd.apple.mpegurl')) { v.src = this.TRAILER; go(); return; }
+    const attach = () => { if (!window.Hls || !window.Hls.isSupported()) return; const h = new window.Hls({ capLevelToPlayerSize: true, startLevel: -1, enableWorker: true }); h.loadSource(this.TRAILER); h.attachMedia(v); h.on(window.Hls.Events.MANIFEST_PARSED, go); this.hls = h; };
+    if (window.Hls) return attach();
+    let s = document.querySelector('script[data-hlsjs]');
+    if (!s) { s = document.createElement('script'); s.src = 'https://cdn.jsdelivr.net/npm/hls.js@1.5.15/dist/hls.min.js'; s.dataset.hlsjs = ''; document.head.appendChild(s); }
+    s.addEventListener('load', () => { if (this.hlsVid === v) attach(); }, { once: true });
+  }
+  kickVid() { const v = this.vidRef.current; if (!v || v.__kicked) return; v.__kicked = true; v.muted = true; v.loop = true; v.controls = true; v.play().catch(() => {}); }
+  componentDidUpdate() { this.kickVid(); this.kickTrailer(); }
+  componentDidMount() { this.kickVid(); this.kickTrailer(); addEventListener('keydown', this.onKey); this.raf = requestAnimationFrame(this.poll); }
+  componentWillUnmount() { this.killTrailer(); removeEventListener('keydown', this.onKey); cancelAnimationFrame(this.raf); clearInterval(this.spin); }
+  renderVals() {
+    const s = this.state, tab = this.props.tab || 'overview';
+    const ACT = ['Clean up / trash it', 'Use your tool', 'Pause'];
+    return {
+      vidRef: this.vidRef, trailerRef: this.trailerRef, isOverview: tab === 'overview', isLevels: tab === 'levels', isSystems: tab === 'systems', isProcess: tab === 'process', isPlaytest: tab === 'playtest',
+      team: [['Shawnna Oneil', 'Producer'], ['Cotter Edwards', 'Lead Gameplay Designer'], ['Timothy Marroquin', 'Lead Programmer'], ['Jeremy Hodge', 'Programmer'], ['Quentin Smith', 'Lead Level Design + Programmer'], ['Chelsea Rodriguez', 'Lead Artist'], ['Ava Nancy', 'Co-Art Lead / Artist'], ['Maxine Zeus', 'Music / Audio']].map(([n, r]) => ({ n, r, c: n === 'Quentin Smith' ? '#C2470A' : '#2E2A33', fw: n === 'Quentin Smith' ? 700 : 500 })),
+      levels: [
+        ['Tutorial', 'A testing laboratory', 'both roles and the basic controls', ''],
+        ['Crazy Cat Lady’s Apartment', 'A motel-style hoarder’s apartment', 'the litterbox and the vacuum', '+3 VARIANTS'],
+        ['Basement', 'A house’s basement', 'vents and bug spray', '+3 VARIANTS'],
+        ['Cat Cafe', 'A restaurant kitchen', 'raccoons and cages', '+3 VARIANTS'],
+        ['Outside', 'An outdoor topiary garden', 'plants, hedges, mowing the yard and watering the plants', ''],
+        ['Hotel', 'A dormitory / rich penthouse suite', 'everything from the previous levels', 'FINALE'],
+        ['Boss’s House', 'The only level I didn’t create', 'everything from the previous levels', 'NOT MINE'],
+      ].map(([name, theme, teach, tag], i) => ({ n: String(i + 1).padStart(2, '0'), name, theme, teach, tag, tagC: tag === 'NOT MINE' ? '#4A4350' : '#08795B', top: tag === 'NOT MINE' ? '#4A4350' : '#E8601C', op: 1 })),
+      featured: [
+        { name: 'Crazy Cat Lady’s Apartment', why: 'MY FAVORITE', note: 'A hoarder’s apartment is exactly where you’d find cats, which makes it the natural place to teach the litterbox and the vacuum.' },
+        { name: 'Cat Cafe', why: 'BEST SHOWCASE OF VARIANTS', note: 'A cafe kitchen full of cats is a natural fit for raccoons and cages. Same outer shell, three very different interiors.' },
+        { name: 'Hotel', why: 'EVERYTHING TOGETHER', note: 'Ties every previous mechanic together into one final test.' },
+      ],
+      rolls: String(s.rolls), reel: s.reel, reelT: s.reelT || 'none', reelC: s.landed >= 0 && !s.spinning ? this.E[s.landed].lc : '#E8ECF4', pityHit: s.pity && !s.spinning,
+      roll: this.roll, rollTxt: s.spinning ? 'Rolling…' : 'Load level', rollBg: s.spinning ? '#8E7A3A' : '#C2470A',
+      entries: this.E.map((e, i) => ({ name: e.n, c: e.c, pity: e.thr ? Math.min(100, s.misses[i] / e.thr * 100) + '%' : '0%', barC: s.cd[i] > 0 ? '#3A4766' : e.c,
+        missTxt: e.thr ? `${s.misses[i]}/${e.thr}${s.cd[i] > 0 ? ' · CD' : ''}` : 'no pity' })),
+      ...Object.fromEntries(ACT.map((a, i) => ['pr' + i, { action: a, kbm: s.dev === 'kbm' ? 1 : 0, xbox: s.dev === 'xbox' ? 1 : 0, ps: s.dev === 'ps' ? 1 : 0, kbmS: s.dev === 'kbm' ? 1 : .6, xboxS: s.dev === 'xbox' ? 1 : .6, psS: s.dev === 'ps' ? 1 : .6 }])),
+      devices: [['kbm', 'Keyboard & mouse'], ['xbox', 'Xbox'], ['ps', 'PlayStation']].map(([k, label]) => ({ label, bd: s.dev === k ? '#0E9F78' : '#4A4350', bg: s.dev === k ? 'rgba(14,159,120,.16)' : 'transparent', fg: s.dev === k ? '#08795B' : '#4A4350', pick: () => { this.lastSwap = 0; this.swap(k, `Switched to ${label} (manual)`); } })),
+      inputLog: s.log, mouseIn: this.mouseIn,
+      codeRoll: `float _baseRollShare = Mathf.Clamp01(levelVariants[0].selectionChance); // Base level, absolute % chance
+float _variantTotal = 0f;
+
+for (int _i = 1; _i < levelVariants.Count; _i++)
+{
+    LevelVariant _variant = levelVariants[_i];
+    if (_variant.SelectionCooldownRemaining <= 0) { _variantTotal += _variant.selectionChance; }
+}
+
+float _roll = UnityEngine.Random.Range(0f, 1f);
+
+if (_roll < _baseRollShare || _variantTotal <= 0f) { return 0; } // Base level, or nothing eligible
+
+float _scaledRoll = (_roll - _baseRollShare) / (1f - _baseRollShare);
+float _cumulativeChanceBasedOnPortion = 0f;
+
+for (int _i = 1; _i < levelVariants.Count; _i++)
+{
+    LevelVariant _variant = levelVariants[_i];
+    if (_variant.SelectionCooldownRemaining > 0) { continue; }
+    _cumulativeChanceBasedOnPortion += _variant.selectionChance / _variantTotal;
+
+    if (_scaledRoll < _cumulativeChanceBasedOnPortion) { return _i; }
+}`,
+      codeInput: `// InputSwapDetector.cs:198 — PassThrough fires on every change from every bound control
+anyInputAction = new InputAction("AnyInput", InputActionType.PassThrough);
+
+// :236-237 — the event says which physical device produced it
+var _device = _context.control.device;
+var _detectedType = DetectDeviceType(_device);
+
+// :354-360 — Xbox vs PlayStation is string matching on the HID description
+if (_manufacturer.Contains("sony") || _product.Contains("dualshock") || _product.Contains("dualsense"))
+    return InputDeviceType.PlayStationController;
+if (_manufacturer.Contains("microsoft") || _product.Contains("xbox"))
+    return InputDeviceType.XboxController;
+return InputDeviceType.XboxController;
+
+// :304-307 — one global state + a static event every icon reads from
+currentDevice = _newDevice;
+static_CurrentDevice = _newDevice;
+OnInputDeviceChanged?.Invoke(_newDevice);
+
+// DeviceSwap_UIPopUp.cs:190-193 — couch co-op: first paired device per player
+var _device = _player.devices[0];
+var _type = DetectDeviceType(_device);
+playerDevices[_player.playerIndex] = _type;`,
+    };
+  }
+}
+</script>
+</body>
+</html>

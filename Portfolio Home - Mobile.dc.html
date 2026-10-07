@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<script src="device.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0B1A3A">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@500;700&family=Chakra+Petch:wght@600;700&display=swap" rel="stylesheet">
+<style>
+html,body{margin:0;background:#0B1A3A;-webkit-font-smoothing:antialiased;-webkit-tap-highlight-color:transparent;overscroll-behavior-y:none}
+a{color:#FFC43D;text-decoration:none}
+a:hover{color:#FFFFFF}
+[data-shelf]{scrollbar-width:none}
+[data-shelf]::-webkit-scrollbar{display:none}
+@keyframes qsPulse{0%{transform:rotate(45deg) scale(1);opacity:.75}70%,100%{transform:rotate(45deg) scale(2.8);opacity:0}}
+@media (prefers-reduced-motion: reduce){[data-anim]{animation:none !important}}
+</style>
+<script src="skeleton.js"></script>
+<script src="transition.js"></script>
+</helmet>
+<div data-screen-label="Home · mobile" style="min-height:100vh;color:#F2F4F8;font-family:'Instrument Sans',sans-serif;background-color:#0B1A3A;background-image:linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);background-size:20px 20px;overflow-x:clip">
+
+  <dc-import name="MobileChrome" current="home" label="Player 1 · TX" obj="{{ objText }}" on-obj="{{ objTap }}" hint-size="100%,56px"></dc-import>
+
+  <main style="display:flex;flex-direction:column;gap:36px;padding:24px 0 calc(150px + env(safe-area-inset-bottom))">
+
+    <section id="top" style="display:flex;flex-direction:column;gap:14px;padding:0 24px;max-width:640px;width:100%;box-sizing:border-box;margin:0 auto">
+      <span style="font:700 12px 'JetBrains Mono',monospace;letter-spacing:.14em;color:#FFC43D">PLAYER 1 · IF IT WORKS STUDIO</span>
+      <h1 style="margin:0;font:700 clamp(42px,12vw,72px)/.92 'Chakra Petch',sans-serif;letter-spacing:.01em;text-transform:uppercase;color:#FFFFFF">Quentin<br>Smith</h1>
+      <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap">
+        <span style="font:700 12px 'JetBrains Mono',monospace;letter-spacing:.14em;color:#0B1424;background:#FFC43D;padding:5px 9px">CLASS</span>
+        <span style="font:600 18px 'Chakra Petch',sans-serif;letter-spacing:.04em;text-transform:uppercase;color:#F2F4F8">Technical Level Designer</span>
+      </div>
+      <p style="margin:0;font:400 17px/1.45 'Instrument Sans',sans-serif;color:#DCE4F5;text-wrap:pretty">“I design levels players read instinctively — and build the systems that make them move.”</p>
+      <div style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:10px;margin-top:2px">
+        <a href="#work" onClick="{{ toWork }}" style="display:flex;align-items:center;justify-content:center;gap:10px;min-height:48px;background:#FFC43D;color:#0B1424;font:700 16px 'Chakra Petch',sans-serif;letter-spacing:.08em;text-transform:uppercase">View work</a>
+        <a href="Resume - Mobile.dc.html" style="display:flex;align-items:center;justify-content:center;gap:10px;min-height:48px;border:1.5px solid #4A5878;color:#F2F4F8;font:700 16px 'Chakra Petch',sans-serif;letter-spacing:.08em;text-transform:uppercase">Resume</a>
+      </div>
+    </section>
+
+    <section id="work" ref="{{ workRef }}" style="display:flex;flex-direction:column;gap:12px;scroll-margin-top:72px">
+      <div style="display:flex;flex-direction:column;gap:6px;padding:0 24px;max-width:640px;width:100%;box-sizing:border-box;margin:0 auto">
+        <span style="font:700 12px 'JetBrains Mono',monospace;letter-spacing:.14em;color:#FFC43D">QUEST LOG · LIBRARY</span>
+        <h2 style="margin:0;font:700 34px/1 'Chakra Petch',sans-serif;text-transform:uppercase;color:#FFFFFF">Featured Work</h2>
+      </div>
+
+      <div style="position:relative">
+        <div data-shelf="" ref="{{ shelfRef }}" style="display:flex;gap:14px;overflow-x:auto;overflow-y:visible;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;padding:12px calc(50% - min(31vw,150px)) 30px;box-sizing:border-box">
+          <sc-for list="{{ boxes }}" as="b" hint-placeholder-count="4">
+            <a href="{{ b.href }}" onClick="{{ b.click }}" aria-label="{{ b.aria }}" data-box="" style="flex:0 0 auto;width:min(62vw,300px);aspect-ratio:3/4;scroll-snap-align:center;display:block;perspective:900px;color:#F2F4F8">
+              <div data-tilt="" style="position:relative;width:100%;height:100%;transform-origin:center;will-change:transform;transition:transform 120ms linear">
+                <div style="position:absolute;inset:0;overflow:hidden;border-radius:6px;background:repeating-linear-gradient(135deg,#16244A 0 12px,#1B2B55 12px 24px);box-shadow:0 22px 44px rgba(0,0,0,.55),inset 0 0 0 1px rgba(255,255,255,.12)">
+                  <sc-if value="{{ b.hasImg }}" hint-placeholder-val="{{ false }}">{{ b.imgEl }}</sc-if>
+                  <sc-if value="{{ b.isEnd }}" hint-placeholder-val="{{ false }}">
+                    <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;padding:24px;text-align:center;background:linear-gradient(180deg,#182B5C,#0F1E44);border:1.5px dashed rgba(255,196,61,.6);border-radius:6px">
+                      <span style="font:700 12px 'JetBrains Mono',monospace;letter-spacing:.14em;color:#FFC43D">FULL LIBRARY</span>
+                      <span style="font:700 34px/1 'Chakra Petch',sans-serif;text-transform:uppercase;color:#FFFFFF">View all<br>work</span>
+                      <span style="font:600 14px 'JetBrains Mono',monospace;color:#AEB8CC">6 titles →</span>
+                    </div>
+                  </sc-if>
+                  <sc-if value="{{ b.isGame }}" hint-placeholder-val="{{ true }}">
+                    <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(8,14,28,.72) 0%,rgba(8,14,28,0) 24%,rgba(8,14,28,0) 50%,rgba(8,14,28,.94) 100%)"></div>
+                    <div style="position:absolute;left:0;right:0;top:0;display:flex;justify-content:space-between;gap:8px;padding:9px 12px;background:#FFC43D;color:#0B1424;font:700 11px 'JetBrains Mono',monospace;letter-spacing:.08em;white-space:nowrap"><span>QS · {{ b.disc }}</span><span>{{ b.partyShort }}</span></div>
+                    <div style="position:absolute;left:16px;right:16px;bottom:16px;display:flex;flex-direction:column;gap:6px">
+                      <span style="align-self:flex-start;font:700 11px 'JetBrains Mono',monospace;letter-spacing:.1em;color:{{ b.sc }};background:{{ b.sbg }};padding:{{ b.spad }}">{{ b.status }}</span>
+                      <span style="font:700 30px/1 'Chakra Petch',sans-serif;text-transform:uppercase;color:#FFFFFF">{{ b.title }}</span>
+                    </div>
+                  </sc-if>
+                  <div data-dim="" style="position:absolute;inset:0;background:#081330;opacity:0;pointer-events:none"></div>
+                </div>
+              </div>
+            </a>
+          </sc-for>
+        </div>
+        <div aria-hidden="true" style="position:absolute;left:16px;right:16px;bottom:22px;height:2px;background:linear-gradient(90deg,rgba(255,196,61,0),rgba(255,196,61,.6) 20%,rgba(255,196,61,.6) 80%,rgba(255,196,61,0));pointer-events:none"></div>
+      </div>
+
+      <div style="display:flex;justify-content:center;gap:10px">
+        <sc-for list="{{ dots }}" as="d" hint-placeholder-count="4">
+          <button type="button" onClick="{{ d.go }}" aria-label="{{ d.aria }}" style="width:28px;height:28px;padding:0;border:0;background:transparent;display:grid;place-items:center;cursor:pointer"><span style="width:{{ d.size }};height:{{ d.size }};transform:rotate(45deg);background:{{ d.bg }};border:1.5px solid #FFC43D;transition:all 200ms ease-out"></span></button>
+        </sc-for>
+      </div>
+
+      <div style="padding:0 20px;max-width:640px;width:100%;box-sizing:border-box;margin:0 auto">
+        <div ref="{{ detailsRef }}" style="display:flex;flex-direction:column;gap:18px;padding:20px;background:rgba(8,14,28,.88);border:1px solid rgba(255,196,61,.4);border-top:3px solid #FFC43D">
+          <div style="display:flex;align-items:baseline;gap:12px;min-width:0">
+            <span style="font:700 16px 'Chakra Petch',sans-serif;color:#FFC43D;flex-shrink:0">{{ sel.n }}</span>
+            <h3 style="margin:0;font:700 26px/1.05 'Chakra Petch',sans-serif;text-transform:uppercase;color:#FFFFFF;min-width:0">{{ sel.title }}</h3>
+          </div>
+          <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px 16px;padding:14px 0;border-top:1px solid #26365E;border-bottom:1px solid #26365E">
+            <sc-for list="{{ sel.stats }}" as="st" hint-placeholder-count="3">
+              <div style="grid-column:{{ st.span }};display:flex;flex-direction:column;gap:4px;min-width:0">
+                <span style="font:700 11px 'JetBrains Mono',monospace;letter-spacing:.14em;color:#FFC43D;text-transform:uppercase">{{ st.k }}</span>
+                <span style="font:500 15px/1.35 'Instrument Sans',sans-serif;color:#F2F4F8">{{ st.v }}</span>
+              </div>
+            </sc-for>
+          </div>
+          <p style="margin:0;font:400 16px/1.6 'Instrument Sans',sans-serif;color:#DCE4F5;text-wrap:pretty">{{ sel.pitch }}</p>
+          <a href="{{ sel.href }}" style="display:flex;align-items:center;justify-content:center;gap:10px;min-height:50px;background:{{ sel.ctaBg }};color:{{ sel.ctaFg }};border:1.5px solid #FFC43D;font:700 15px 'Chakra Petch',sans-serif;letter-spacing:.08em;text-transform:uppercase">{{ sel.cta }}</a>
+        </div>
+      </div>
+    </section>
+
+    <footer ref="{{ footRef }}" id="contact" style="display:flex;flex-direction:column;gap:28px;padding:32px 24px 0;max-width:640px;width:100%;box-sizing:border-box;margin:0 auto;border-top:1px solid rgba(255,196,61,.25)">
+      <div style="display:flex;flex-direction:column;gap:12px">
+        <div style="display:flex;align-items:center;gap:12px">
+          <span style="width:32px;height:32px;background:#FFC43D;color:#0B1424;display:grid;place-items:center;font:700 13px 'Chakra Petch',sans-serif;clip-path:polygon(50% 0,100% 50%,50% 100%,0 50%)">QS</span>
+          <span style="font:700 22px/1 'Chakra Petch',sans-serif;letter-spacing:.06em;text-transform:uppercase;color:#F2F4F8">Quentin Smith</span>
+        </div>
+        <p style="margin:0;font:400 16px/1.55 'Instrument Sans',sans-serif;color:#AEB8CC;text-wrap:pretty">Technical Level Designer and co-founder of If It Works Studio.</p>
+      </div>
+      <div style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:24px">
+        <nav aria-label="Site" style="display:flex;flex-direction:column;gap:4px">
+          <span style="font:700 12px 'JetBrains Mono',monospace;letter-spacing:.14em;color:#FFC43D;padding-bottom:6px">SITE</span>
+          <a href="Portfolio Home - Mobile.dc.html" style="padding:8px 0;font:600 15px 'Chakra Petch',sans-serif;letter-spacing:.1em;text-transform:uppercase;color:#FFC43D">◆ Home</a>
+          <a href="Work - Mobile.dc.html" style="padding:8px 0;font:600 15px 'Chakra Petch',sans-serif;letter-spacing:.1em;text-transform:uppercase;color:#C9D1E0">Work</a>
+          <a href="About - Mobile.dc.html" style="padding:8px 0;font:600 15px 'Chakra Petch',sans-serif;letter-spacing:.1em;text-transform:uppercase;color:#C9D1E0">About</a>
+          <a href="Resume - Mobile.dc.html" style="padding:8px 0;font:600 15px 'Chakra Petch',sans-serif;letter-spacing:.1em;text-transform:uppercase;color:#C9D1E0">Resume</a>
+        </nav>
+        <nav aria-label="Case studies" style="display:flex;flex-direction:column;gap:4px">
+          <span style="font:700 12px 'JetBrains Mono',monospace;letter-spacing:.14em;color:#FFC43D;padding-bottom:6px">CASE STUDIES</span>
+          <a href="Case Study - Insanitation - Mobile.dc.html" style="padding:7px 0;font:500 15px 'Instrument Sans',sans-serif;color:#C9D1E0">Insanitation</a>
+          <a href="Case Study - Free Rider - Mobile.dc.html" style="padding:7px 0;font:500 15px 'Instrument Sans',sans-serif;color:#C9D1E0">Free Rider</a>
+          <a href="Case Study - Oinkyuza - Mobile.dc.html" style="padding:7px 0;font:500 15px 'Instrument Sans',sans-serif;color:#C9D1E0">Oinkyuza</a>
+          <a href="Case Study - A-B Factory - Mobile.dc.html" style="padding:7px 0;font:500 15px 'Instrument Sans',sans-serif;color:#C9D1E0">A-B Factory</a>
+          <a href="Case Study - Night Forest - Mobile.dc.html" style="padding:7px 0;font:500 15px 'Instrument Sans',sans-serif;color:#C9D1E0">Night Forest</a>
+          <a href="Case Study - Endless Nightmare - Mobile.dc.html" style="padding:7px 0;font:500 15px 'Instrument Sans',sans-serif;color:#C9D1E0">Endless Nightmare</a>
+        </nav>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;padding-top:16px;border-top:1px solid rgba(255,196,61,.2);font:500 12px 'JetBrains Mono',monospace;letter-spacing:.08em;color:#8E9AB3">
+        <span>© 2026 QUENTIN SMITH</span><span>LEVEL &amp; SYSTEMS DESIGN</span>
+      </div>
+    </footer>
+  </main>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;: {&quot;width&quot;: 393, &quot;height&quot;: 852}}">
+class Component extends DCLogic {
+  state = { sel: 0, obj: 0, contact: false };
+  shelfRef = React.createRef(); detailsRef = React.createRef(); workRef = React.createRef(); footRef = React.createRef(); objRef = React.createRef();
+  OBJ = ['Review featured work ↓', 'Grab the resume', 'Get in touch'];
+  P = [
+    { title: 'Insanitation', href: 'Case Study - Insanitation - Mobile.dc.html', img: 'assets/ins/keyart-2400.jpg', pos: '30% center', dev: true, role: 'Programmer + Lead Level Designer', party: 'Team of 8', disc: 'LEVEL + SYSTEMS',
+      pitch: 'A chaotic party battle game for family & friends, in development in the Unity game engine. Play as a Cat spreading fur, mayhem & hairballs, or a Keeper racing to clean up the mess before Chaos takes over.' },
+    { title: 'Free Rider', href: 'Case Study - Free Rider - Mobile.dc.html', img: 'assets/fr/chinatown.jpg', pos: 'center', role: 'Lead Programmer & Level Designer', party: 'Team of 5', len: '10 months', disc: 'LEVEL + SYSTEMS',
+      pitch: 'A relaxing 3D third person game with elements of exploration built in the Unity game engine. Explore the alternate San-Francisco inspired city as Jun, a red panda, skating through on her free skates.' },
+    { title: 'Oinkyuza', href: 'Case Study - Oinkyuza - Mobile.dc.html', img: 'assets/oinkyuza-hero.png', pos: 'center', role: 'Narrative Level Design', party: 'Solo', len: '1 month', disc: 'LEVEL DESIGN',
+      pitch: 'A narrative-driven 3D level retelling The Three Little Pigs, built in the Unity game engine. Play as the Big Bad Wolf, a loan shark collecting debts from three hog brothers across a neon cyberpunk city.' },
+  ];
+  componentDidMount() {
+    const el = this.shelfRef.current;
+    if (el) {
+      this.onShelf = () => { if (!this.raf) this.raf = requestAnimationFrame(() => { this.raf = 0; this.tilt(); }); };
+      el.addEventListener('scroll', this.onShelf, { passive: true });
+      this.tilt();
+    }
+    this.onScroll = () => {
+      const w = this.workRef.current, f = this.footRef.current, vh = innerHeight;
+      let o = 0;
+      if (w && w.getBoundingClientRect().bottom < vh * .75) o = 1;
+      if (f && f.getBoundingClientRect().top < vh * .8) o = 2;
+      if (o !== this.state.obj) this.setState({ obj: o });
+    };
+    addEventListener('scroll', this.onScroll, { passive: true });
+    addEventListener('resize', this.onShelf || (() => {}));
+  }
+  componentWillUnmount() {
+    removeEventListener('scroll', this.onScroll);
+    if (this.shelfRef.current && this.onShelf) this.shelfRef.current.removeEventListener('scroll', this.onShelf);
+    removeEventListener('resize', this.onShelf || (() => {}));
+  }
+  componentDidUpdate(_, prev) {
+    const rm = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (prev.sel !== this.state.sel && !rm && this.detailsRef.current)
+      [...this.detailsRef.current.children].forEach((c, i) => c.animate([{ opacity: 0, transform: 'translateY(8px)' }, { opacity: 1, transform: 'none' }], { duration: 260, delay: i * 50, easing: 'cubic-bezier(.2,.8,.2,1)', fill: 'backwards' }));
+    if (prev.obj !== this.state.obj && !rm && this.objRef.current)
+      this.objRef.current.animate([{ transform: 'scale(.86)', opacity: .4 }, { transform: 'scale(1.06)', opacity: 1, offset: .6 }, { transform: 'scale(1)' }], { duration: 360, easing: 'cubic-bezier(.34,1.56,.64,1)' });
+  }
+  tilt() {
+    const el = this.shelfRef.current; if (!el) return;
+    const mid = el.scrollLeft + el.clientWidth / 2;
+    const kids = [...el.querySelectorAll('[data-box]')];
+    let best = 0, bestD = Infinity;
+    kids.forEach((k, i) => {
+      const c = k.offsetLeft + k.offsetWidth / 2, d = (c - mid) / k.offsetWidth, a = Math.min(1.4, Math.abs(d));
+      const t = k.querySelector('[data-tilt]'), dim = k.querySelector('[data-dim]');
+      if (t) t.style.transform = `rotateY(${Math.max(-40, Math.min(40, -d * 38))}deg) scale(${1 - Math.min(a, 1) * .1})`;
+      if (dim) dim.style.opacity = String(Math.min(a, 1) * .5);
+      if (Math.abs(d) < bestD) { bestD = Math.abs(d); best = i; }
+    });
+    if (best !== this.state.sel) this.setState({ sel: best });
+  }
+  scrollToBox(i) {
+    const el = this.shelfRef.current; if (!el) return;
+    const k = el.querySelectorAll('[data-box]')[i]; if (!k) return;
+    el.scrollTo({ left: k.offsetLeft + k.offsetWidth / 2 - el.clientWidth / 2, behavior: 'smooth' });
+  }
+  scrollPage(node) { if (node) window.scrollTo({ top: node.getBoundingClientRect().top + scrollY - 64, behavior: 'smooth' }); }
+  renderVals() {
+    const s = this.state, h = React.createElement;
+    const games = this.P.map((p, i) => ({ ...p, n: String(i + 1).padStart(2, '0'), isGame: true, isEnd: false, hasImg: !!p.img,
+      imgEl: p.img ? h('img', { src: p.img, alt: '', loading: i ? 'lazy' : 'eager', style: { position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', objectPosition: p.pos, display: 'block' } }) : null,
+      partyShort: p.party === 'Solo' ? 'SOLO' : p.party.toUpperCase(),
+      status: p.dev ? '◆ IN DEVELOPMENT' : '✓ QUEST COMPLETE', sc: p.dev ? '#0B1424' : '#C9D1E0', sbg: p.dev ? '#FFC43D' : 'transparent', spad: p.dev ? '4px 8px' : '0',
+      stats: [{ k: 'Role', v: p.role, span: '1 / -1' }, { k: 'Team', v: p.party, span: 'auto' }, { k: p.dev ? 'Status' : 'Length', v: p.dev ? 'In development' : p.len, span: 'auto' }], cta: 'Open case study →', ctaBg: '#FFC43D', ctaFg: '#0B1424', aria: p.title }));
+    const end = { title: 'All work', href: 'Work - Mobile.dc.html', isGame: false, isEnd: true, hasImg: false, imgEl: null, aria: 'View all work',
+      n: '+3', stats: [{ k: 'Also in the library', v: 'A-B Factory · Night Forest · Endless Nightmare', span: '1 / -1' }], pitch: 'Three more levels and systems projects, plus the full library with roles, tools and team sizes for every project.', cta: 'View all work →', ctaBg: 'transparent', ctaFg: '#FFC43D' };
+    const all = [...games, end];
+    const boxes = all.map((b, i) => ({ ...b, click: (e) => { if (i !== s.sel) { e.preventDefault(); this.scrollToBox(i); } } }));
+    return {
+      shelfRef: this.shelfRef, detailsRef: this.detailsRef, workRef: this.workRef, footRef: this.footRef, objRef: this.objRef,
+      boxes, sel: all[s.sel] || all[0],
+      dots: all.map((b, i) => ({ aria: 'Show ' + b.aria, size: i === s.sel ? '11px' : '8px', bg: i === s.sel ? '#FFC43D' : 'transparent', go: () => this.scrollToBox(i) })),
+      toWork: (e) => { e.preventDefault(); this.scrollPage(this.workRef.current); },
+      objText: this.OBJ[s.obj],
+      objTap: () => { if (s.obj === 0) this.scrollPage(this.workRef.current); else if (s.obj === 1) location.href = 'Resume - Mobile.dc.html'; else dispatchEvent(new Event('qs-open-contact')); },
+      contactOpenStr: s.contact ? 'true' : 'false', sheetHidden: s.contact ? 'false' : 'true',
+      sheetY: s.contact ? '0' : '110%', sheetBgOp: s.contact ? 1 : 0, sheetPe: s.contact ? 'auto' : 'none',
+      openContact: () => this.setState({ contact: true }), closeContact: () => this.setState({ contact: false }),
+    };
+  }
+}
+</script>
+</body>
+</html>

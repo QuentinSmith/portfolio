@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<script src="device.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0B1A3A">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@500;700&family=Chakra+Petch:wght@600;700&display=swap" rel="stylesheet">
+<style>
+html,body{margin:0;background:#0B1A3A;-webkit-font-smoothing:antialiased;-webkit-tap-highlight-color:transparent;overscroll-behavior-y:none}
+a{color:#FFC43D;text-decoration:none}
+a:hover{color:#FFFFFF}
+@keyframes qsPulse{0%{transform:rotate(45deg) scale(1);opacity:.75}70%,100%{transform:rotate(45deg) scale(2.8);opacity:0}}
+@media (prefers-reduced-motion: reduce){[data-anim]{animation:none !important}}
+</style>
+<script src="skeleton.js"></script>
+<script src="transition.js"></script>
+</helmet>
+<div data-screen-label="About · mobile" style="min-height:100vh;color:#F2F4F8;font-family:'Instrument Sans',sans-serif;background-color:#0B1A3A;background-image:linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);background-size:20px 20px;overflow-x:clip">
+  <dc-import name="MobileChrome" current="about" label="About" obj="{{ objText }}" on-obj="{{ objTap }}" hint-size="100%,56px"></dc-import>
+
+  <main style="display:flex;flex-direction:column;gap:44px;padding:28px 24px calc(150px + env(safe-area-inset-bottom));max-width:640px;margin:0 auto;box-sizing:border-box">
+
+    <section style="display:flex;flex-direction:column;gap:20px">
+      <div style="display:flex;align-items:center;gap:18px">
+        <img src="assets/about/portrait.png" alt="Quentin Smith" style="width:88px;height:88px;object-fit:cover;flex-shrink:0;border:2px solid #FFC43D;box-shadow:0 10px 24px rgba(0,0,0,.4);background:#16244A">
+        <div style="display:flex;flex-direction:column;gap:6px;min-width:0">
+          <h1 style="margin:0;font:700 34px/1 'Chakra Petch',sans-serif;text-transform:uppercase;color:#FFFFFF">Quentin Smith</h1>
+          <span style="font:500 15px/1.4 'Instrument Sans',sans-serif;color:#AEB8CC">Technical Level Designer · Co-Founder, If It Works Studio</span>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:16px">
+        <sc-for list="{{ bio }}" as="p" hint-placeholder-count="3">
+          <p style="margin:0;font:400 17px/1.65 'Instrument Sans',sans-serif;color:#DCE4F5;text-wrap:pretty">{{ p.t }}</p>
+        </sc-for>
+      </div>
+      <div style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:10px">
+        <a href="Resume - Mobile.dc.html" style="display:flex;align-items:center;justify-content:center;min-height:48px;background:#FFC43D;color:#0B1424;font:700 15px 'Chakra Petch',sans-serif;letter-spacing:.08em;text-transform:uppercase">Resume</a>
+        <a href="#contact" onClick="{{ toContact }}" style="display:flex;align-items:center;justify-content:center;min-height:48px;border:1.5px solid #4A5878;color:#F2F4F8;font:700 15px 'Chakra Petch',sans-serif;letter-spacing:.08em;text-transform:uppercase">Get in touch</a>
+      </div>
+    </section>
+
+    <section style="display:flex;flex-direction:column;gap:18px">
+      <h2 style="margin:0;font:700 26px/1 'Chakra Petch',sans-serif;text-transform:uppercase;color:#FFFFFF;padding-bottom:12px;border-bottom:1px solid rgba(255,196,61,.3)">Experience</h2>
+      <ol style="position:relative;margin:0;padding:0 0 0 28px;list-style:none;display:flex;flex-direction:column;gap:22px">
+        <span aria-hidden="true" style="position:absolute;left:6px;top:8px;bottom:8px;width:2px;background:rgba(255,196,61,.35)"></span>
+        <sc-for list="{{ timeline }}" as="tl" hint-placeholder-count="5">
+          <li style="position:relative;display:flex;flex-direction:column;gap:4px">
+            <span aria-hidden="true" style="position:absolute;left:-28px;top:4px;width:14px;height:14px;box-sizing:border-box;transform:rotate(45deg);background:{{ tl.dot }};border:2px solid #FFC43D"></span>
+            <span style="font:700 12px 'JetBrains Mono',monospace;letter-spacing:.14em;color:#FFC43D">{{ tl.when }}</span>
+            <span style="font:700 19px/1.2 'Chakra Petch',sans-serif;text-transform:uppercase;color:#FFFFFF">{{ tl.title }}</span>
+            <span style="font:400 15px/1.5 'Instrument Sans',sans-serif;color:#AEB8CC">{{ tl.sub }}</span>
+          </li>
+        </sc-for>
+      </ol>
+    </section>
+
+    <section style="display:flex;flex-direction:column;gap:18px">
+      <h2 style="margin:0;font:700 26px/1 'Chakra Petch',sans-serif;text-transform:uppercase;color:#FFFFFF;padding-bottom:12px;border-bottom:1px solid rgba(255,196,61,.3)">Skills &amp; tools</h2>
+      <div style="display:flex;flex-wrap:wrap;gap:8px">
+        <sc-for list="{{ skills }}" as="s" hint-placeholder-count="6">
+          <span style="display:flex;align-items:center;gap:8px;padding:9px 12px;border:1px solid rgba(255,196,61,.4);background:rgba(8,14,28,.6);font:500 14px 'Instrument Sans',sans-serif;color:#F2F4F8"><span style="width:6px;height:6px;transform:rotate(45deg);background:#FFC43D"></span>{{ s.t }}</span>
+        </sc-for>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));grid-auto-rows:72px;gap:10px">
+        <sc-for list="{{ tools }}" as="t" hint-placeholder-count="7">
+          <span title="{{ t.alt }}" style="grid-column:{{ t.span }};display:flex;align-items:center;justify-content:center;gap:10px;min-width:0;padding:12px 14px;box-sizing:border-box;background:rgba(8,14,28,.6);border:1px solid rgba(255,196,61,.3)">
+            {{ t.imgEl }}
+            <sc-if value="{{ t.hasLabel }}" hint-placeholder-val="{{ false }}"><span style="font:600 17px/1 'Chakra Petch',sans-serif;color:#E8ECF4;white-space:nowrap">{{ t.label }}</span></sc-if>
+          </span>
+        </sc-for>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;gap:8px">
+        <sc-for list="{{ chips }}" as="c" hint-placeholder-count="4">
+          <span style="padding:7px 12px;background:#FFC43D;color:#0B1424;font:700 13px 'JetBrains Mono',monospace">{{ c.t }}</span>
+        </sc-for>
+      </div>
+    </section>
+
+    <section style="display:flex;flex-direction:column;gap:18px">
+      <h2 style="margin:0;font:700 26px/1 'Chakra Petch',sans-serif;text-transform:uppercase;color:#FFFFFF;padding-bottom:12px;border-bottom:1px solid rgba(255,196,61,.3)">My top 3 games</h2>
+      <sc-for list="{{ favs }}" as="g" hint-placeholder-count="3">
+        <div style="display:grid;grid-template-columns:36px minmax(0,1fr);gap:14px;padding:16px;background:rgba(8,14,28,.6);border:1px solid #26365E;border-left:3px solid #FFC43D">
+          <span style="font:700 28px/1 'Chakra Petch',sans-serif;color:#FFC43D">{{ g.num }}</span>
+          <div style="display:flex;flex-direction:column;gap:6px;min-width:0">
+            <span style="font:700 19px/1.1 'Chakra Petch',sans-serif;text-transform:uppercase;color:#FFFFFF">{{ g.t }}</span>
+            <p style="margin:0;font:400 15px/1.55 'Instrument Sans',sans-serif;color:#C9D1E0;text-wrap:pretty">{{ g.why }}</p>
+          </div>
+        </div>
+      </sc-for>
+    </section>
+
+    <section ref="{{ contactRef }}" id="contact" style="display:flex;flex-direction:column;gap:12px;scroll-margin-top:72px">
+      <h2 style="margin:0 0 6px;font:700 26px/1 'Chakra Petch',sans-serif;text-transform:uppercase;color:#FFFFFF;padding-bottom:12px;border-bottom:1px solid rgba(255,196,61,.3)">Get in touch</h2>
+      <sc-for list="{{ comms }}" as="c" hint-placeholder-count="4">
+        <a href="{{ c.href }}" target="{{ c.target }}" download="{{ c.dl }}" rel="noopener noreferrer" style="display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:12px;min-height:64px;padding:10px 16px;background:rgba(8,14,28,.6);border:1px solid #26365E;color:#F2F4F8">
+          <span style="display:flex;flex-direction:column;gap:3px;min-width:0"><span style="font:700 12px 'JetBrains Mono',monospace;letter-spacing:.14em;color:#FFC43D">{{ c.k }}</span><span style="font:500 15px 'Instrument Sans',sans-serif;overflow-wrap:anywhere">{{ c.v }}</span></span>
+          <span style="font:700 18px 'JetBrains Mono',monospace;color:#FFC43D">{{ c.arrow }}</span>
+        </a>
+      </sc-for>
+    </section>
+  </main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;: {&quot;width&quot;: 393, &quot;height&quot;: 852}}">
+class Component extends DCLogic {
+  state = { obj: 0 };
+  contactRef = React.createRef();
+  componentDidMount() {
+    this.onScroll = () => { const c = this.contactRef.current; const o = c && c.getBoundingClientRect().top < innerHeight * .8 ? 1 : 0; if (o !== this.state.obj) this.setState({ obj: o }); };
+    addEventListener('scroll', this.onScroll, { passive: true });
+    if (location.hash === '#contact') setTimeout(() => this.toContact(), 450);
+  }
+  componentWillUnmount() { removeEventListener('scroll', this.onScroll); }
+  toContact() { const c = this.contactRef.current; if (c) scrollTo({ top: c.getBoundingClientRect().top + scrollY - 70, behavior: 'smooth' }); }
+  renderVals() {
+    const h = React.createElement;
+    return {
+      contactRef: this.contactRef,
+      toContact: (e) => { e.preventDefault(); this.toContact(); },
+      objText: this.state.obj ? 'Grab the resume' : 'Get in touch',
+      objTap: () => { if (this.state.obj) location.href = 'Resume - Mobile.dc.html'; else this.toContact(); },
+      bio: [
+        'I’m a Technical Level Designer and one of the founding members of If It Works Studio. I create the actual playable spaces players go through: where the walls go, how the level flows, and what keeps you moving forward. Since I also program, I build the systems and tools behind those spaces too, and I like keeping them simple and modular so they’re easy to build on.',
+        'My favorite part is watching other people play through something I made. I love seeing them enjoy it, and honestly, I love it just as much when they start nitpicking. Every project ships with a deadline, so I always know there are a few tweaks I’d still make, and it feels good when players notice them too. It means they’re paying attention, and it shows me what to do better next time.',
+        'Outside of game design, I like spending time with friends and family, discovering new restaurants and places, traveling, taking photos, and relaxing with a cup of coffee and a good book.',
+      ].map(t => ({ t })),
+      timeline: [
+        { when: 'EDUCATION', title: 'AAS Degree', sub: 'Game Development, Animation & Motion Graphics · Austin Community College' },
+        { when: 'FALL 2022', title: 'Level Design', sub: 'A-B Factory, Oinkyuza and Night Forest' },
+        { when: '2023', title: 'Endless Nightmare', sub: 'Wave, weapon and enemy systems' },
+        { when: 'CAPSTONE', title: 'Free Rider', sub: 'Lead Programmer on a team of five' },
+        { when: 'NOW', title: 'If It Works Studio', sub: 'Co-Founder · 1 year, 10 months' },
+      ].map((x, i, a) => ({ ...x, dot: i === a.length - 1 ? '#FFC43D' : '#0B1A3A' })),
+      skills: ['Level Design', 'Systems & Tools Design', 'Object-Oriented Programming', 'Project & Team Management', 'Interpersonal & Soft Skills', 'Goal-Oriented Problem Solving'].map(t => ({ t })),
+      tools: [
+        { img: 'assets/icons/trim-unity.png', alt: 'Unity', h: '40px', span: '1 / -1' },
+        { img: 'assets/icons/trim-unity-devops-a.png', alt: 'Unity DevOps', h: '36px' },
+        { img: 'assets/icons/vscode.svg', alt: 'Visual Studio Code', label: 'VS Code', h: '28px' },
+        { img: 'assets/icons/github-white.svg', alt: 'GitHub', label: 'GitHub', h: '28px' },
+        { img: 'assets/icons/trim-adobe.png', alt: 'Adobe Creative Cloud', label: 'Adobe CC', h: '24px' },
+        { img: 'assets/icons/trim-trello.png', alt: 'Trello', h: '30px' },
+        { img: 'assets/icons/trim-miro.png', alt: 'Miro', h: '32px' },
+      ].map(t => ({ ...t, hasLabel: !!t.label, span: t.span || 'auto',
+        imgEl: h('img', { src: t.img, alt: t.alt, style: { display: 'block', height: t.h, width: 'auto', maxWidth: '100%', minWidth: 0, objectFit: 'contain', filter: t.img.includes('devops') || t.img.includes('vscode') || t.img.includes('white') ? 'none' : 'invert(1) hue-rotate(180deg)' } }) })),
+      chips: ['C#', 'JavaScript', 'ProBuilder', 'Cinemachine'].map(t => ({ t })),
+      favs: [
+        { t: 'Portal', why: 'An innovative example of level design, where story enhances the mechanics. Its first puzzle is deceptively simple: a pressure plate, a line to a locked door, and a box, teaching players from the start to think outside the box.' },
+        { t: 'The Last of Us', why: 'Narratively inspired world building that plays like an interactive movie. The history museum is mostly a walk-through, but it breaks up the action, adds backstory and deepens the bond with Ellie and Joel, with small choices that give players a sense of agency.' },
+        { t: 'Titanfall 2', why: 'A fluid movement system with a strong story, mechanics and level design. Effect and Cause stands out: it adds a new mechanic to an already tight system and showcases it through level design full of emergent situations.' },
+      ].map((g, i) => ({ ...g, num: String(i + 1) })),
+      comms: [
+        { k: 'EMAIL', v: 'QuentinSmith.GD@gmail.com', href: 'mailto:QuentinSmith.GD@gmail.com', target: '_self', arrow: '→' },
+        { k: 'LINKEDIN', v: 'linkedin.com/in/quentin-t-smith', href: 'https://www.linkedin.com/in/quentin-t-smith/', target: '_blank', arrow: '↗' },
+        { k: 'ITCH.IO', v: 'slothdev-gd.itch.io', href: 'https://slothdev-gd.itch.io/', target: '_blank', arrow: '↗' },
+        { k: 'RESUME', v: 'Download (.pdf)', href: 'assets/resume/Quentin_Smith_-_Resume_ATS.pdf', target: '_self', dl: 'Quentin_Smith_-_Resume.pdf', arrow: '↓' },
+      ].map(c => ({ dl: undefined, ...c })),
+    };
+  }
+}
+</script>
+</body>
+</html>

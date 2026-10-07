@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@500;700&family=Chakra+Petch:wght@600;700&display=swap" rel="stylesheet">
+<style>
+html,body{margin:0;background:#0B1A3A;-webkit-font-smoothing:antialiased;-webkit-tap-highlight-color:transparent;overscroll-behavior-y:none}
+a{color:#FFC43D;text-decoration:none}
+a:hover{color:#FFFFFF}
+[data-snap]{scrollbar-width:none}
+[data-snap]::-webkit-scrollbar{display:none}
+@keyframes qsPulse{0%{transform:rotate(45deg) scale(1);opacity:.75}70%,100%{transform:rotate(45deg) scale(2.8);opacity:0}}
+@keyframes csRain{from{transform:translate3d(0,-60px,0) rotate(12deg)}to{transform:translate3d(-70px,380px,0) rotate(12deg)}}
+@keyframes csFly{0%{transform:translate(0,0);opacity:0}20%{opacity:1}50%{transform:translate(var(--fx),var(--fy));opacity:.55}70%{opacity:1}100%{transform:translate(calc(var(--fx) * -.5),calc(var(--fy) * 1.8));opacity:0}}
+@keyframes csBeltL{from{background-position:0 0}to{background-position:-48px 0}}
+@keyframes csBeltR{from{background-position:0 0}to{background-position:48px 0}}
+@keyframes csCrateL{from{transform:translateX(calc(100vw + 20px))}to{transform:translateX(-60px)}}
+@keyframes csCrateR{from{transform:translateX(-60px)}to{transform:translateX(calc(100vw + 20px))}}
+@keyframes csNeonA{0%,100%{opacity:1}47%{opacity:1}48%{opacity:.3}49%{opacity:1}51%{opacity:.5}52%{opacity:1}}
+@keyframes csNeonB{0%,100%{opacity:1}22%{opacity:1}23%{opacity:.35}25%{opacity:1}81%{opacity:1}82%{opacity:.45}83%{opacity:1}}
+@media (prefers-reduced-motion: reduce){[data-anim]{animation:none !important}}
+</style>
+</helmet>
+<div data-screen-label="Case study · mobile" style="min-height:100vh;color:#F2F4F8;font-family:'Instrument Sans',sans-serif;background-color:#0B1A3A;background-image:linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);background-size:20px 20px;overflow-x:clip">
+  <dc-import name="MobileChrome" current="work" label="{{ chromeLabel }}" obj="{{ objText }}" on-obj="{{ objTap }}" hint-size="100%,56px"></dc-import>
+
+  <div style="position:sticky;top:calc(56px + env(safe-area-inset-top));z-index:29;display:flex;align-items:center;gap:12px;height:28px;padding:0 16px;background:rgba(8,14,28,.94);border-bottom:1px solid rgba(255,196,61,.3)">
+    <span style="font:700 11px 'JetBrains Mono',monospace;letter-spacing:.12em;color:{{ prog.labelC }};white-space:nowrap">{{ prog.label }}</span>
+    <div style="position:relative;flex:1;height:4px;background:#1E2C52">
+      <div style="position:absolute;top:0;bottom:0;left:{{ prog.l }};right:{{ prog.r }};width:{{ prog.w }};background:{{ prog.bg }};box-shadow:{{ prog.glow }};transition:width 120ms linear,background 300ms ease-out"></div>
+    </div>
+    <span style="font:700 11px 'JetBrains Mono',monospace;letter-spacing:.06em;color:{{ prog.pctC }};min-width:36px;text-align:right;white-space:nowrap">{{ prog.pct }}</span>
+  </div>
+
+  <sc-if value="{{ d.health }}" hint-placeholder-val="{{ false }}"><div ref="{{ vigRef }}" aria-hidden="true" style="position:fixed;inset:0;z-index:28;pointer-events:none;opacity:0;background:radial-gradient(ellipse 90% 80% at 50% 50%,rgba(120,0,0,0) 60%,rgba(150,0,0,.18) 82%,rgba(180,0,0,.4) 100%);box-shadow:inset 0 0 60px rgba(190,0,0,.3);transition:opacity 200ms linear"></div></sc-if>
+  <sc-if value="{{ d.health }}" hint-placeholder-val="{{ false }}"><div ref="{{ survRef }}" aria-hidden="true" style="position:fixed;left:50%;top:42%;z-index:31;transform:translate(-50%,-50%);opacity:0;pointer-events:none;display:flex;flex-direction:column;align-items:center;gap:6px;padding:14px 28px;border:2px solid #7CFFB2;background:rgba(8,14,28,.92);box-shadow:0 0 30px rgba(124,255,178,.25)"><span style="font:700 44px/1 'Chakra Petch',sans-serif;letter-spacing:.12em;color:#7CFFB2;text-shadow:0 0 14px rgba(124,255,178,.7)">SURVIVED</span><span style="font:700 11px 'JetBrains Mono',monospace;letter-spacing:.14em;color:#AEB8CC">ALL WAVES CLEARED</span></div></sc-if>
+
+  <main style="display:flex;flex-direction:column;gap:48px;padding:8px 0 calc(150px + env(safe-area-inset-bottom));max-width:680px;margin:0 auto">
+
+    <header ref="{{ secTop }}" style="display:flex;flex-direction:column;gap:16px;padding:0 16px">
+      <a href="Work - Mobile.dc.html" style="align-self:flex-start;display:flex;align-items:center;min-height:44px;font:700 12px 'JetBrains Mono',monospace;letter-spacing:.1em;color:#AEB8CC;white-space:nowrap">◀ BACK TO WORK</a>
+      <div style="position:relative;aspect-ratio:4/3;background:{{ d.heroBox }};border-top:3px solid #FFC43D;overflow:hidden;box-shadow:0 0 0 1px rgba(255,196,61,.25)">
+        <sc-if value="{{ d.hasHero }}" hint-placeholder-val="{{ true }}"><img src="{{ d.hero }}" alt="{{ d.heroAlt }}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:{{ d.heroPos }};display:block;filter:{{ d.heroFx }}"></sc-if>
+        {{ bannerFx }}
+        <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(8,14,28,0) 50%,rgba(8,14,28,.6) 100%);pointer-events:none"></div>
+        <sc-if value="{{ d.hasCutout }}" hint-placeholder-val="{{ false }}"><img src="{{ d.cutout }}" alt="{{ d.cutoutAlt }}" style="position:absolute;left:{{ d.cut.l }};right:{{ d.cut.r }};bottom:0;width:{{ d.cut.w }};height:{{ d.cut.h }};object-fit:contain;object-position:{{ d.cut.pos }};z-index:1;filter:drop-shadow(0 16px 24px rgba(0,0,0,.55))"></sc-if>
+        <span style="position:absolute;top:10px;left:10px;width:16px;height:16px;border-left:2px solid #FFC43D;border-top:2px solid #FFC43D;z-index:2"></span>
+        <span style="position:absolute;top:10px;right:10px;width:16px;height:16px;border-right:2px solid #FFC43D;border-top:2px solid #FFC43D;z-index:2"></span>
+        <span style="position:absolute;bottom:10px;left:10px;width:16px;height:16px;border-left:2px solid #FFC43D;border-bottom:2px solid #FFC43D;z-index:2"></span>
+        <span style="position:absolute;bottom:10px;right:10px;width:16px;height:16px;border-right:2px solid #FFC43D;border-bottom:2px solid #FFC43D;z-index:2"></span>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:12px;padding:0 4px">
+        <span style="font:700 12px/1.4 'JetBrains Mono',monospace;letter-spacing:.12em;color:#FFC43D;text-transform:uppercase">{{ d.kicker }}</span>
+        <sc-if value="{{ d.noLogo }}" hint-placeholder-val="{{ true }}"><h1 ref="{{ titleRef }}" style="margin:0;font:700 38px/1 'Chakra Petch',sans-serif;text-transform:uppercase;color:#FFFFFF;text-wrap:balance;text-shadow:{{ d.titleGlow }}">{{ d.title }}</h1></sc-if>
+        <sc-if value="{{ d.hasLogo }}" hint-placeholder-val="{{ false }}"><h1 style="margin:0;line-height:0"><img src="{{ d.logo }}" alt="{{ d.title }}" style="height:64px;width:auto;max-width:100%;display:block"></h1></sc-if>
+        <p style="margin:0;font:400 16px/1.6 'Instrument Sans',sans-serif;color:#DCE4F5;text-wrap:pretty">{{ d.sub }}</p>
+        <sc-if value="{{ d.hasGoal }}" hint-placeholder-val="{{ true }}">
+          <div style="display:flex;flex-direction:column;gap:8px;padding:14px 16px;background:rgba(8,14,28,.7);border:1px solid rgba(255,196,61,.4);border-left:3px solid #FFC43D">
+            <span style="font:700 11px 'JetBrains Mono',monospace;letter-spacing:.14em;color:#FFC43D">PROJECT GOAL</span>
+            <span style="font:600 18px/1.3 'Chakra Petch',sans-serif;color:#FFFFFF;text-wrap:pretty">{{ d.goal }}</span>
+          </div>
+        </sc-if>
+      </div>
+    </header>
+
+    <section style="padding:0 16px">
+      <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;background:#26365E;border:1px solid #26365E">
+        <sc-for list="{{ d.stats }}" as="s" hint-placeholder-count="5">
+          <div style="grid-column:{{ s.span }};display:flex;flex-direction:column;gap:5px;padding:13px 14px;background:#080E1C;min-width:0">
+            <span style="font:700 11px 'JetBrains Mono',monospace;letter-spacing:.14em;color:#FFC43D">{{ s.k }}</span>
+            <span style="font:600 16px/1.3 'Chakra Petch',sans-serif;color:#F2F4F8">{{ s.v }}</span>
+          </div>
+        </sc-for>
+      </div>
+    </section>
+
+    <sc-if value="{{ d.hasDivider }}" hint-placeholder-val="{{ false }}"><div aria-hidden="true" style="margin:-16px 0;overflow:hidden">{{ divider1 }}</div></sc-if>
+
+    <section ref="{{ secLevel }}" style="display:flex;flex-direction:column;gap:20px;padding:0 20px">
+      <div style="display:flex;flex-direction:column;gap:8px">
+        <span style="font:700 12px 'JetBrains Mono',monospace;letter-spacing:.14em;color:#FFC43D">01 · BRIEFING</span>
+        <h2 style="margin:0;font:700 30px/1 'Chakra Petch',sans-serif;text-transform:uppercase;color:#FFFFFF">Overview</h2>
+      </div>
+      <sc-if value="{{ d.hasQuote }}" hint-placeholder-val="{{ false }}">
+        <figure style="margin:0;display:flex;flex-direction:column;gap:10px;padding:16px;background:rgba(8,14,28,.7);border:1px solid rgba(255,196,61,.4);border-left:3px solid #FFC43D">
+          <span style="font:700 11px 'JetBrains Mono',monospace;letter-spacing:.14em;color:#FFC43D">PROJECT GOAL</span>
+          <blockquote style="margin:0;font:600 18px/1.45 'Instrument Sans',sans-serif;color:#FFFFFF;text-wrap:pretty">{{ d.quote.t }}</blockquote>
+          <figcaption style="font:700 11px 'JetBrains Mono',monospace;letter-spacing:.12em;color:#AEB8CC">{{ d.quote.by }} · <span style="color:#FFC43D">{{ d.quote.role }}</span></figcaption>
+        </figure>
+      </sc-if>
+      <sc-if value="{{ d.hasHook }}" hint-placeholder-val="{{ false }}"><p style="margin:0;font:600 19px/1.45 'Instrument Sans',sans-serif;color:#FFFFFF;text-wrap:pretty">“{{ d.hook }}”</p></sc-if>
+      <sc-for list="{{ d.overview }}" as="para" hint-placeholder-count="2">
+        <p style="margin:0;font:400 16px/1.65 'Instrument Sans',sans-serif;color:#DCE4F5;text-wrap:pretty">{{ para.t }}</p>
+      </sc-for>
+      <sc-if value="{{ d.hasGoals }}" hint-placeholder-val="{{ false }}">
+        <div style="display:flex;flex-direction:column;gap:12px;margin-top:4px">
+          <span style="font:700 11px 'JetBrains Mono',monospace;letter-spacing:.14em;color:#AEB8CC">{{ d.goalsLabel }}</span>
+          <ul style="margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:12px">
+            <sc-for list="{{ d.goalsList }}" as="g" hint-placeholder-count="3">
+              <li style="display:grid;grid-template-columns:14px minmax(0,1fr);gap:10px;align-items:baseline">
+                <span style="display:block;width:7px;height:7px;background:#FFC43D;transform:translateY(-2px) rotate(45deg)"></span>
+                <span style="display:flex;flex-direction:column;gap:8px;min-width:0">
+                  <span style="font:400 16px/1.6 'Instrument Sans',sans-serif;color:#DCE4F5;text-wrap:pretty">{{ g.t }}</span>
+                  <sc-if value="{{ g.hasLinks }}" hint-placeholder-val="{{ false }}"><span style="display:flex;flex-wrap:wrap;gap:8px"><sc-for list="{{ g.links }}" as="lk" hint-placeholder-count="1"><a href="{{ lk.href }}" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;min-height:36px;padding:0 10px;border:1px solid rgba(255,196,61,.5);font:700 12px 'JetBrains Mono',monospace;color:#FFC43D">{{ lk.label }} ↗</a></sc-for></span></sc-if>
+                </span>
+              </li>
+            </sc-for>
+          </ul>
+        </div>
+      </sc-if>
+      <sc-if value="{{ d.hasContrib }}" hint-placeholder-val="{{ false }}">
+        <div style="display:flex;flex-direction:column;gap:10px;margin-top:4px">
+          <span style="font:700 11px 'JetBrains Mono',monospace;letter-spacing:.14em;color:#AEB8CC">CONTRIBUTIONS</span>
+          <p style="margin:0;font:400 16px/1.65 'Instrument Sans',sans-serif;color:#DCE4F5;text-wrap:pretty">{{ d.contrib }}</p>
+        </div>
+      </sc-if>
+      <sc-if value="{{ d.hasChar }}" hint-placeholder-val="{{ false }}">
+        <figure style="margin:4px 0 0;display:flex;flex-direction:column;gap:6px">
+          <span style="font:700 11px 'JetBrains Mono',monospace;letter-spacing:.14em;color:#AEB8CC">{{ d.character.label }}</span>
+          <div style="position:relative;width:100%;max-width:380px;aspect-ratio:380/281;overflow:hidden"><img src="{{ d.character.src }}" alt="{{ d.character.alt }}" loading="lazy" style="position:absolute;top:0;left:-15.79%;width:131.58%;height:auto;mix-blend-mode:lighten"></div>
+        </figure>
+      </sc-if>
+    </section>
+
+    <sc-if value="{{ d.hasStage }}" hint-placeholder-val="{{ true }}">
+      <section style="padding:0 16px">
+        <div style="display:flex;flex-direction:column;background:#080E1C;box-shadow:0 0 0 1px rgba(255,196,61,.4)">
+          <div role="tablist" style="display:grid;grid-template-columns:repeat({{ tabs.n }},minmax(0,1fr));gap:6px;padding:8px;border-bottom:1px solid rgba(255,196,61,.4)">
+            <sc-for list="{{ tabs.items }}" as="t" hint-placeholder-count="2">
+              <button type="button" onClick="{{ t.pick }}" role="tab" aria-selected="{{ t.sel }}" style="min-height:44px;padding:6px 8px;border:0;background:{{ t.bg }};color:{{ t.fg }};font:700 13px/1.15 'Chakra Petch',sans-serif;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;transition:background 150ms ease-out,color 150ms ease-out">{{ t.label }}</button>
+            </sc-for>
+          </div>
+          <div ref="{{ mapRef }}" style="display:{{ tabs.mapD }};position:relative;width:100%;aspect-ratio:{{ d.map.ar }};background:#FFFFFF">
+            <img src="{{ d.map.srcOk }}" alt="{{ d.map.alt }}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain;display:block">
+            <svg viewBox="{{ d.map.vb }}" preserveAspectRatio="none" aria-hidden="true" style="position:absolute;inset:0;width:100%;height:100%;display:block;pointer-events:none">
+              <defs>
+                <mask id="csm-pm" maskUnits="userSpaceOnUse" x="0" y="0" width="{{ d.map.W }}" height="{{ d.map.H }}">
+                  <path d="{{ d.map.path }}" pathLength="100" style="fill:none;stroke:#fff;stroke-width:{{ d.map.mw }};stroke-dasharray:100 100;stroke-dashoffset:{{ mapDash }};transition:stroke-dashoffset 1800ms cubic-bezier(.45,.05,.35,1) 200ms"></path>
+                </mask>
+              </defs>
+              <g style="display:{{ d.map.wd }}">
+                <path d="{{ d.map.path }}" mask="url(#csm-pm)" style="fill:none;stroke:#0B1424;stroke-width:{{ d.map.sw2 }};stroke-linecap:round;stroke-linejoin:round;opacity:{{ d.map.o2 }}"></path>
+                <path d="{{ d.map.path }}" mask="url(#csm-pm)" style="fill:none;stroke:#FFC43D;stroke-width:{{ d.map.sw }};stroke-dasharray:{{ d.map.dash }};stroke-linecap:round;stroke-linejoin:round;opacity:{{ d.map.o1 }}"></path>
+              </g>
+            </svg>
+          </div>
+          <div ref="{{ frameRef }}" onPointerDown="{{ sDown }}" onPointerMove="{{ sMove }}" onPointerUp="{{ sUp }}" onPointerCancel="{{ sUp }}" style="display:{{ tabs.iterD }};position:relative;width:100%;aspect-ratio:1/1;background:#F4F2EC;touch-action:pan-y;user-select:none;-webkit-user-select:none">
+            <img src="{{ d.slider.bOk }}" alt="{{ d.slider.bAlt }}" draggable="false" style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain;display:block;background:#FFFFFF">
+            <div style="position:absolute;inset:0;clip-path:{{ sl.clip }};background:#F4F2EC">
+              <img src="{{ d.slider.aOk }}" alt="{{ d.slider.aAlt }}" draggable="false" style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain;display:block">
+            </div>
+            <span style="position:absolute;left:10px;top:10px;z-index:2;white-space:nowrap;font:700 11px 'JetBrains Mono',monospace;letter-spacing:.08em;background:#0B1424;color:#FFC43D;padding:4px 7px">{{ d.slider.aLabel }}</span>
+            <span style="position:absolute;right:10px;bottom:10px;z-index:2;white-space:nowrap;font:700 11px 'JetBrains Mono',monospace;letter-spacing:.08em;background:#FFC43D;color:#0B1424;padding:4px 7px">{{ d.slider.bLabel }}</span>
+            <div style="position:absolute;top:0;bottom:0;left:{{ sl.left }};width:3px;margin-left:-1.5px;background:#FFC43D;box-shadow:0 0 0 1px #0B1424"></div>
+            <span aria-hidden="true" style="position:absolute;top:50%;left:{{ sl.left }};width:44px;height:44px;margin:-22px 0 0 -22px;border-radius:50%;background:#FFC43D;border:3px solid #0B1424;box-sizing:border-box;color:#0B1424;font:700 13px 'Chakra Petch',sans-serif;display:grid;place-items:center">◀▶</span>
+          </div>
+          <sc-for list="{{ tabs.imgs }}" as="im" hint-placeholder-count="0">
+            <div style="display:{{ im.d }};position:relative;width:100%;aspect-ratio:1/1;background:{{ im.bg }}">
+              <img src="{{ im.src }}" alt="{{ im.alt }}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain;display:block">
+            </div>
+          </sc-for>
+          <div style="display:flex;flex-direction:column;gap:8px;padding:16px 16px 18px;border-top:1px solid rgba(255,196,61,.4)">
+            <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px;flex-wrap:wrap"><span style="font:700 11px 'JetBrains Mono',monospace;letter-spacing:.14em;color:#AEB8CC;white-space:nowrap">{{ colNote.label }}</span><span style="font:500 12px 'JetBrains Mono',monospace;color:#8E9AB3;white-space:nowrap">{{ tabs.cap }}</span></div>
+            <p style="margin:0;font:400 15px/1.65 'Instrument Sans',sans-serif;color:#DCE4F5;text-wrap:pretty">{{ colNote.t }}</p>
+          </div>
+        </div>
+      </section>
+    </sc-if>
+
+    <sc-if value="{{ d.hasLego }}" hint-placeholder-val="{{ false }}">
+      <section style="padding:0 16px">
+        <div style="display:flex;flex-direction:column;gap:14px;padding:22px 18px;background:#080E1C;box-shadow:0 0 0 1px rgba(255,196,61,.4)">
+          <span style="font:700 11px 'JetBrains Mono',monospace;letter-spacing:.14em;color:#FFC43D">PROCESS · HOW I BUILD SYSTEMS</span>
+          <h3 style="margin:0;font:700 24px/1.1 'Chakra Petch',sans-serif;text-transform:uppercase;color:#FFFFFF;text-wrap:balance">{{ d.lego.title }}</h3>
+          <sc-for list="{{ d.legoParas }}" as="lp" hint-placeholder-count="2">
+            <p style="margin:0;font:400 15px/1.65 'Instrument Sans',sans-serif;color:#DCE4F5;text-wrap:pretty">{{ lp.t }}</p>
+          </sc-for>
+          <div style="display:grid;grid-template-columns:minmax(0,1fr) auto;gap:12px;align-items:end;padding-top:16px;border-top:1px solid rgba(255,196,61,.35)">
+            <div style="display:flex;flex-direction:column;gap:8px">
+              <span style="font:700 11px 'JetBrains Mono',monospace;letter-spacing:.14em;color:#AEB8CC">MOST VALUABLE LESSON</span>
+              <p style="margin:0;font:600 18px/1.4 'Instrument Sans',sans-serif;color:#FFFFFF;text-wrap:pretty">{{ d.lego.lesson }}</p>
+            </div>
+            <img src="{{ d.lego.img }}" alt="" aria-hidden="true" style="height:96px;width:auto;margin:0 -6px -10px 0;filter:drop-shadow(0 10px 16px rgba(0,0,0,.55))">
+          </div>
+        </div>
+      </section>
+    </sc-if>
+
+    <sc-if value="{{ d.hasDev }}" hint-placeholder-val="{{ false }}">
+      <section ref="{{ secDev }}" style="display:flex;flex-direction:column;gap:20px;padding:0 20px">
+        <div style="display:flex;flex-direction:column;gap:8px">
+          <span style="font:700 12px 'JetBrains Mono',monospace;letter-spacing:.14em;color:#FFC43D">{{ d.devNo }} · DEV PATH</span>
+          <h2 style="margin:0;font:700 30px/1.05 'Chakra Petch',sans-serif;text-transform:uppercase;color:#FFFFFF;text-wrap:balance">{{ d.devTitle }}</h2>
+        </div>
+        <p style="margin:0;font:400 16px/1.65 'Instrument Sans',sans-serif;color:#DCE4F5;text-wrap:pretty">{{ d.devIntro }}</p>
+        <ol style="margin:4px 0 0;padding:0;list-style:none;display:flex;flex-direction:column">
+          <sc-for list="{{ dev }}" as="st" hint-placeholder-count="5">
+            <li style="display:flex;flex-direction:column;gap:12px">
+              <div style="position:relative;aspect-ratio:16/9;background:#060B17;box-shadow:0 0 0 1px rgba(255,196,61,.4)">
+                <div style="position:absolute;inset:0;overflow:hidden">
+                  <sc-if value="{{ st.isVideo }}" hint-placeholder-val="{{ false }}"><video data-autoplay="" src="{{ st.src }}" aria-label="{{ st.alt }}" muted="{{ true }}" preload="metadata" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block"></video></sc-if>
+                  <sc-if value="{{ st.isImg }}" hint-placeholder-val="{{ true }}"><img src="{{ st.src }}" alt="{{ st.alt }}" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block"></sc-if>
+                </div>
+                <span style="position:absolute;left:10px;top:10px;font:700 11px 'JetBrains Mono',monospace;letter-spacing:.08em;background:#FFC43D;color:#0B1424;padding:4px 7px;white-space:nowrap">STEP {{ st.num }}</span>
+              </div>
+              <span style="font:700 12px 'JetBrains Mono',monospace;letter-spacing:.14em;color:#FFC43D">{{ st.tag }}</span>
+              <h3 style="margin:-4px 0 0;font:700 22px/1.15 'Chakra Petch',sans-serif;text-transform:uppercase;color:#FFFFFF;text-wrap:balance">{{ st.title }}</h3>
+              <p style="margin:0;font:400 15px/1.65 'Instrument Sans',sans-serif;color:#DCE4F5;text-wrap:pretty">{{ st.t }}</p>
+              <sc-if value="{{ st.hasNext }}" hint-placeholder-val="{{ true }}"><span aria-hidden="true" style="align-self:center;width:2px;height:36px;margin:8px 0 20px;background:repeating-linear-gradient(180deg,#FFC43D 0 6px,rgba(255,196,61,0) 6px 12px)"></span></sc-if>
+            </li>
+          </sc-for>
+        </ol>
+      </section>
+    </sc-if>
+
+    <sc-if value="{{ d.hasSys }}" hint-placeholder-val="{{ false }}">
+      <section ref="{{ secSys }}" style="display:flex;flex-direction:column;gap:18px;padding:0 16px">
+        <div style="display:flex;flex-direction:column;gap:8px;padding:0 4px">
+          <span style="font:700 12px 'JetBrains Mono',monospace;letter-spacing:.14em;color:#FFC43D">{{ d.sysNo }} · SYSTEMS</span>
+          <h2 style="margin:0;font:700 30px/1.05 'Chakra Petch',sans-serif;text-transform:uppercase;color:#FFFFFF">Systems I built</h2>
+          <p style="margin:8px 0 0;font:400 16px/1.65 'Instrument Sans',sans-serif;color:#DCE4F5;text-wrap:pretty">{{ d.sysIntro }}</p>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:10px">
+          <sc-for list="{{ sys }}" as="c" hint-placeholder-count="4">
+            <div style="display:flex;flex-direction:column;background:{{ c.cardBg }};box-shadow:0 0 0 1px {{ c.bd }};transition:box-shadow 300ms ease-out,background 300ms ease-out">
+              <button type="button" onClick="{{ c.toggle }}" aria-expanded="{{ c.exp }}" style="display:grid;grid-template-columns:84px minmax(0,1fr) 32px;gap:14px;align-items:center;width:100%;padding:12px;border:0;background:transparent;color:inherit;text-align:left;cursor:pointer">
+                <span style="position:relative;display:block;width:84px;aspect-ratio:16/9;background:{{ c.thumbBg }};overflow:hidden;box-shadow:0 0 0 1px rgba(255,196,61,.25)"><img src="{{ c.thumb }}" alt="" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:{{ c.thumbFit }};display:block"><span style="position:absolute;left:0;top:0;font:700 10px 'JetBrains Mono',monospace;background:#FFC43D;color:#0B1424;padding:2px 4px">{{ c.num }}</span></span>
+                <span style="display:flex;flex-direction:column;gap:4px;min-width:0">
+                  <span style="font:700 16px/1.2 'Chakra Petch',sans-serif;letter-spacing:.04em;text-transform:uppercase;color:#FFFFFF">{{ c.title }}</span>
+                  <span style="font:400 14px/1.45 'Instrument Sans',sans-serif;color:#AEB8CC;text-wrap:pretty">{{ c.line }}</span>
+                </span>
+                <span aria-hidden="true" style="width:30px;height:30px;display:grid;place-items:center;border:1px solid #FFC43D;background:{{ c.signBg }};transition:background 300ms ease-out"><span style="position:relative;width:12px;height:12px;transform:rotate({{ c.rot }});transition:transform 400ms cubic-bezier(.22,1,.36,1)"><span style="position:absolute;left:0;right:0;top:5px;height:2px;background:{{ c.signFg }}"></span><span style="position:absolute;top:0;bottom:0;left:5px;width:2px;background:{{ c.signFg }}"></span></span></span>
+              </button>
+              <div aria-hidden="{{ c.hid }}" style="display:grid;grid-template-rows:{{ c.rows }};transition:grid-template-rows 480ms cubic-bezier(.22,1,.36,1)">
+                <div style="min-height:0;overflow:hidden">
+                  <div style="display:flex;flex-direction:column;gap:14px;padding:2px 12px 18px;opacity:{{ c.o }};transition:opacity 300ms ease-out {{ c.dl }}">
+                    <div data-snap="" style="display:flex;gap:8px;overflow-x:auto;scroll-snap-type:x mandatory;overscroll-behavior-x:contain">
+                      <sc-for list="{{ c.shotList }}" as="sh" hint-placeholder-count="1">
+                        <figure style="margin:0;flex:0 0 {{ c.shotW }};scroll-snap-align:start;display:flex;flex-direction:column;gap:8px">
+                          <div style="position:relative;aspect-ratio:16/10;background:#1C1E22;box-shadow:0 0 0 1px rgba(255,196,61,.35)"><img src="{{ sh.src }}" alt="{{ sh.alt }}" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain;display:block"></div>
+                          <figcaption style="display:flex;gap:10px;align-items:baseline"><span style="font:700 12px 'JetBrains Mono',monospace;color:#FFC43D;white-space:nowrap">{{ sh.count }}</span><span style="font:500 13px/1.4 'JetBrains Mono',monospace;color:#AEB8CC">{{ sh.cap }}</span></figcaption>
+                        </figure>
+                      </sc-for>
+                    </div>
+                    <sc-for list="{{ c.paras }}" as="p" hint-placeholder-count="2">
+                      <p style="margin:0;font:400 15px/1.65 'Instrument Sans',sans-serif;color:#DCE4F5;text-wrap:pretty">{{ p.t }}</p>
+                    </sc-for>
+                    <div style="display:flex;flex-direction:column;gap:8px">
+                      <span style="font:700 11px 'JetBrains Mono',monospace;letter-spacing:.14em;color:#AEB8CC">KEY PIECES</span>
+                      <div style="display:flex;flex-wrap:wrap;gap:6px">
+                        <sc-for list="{{ c.pieceList }}" as="k" hint-placeholder-count="3">
+                          <span style="font:500 12px 'JetBrains Mono',monospace;color:#F2F4F8;border:1px solid #3A4766;padding:4px 8px">{{ k.t }}</span>
+                        </sc-for>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </sc-for>
+        </div>
+        <sc-if value="{{ d.hasHonors }}" hint-placeholder-val="{{ false }}">
+          <div style="display:flex;flex-direction:column;gap:12px;margin-top:12px">
+            <div style="display:flex;align-items:center;gap:12px;padding:0 4px">
+              <span style="font:700 12px 'JetBrains Mono',monospace;letter-spacing:.14em;color:#FFC43D;white-space:nowrap">HONORABLE MENTIONS</span>
+              <span style="flex:1;height:1px;background:linear-gradient(90deg,rgba(255,196,61,.45),rgba(255,196,61,0))"></span>
+            </div>
+            <div style="display:grid;grid-template-columns:minmax(0,1fr);gap:1px;background:rgba(255,196,61,.18);border:1px solid rgba(255,196,61,.18)">
+              <sc-for list="{{ d.honorList }}" as="hm" hint-placeholder-count="4">
+                <div style="display:flex;gap:12px;align-items:flex-start;padding:12px 14px;background:#0B1A3A">
+                  <span style="flex-shrink:0;width:7px;height:7px;margin-top:6px;background:#FFC43D;transform:rotate(45deg)"></span>
+                  <span style="display:flex;flex-direction:column;gap:2px;min-width:0">
+                    <span style="font:700 15px/1.3 'Chakra Petch',sans-serif;letter-spacing:.04em;text-transform:uppercase;color:#FFFFFF">{{ hm.t }}</span>
+                    <span style="font:400 14px/1.45 'Instrument Sans',sans-serif;color:#AEB8CC;text-wrap:pretty">{{ hm.n }}</span>
+                  </span>
+                </div>
+              </sc-for>
+            </div>
+          </div>
+        </sc-if>
+      </section>
+    </sc-if>
+
+    <sc-if value="{{ d.hasDivider }}" hint-placeholder-val="{{ false }}"><div aria-hidden="true" style="margin:-16px 0;overflow:hidden">{{ divider2 }}</div></sc-if>
+
+    <section ref="{{ secMedia }}" style="display:flex;flex-direction:column;gap:16px">
+      <div style="display:flex;flex-direction:column;gap:8px;padding:0 20px">
+        <span style="font:700 12px 'JetBrains Mono',monospace;letter-spacing:.14em;color:#FFC43D">{{ d.mediaNo }} · MEDIA</span>
+        <h2 style="margin:0;font:700 30px/1 'Chakra Petch',sans-serif;text-transform:uppercase;color:#FFFFFF">In engine</h2>
+      </div>
+      <div ref="{{ galRef }}" data-snap="" onScroll="{{ galScroll }}" style="display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding:0 20px;padding:0 20px;overscroll-behavior-x:contain">
+        <sc-for list="{{ gallery }}" as="g" hint-placeholder-count="3">
+          <figure style="margin:0;flex:0 0 86%;scroll-snap-align:start;display:flex;flex-direction:column;gap:10px">
+            <div style="position:relative;aspect-ratio:16/9;background:{{ g.bg }};box-shadow:0 0 0 1px rgba(255,196,61,.4);overflow:hidden">
+              <sc-if value="{{ g.isVideo }}" hint-placeholder-val="{{ false }}"><video data-autoplay="" src="{{ g.src }}" aria-label="{{ g.alt }}" muted="{{ true }}" preload="metadata" style="position:absolute;inset:0;width:100%;height:100%;object-fit:{{ g.fit }};display:block"></video><span style="position:absolute;left:8px;top:8px;font:700 10px 'JetBrains Mono',monospace;background:#0B1424;color:#FFC43D;padding:3px 6px;white-space:nowrap">▶ VIDEO</span></sc-if>
+              <sc-if value="{{ g.isImg }}" hint-placeholder-val="{{ true }}"><img src="{{ g.src }}" alt="{{ g.alt }}" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:{{ g.fit }};display:block"></sc-if>
+            </div>
+            <figcaption style="display:flex;gap:10px;align-items:baseline;padding:0 2px"><span style="font:700 12px 'JetBrains Mono',monospace;color:#FFC43D;white-space:nowrap">{{ g.count }}</span><span style="font:500 14px/1.4 'Instrument Sans',sans-serif;color:#C9D1E0">{{ g.cap }}</span></figcaption>
+          </figure>
+        </sc-for>
+      </div>
+      <div style="display:flex;justify-content:center;align-items:center">
+        <sc-for list="{{ gdots }}" as="gd" hint-placeholder-count="4">
+          <button type="button" onClick="{{ gd.go }}" aria-label="{{ gd.aria }}" style="width:22px;height:36px;padding:0;border:0;background:transparent;display:grid;place-items:center;cursor:pointer"><span style="width:{{ gd.size }};height:{{ gd.size }};transform:rotate(45deg);background:{{ gd.bg }};border:1px solid #FFC43D;transition:all 200ms ease-out"></span></button>
+        </sc-for>
+      </div>
+    </section>
+
+    <div style="padding:0 20px">
+      <a href="Work - Mobile.dc.html" style="display:flex;align-items:center;justify-content:center;gap:10px;min-height:50px;border:1.5px solid #4A5878;color:#F2F4F8;font:700 15px 'Chakra Petch',sans-serif;letter-spacing:.08em;text-transform:uppercase">◀ Back to work</a>
+    </div>
+  </main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:393,&quot;height&quot;:852},&quot;project&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;ab&quot;,&quot;oink&quot;,&quot;fr&quot;,&quot;en&quot;,&quot;nf&quot;],&quot;default&quot;:&quot;fr&quot;,&quot;tsType&quot;:&quot;'ab' | 'oink' | 'fr' | 'en' | 'nf'&quot;}}">
+class Component extends DCLogic {
+  state = { prog: 0, tab: null, pos: 50, drag: false, sysOpen: null, gi: 0, mapIn: false, obj: 0 };
+  secTop = React.createRef(); secLevel = React.createRef(); secDev = React.createRef(); secSys = React.createRef(); secMedia = React.createRef();
+  mapRef = React.createRef(); frameRef = React.createRef(); galRef = React.createRef(); titleRef = React.createRef(); vigRef = React.createRef(); survRef = React.createRef();
+  DATA = {
+    ab: {
+      heroFx: 'brightness(1.6) contrast(1.05)', smoke: true, lamps: [[78.5, 46.4]], divider: 'conveyor', fanTimer: true,
+      keyColors: ['#4C8DF6', '#E04FA0', '#FFC43D', '#4CC38A'], keyNames: ['Blue key', 'Pink key', 'Gold key', 'Finish'],
+      title: 'A-B Factory Level', kicker: 'Level design · Individual · Fall 2022',
+      goal: 'Create a level leading & challenging players going A → B.',
+      sub: 'Factory level built with techniques taught by Rich Wilson (Level & Quest Designer on Dishonored and Prey). Keys, moving platforms, conveyor belts and hazards.',
+      hero: 'assets/ab/hero-bg.png', heroAlt: 'A-B Factory Level: dark factory hall under heavy ceiling beams and hanging lamps',
+      stats: [['Role', 'Level Designer'], ['Team', 'Solo'], ['Duration', '1 month'], ['Platform', 'Windows PC'], ['Tools', 'Unity · ProBuilder · C#']],
+      overview: [
+        'Built from concept to finished level in my Level Design course, taught by Rich Wilson (Level & Quest Designer on Dishonored and Prey). The goal: guide players from A to B by showing rather than telling, using a kit of keys, moving platforms, conveyor belts, physics objects, locked doors and buttons.',
+        'The level is built around the experience of moving through a factory. Lights, props and mechanics all drive that fantasy: turbines, conveyors and moving platforms, every puzzle themed to fit. Grounding the space in a single idea kept it cohesive instead of a string of disjointed puzzles, and let me focus aesthetics on one narrative.',
+      ],
+      mapNote: 'The first pass was a paper sketch: start in a room, loop around, and end where you started. The second pass, in Photoshop, refined hazard and mechanic placement so the challenge ramps up the further you go, and added a secret area for explorers. With time tight, I swapped the original closing platforming section for a final key hunt. That freed up more time to design the earlier sections.',
+      sliderNote: 'In Unity I extruded the walls from the revised layout with ProBuilder and ran the bare level for scale and pacing, then layered in moving platforms, buttons, keys, locked doors and leading coins. Post-processing, lighting and details like the conveyor loop sold the factory motif.',
+      map: {
+        src: 'assets/ab/map-final.jpg', alt: 'A-B Factory final map layout with keys, locked doors, hazards and checkpoints', W: 1920, H: 1920,
+        caption: 'Final map layout · route + callouts layered for the site',
+        path: 'M835 1470 L872 1420 L872 1330 C872 1100 880 900 980 860 L1255 830 L760 800 L620 860 L520 900 L455 960 L455 1775 L1000 1775 L1000 1600 L1000 1775 L1160 1800 L1505 1800 L1505 1620 L1680 1560 L1680 830 L1700 800 L1440 800 L1105 800 L1105 420',
+        callouts: [[835,1450,'Start','l'],[1255,762,'Blue key','d'],[738,790,'Blue door','r'],[690,700,'Ladder · chests','l'],[455,1300,'Moving platforms','r'],[200,1200,'Moving platform','u'],[700,1775,'Conveyor','u'],[960,1580,'Pink key','l'],[1000,1665,'Checkpoint','r'],[1335,1640,'Spinning fan','u'],[1680,1300,'Moving platforms','l'],[1700,780,'Gold key','d'],[1440,790,'Pink door','d'],[1105,745,'Gold door','u'],[1095,368,'Finish','u']],
+      },
+      slider: { title: '1st pass → final', a: 'assets/ab/map-sketch.jpg', aAlt: 'First-pass notebook sketch of the factory level', aLabel: '1ST PASS · NOTEBOOK', b: 'assets/ab/map-final.jpg', bAlt: 'Final A-B map layout', bLabel: 'FINAL LAYOUT' },
+      gallery: [
+        { type: 'video', src: 'assets/ab/conveyor.mp4', alt: 'Conveyor belt section in play', cap: 'Conveyor belt · in play', span: 'span 2' },
+        { src: 'assets/ab/shot-01.png', alt: 'View out of the secret area: a tiled shaft with a gold leading coin', cap: 'Secret area view · leading coins' },
+        { src: 'assets/ab/shot-02.png', alt: 'Key on a lit plinth beside a locked gate', cap: 'Key + locked gate' },
+        { src: 'assets/ab/overview.png', alt: 'In-engine top-down view of the whole factory level', cap: 'Map view · the final level in its entirety', span: 'span 2' },
+      ],
+    },
+    nf: {
+      title: 'Night Forest', kicker: 'Individual project · Fall 2022',
+      goal: 'Guide players without forcing a rigid path.',
+      sub: 'A short forest level built as a test of how far I’d come: leading players with terrain, lighting and landmarks instead of a rigid path.',
+      hero: 'assets/nf/bg.png', heroAlt: 'Night Forest: moonlit pine forest with a path winding past a glowing mushroom', heroFx: 'brightness(1.25)', fireflies: true,
+      stats: [['Role', 'Level Designer'], ['Team', 'Solo'], ['Duration', '2 weeks'], ['Platform', 'Windows PC'], ['Tools', 'Unity']],
+      overview: [
+        'I created this level, although short, in the fall of 2022 as an exercise and a test of my skills, to gauge how far I’d come.',
+        'The goal was to test how accurately I could guide players without forcing them down a rigid path, using level design tactics like leading terrain, lighting and landmarks ("weenies"). To that end I skipped a map layout and worked free-flow.',
+      ],
+      goalsLabel: 'LEVEL DESIGN PROCESS',
+      goals: [
+        'Sculpted the terrain first: the big features, landmarks and the path. The path sits lower than its surroundings and uses a different material, so it reads as the way forward.',
+        { t: 'Dressed the forest with Lowpoly Environment by Polytope Studio, rotating and scaling assets to break up repetition.', links: [{ label: 'Lowpoly Environment · Unity Asset Store', href: 'https://assetstore.unity.com/packages/3d/environments/low-poly-environment-nature-free-lowpoly-medieval-fantasy-series-187052' }] },
+        { t: 'Finished with post-processing, a new skybox (Fantasy Skybox by Render Knight), updated lighting and firefly particles.', links: [{ label: 'Fantasy Skybox · Unity Asset Store', href: 'https://assetstore.unity.com/packages/2d/textures-materials/sky/fantasy-skybox-free-18353' }] },
+      ],
+      map: null, slider: null,
+      imgTabs: [
+        { label: 'Map view', src: 'assets/nf/full.png', alt: 'Bird’s-eye view of the full Night Forest level', bg: '#1A2216', cap: 'Full level · top-down', noteLabel: 'MAP NOTES',
+          note: 'A bird’s-eye view of the final map in its entirety. With no layout drawn first, the route is carried by the terrain itself: a lowered, differently painted path between the landmarks.' },
+        { label: 'The cabin', src: 'assets/nf/shot-04.png', alt: 'The cabin in the woods at the end of the level', bg: '#081226', cap: 'End of level', noteLabel: 'CABIN NOTES',
+          note: 'The cabin in the woods marks the end of the level, lit to pull players through the trees towards it.' },
+      ],
+      gallery: [
+        { type: 'video', src: 'assets/nf/video.mp4', alt: 'Night Forest walkthrough', cap: 'Walkthrough' },
+        { src: 'assets/nf/shot-01.png', alt: 'Forest path at night with a glowing mushroom', cap: 'The path' },
+        { src: 'assets/nf/shot-02.png', alt: 'Clearing among tall pines under a moonlit sky', cap: 'Clearing' },
+        { src: 'assets/nf/shot-03.png', alt: 'Pine forest with a rocky rise', cap: 'Leading terrain' },
+        { src: 'assets/nf/screenshot.png', alt: 'Cabin and forest edge with red mushrooms', cap: 'Approaching the cabin' },
+      ],
+    },
+    en: {
+      title: 'Endless Nightmare', kicker: 'Individual project · Unity Learn mod',
+      goal: 'Create & modify a 3rd-person isometric Unity shooter.',
+      sub: 'A tense 3D isometric third-person wave shooter. Battle waves of cuddly toy enemies, gather new weapons, pick up ammo and survive as long as you can.',
+      hero: '', cutout: 'assets/en/scene-cut.png', cutoutAlt: 'The player in a nightcap facing a horde of cuddly toy enemies', cut: { r: '24px', b: '10%', h: '74%' }, textW: '540px',
+      health: true, waves: true, crosshair: true, noPanel: true,
+      stats: [['Role', 'Game Designer · Systems & Tools Designer'], ['Team', 'Solo'], ['Duration', '1 month'], ['Platform', 'Windows PC'], ['Tools', 'Unity · C# · Visual Studio']],
+      overview: [
+        'Endless Nightmare is a tense 3D isometric third-person wave shooter built in Unity: battle waves of cuddly toy enemies, gather new weapons, pick up ammo and survive as long as you can.',
+        'It started as a Unity Learn tutorial base project. As a class we drew up a list of mechanics and systems, graded from Super Easy to Extremely Hard, and each picked which to build; our picks determined our grade.',
+      ],
+      goals: ['Provide a tense strategy shooter for players', 'Implement chosen design decisions', 'Experiment with new techniques and ideas', 'Implement effective, modular wave and weapon systems'],
+      contrib: 'As Game Designer and Systems + Tools Designer I was responsible for the project’s architecture, codebase, game feel and design decisions.',
+      lego: { title: 'Programming is like building a Lego set', img: 'assets/en/character-cutout.png', lesson: 'Don’t be afraid to delete, start over, or refactor your codebase.',
+        body: ['You don’t open the box to a finished Death Star, just the pieces and the picture on the box. Choose the problem you want to solve, open your code editor, sort out the pieces that make it up, then set up the blueprint for how they fit together.',
+          'Lego reuses the same piece in lots of places, maybe in a new colour or slightly modified, just like componentized scripts. Before writing anything I break the problem into its smallest components, which shows where systems overlap and what can be reused.'] },
+      map: null, slider: null,
+      sysIntro: 'The systems I designed and built on top of the tutorial base, each kept modular so new waves, weapons and enemies drop in without new code.',
+      honors: [
+        { t: 'Enemy Spawning Patterns', n: 'Where and how each wave arrives' },
+        { t: 'Pickups', n: 'Weapons and ammunition' },
+      ],
+      systems: [
+        { title: 'Wave System', line: 'Waves defined as data, run by a spawn manager.', thumb: 'assets/en/wave-so.jpg', ui: true,
+          shots: [{ src: 'assets/en/wave-so.jpg', alt: 'Unity inspector: Wave scriptable object', cap: 'Wave · scriptable object' }, { src: 'assets/en/wave-spawn.jpg', alt: 'Unity inspector: Wave Spawn Manager component', cap: 'Wave Spawn Manager' }],
+          body: ['Each wave is a scriptable object, so designing a new wave means filling in data rather than writing code.', 'A Wave Spawn Manager reads those assets and runs them in sequence, handling spawn points and the pacing between waves.'],
+          pieces: ['Wave (ScriptableObject)', 'Wave Spawn Manager', 'Spawn points'] },
+        { title: 'Combat + Weapon Types', line: 'Improved shooting with distinct weapon types.', thumb: 'assets/en/shot-01.png',
+          shots: [{ src: 'assets/en/shot-01.png', alt: 'Gameplay: aiming laser and ammo counter on the HUD', cap: 'Aim laser · ammo HUD' }, { src: 'assets/en/shot-02.png', alt: 'Gameplay: muzzle flash while firing', cap: 'Firing · muzzle flash' }],
+          body: ['I reworked the tutorial’s combat and added new weapon types, each with its own feel, ammo and fire behaviour.', 'An aim laser and ammo readout keep the player informed when the screen gets crowded.'],
+          pieces: ['Weapon types', 'Ammo', 'Aim laser'] },
+        { title: 'Enemy Types', line: 'Melee, ranged, armored and invisible cuddly toys.', thumb: 'assets/en/scene-cut.png', ui: true,
+          shots: [{ src: 'assets/en/scene-cut.png', alt: 'The cast of cuddly toy enemies', cap: 'The cuddly toy horde' }, { src: 'assets/en/shot-03.png', alt: 'Top-down gameplay in a dark arena', cap: 'In the arena' }],
+          body: ['Four enemy types force different answers: melee rushers, ranged attackers, armored tanks and invisible stalkers.', 'Mixing them across waves is what turns survival into strategy.'],
+          pieces: ['Melee', 'Ranged', 'Armored', 'Invisible'] },
+        { title: 'UI/UX + Game Feel', line: 'Menus, HUD and feedback that sell the nightmare.', thumb: 'assets/en/title-screen.png',
+          shots: [{ src: 'assets/en/title-screen.png', alt: 'Endless Nightmare title screen with Play, Options and Exit', cap: 'Title screen' }, { src: 'assets/en/knightmare.png', alt: 'Alternate title screen', cap: 'Title screen · alternate' }],
+          body: ['I designed the menus and HUD, and tuned the overall game feel: readable health, ammo and score at a glance, and feedback that keeps fights tense.'],
+          pieces: ['Title + menus', 'HUD', 'Feedback'] },
+      ],
+      gallery: [
+        { type: 'video', src: 'assets/en/recording-01.mp4', alt: 'Completed gameplay with all modifications', cap: 'Gameplay · all new modifications' },
+        { src: 'assets/en/before.png', alt: 'Endless Nightmare at the end of the tutorial series, before modification', cap: 'Before · end of the tutorial series' },
+        { src: 'assets/en/shot-04.jpg', alt: 'Isometric gameplay in a dark room with glowing boundary lines', cap: 'In play' },
+        { src: 'assets/en/shot-02.png', alt: 'Gameplay: muzzle flash while firing', cap: 'Firing' },
+      ],
+    },
+    oink: {
+      neon: true, divider: 'neon', holo: true, combo: true, rain: true, ledger: true, drone: true, lanterns: true, eyes: [[45.22, 13.84], [46.75, 14.98]],
+      title: 'Oinkyuza Collection', kicker: 'Narrative level design · Individual · Fall 2022',
+      goal: 'Create a level around a twisted narrative premise.',
+      sub: 'The Three Little Pigs reimagined: play as the Big Bad Wolf, a loan shark collecting from three hog brothers in a cyberpunk city.',
+      hook: 'A fairy tale told through the level, not cutscenes.',
+      hero: 'assets/oinkyuza-hero.png', heroAlt: "Neon plaza in Oinkyuza: an 'Always Watching' billboard of the three hog brothers looms over a statue and guards",
+      stats: [['Role', 'Level Designer'], ['Team', 'Solo'], ['Duration', '1 month'], ['Market districts', '4'], ['Platform', 'Windows PC'], ['Tools', 'Unity · ProBuilder · C#']],
+      overview: [
+        'Built from concept to finished level in my Level Design course, taught by Rich Wilson (Level & Quest Designer on Dishonored and Prey).',
+        'Go through the streets and alleyways of a Blade Runner-esque Japan as the Big Bad Wolf, working as a loan shark. Make your way through the city streets, alleyways and the market, feeling confident on your way to the resort. Fight enemies, talk with NPCs, and collect trinkets and codes along the way.',
+      ],
+      mapNote: 'The map started in Photoshop. The first pass was a rough block-out: players begin in an alleyway that opens into a cul-de-sac square, with a monolithic building in the distance as a goal to move towards. The second pass refined the blocks and placed mechanics, enemy paths and market districts, ramping up challenge and NPC density the further players go.',
+      map: {
+        src: 'assets/oink/map-pass-02.png', alt: 'Oinkyuza level map pass 02: streets, shopping district, roundabout and resort with elevation colours', W: 743, H: 742,
+        caption: 'Level map · pass 02 · callouts layered for the site',
+        path: 'M455 688 L478 668 L487 640 L487 612 L430 606 C420 636 400 648 380 646 C360 644 350 628 350 610 C350 588 365 572 385 570 C405 568 414 545 412 520 C410 492 395 466 375 458 C360 455 356 480 360 505 C364 530 368 552 362 568 C355 585 345 600 330 607 L300 610 C285 614 262 615 245 612 C225 608 212 595 214 578 C216 562 232 554 250 552 L262 540 L262 532 L298 524 C310 500 328 490 318 486 C305 488 300 505 290 522 L262 528 L258 480 L235 470 L232 420 L380 414 L384 345', ghost: true, walk: false,
+        callouts: [[455,690,'Start','r'],[487,608,'Gun','r'],[385,608,'Roundabout','d'],[410,556,'Enemies','r'],[300,500,'Shopping district','r'],[228,462,'Locked gate · combo','l'],[500,410,'Tram blocks path','u'],[384,350,'Resort · end','u']],
+      },
+      slider: { title: 'Pass 01 → pass 02', a: 'assets/oink/map-pass-01.png', aAlt: 'Oinkyuza level map, pass 01: rough block-out of shapes and layout', aLabel: 'PASS 01 · BLOCK-OUT', b: 'assets/oink/map-pass-02.png', bAlt: 'Oinkyuza level map, pass 02: refined blocks with mechanics, enemy paths and market districts', bLabel: 'PASS 02 · REFINED' },
+      sliderNote: 'Pass 01 was a rough block-out of the basic shapes and layout. Pass 02 refined the blocks and placed the mechanics, enemy paths and market districts, then in Unity I extruded the walls with ProBuilder, ran the bare level for scale and pacing, and layered in NPCs, pathing, weapons, ammo, keys, locked doors and leading coins.',
+      gallery: [
+        { src: 'assets/oink/shot-01.png', alt: 'Bird’s-eye view of the whole city leading to the glowing resort', cap: 'Map view · the final level in its entirety', span: 'span 2' },
+        { src: 'assets/oink/shot-02.png', alt: 'Market area with NPCs, waypoints, enemies and pickups', cap: 'Marketplace · NPCs + waypoints (final area)' },
+        { src: 'assets/oink/map-pass-01.png', alt: 'Oinkyuza level map, first pass', cap: 'Level map · pass 01' },
+      ],
+    },
+    fr: {
+      title: 'Free Rider', kicker: 'Capstone · Team of 5 · Lead Programmer',
+      sub: 'A relaxing third-person skating game. Play as Jun, a red panda, rolling through an alternate San Francisco.',
+      logo: 'assets/fr/logo.png', cutout: 'assets/fr/jun-cut.png', rider: 'assets/fr/jun-cut.png', cutoutAlt: 'Jun, the red panda, on roller skates',
+      hero: 'assets/fr/chinatown.jpg', heroAlt: 'Free Rider: Chinatown gate entrance at golden hour',
+      quote: { t: 'Create a chill & relaxing skating experience centered around free skates.', by: 'Ethan Murchison', role: 'Creative Lead' },
+      stats: [['Role', 'Lead Programmer · Level Designer'], ['Team', '5'], ['Duration', '10 months'], ['Platform', 'Windows PC'], ['Tools', 'Unity · C# · Visual Studio · Trello · Unity DevOps']],
+      overview: [
+        'Free Rider is a relaxing 3D third-person game with elements of exploration, built in Unity as my capstone project.',
+        'You play as Jun, a red panda, skating through an alternate San Francisco-inspired city. Players explore the streets and alleyways, dodging hazards, collecting items and talking with friends.',
+      ],
+      goals: ['Create a free-flowing, physics-based movement system using Unity’s physics engine', 'Demonstrate skills in programming, level design, team management, systems design and world building', 'Provide a relaxing, explorative experience for players'],
+      contrib: 'As Lead Programmer I was responsible for tools, features, game feel and team management, working with art and animation to design and maintain a relaxing, chill player experience.',
+      character: { label: 'MEET JUN · COSTUMES', src: 'assets/fr/jun-costumes.gif', alt: 'Jun the red panda spinning on skates, cycling through her different costumes' },
+      map: null, slider: null,
+      imgTabs: [
+        { label: 'City map', src: 'assets/fr/map.jpg', alt: 'Top-down view of the full Free Rider city level', bg: '#474747', cap: 'Full level · top-down', noteLabel: 'CITY NOTES',
+          note: 'An alternate, San Francisco-inspired city. Players skate from the streets and alleyways of Chinatown up winding Lombard-style roads, dodging hazards (leaves, rubble, oil, water and sand), collecting items and talking with friends.' },
+        { label: 'Tutorial level', src: 'assets/fr/tutorial-overview.png', alt: 'Top-down view of the tutorial level: city blocks around a parking lot', bg: '#6A635B', cap: 'Tutorial level · top-down', noteLabel: 'TUTORIAL NOTES',
+          note: 'I built the tutorial level from the building blocks assembled over the project: movement, hazards, interactable props, NPCs and objectives, arranged around a parking lot in a few compact city blocks.' },
+      ],
+      devTitle: 'Twin stick to Freeform',
+      devIntro: 'Free Rider started as a twin-stick simulation, one stick per foot, inspired by QWOP. Realistic physics and relaxation didn’t mesh, so the next approach chased the feel of Mario Kart: fluid, fun, intuitive, on a single stick.',
+      dev: [
+        { tag: 'PROTOTYPE', title: 'Twin-stick movement test', src: 'assets/fr/test-twin-stick.jpg', alt: 'Two white cubes as feet on a green test track', t: 'Each foot was assigned to a different stick on the controller. Combined with scripting and physics issues, it showed realism and relaxation pulling in opposite directions, so the approach was dropped.' },
+        { tag: 'SYSTEM', title: 'Keeping the player upright', src: 'assets/fr/test-upright-spring.jpg', alt: 'Test cube held above a checkerboard track by spring forces', t: 'The Upright System uses spring physics and forces to hold the player upright at a set height above the ground, even when knocked by other physics bodies.' },
+        { tag: 'MOVEMENT', title: 'First preview of Freeform', src: 'assets/fr/test-single-stick.jpg', alt: 'Capsule player on a grey test area with yellow cube pickups', t: 'The area where the fluid, momentum-based Freeform movement was concepted and built, along with the beginnings of the hazard detection and crouch systems.' },
+        { tag: 'HAZARDS', title: 'Hazard system in play', type: 'video', src: 'assets/fr/explosion-system.mp4', alt: 'Hazard system gameplay clip', t: 'Leaves, rubble, oil, water and sand each apply their own effects to the player’s Movement and Status systems.' },
+        { tag: 'LEVEL', title: 'The tutorial level', src: 'assets/fr/jun-parking.png', alt: 'Jun skating beside the tutorial parking lot at sunset', t: 'Everything comes together in the tutorial level, built from the systems assembled over the project’s creation.' },
+      ],
+      sysIntro: 'I build around simplified modularity: systems that are intuitive, easy to understand and work like components, so they can be combined into emergent designs.',
+      honors: [
+        { t: 'Input Manager', n: 'One place every system reads player input from' },
+        { t: 'Hazard Detection', n: 'Leaves, rubble, oil, water and sand' },
+        { t: 'Status', n: 'Hazard effects applied to the player' },
+        { t: 'Camera Control', n: 'Movement and control built with Cinemachine' },
+        { t: 'Canvas Management', n: 'UI canvases spawned at runtime' },
+        { t: 'Audio Management', n: 'Pooled audio types and mixer groups' },
+        { t: 'Respawn System', n: 'Getting players back on track' },
+        { t: 'Objective System', n: 'Guiding players through the level' },
+      ],
+      systems: [
+        { title: 'Movement', line: 'Momentum-based Freeform movement, kept upright by spring forces.', thumb: 'assets/fr/lombard.jpg',
+          shots: [{ src: 'assets/fr/lombard.jpg', alt: 'Winding Lombard-style road lined with low-poly trees', cap: 'Lombard area · hill roads' }, { src: 'assets/fr/test-upright-spring.jpg', alt: 'Upright spring test', cap: 'Upright System test' }],
+          body: ['The Upright System uses spring physics and forces to keep Jun upright and at a set height above the ground, even when hit by other physics bodies. That made the world interactable: skate into trash cans or cars and keep rolling.', 'On top of it sits Freeform, the momentum-based movement I built and refined over the project, with slope detection, hazard detection and interaction with objects.'],
+          pieces: ['Player_Movement', 'Player_Status', 'Hazard Detector', 'Player_Ragdoll'] },
+        { title: 'Interaction', line: 'A sphere trigger that finds anything on the Interactable layer.', thumb: 'assets/fr/interaction-system.jpg', ui: true,
+          shots: [{ src: 'assets/fr/interaction-system.jpg', alt: 'Unity inspector: Player Character with Player_Interaction component', cap: 'Player_Interaction · inspector' }],
+          body: ['Player_Interaction tracks the colliders inside an interaction-area sphere collider, filtered to the Interactable layer, and reads the interact input through the Input Reader.', 'NPCs, props and pickups all plug into the same system.'],
+          pieces: ['Player_Interaction', 'Input Reader', 'Interactable layer'] },
+        { title: 'NPC Interaction', line: 'NPCs that bring up their own UI canvas when you interact.', thumb: 'assets/fr/npc-interactable.jpg', ui: true,
+          shots: [{ src: 'assets/fr/npc-interactable.jpg', alt: 'Unity inspector: Regional Performer script on the Tutorial Bird NPC', cap: 'Regional Performer · Tutorial Bird NPC' }, { src: 'assets/fr/canvas-object.jpg', alt: 'Unity inspector: Canvas Object asset for Canvas Audio', cap: 'Canvas Object · spawned at runtime' }],
+          body: ['Each NPC carries a behaviour such as Regional Performer, which references its NPC data, tracks a coin amount and points to its interaction canvas.', 'Canvas Objects describe a UI canvas to be spawned at runtime, so the canvas tools can bring up any NPC’s UI.'],
+          pieces: ['RegionalPerformer', 'NPC', 'Canvas Object', 'NPC_UI_Canvas'] },
+        { title: 'Physics Object Props', line: 'Props that react with sound and particles when you hit them.', thumb: 'assets/fr/trash-interactable.jpg', ui: true,
+          shots: [{ src: 'assets/fr/trash-interactable.jpg', alt: 'Unity hierarchy and inspector for the trash can prefab', cap: 'Trash can prefab · Play Sound On Interact' }, { src: 'assets/fr/audio-type.jpg', alt: 'Unity inspector: On Trash Bag Hit audio type', cap: 'Audio Type · pool, clip set, mixer group' }, { src: 'assets/fr/coin-interactable.jpg', alt: 'Unity inspector: Collectible script', cap: 'Collectible · coins reuse Audio Type' }],
+          body: ['Props like the trash can are built from small parts: an Interactable child with a collider and Play Sound On Interact, plus a particle system.', 'Sounds are Audio Type assets: a pooled audio source, a clip set and a mixer group. The same asset drops into props and collectibles like coins.'],
+          pieces: ['PlaySoundOnInteract', 'Audio Type', 'Audio Effect Pool', 'Collectible'] },
+        { title: 'Tutorial Level', line: 'A compact level built from the project’s building blocks.', thumb: 'assets/fr/tutorial-side.png',
+          shots: [{ src: 'assets/fr/tutorial-side.png', alt: 'Angled overview of the tutorial level city blocks and parking lot', cap: 'Tutorial level · side overview' }, { src: 'assets/fr/parking-lot.png', alt: 'Jun skating past the parking lot with leading coins and painted arrows', cap: 'Parking lot · leading coins + painted arrows' }],
+          body: ['I built the tutorial level from the building blocks assembled over the project, putting movement, hazards, interactable props, NPCs and objectives into a few compact city blocks.'],
+          pieces: ['Objective System', 'Respawn System', 'Hazards', 'NPCs'] },
+      ],
+      gallery: [
+        { type: 'video', src: 'assets/fr/front-end.mp4', alt: 'Free Rider front end: title screen and menus', cap: 'Front end · title + menus' },
+        { src: 'assets/fr/alleyway.jpg', alt: 'Chinatown alleyway with red lanterns and dumpsters', cap: 'Chinatown alleyway' },
+        { src: 'assets/fr/lombard.jpg', alt: 'Winding Lombard-style road lined with low-poly trees', cap: 'Lombard area' },
+        { src: 'assets/fr/chinatown.jpg', alt: 'Chinatown gate entrance at golden hour', cap: 'Chinatown entrance' },
+      ],
+    },
+  };
+  get d() { return this.DATA[this.props.project] || this.DATA.ab; }
+  get doc() { return document.scrollingElement || document.documentElement; }
+  tabDefs() {
+    const D = this.d;
+    if (D.noPanel) return [{ id: 'none', label: '', cap: '', noteLabel: '', note: '' }];
+    if (D.imgTabs) return D.imgTabs.map((t, i) => ({ id: 'img' + i, label: t.label, cap: t.cap || '', noteLabel: t.noteLabel, note: t.note }));
+    return [{ id: 'map', label: 'Route map', cap: 'Route', noteLabel: 'ROUTE NOTES', note: D.mapNote }]
+      .concat(D.slider ? [{ id: 'iter', label: D.slider.title, cap: 'Drag to compare', noteLabel: 'ITERATION NOTES', note: D.sliderNote }] : []);
+  }
+  onScroll = () => {
+    const doc = this.doc, max = Math.max(1, doc.scrollHeight - innerHeight), prog = Math.min(1, Math.max(0, doc.scrollTop / max));
+    const med = this.secMedia.current, obj = med && med.getBoundingClientRect().top < innerHeight * .6 ? 1 : 0;
+    const map = this.mapRef.current;
+    if (!this.state.mapIn && map && map.offsetParent && map.getBoundingClientRect().top < innerHeight * .8) this.setState({ mapIn: true });
+    if (this.d.health) {
+      const v = this.vigRef.current; if (v && !this.reduced) v.style.opacity = String(.6 * Math.pow(prog, 1.3));
+      if (prog < .9) this.survived = false;
+      if (!this.survived && prog >= .97) {
+        this.survived = true; const el = this.survRef.current;
+        if (el && el.animate) el.animate(this.reduced ? [{ opacity: 1 }, { opacity: 1, offset: .85 }, { opacity: 0 }] : [
+          { opacity: 0, transform: 'translate(-50%,-50%) scale(.7)' }, { opacity: 1, transform: 'translate(-50%,-50%) scale(1.06)', offset: .1 },
+          { opacity: .2, transform: 'translate(-50%,-50%) scale(1)', offset: .16 }, { opacity: 1, offset: .24 },
+          { opacity: 1, transform: 'translate(-50%,-50%) scale(1)', offset: .8 }, { opacity: 0, transform: 'translate(-50%,-50%) scale(1.04)' }], { duration: 1700, easing: 'linear' });
+      }
+    }
+    const key = Math.round(prog * 200) + '|' + obj;
+    if (key !== this.sk) { this.sk = key; this.setState({ prog, obj }); }
+  };
+  watchVideos() {
+    if (!this.vio && window.IntersectionObserver) this.vio = new IntersectionObserver(es => es.forEach(e => { const v = e.target; if (e.isIntersecting) { const p = v.play(); if (p && p.catch) p.catch(() => {}); } else v.pause(); }), { threshold: .5 });
+    document.querySelectorAll('video[data-autoplay]').forEach(v => { if (v._qw) return; v._qw = 1; v.muted = true; v.loop = true; v.playsInline = true; v.setAttribute('playsinline', ''); if (this.vio) this.vio.observe(v); });
+  }
+  componentDidMount() {
+    this.reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    addEventListener('scroll', this.onScroll, { passive: true }); addEventListener('resize', this.onScroll);
+    requestAnimationFrame(this.onScroll);
+    setTimeout(() => this.watchVideos(), 100);
+    const el = this.titleRef.current;
+    if (this.d.neon && el && el.animate && !this.reduced) el.animate([{ opacity: .1 }, { opacity: 1, offset: .08 }, { opacity: .25, offset: .14 }, { opacity: 1, offset: .22 }, { opacity: .55, offset: .4 }, { opacity: 1, offset: .46 }, { opacity: 1 }], { duration: 1400, delay: 350, fill: 'backwards' });
+  }
+  componentDidUpdate() { this.watchVideos(); }
+  componentWillUnmount() { removeEventListener('scroll', this.onScroll); removeEventListener('resize', this.onScroll); if (this.vio) this.vio.disconnect(); }
+  sDown = (e) => { this.setState({ drag: true }); this.sMove(e, true); };
+  sMove = (e, force) => {
+    if (!this.state.drag && force !== true) return;
+    const f = this.frameRef.current; if (!f) return;
+    const r = f.getBoundingClientRect();
+    this.setState({ pos: Math.max(0, Math.min(100, (e.clientX - r.left) / r.width * 100)) });
+  };
+  sUp = () => this.setState({ drag: false });
+  galGo(i) { const g = this.galRef.current; if (!g) return; const k = g.children[i]; if (k) g.scrollTo({ left: k.offsetLeft - 20, behavior: this.reduced ? 'auto' : 'smooth' }); }
+  galScroll = () => {
+    const g = this.galRef.current; if (!g || !g.children.length) return;
+    const w = g.children[0].offsetWidth + 12, i = Math.max(0, Math.min(g.children.length - 1, Math.round(g.scrollLeft / w)));
+    if (i !== this.state.gi) this.setState({ gi: i });
+  };
+  conveyorEl(n) {
+    const h = React.createElement, rtl = n === 1, dir = rtl ? 'csBeltL' : 'csBeltR';
+    const crate = (k, delay) => h('span', { key: 'c' + k, 'data-anim': '', style: { position: 'absolute', left: 0, top: '10px', width: '28px', height: '24px', animation: (rtl ? 'csCrateL' : 'csCrateR') + ' 11s linear ' + delay + 's infinite', willChange: 'transform' } }, [
+      h('span', { key: 't', style: { position: 'absolute', left: 0, top: '-7px', width: '28px', height: '7px', background: 'linear-gradient(90deg,#D3A86E,#E0BC88)', boxShadow: 'inset 0 0 0 1px rgba(60,35,10,.35)', transform: 'skewX(-45deg)', transformOrigin: '0 100%' } }),
+      h('span', { key: 's', style: { position: 'absolute', left: '28px', top: 0, width: '7px', height: '24px', background: 'linear-gradient(180deg,#8A6233,#6E4C26)', transform: 'skewY(-45deg)', transformOrigin: '0 0' } }),
+      h('span', { key: 'f', style: { position: 'absolute', inset: 0, background: '#B98A4E', boxShadow: 'inset 0 0 0 2px rgba(60,35,10,.55)', backgroundImage: 'linear-gradient(45deg, transparent 46%, rgba(60,35,10,.45) 47% 53%, transparent 54%), linear-gradient(-45deg, transparent 46%, rgba(60,35,10,.45) 47% 53%, transparent 54%)' } }),
+    ]);
+    const legs = []; for (let i = 0; i < 8; i++) legs.push(h('span', { key: 'l' + i, style: { position: 'absolute', left: (30 + i * 110) + 'px', top: '58px', width: '8px', height: '14px', background: 'linear-gradient(90deg,#2A3756,#1A2440)' } }));
+    return h('div', { key: 'belt' + n, style: { position: 'relative', height: '76px' } }, legs.concat([
+      crate(1, rtl ? 0 : -3), crate(2, rtl ? -5.5 : -8.5),
+      h('span', { key: 'top', 'data-anim': '', style: { position: 'absolute', left: '-20px', right: '-20px', top: '34px', height: '10px', background: 'repeating-linear-gradient(90deg, #3A4766 0 22px, #222C47 22px 24px, #445174 24px 46px, #222C47 46px 48px)', transform: 'skewX(-45deg)', transformOrigin: '0 100%', animation: dir + ' .44s linear infinite', boxShadow: 'inset 0 1px 0 rgba(255,255,255,.18)' } }),
+      h('span', { key: 'front', style: { position: 'absolute', left: 0, right: 0, top: '44px', height: '14px', background: 'linear-gradient(180deg,#26324F 0%,#151D32 60%,#0B111F 100%)', borderTop: '1px solid rgba(255,196,61,.6)', boxShadow: '0 6px 10px rgba(0,0,0,.35)' } }),
+      h('span', { key: 'roll', 'data-anim': '', style: { position: 'absolute', left: 0, right: 0, top: '48px', height: '5px', background: 'repeating-linear-gradient(90deg, rgba(255,196,61,0) 0 18px, rgba(255,196,61,.55) 18px 24px)', animation: dir + ' .44s linear infinite' } }),
+    ]));
+  }
+  neonEl() {
+    const tube = (k, c, top, anim) => React.createElement('span', { key: k, 'data-anim': '', style: { position: 'absolute', left: '8%', right: '8%', top: top + 'px', height: '2px', borderRadius: '2px', background: '#fff', boxShadow: '0 0 4px ' + c + ', 0 0 10px ' + c + ', 0 0 22px ' + c, animation: anim } });
+    return React.createElement('div', { key: 'neon', style: { position: 'relative', height: '24px' } }, [tube('p', 'rgba(255,79,200,.9)', 6, 'csNeonA 7s linear infinite'), tube('c', 'rgba(80,230,255,.85)', 16, 'csNeonB 9s linear infinite')]);
+  }
+  bannerFxEl() {
+    const h = React.createElement, D = this.d, kids = [];
+    let s = 7; const rnd = () => (s = (s * 9301 + 49297) % 233280) / 233280;
+    if (D.rain) kids.push(...Array.from({ length: 26 }, (_, k) => { const x = rnd() * 112, dur = .7 + rnd() * .6, dl = -rnd() * 2, len = 10 + rnd() * 14, o = .14 + rnd() * .2;
+      return h('span', { key: 'r' + k, 'data-anim': '', style: { position: 'absolute', left: x + '%', top: 0, width: '1px', height: len + 'px', background: 'linear-gradient(180deg, rgba(190,225,255,0), rgba(190,225,255,' + o + '))', animation: 'csRain ' + dur + 's linear ' + dl + 's infinite' } }); }));
+    if (D.fireflies) kids.push(...Array.from({ length: 16 }, (_, k) => { const x = 4 + rnd() * 92, y = 28 + rnd() * 64, sz = 2.5 + rnd() * 2, dur = 6 + rnd() * 7, dl = -rnd() * 10, fx = (rnd() - .5) * 40, fy = -10 - rnd() * 30;
+      return h('span', { key: 'f' + k, 'data-anim': '', style: { position: 'absolute', left: x + '%', top: y + '%', width: sz + 'px', height: sz + 'px', borderRadius: '50%', background: '#F2FFB0', boxShadow: '0 0 6px #E8FF7A, 0 0 14px rgba(214,255,90,.7)', '--fx': fx + 'px', '--fy': fy + 'px', animation: 'csFly ' + dur + 's ease-in-out ' + dl + 's infinite' } }); }));
+    return h('div', { key: 'bfx', 'aria-hidden': true, style: { position: 'absolute', inset: 0, overflow: 'hidden', pointerEvents: 'none', zIndex: 1 } }, kids);
+  }
+  renderVals() {
+    const D = this.d, s = this.state, m = D.map || { W: 1, H: 1, path: 'M0 0', src: '', alt: '', walk: false };
+    const tabDefs = this.tabDefs(), tab = tabDefs.some(t => t.id === s.tab) ? s.tab : tabDefs[0].id, curTab = tabDefs.find(t => t.id === tab);
+    const blank = 'data:image/gif;base64,R0lGODlhAQABAAAAACw=';
+    let col = 0; const raw = D.stats.map(([k, v]) => ({ k: k.toUpperCase(), v: v || 'TBD', wide: /^(Role|Tools)$/.test(k) || (v || '').length > 22 }));
+    const stats = raw.map((x, i) => { let wide = x.wide; if (!wide) { if (col === 0 && (!raw[i + 1] || raw[i + 1].wide)) wide = true; else col = 1 - col; } return { ...x, span: wide ? '1 / -1' : 'auto' }; });
+    const fullCut = !D.hero;
+    const item = (g) => ({ ...g, fit: g.fit || (/map/.test(g.src) || g.type === 'video' ? 'contain' : 'cover'), bg: g.bg || '#060B17', isVideo: g.type === 'video', isImg: g.type !== 'video' });
+    const total = D.gallery.length;
+    return {
+      chromeLabel: 'Case study · ' + D.title.replace(/ (Level|Collection)$/, ''),
+      objText: s.obj ? 'Get in touch' : 'See it in engine ↓',
+      objTap: () => { if (s.obj) dispatchEvent(new Event('qs-open-contact')); else { const el = this.secMedia.current; if (el) scrollTo({ top: el.getBoundingClientRect().top + scrollY - 96, behavior: this.reduced ? 'auto' : 'smooth' }); } },
+      d: {
+        ...D, kicker: 'Case study · ' + D.kicker, hasHook: !!D.hook, hasGoal: !!D.goal, hasLogo: !!D.logo, noLogo: !D.logo, hasCutout: !!D.cutout, hasQuote: !!D.quote, quote: D.quote || {},
+        hasGoals: !!D.goals, goalsLabel: D.goalsLabel || 'DESIGN GOALS', goalsList: (D.goals || []).map(t => typeof t === 'string' ? { t, links: [], hasLinks: false } : { ...t, hasLinks: !!(t.links && t.links.length) }),
+        hasContrib: !!D.contrib, hasChar: !!D.character, character: D.character || {}, hasDev: !!D.dev, hasStage: !D.noPanel, hasLego: !!D.lego, lego: D.lego || {}, legoParas: D.lego ? D.lego.body.map(t => ({ t })) : [],
+        hasHero: !!D.hero, heroBox: D.hero ? '#080E1C' : 'radial-gradient(ellipse at 50% 70%,#1B3E86 0%,#0B1A3A 70%)', heroPos: D.cutout && D.hero ? '30% center' : 'center', heroFx: D.heroFx || 'none',
+        cut: fullCut ? { l: '0', r: '0', w: '100%', h: '96%', pos: 'center bottom' } : { l: 'auto', r: '2%', w: 'auto', h: '88%', pos: 'right bottom' },
+        titleGlow: D.neon ? '0 0 4px rgba(255,255,255,.6), 0 0 14px rgba(255,79,200,.85), 0 0 30px rgba(255,79,200,.5)' : 'none',
+        health: !!D.health, hasDivider: !!D.divider, hasSys: !!D.systems, hasHonors: !!D.honors, honorList: D.honors || [],
+        devNo: '02', sysNo: D.dev ? '03' : '02', mediaNo: '0' + (2 + (D.dev ? 1 : 0) + (D.systems ? 1 : 0)),
+        stats, overview: D.overview.map(t => ({ t })),
+        map: { ...m, srcOk: m.src || blank, ar: m.W + '/' + m.H, vb: '0 0 ' + m.W + ' ' + m.H, mw: m.W / 50, sw: m.ghost ? m.W / 300 : m.W / 200, sw2: m.ghost ? m.W / 150 : m.W / 90, o1: m.ghost ? .8 : 1, o2: m.ghost ? .3 : .55, dash: m.ghost ? (m.W / 160) + ' ' + (m.W / 120) : (m.W / 110) + ' ' + (m.W / 170), wd: m.path === 'M0 0' ? 'none' : 'inline' },
+        slider: D.slider ? { ...D.slider, aOk: D.slider.a, bOk: D.slider.b } : { aOk: blank, bOk: blank },
+      },
+      tabs: {
+        n: tabDefs.length,
+        items: tabDefs.map(t => { const sel = t.id === tab; return { label: t.label, sel: sel ? 'true' : 'false', pick: () => this.setState({ tab: t.id }, this.onScroll), bg: sel ? '#FFC43D' : 'rgba(255,196,61,.08)', fg: sel ? '#0B1424' : '#DCE4F5' }; }),
+        cap: curTab.cap, mapD: tab === 'map' ? 'block' : 'none', iterD: tab === 'iter' ? 'block' : 'none',
+        imgs: (D.imgTabs || []).map((t, i) => ({ ...t, d: tab === 'img' + i ? 'block' : 'none', bg: t.bg || '#060B17' })),
+      },
+      colNote: { label: curTab.noteLabel, t: curTab.note },
+      mapDash: s.mapIn || this.reduced ? 0 : 100,
+      sl: { clip: 'inset(0 ' + (100 - s.pos) + '% 0 0)', left: s.pos + '%' },
+      mapRef: this.mapRef, frameRef: this.frameRef, sDown: this.sDown, sMove: this.sMove, sUp: this.sUp,
+      dev: (D.dev || []).map((st, i, a) => ({ ...st, num: String(i + 1).padStart(2, '0'), isVideo: st.type === 'video', isImg: st.type !== 'video', hasNext: i < a.length - 1 })),
+      sys: (D.systems || []).map((c, i) => { const open = s.sysOpen === i, n = c.shots.length; return { ...c, num: String(i + 1).padStart(2, '0'), exp: open ? 'true' : 'false', rows: open ? '1fr' : '0fr', o: open ? 1 : 0, dl: open ? '120ms' : '0ms', hid: open ? 'false' : 'true', rot: open ? '135deg' : '0deg',
+        cardBg: open ? '#0A1428' : '#080E1C', signBg: open ? '#FFC43D' : 'transparent', signFg: open ? '#0B1424' : '#FFC43D', bd: open ? '#FFC43D' : 'rgba(255,196,61,.25)', thumbFit: c.ui ? 'contain' : 'cover', thumbBg: c.ui ? '#282828' : '#060B17',
+        shotW: n > 1 ? '88%' : '100%', paras: c.body.map(t => ({ t })), pieceList: c.pieces.map(t => ({ t })),
+        shotList: c.shots.map((sh, j) => ({ ...sh, count: String(j + 1).padStart(2, '0') + ' / ' + String(n).padStart(2, '0') })),
+        toggle: () => this.setState(st => ({ sysOpen: st.sysOpen === i ? null : i })) }; }),
+      gallery: D.gallery.map((g, i) => ({ ...item(g), count: String(i + 1).padStart(2, '0') + ' / ' + String(total).padStart(2, '0') })),
+      gdots: D.gallery.map((g, i) => ({ aria: 'Show ' + g.cap, size: i === s.gi ? '8px' : '5px', bg: i === s.gi ? '#FFC43D' : 'transparent', go: () => this.galGo(i) })),
+      galRef: this.galRef, galScroll: this.galScroll,
+      bannerFx: (D.rain || D.fireflies) && !this.reduced ? this.bannerFxEl() : null,
+      divider1: D.divider === 'conveyor' ? this.conveyorEl(1) : D.divider === 'neon' ? this.neonEl() : null,
+      divider2: D.divider === 'conveyor' ? this.conveyorEl(2) : D.divider === 'neon' ? this.neonEl() : null,
+      prog: (() => {
+        if (!D.health) return { w: (s.prog * 100) + '%', pct: Math.round(s.prog * 100) + '%', label: 'LEVEL PROGRESS', labelC: '#AEB8CC', bg: '#FFC43D', glow: 'none', pctC: '#FFC43D', l: '0', r: 'auto' };
+        const hp = Math.max(6, Math.round(100 - s.prog * 94)), c = hp > 60 ? '#4CC38A' : hp > 30 ? '#FFC43D' : '#FF4D4D', done = s.prog >= 0.985;
+        return { w: hp + '%', pct: done ? 'SURVIVED' : 'HP ' + hp, label: 'HEALTH', labelC: c, bg: c, glow: '0 0 8px ' + c, pctC: done ? '#7CFFB2' : c, l: 'auto', r: '0' };
+      })(),
+      secTop: this.secTop, secLevel: this.secLevel, secDev: this.secDev, secSys: this.secSys, secMedia: this.secMedia, titleRef: this.titleRef, vigRef: this.vigRef, survRef: this.survRef,
+    };
+  }
+}
+</script>
+</body>
+</html>

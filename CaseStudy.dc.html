@@ -1,0 +1,1272 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&family=Chakra+Petch:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+body{margin:0;background-color:#0B1A3A;background-image:linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px),radial-gradient(ellipse 1500px 1100px at 50% 0,rgba(27,62,134,.6),rgba(27,62,134,0) 70%);background-size:20px 20px,20px 20px,100% 100%;background-repeat:repeat,repeat,no-repeat;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+a:hover{color:#FFC43D}
+@keyframes csBar{from{width:0}to{width:100%}}
+@keyframes csFly{0%{transform:translate(0,0);opacity:0}20%{opacity:1}50%{transform:translate(var(--fx),var(--fy));opacity:.55}70%{opacity:1}100%{transform:translate(calc(var(--fx) * -.5),calc(var(--fy) * 1.8));opacity:0}}
+@keyframes csRain{from{transform:translate3d(0,-120px,0) rotate(12deg)}to{transform:translate3d(-130px,640px,0) rotate(12deg)}}
+@keyframes csRipple{0%{transform:scale(.2);opacity:0}10%{opacity:.9}100%{transform:scale(1.6);opacity:0}}
+@keyframes csSway{0%,100%{transform:rotate(-5deg)}50%{transform:rotate(5deg)}}
+@keyframes csBob{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+@keyframes csBeam{0%,100%{transform:rotate(-14deg)}50%{transform:rotate(14deg)}}
+@keyframes csBlink{0%,60%,100%{opacity:1}65%,95%{opacity:.15}}
+@keyframes csRotor{from{transform:scaleX(1)}to{transform:scaleX(.2)}}
+@keyframes csBelt{from{background-position:0 0}to{background-position:48px 0}}
+@keyframes csBeltX{from{transform:translate3d(-48px,0,0)}to{transform:translate3d(0,0,0)}}
+@keyframes csCrate{0%{transform:translate(-70px,0) rotate(0);opacity:1;animation-timing-function:linear}57%{transform:translate(820px,0) rotate(0);animation-timing-function:cubic-bezier(.45,0,.9,.55)}60%{transform:translate(862px,18px) rotate(14deg);animation-timing-function:cubic-bezier(.5,0,1,.7)}64%{transform:translate(900px,70px) rotate(3deg);animation-timing-function:ease-out}65.5%{transform:translate(905px,63px) rotate(0);animation-timing-function:ease-in}67%{transform:translate(912px,70px) rotate(0);animation-timing-function:linear}93%{transform:translate(1350px,70px) rotate(0);opacity:1;animation-timing-function:cubic-bezier(.45,0,.9,.55)}96%{transform:translate(1390px,108px) rotate(22deg);opacity:1;animation-timing-function:cubic-bezier(.5,0,1,.7)}100%{transform:translate(1420px,200px) rotate(40deg);opacity:0}}
+@keyframes csLamp{0%,100%{opacity:.95}8%{opacity:.4}10%{opacity:1}36%{opacity:.85}38%{opacity:.25}41%{opacity:.9}43%{opacity:.5}46%{opacity:1}70%{opacity:.9}72%{opacity:.6}74%{opacity:1}}
+@keyframes csFan{from{transform:rotate(0)}to{transform:rotate(1800deg)}}
+@keyframes csScanBar{from{transform:translateY(-30%)}to{transform:translateY(330%)}}
+@keyframes csScanLines{0%{opacity:.9}70%{opacity:.5}100%{opacity:0}}
+@keyframes csHolo{0%{opacity:0;filter:hue-rotate(80deg) saturate(1.8) brightness(1.4)}12%{opacity:.7}18%{opacity:.25}30%{opacity:.9}45%{opacity:.6;filter:hue-rotate(30deg) saturate(1.3) brightness(1.15)}100%{opacity:1;filter:none}}
+@keyframes csNeonA{0%,100%{opacity:1}47%{opacity:1}48%{opacity:.3}49%{opacity:1}51%{opacity:.5}52%{opacity:1}}
+@keyframes csNeonB{0%,100%{opacity:1}22%{opacity:1}23%{opacity:.35}25%{opacity:1}81%{opacity:1}82%{opacity:.45}83%{opacity:1}}
+@keyframes csSmoke{0%{transform:translate3d(0,30%,0) scale(.7);opacity:0}25%{opacity:.55}70%{opacity:.35}100%{transform:translate3d(var(--dx),-85%,0) scale(1.6);opacity:0}}
+@keyframes qsGlow{0%,100%{box-shadow:0 0 0 0 rgba(255,196,61,0)}50%{box-shadow:0 0 10px 2px rgba(255,196,61,.55)}}
+@keyframes qsPulse{0%{transform:rotate(45deg) scale(1);opacity:.75}70%,100%{transform:rotate(45deg) scale(2.8);opacity:0}}
+@media (prefers-reduced-motion: reduce){[data-anim]{animation:none !important}}
+</style>
+</helmet>
+<div data-screen-label="Case study" style="position:relative;width:1440px;margin:0 auto;background:transparent;color:#F2F4F8;font-family:'Instrument Sans',sans-serif;overflow:clip">
+<nav aria-label="Get in touch" style="position:fixed;left:max(0px, calc(50vw - 796px));top:50%;transform:translateY(-50%) translateX(max(-54px, min(0px, calc(50vw - 796px))));z-index:45;display:flex;flex-direction:column;align-items:center;gap:12px;padding:12px 10px;background:rgba(8,14,28,.9);backdrop-filter:blur(8px);border:1px solid rgba(255,196,61,.35);border-right:3px solid #FFC43D;transition:transform 240ms cubic-bezier(.2,.8,.2,1)" style-hover="transform:translateY(-50%) translateX(0)" style-focus-within="transform:translateY(-50%) translateX(0)">
+  <div style="position:relative" onMouseEnter="{{ rail0.enter }}" onMouseLeave="{{ rail0.leave }}" onFocus="{{ rail0.enter }}" onBlur="{{ rail0.leave }}">
+      <a href="mailto:QuentinSmith.GD@gmail.com" target="_self" aria-label="Email" style="display:flex;align-items:center;justify-content:center;width:44px;height:44px;box-sizing:border-box;border:1px solid {{ rail0.bd }};background:{{ rail0.bg }};text-decoration:none;transition:all 160ms ease-out"><img src="assets/icons/gmail.png" alt="" style="display:block;width:22px;height:auto;filter:none"></a>
+      <span aria-hidden="true" style="position:absolute;left:58px;top:50%;display:flex;align-items:center;gap:12px;padding:11px 16px;white-space:nowrap;background:rgba(8,14,28,.94);border:1px solid rgba(255,196,61,.5);box-shadow:0 10px 30px rgba(0,0,0,.35);font:600 14px 'JetBrains Mono',monospace;letter-spacing:.04em;color:#E8ECF4;pointer-events:none;transform-origin:left center;transform:translateY(-50%) scale({{ rail0.sc }});opacity:{{ rail0.op }};transition:transform 220ms cubic-bezier(.34,1.56,.64,1),opacity 160ms ease-out"><span style="color:#FFC43D;font-weight:700;letter-spacing:.1em;text-transform:uppercase">Email</span><span>QuentinSmith.GD@gmail.com</span></span>
+    </div>
+    <div style="position:relative" onMouseEnter="{{ rail1.enter }}" onMouseLeave="{{ rail1.leave }}" onFocus="{{ rail1.enter }}" onBlur="{{ rail1.leave }}">
+      <a href="https://www.linkedin.com/in/quentin-t-smith/" target="_blank" aria-label="LinkedIn" style="display:flex;align-items:center;justify-content:center;width:44px;height:44px;box-sizing:border-box;border:1px solid {{ rail1.bd }};background:{{ rail1.bg }};text-decoration:none;transition:all 160ms ease-out"><img src="assets/icons/linkedin-white.png" alt="" style="display:block;width:21px;height:auto;filter:none"></a>
+      <span aria-hidden="true" style="position:absolute;left:58px;top:50%;display:flex;align-items:center;gap:12px;padding:11px 16px;white-space:nowrap;background:rgba(8,14,28,.94);border:1px solid rgba(255,196,61,.5);box-shadow:0 10px 30px rgba(0,0,0,.35);font:600 14px 'JetBrains Mono',monospace;letter-spacing:.04em;color:#E8ECF4;pointer-events:none;transform-origin:left center;transform:translateY(-50%) scale({{ rail1.sc }});opacity:{{ rail1.op }};transition:transform 220ms cubic-bezier(.34,1.56,.64,1),opacity 160ms ease-out"><span style="color:#FFC43D;font-weight:700;letter-spacing:.1em;text-transform:uppercase">LinkedIn</span><span>quentin-t-smith</span></span>
+    </div>
+    <div style="position:relative" onMouseEnter="{{ rail2.enter }}" onMouseLeave="{{ rail2.leave }}" onFocus="{{ rail2.enter }}" onBlur="{{ rail2.leave }}">
+      <a href="https://slothdev-gd.itch.io/" target="_blank" aria-label="itch.io" style="display:flex;align-items:center;justify-content:center;width:44px;height:44px;box-sizing:border-box;border:1px solid {{ rail2.bd }};background:{{ rail2.bg }};text-decoration:none;transition:all 160ms ease-out"><img src="assets/icons/itch-white.png" alt="" style="display:block;width:23px;height:auto;filter:none"></a>
+      <span aria-hidden="true" style="position:absolute;left:58px;top:50%;display:flex;align-items:center;gap:12px;padding:11px 16px;white-space:nowrap;background:rgba(8,14,28,.94);border:1px solid rgba(255,196,61,.5);box-shadow:0 10px 30px rgba(0,0,0,.35);font:600 14px 'JetBrains Mono',monospace;letter-spacing:.04em;color:#E8ECF4;pointer-events:none;transform-origin:left center;transform:translateY(-50%) scale({{ rail2.sc }});opacity:{{ rail2.op }};transition:transform 220ms cubic-bezier(.34,1.56,.64,1),opacity 160ms ease-out"><span style="color:#FFC43D;font-weight:700;letter-spacing:.1em;text-transform:uppercase">itch.io</span><span>slothdev-gd</span></span>
+    </div>
+    <div style="position:relative" onMouseEnter="{{ rail3.enter }}" onMouseLeave="{{ rail3.leave }}" onFocus="{{ rail3.enter }}" onBlur="{{ rail3.leave }}">
+      <a href="assets/resume/Quentin_Smith_-_Resume_ATS.pdf" download="Quentin_Smith_-_Resume.pdf" aria-label="Download resume" style="display:flex;align-items:center;justify-content:center;width:44px;height:44px;box-sizing:border-box;border:1px solid {{ rail3.bd }};background:{{ rail3.bg }};text-decoration:none;transition:all 160ms ease-out"><img src="assets/icons/document.svg" alt="" style="display:block;width:24px;height:auto;filter:brightness(0) invert(1)"></a>
+      <span aria-hidden="true" style="position:absolute;left:58px;top:50%;display:flex;align-items:center;gap:12px;padding:11px 16px;white-space:nowrap;background:rgba(8,14,28,.94);border:1px solid rgba(255,196,61,.5);box-shadow:0 10px 30px rgba(0,0,0,.35);font:600 14px 'JetBrains Mono',monospace;letter-spacing:.04em;color:#E8ECF4;pointer-events:none;transform-origin:left center;transform:translateY(-50%) scale({{ rail3.sc }});opacity:{{ rail3.op }};transition:transform 220ms cubic-bezier(.34,1.56,.64,1),opacity 160ms ease-out"><span style="color:#FFC43D;font-weight:700;letter-spacing:.1em;text-transform:uppercase">Resume</span><span>Download (.pdf)</span></span>
+    </div>
+</nav>
+  {{ droneEl }}
+  {{ crateLayer }}
+
+  <!-- sticky nav + level progress -->
+  <div style="position:sticky;top:0;z-index:50">
+    <nav style="height:64px;display:flex;align-items:center;justify-content:space-between;padding:0 40px;background:rgba(8,14,28,.94)">
+      <a href="Portfolio Home.dc.html" aria-label="Quentin Smith — home" style="display:flex;align-items:center;gap:12px">
+        <span style="width:30px;height:30px;background:#FFC43D;color:#0B1424;display:grid;place-items:center;font:700 13px 'Chakra Petch',sans-serif;clip-path:polygon(50% 0,100% 50%,50% 100%,0 50%)">QS</span>
+      </a>
+      <div data-navkeys="" style="display:flex;align-items:center;gap:8px;font:600 15px 'Chakra Petch',sans-serif;letter-spacing:.1em;text-transform:uppercase">
+        <span aria-hidden="true" title="Press Q" style="font:700 11px 'JetBrains Mono',monospace;color:#AEB8CC;min-width:22px;height:22px;box-sizing:border-box;display:inline-grid;place-items:center;border:1px solid #4A5878;border-bottom-width:3px;border-radius:4px;margin-right:10px">Q</span>
+        <a href="Portfolio Home.dc.html" style="padding:8px 16px;color:#C9D1E0">Home</a>
+      <a href="Work.dc.html" style="padding:8px 16px;background:#FFC43D;color:#0B1424">Work</a>
+        <a href="About.dc.html" style="padding:8px 16px;color:#C9D1E0">About</a>
+        <a href="Resume.dc.html" data-resume="" style="padding:8px 16px;color:#C9D1E0">Resume</a>
+        <a href="About.dc.html#contact" style="padding:8px 16px;color:#C9D1E0">Contact</a>
+        <span aria-hidden="true" title="Press E" style="font:700 11px 'JetBrains Mono',monospace;color:#AEB8CC;min-width:22px;height:22px;box-sizing:border-box;display:inline-grid;place-items:center;border:1px solid #4A5878;border-bottom-width:3px;border-radius:4px;margin-left:10px">E</span>
+      </div>
+    </nav>
+    <div style="position:relative;height:22px;background:rgba(8,14,28,.94);border-bottom:1px solid rgba(255,196,61,.35);display:flex;align-items:center;gap:14px;padding:0 40px">
+      <span style="font:600 10px 'JetBrains Mono',monospace;letter-spacing:.14em;color:{{ prog.labelC }};white-space:nowrap">{{ prog.label }}</span>
+      <div style="position:relative;flex:1;height:4px;background:#1E2C52">
+        <div style="position:absolute;left:{{ prog.l }};right:{{ prog.r }};top:0;bottom:0;width:{{ prog.w }};background:{{ prog.bg }};box-shadow:{{ prog.glow }};transition:width 120ms linear,background 300ms ease-out"></div>
+        <sc-for list="{{ cps }}" as="c" hint-placeholder-count="4">
+          <a href="#" onClick="{{ c.go }}" onMouseEnter="{{ c.enter }}" onMouseLeave="{{ progOff }}" onFocus="{{ c.enter }}" onBlur="{{ progOff }}" aria-label="Jump to {{ c.label }}" style="position:absolute;left:{{ c.left }};top:50%;width:24px;height:24px;margin:-12px 0 0 -12px;display:grid;place-items:center;cursor:pointer;text-decoration:none"><span style="width:{{ c.sz }};height:{{ c.sz }};transform:rotate(45deg) scale({{ c.ks }});background:{{ c.bg }};border:1.5px solid {{ c.bc }};box-shadow:{{ c.glow }};box-sizing:border-box;transition:background 200ms ease-out,width 160ms ease-out,height 160ms ease-out,transform 420ms cubic-bezier(.34,1.8,.64,1),box-shadow 300ms ease-out"></span><span style="position:absolute;left:50%;top:26px;white-space:nowrap;font:600 12px/16px 'Chakra Petch',sans-serif;letter-spacing:.1em;text-transform:uppercase;color:{{ c.fg }};background:{{ c.lbg }};border:1px solid #FFC43D;padding:3px 9px;pointer-events:none;opacity:{{ c.lo }};transform:translate(-50%,{{ c.ly }});transition:opacity 150ms ease-out,transform 220ms cubic-bezier(.34,1.56,.64,1)">{{ c.label }}</span></a>
+        </sc-for>
+      </div>
+      <span style="font:600 10px 'JetBrains Mono',monospace;letter-spacing:.1em;color:{{ prog.pctC }};min-width:34px;text-align:right">{{ prog.pct }}</span>
+    </div>
+  </div>
+
+
+  <!-- objective companion (+ Wolf's ledger on Oinkyuza) -->
+  <div style="position:fixed;left:max(48px, calc(50vw - 672px));bottom:32px;z-index:40;pointer-events:none">
+    <div ref="{{ followRef }}" style="position:relative;display:flex;flex-direction:column;align-items:stretch;gap:8px;min-width:300px;transform-origin:left center">
+      <span style="position:absolute;left:0;top:-26px;font:700 11px 'JetBrains Mono',monospace;letter-spacing:.12em;color:#0B1424;background:#FFC43D;padding:3px 8px;white-space:nowrap;transform-origin:left bottom;transform:{{ obj.tagT }};opacity:{{ obj.tagO }};transition:transform 320ms cubic-bezier(.34,1.56,.64,1) 200ms,opacity 200ms ease-out 200ms">! NEW OBJECTIVE</span>
+      <sc-if value="{{ d.waves }}" hint-placeholder-val="{{ false }}">
+        <div aria-live="polite" aria-label="{{ wave.aria }}" style="pointer-events:auto;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:9px 14px;background:rgba(8,14,28,.92);border:1px solid rgba(255,90,90,.6);box-shadow:0 0 16px rgba(255,70,70,.2),0 10px 30px rgba(0,0,0,.35);font:600 12px 'Chakra Petch',sans-serif;letter-spacing:.1em;text-transform:uppercase;color:#F2F4F8;white-space:nowrap">
+          <span style="display:flex;align-items:center;gap:8px;color:#FF6B6B"><span data-anim="" style="width:7px;height:7px;border-radius:50%;background:#FF4D4D;box-shadow:0 0 8px #FF4D4D;animation:csBlink 1.2s steps(1,end) infinite"></span>Wave</span>
+          <span data-wave="1" style="font:700 13px 'JetBrains Mono',monospace;font-variant-numeric:tabular-nums;letter-spacing:.06em">{{ wave.text }}</span>
+        </div>
+      </sc-if>
+      <sc-if value="{{ d.ledger }}" hint-placeholder-val="{{ false }}">
+        <div aria-live="polite" aria-label="{{ ledger.aria }}" style="pointer-events:auto;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:9px 14px;background:rgba(8,14,28,.92);border:1px solid rgba(255,79,200,.6);box-shadow:0 0 16px rgba(255,79,200,.25),0 10px 30px rgba(0,0,0,.35);font:600 12px 'Chakra Petch',sans-serif;letter-spacing:.1em;text-transform:uppercase;color:#F2F4F8;white-space:nowrap">
+          <span style="color:#FF5FD2">Wolf’s ledger</span>
+          <span style="display:flex;gap:6px">
+            <sc-for list="{{ ledger.pips }}" as="pp" hint-placeholder-count="3">
+              <span style="width:9px;height:9px;transform:rotate(45deg);border:1.5px solid #FF5FD2;background:{{ pp.bg }};box-shadow:{{ pp.glow }};transition:background 300ms ease-out,box-shadow 300ms ease-out"></span>
+            </sc-for>
+          </span>
+          <span data-ledger="1" style="font:600 12px 'JetBrains Mono',monospace;font-variant-numeric:tabular-nums;letter-spacing:.06em">{{ ledger.text }}</span>
+        </div>
+      </sc-if>
+      <a href="#" onClick="{{ objClick }}" aria-live="polite" aria-label="{{ obj.aria }}" style="pointer-events:auto;display:flex;align-items:stretch;font:600 13px 'Chakra Petch',sans-serif;letter-spacing:.1em;text-transform:uppercase;color:#F2F4F8;text-decoration:none;white-space:nowrap">
+        <span style="display:grid;place-items:center;width:42px;background:rgba(8,14,28,.92);border:1px solid rgba(255,196,61,.5);box-shadow:0 10px 30px rgba(0,0,0,.35);position:relative;z-index:1">{{ objDiamond }}</span>
+        <span style="flex:1;display:flex;align-items:center;gap:14px;padding:12px 18px 12px 14px;margin-left:-1px;background:{{ obj.bg }};border:1px solid rgba(255,196,61,.5);box-shadow:0 10px 30px rgba(0,0,0,.35);transform-origin:left center;transform:{{ obj.ps }};opacity:{{ obj.po }};pointer-events:{{ obj.pe }};transition:transform 420ms cubic-bezier(.34,1.56,.64,1),opacity 180ms ease-out,background 300ms ease-out">
+          <span style="color:#FFC43D">Objective</span>
+          <span>{{ obj.text }}</span>
+        </span>
+      </a>
+    </div>
+  </div>
+
+  <sc-if value="{{ d.health }}" hint-placeholder-val="{{ false }}"><div ref="{{ vigRef }}" aria-hidden="true" style="position:fixed;inset:0;z-index:44;pointer-events:none;opacity:0;background:radial-gradient(ellipse 80% 75% at 50% 50%, rgba(120,0,0,0) 62%, rgba(150,0,0,.18) 82%, rgba(180,0,0,.42) 100%);box-shadow:inset 0 0 90px rgba(190,0,0,.3);transition:opacity 200ms linear"></div></sc-if>
+  <sc-if value="{{ d.health }}" hint-placeholder-val="{{ false }}"><div ref="{{ survRef }}" aria-hidden="true" style="position:fixed;left:50%;top:44%;z-index:45;transform:translate(-50%,-50%);opacity:0;pointer-events:none;display:flex;flex-direction:column;align-items:center;gap:8px;padding:18px 44px;border:2px solid #7CFFB2;background:rgba(8,14,28,.9);box-shadow:0 0 40px rgba(124,255,178,.25)"><span style="font:700 84px/1 'Chakra Petch',sans-serif;letter-spacing:.14em;color:#7CFFB2;text-shadow:0 0 18px rgba(124,255,178,.7),0 0 44px rgba(124,255,178,.35)">SURVIVED</span><span style="font:600 12px 'JetBrains Mono',monospace;letter-spacing:.14em;color:#AEB8CC">ALL WAVES CLEARED</span></div></sc-if>
+
+  <!-- header -->
+  <header ref="{{ secTop }}" style="padding:40px 48px 0;display:flex;flex-direction:column;gap:20px">
+    <a href="Work.dc.html" style="align-self:flex-start;display:flex;align-items:center;gap:10px;font:600 13px 'JetBrains Mono',monospace;letter-spacing:.08em;color:#AEB8CC">◀ BACK TO WORK</a>
+    <div style="position:relative;aspect-ratio:21/9;background:{{ d.heroBox }};border-top:3px solid #FFC43D;overflow:hidden">
+      <sc-if value="{{ d.hasHero }}" hint-placeholder-val="{{ true }}"><img src="{{ d.hero }}" alt="{{ d.heroAlt }}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;filter:{{ d.heroFx }}"></sc-if>
+      {{ smoke }}
+      {{ bannerFx }}
+      <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(8,14,28,0) 18%,rgba(8,14,28,.72) 55%,rgba(8,14,28,.96) 100%)"></div>
+      <sc-if value="{{ d.hasCutout }}" hint-placeholder-val="{{ false }}"><img src="{{ d.cutout }}" alt="{{ d.cutoutAlt }}" style="position:absolute;right:{{ d.cut.r }};bottom:{{ d.cut.b }};height:{{ d.cut.h }};width:auto;z-index:1;filter:drop-shadow(0 24px 36px rgba(0,0,0,.55))"></sc-if>
+      <div style="position:absolute;left:64px;right:64px;bottom:52px;z-index:2;max-width:{{ d.textW }};display:flex;flex-direction:column;gap:14px">
+        <span style="font:600 12px 'JetBrains Mono',monospace;letter-spacing:.14em;color:#FFC43D;text-transform:uppercase">Case study · {{ d.kicker }}</span>
+        <sc-if value="{{ d.noLogo }}" hint-placeholder-val="{{ true }}"><h1 ref="{{ titleRef }}" style="margin:0;font:700 72px/0.95 'Chakra Petch',sans-serif;text-transform:uppercase;color:#fff;text-shadow:{{ d.titleGlow }}">{{ d.title }}</h1></sc-if><sc-if value="{{ d.hasLogo }}" hint-placeholder-val="{{ false }}"><h1 style="margin:0;line-height:0"><img src="{{ d.logo }}" alt="{{ d.title }}" style="height:96px;width:auto;display:block;filter:drop-shadow(0 6px 18px rgba(0,0,0,.45))"></h1></sc-if>
+        <p style="margin:0;max-width:62ch;font:400 18px/1.6 'Instrument Sans',sans-serif;color:#E6EBF5;text-wrap:pretty">{{ d.sub }}</p>
+        <sc-if value="{{ d.hasGoal }}" hint-placeholder-val="{{ true }}"><div style="display:flex;align-items:center;gap:12px"><span style="font:700 11px 'JetBrains Mono',monospace;letter-spacing:.14em;background:#FFC43D;color:#0B1424;padding:4px 8px;white-space:nowrap;flex-shrink:0">PROJECT GOAL</span><span style="min-width:0;font:600 19px/1.3 'Chakra Petch',sans-serif;color:#fff;letter-spacing:.02em;text-wrap:balance">{{ d.goal }}</span></div></sc-if>
+      </div>
+      <div style="position:absolute;top:16px;left:16px;width:22px;height:22px;border-left:2px solid #FFC43D;border-top:2px solid #FFC43D;pointer-events:none;z-index:3"></div>
+      <div style="position:absolute;top:16px;right:16px;width:22px;height:22px;border-right:2px solid #FFC43D;border-top:2px solid #FFC43D;pointer-events:none;z-index:3"></div>
+      <div style="position:absolute;bottom:16px;left:16px;width:22px;height:22px;border-left:2px solid #FFC43D;border-bottom:2px solid #FFC43D;pointer-events:none;z-index:3"></div>
+      <div style="position:absolute;bottom:16px;right:16px;width:22px;height:22px;border-right:2px solid #FFC43D;border-bottom:2px solid #FFC43D;pointer-events:none;z-index:3"></div>
+    </div>
+  </header>
+
+  <!-- stat bar -->
+  <section style="padding:0 48px">
+    <div ref="{{ statRef }}" style="display:grid;grid-auto-flow:column;grid-auto-columns:minmax(0,1fr);background:#080E1C;border:1px solid #26365E;border-top:none">
+      <sc-for list="{{ d.stats }}" as="s" hint-placeholder-count="5">
+        <div style="display:flex;flex-direction:column;gap:8px;padding:22px 24px;border-right:1px solid #26365E">
+          <span style="font:600 11px 'JetBrains Mono',monospace;letter-spacing:.14em;color:#FFC43D">{{ s.k }}</span>
+          <span data-tumble="{{ s.tum }}" data-ledger="{{ s.led }}" style="font:600 18px/1.3 'Chakra Petch',sans-serif;font-variant-numeric:tabular-nums;color:{{ s.c }}">{{ s.v }}</span>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+
+  <sc-if value="{{ d.hasDivider }}" hint-placeholder-val="{{ false }}"><div aria-hidden="true" style="padding:72px 48px 0">{{ divider1 }}</div></sc-if>
+  <!-- level: overview column + tabbed map window -->
+  <section ref="{{ secLevel }}" style="padding:96px 48px 0;display:grid;grid-template-columns:minmax(0,1fr) 720px;gap:64px;align-items:start">
+    <aside style="position:{{ d.colPos }};top:118px;display:flex;flex-direction:column;padding-top:6px">
+      <span style="font:600 12px 'JetBrains Mono',monospace;letter-spacing:.14em;color:#FFC43D">01 · BRIEFING</span>
+      <h2 style="margin:12px 0 0;font:700 44px/1.05 'Chakra Petch',sans-serif;text-transform:uppercase;color:#fff;white-space:nowrap">Overview</h2>
+      <sc-if value="{{ d.hasQuote }}" hint-placeholder-val="{{ false }}">
+        <figure style="margin:24px 0 0;display:flex;flex-direction:column;gap:12px;max-width:44ch">
+          <span style="font:700 11px 'JetBrains Mono',monospace;letter-spacing:.14em;background:#FFC43D;color:#0B1424;padding:4px 8px;align-self:flex-start">PROJECT GOAL</span>
+          <blockquote style="margin:0;font:600 20px/1.45 'Instrument Sans',sans-serif;color:#fff;text-wrap:balance">{{ d.quote.t }}</blockquote>
+          <figcaption style="font:600 11px 'JetBrains Mono',monospace;letter-spacing:.14em;color:#AEB8CC">— {{ d.quote.by }} · <span style="color:#FFC43D">{{ d.quote.role }}</span></figcaption>
+        </figure>
+      </sc-if>
+      <sc-if value="{{ d.hasHook }}" hint-placeholder-val="{{ false }}"><p style="margin:24px 0 0;max-width:30ch;font:600 20px/1.45 'Instrument Sans',sans-serif;color:#fff;text-wrap:balance">“{{ d.hook }}”</p></sc-if>
+      <div style="display:flex;flex-direction:column;gap:20px;margin-top:24px">
+        <sc-for list="{{ d.overview }}" as="para" hint-placeholder-count="2">
+          <p style="margin:0;max-width:65ch;font:400 16px/1.7 'Instrument Sans',sans-serif;color:#DCE4F5;text-wrap:pretty">{{ para.t }}</p>
+        </sc-for>
+      </div>
+      <sc-if value="{{ d.hasGoals }}" hint-placeholder-val="{{ false }}">
+        <div style="display:flex;flex-direction:column;gap:14px;margin-top:32px">
+          <span style="font:600 11px 'JetBrains Mono',monospace;letter-spacing:.14em;color:#8E9AB3">{{ d.goalsLabel }}</span>
+          <ul style="margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:10px">
+            <sc-for list="{{ d.goalsList }}" as="g" hint-placeholder-count="3">
+              <li style="display:grid;grid-template-columns:14px minmax(0,1fr);gap:12px;align-items:baseline;max-width:65ch"><span style="display:block;width:7px;height:7px;background:#FFC43D;transform:translateY(-2px) rotate(45deg)"></span><span style="display:flex;flex-direction:column;gap:8px"><span style="font:400 16px/1.6 'Instrument Sans',sans-serif;color:#DCE4F5;text-wrap:pretty">{{ g.t }}</span><sc-if value="{{ g.hasLinks }}" hint-placeholder-val="{{ false }}"><span style="display:flex;flex-wrap:wrap;gap:8px"><sc-for list="{{ g.links }}" as="lk" hint-placeholder-count="1"><a href="{{ lk.href }}" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:8px;padding:5px 10px;border:1px solid rgba(255,196,61,.5);font:600 12px 'JetBrains Mono',monospace;letter-spacing:.04em;color:#FFC43D;text-decoration:none;transition:background 150ms ease-out,color 150ms ease-out" style-hover="background:#FFC43D;color:#0B1424">{{ lk.label }} ↗</a></sc-for></span></sc-if></span></li>
+            </sc-for>
+          </ul>
+        </div>
+      </sc-if>
+      <sc-if value="{{ d.hasContrib }}" hint-placeholder-val="{{ false }}">
+        <div style="display:flex;flex-direction:column;gap:12px;margin-top:32px">
+          <span style="font:600 11px 'JetBrains Mono',monospace;letter-spacing:.14em;color:#8E9AB3">CONTRIBUTIONS</span>
+          <p style="margin:0;max-width:65ch;font:400 16px/1.7 'Instrument Sans',sans-serif;color:#DCE4F5;text-wrap:pretty">{{ d.contrib }}</p>
+        </div>
+      </sc-if>
+      <sc-if value="{{ d.hasChar }}" hint-placeholder-val="{{ false }}">
+        <figure style="margin:36px 0 0;display:flex;flex-direction:column;gap:6px;align-items:flex-start">
+          <span style="font:600 11px 'JetBrains Mono',monospace;letter-spacing:.14em;color:#8E9AB3">{{ d.character.label }}</span>
+          <canvas ref="{{ charCanvas }}" width="380" height="281" role="img" aria-label="{{ d.character.alt }}" style="display:{{ charFx.cv }};width:100%;max-width:400px;height:auto"></canvas>
+          <div style="display:{{ charFx.im }};position:relative;width:100%;max-width:400px;aspect-ratio:380/281;overflow:hidden"><img src="{{ d.character.src }}" alt="{{ d.character.alt }}" loading="lazy" style="position:absolute;top:0;left:-15.79%;width:131.58%;height:auto;mix-blend-mode:lighten"></div>
+        </figure>
+      </sc-if>
+    </aside>
+    <sc-if value="{{ d.hasStage }}" hint-placeholder-val="{{ true }}">
+    <div style="position:relative;display:flex;flex-direction:column;background:#080E1C;box-shadow:0 0 0 1px rgba(255,196,61,.4),0 30px 60px rgba(0,0,0,.45)">
+      <div style="position:absolute;top:-7px;left:-7px;width:22px;height:22px;border-left:2px solid #FFC43D;border-top:2px solid #FFC43D;pointer-events:none;z-index:3"></div>
+      <div style="position:absolute;top:-7px;right:-7px;width:22px;height:22px;border-right:2px solid #FFC43D;border-top:2px solid #FFC43D;pointer-events:none;z-index:3"></div>
+      <div style="position:absolute;bottom:-7px;left:-7px;width:22px;height:22px;border-left:2px solid #FFC43D;border-bottom:2px solid #FFC43D;pointer-events:none;z-index:3"></div>
+      <div style="position:absolute;bottom:-7px;right:-7px;width:22px;height:22px;border-right:2px solid #FFC43D;border-bottom:2px solid #FFC43D;pointer-events:none;z-index:3"></div>
+      <div role="tablist" style="display:flex;align-items:center;gap:8px;padding:10px 14px;border-bottom:1px solid rgba(255,196,61,.4)">
+        <sc-if value="{{ d.multiTab }}" hint-placeholder-val="{{ true }}"><span style="font:600 11px 'JetBrains Mono',monospace;color:#8E9AB3;border:1px solid #3A4766;border-radius:4px;padding:2px 6px">Q</span></sc-if>
+        <sc-for list="{{ tabs.items }}" as="t" hint-placeholder-count="2">
+          <button onClick="{{ t.pick }}" role="tab" aria-selected="{{ t.sel }}" style="padding:8px 16px;border:0;background:{{ t.bg }};color:{{ t.fg }};font:600 15px 'Chakra Petch',sans-serif;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;white-space:nowrap;transition:background 150ms ease-out,color 150ms ease-out" style-hover="filter:brightness(1.2)">{{ t.label }}</button>
+        </sc-for>
+        <sc-if value="{{ d.multiTab }}" hint-placeholder-val="{{ true }}"><span style="font:600 11px 'JetBrains Mono',monospace;color:#8E9AB3;border:1px solid #3A4766;border-radius:4px;padding:2px 6px">E</span></sc-if>
+      </div>
+      <div ref="{{ mapRef }}" style="display:{{ tabs.mapD }};position:relative;width:100%;aspect-ratio:{{ d.map.ar }};background:#fff">
+      <img src="{{ d.map.srcOk }}" alt="{{ d.map.alt }}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain;display:block">
+      <svg viewBox="{{ d.map.vb }}" preserveAspectRatio="none" style="position:absolute;inset:0;width:100%;height:100%;display:block;pointer-events:none">
+        <defs>
+          <mask id="cs-pm" maskUnits="userSpaceOnUse" x="0" y="0" width="{{ d.map.W }}" height="{{ d.map.H }}">
+            <path d="{{ d.map.path }}" pathLength="100" style="fill:none;stroke:#fff;stroke-width:{{ d.map.mw }};stroke-dasharray:100 100;stroke-dashoffset:{{ mapFx.dash }};transition:stroke-dashoffset 1800ms cubic-bezier(.45,.05,.35,1) 200ms"></path>
+          </mask>
+        </defs>
+        <g style="display:{{ d.map.wd }}">
+        <path d="{{ d.map.path }}" mask="url(#cs-pm)" style="fill:none;stroke:#0B1424;stroke-width:{{ d.map.sw2 }};stroke-linecap:round;stroke-linejoin:round;opacity:{{ d.map.o2 }}"></path>
+        <path d="{{ d.map.path }}" mask="url(#cs-pm)" style="fill:none;stroke:#FFC43D;stroke-width:{{ d.map.sw }};stroke-dasharray:{{ d.map.dash }};stroke-linecap:round;stroke-linejoin:round;opacity:{{ d.map.o1 }}"></path>
+        <path ref="{{ pathRef }}" d="{{ d.map.path }}" style="fill:none;stroke:none"></path>
+        <g ref="{{ dotRef }}" style="opacity:0">
+          <circle r="{{ d.map.r }}" style="fill:#FFC43D;stroke:#0B1424;stroke-width:{{ d.map.rs }}"></circle>
+        </g>
+        </g>
+      </svg>
+      <sc-for list="{{ callouts }}" as="c" hint-placeholder-count="0">
+        <div data-co="" data-x="{{ c.x }}" data-y="{{ c.y }}" style="position:absolute;left:{{ c.l }};top:{{ c.t }};width:0;height:0;z-index:2;opacity:{{ c.o }};transition:opacity 200ms ease-out {{ c.d }}">
+          <span style="position:absolute;left:-6px;top:-6px;width:12px;height:12px;background:#FFC43D;border:2px solid #0B1424;box-sizing:border-box;transform:rotate(45deg)"></span>
+          <span data-chip="" style="position:absolute;left:{{ c.cl }};right:{{ c.cr }};top:{{ c.ct }};bottom:{{ c.cb }};transform:{{ c.tr }};white-space:nowrap;font:600 12px 'Chakra Petch',sans-serif;letter-spacing:.08em;text-transform:uppercase;color:#fff;background:rgba(8,14,28,.94);border:1px solid #FFC43D;box-shadow:{{ c.glow }};padding:4px 9px;transition:transform 320ms cubic-bezier(.34,1.56,.64,1) {{ c.d }},background 160ms ease-out,color 160ms ease-out">{{ c.label }}</span>
+        </div>
+      </sc-for>
+      </div>
+      <div ref="{{ frameRef }}" onPointerDown="{{ sDown }}" onPointerMove="{{ sMove }}" onPointerUp="{{ sUp }}" onPointerCancel="{{ sUp }}" style="display:{{ tabs.iterD }};position:relative;width:100%;aspect-ratio:1/1;background:#F4F2EC;touch-action:none;cursor:ew-resize;user-select:none">
+        <img src="{{ d.slider.bOk }}" alt="{{ d.slider.bAlt }}" draggable="false" style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain;display:block;background:#fff">
+        <div style="position:absolute;inset:0;clip-path:{{ sl.clip }};background:#F4F2EC">
+          <img src="{{ d.slider.aOk }}" alt="{{ d.slider.aAlt }}" draggable="false" style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain;display:block">
+        </div>
+        <span style="position:absolute;left:16px;top:16px;z-index:2;white-space:nowrap;font:700 12px 'JetBrains Mono',monospace;letter-spacing:.1em;background:#0B1424;color:#FFC43D;padding:5px 9px">{{ d.slider.aLabel }}</span>
+        <span style="position:absolute;right:16px;top:16px;z-index:2;white-space:nowrap;font:700 12px 'JetBrains Mono',monospace;letter-spacing:.1em;background:#FFC43D;color:#0B1424;padding:5px 9px">{{ d.slider.bLabel }}</span>
+        <div style="position:absolute;top:0;bottom:0;left:{{ sl.left }};width:3px;margin-left:-1.5px;background:#FFC43D;box-shadow:0 0 0 1px #0B1424"></div>
+        <button onKeyDown="{{ sKey }}" aria-label="Comparison slider: drag or use arrow keys" style="position:absolute;top:50%;left:{{ sl.left }};width:44px;height:44px;margin:-22px 0 0 -22px;border-radius:50%;background:#FFC43D;border:3px solid #0B1424;color:#0B1424;font:700 14px 'Chakra Petch',sans-serif;cursor:ew-resize;display:grid;place-items:center">◀▶</button>
+      </div>
+      <sc-for list="{{ tabs.imgs }}" as="im" hint-placeholder-count="0">
+        <div style="display:{{ im.d }};position:relative;width:100%;aspect-ratio:1/1;background:{{ im.bg }}">
+          <img src="{{ im.src }}" alt="{{ im.alt }}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain;display:block">
+        </div>
+      </sc-for>
+      <div style="display:flex;flex-direction:column;gap:10px;padding:22px 24px 26px;border-top:1px solid rgba(255,196,61,.4)">
+        <div style="display:flex;align-items:baseline;justify-content:space-between;gap:16px;flex-wrap:wrap"><span style="font:600 11px 'JetBrains Mono',monospace;letter-spacing:.14em;color:#8E9AB3">{{ colNote.label }}</span><span style="font:500 12px 'JetBrains Mono',monospace;color:#6F7C99;letter-spacing:.04em">{{ tabs.cap }}</span></div>
+        <p style="margin:0;max-width:72ch;font:400 16px/1.7 'Instrument Sans',sans-serif;color:#DCE4F5;text-wrap:pretty">{{ colNote.t }}</p>
+      </div>
+    </div>
+    </sc-if>
+    <sc-if value="{{ d.hasLego }}" hint-placeholder-val="{{ false }}">
+      <div style="position:relative;display:flex;flex-direction:column;gap:18px;padding:40px 44px 44px;background:#080E1C;box-shadow:0 0 0 1px rgba(255,196,61,.4),0 30px 60px rgba(0,0,0,.45)">
+        <div style="position:absolute;top:-7px;left:-7px;width:22px;height:22px;border-left:2px solid #FFC43D;border-top:2px solid #FFC43D;pointer-events:none;z-index:3"></div><div style="position:absolute;top:-7px;right:-7px;width:22px;height:22px;border-right:2px solid #FFC43D;border-top:2px solid #FFC43D;pointer-events:none;z-index:3"></div><div style="position:absolute;bottom:-7px;left:-7px;width:22px;height:22px;border-left:2px solid #FFC43D;border-bottom:2px solid #FFC43D;pointer-events:none;z-index:3"></div><div style="position:absolute;bottom:-7px;right:-7px;width:22px;height:22px;border-right:2px solid #FFC43D;border-bottom:2px solid #FFC43D;pointer-events:none;z-index:3"></div>
+        <span style="font:600 12px 'JetBrains Mono',monospace;letter-spacing:.14em;color:#FFC43D">PROCESS · HOW I BUILD SYSTEMS</span>
+        <h3 style="margin:0;font:700 34px/1.1 'Chakra Petch',sans-serif;text-transform:uppercase;color:#fff;text-wrap:balance;max-width:16ch">{{ d.lego.title }}</h3>
+        <sc-for list="{{ d.legoParas }}" as="lp" hint-placeholder-count="2">
+          <p style="margin:0;max-width:56ch;font:400 17px/1.7 'Instrument Sans',sans-serif;color:#DCE4F5;text-wrap:pretty">{{ lp.t }}</p>
+        </sc-for>
+        <div style="display:flex;flex-direction:column;gap:10px;margin-top:10px;padding-top:22px;border-top:1px solid rgba(255,196,61,.35);max-width:440px">
+          <span style="font:600 11px 'JetBrains Mono',monospace;letter-spacing:.14em;color:#8E9AB3">MOST VALUABLE LESSON</span>
+          <p style="margin:0;font:600 22px/1.4 'Instrument Sans',sans-serif;color:#fff;text-wrap:balance">{{ d.lego.lesson }}</p>
+        </div>
+        <img src="{{ d.lego.img }}" alt="" aria-hidden="true" style="position:absolute;right:-18px;bottom:-26px;height:170px;width:auto;filter:drop-shadow(0 14px 22px rgba(0,0,0,.55));pointer-events:none">
+      </div>
+    </sc-if>
+  </section>
+
+  <!-- dev path -->
+  <sc-if value="{{ d.hasDev }}" hint-placeholder-val="{{ false }}">
+  <section ref="{{ secDev }}" style="padding:48px 48px 0;display:flex;flex-direction:column">
+    <span style="font:600 12px 'JetBrains Mono',monospace;letter-spacing:.14em;color:#FFC43D">{{ d.devNo }} · DEV PATH</span>
+    <h2 style="margin:12px 0 0;font:700 44px/1.05 'Chakra Petch',sans-serif;text-transform:uppercase;color:#fff">{{ d.devTitle }}</h2>
+    <p style="margin:24px 0 0;max-width:62ch;font:400 19px/1.65 'Instrument Sans',sans-serif;color:#DCE4F5;text-wrap:pretty">{{ d.devIntro }}</p>
+    <div style="display:flex;flex-direction:column;margin-top:48px">
+      <sc-for list="{{ dev }}" as="st" hint-placeholder-count="5">
+        <div style="display:flex;flex-direction:column">
+          <div style="display:grid;grid-template-columns:560px minmax(0,1fr);gap:56px;align-items:center;direction:{{ st.dir }}">
+            <div style="direction:ltr;position:relative;aspect-ratio:16/9;background:#060B17;box-shadow:0 0 0 1px rgba(255,196,61,.4),0 24px 48px rgba(0,0,0,.4)">
+              <div style="position:absolute;inset:0;overflow:hidden">
+                <sc-if value="{{ st.isVideo }}" hint-placeholder-val="{{ false }}"><video data-autoplay="" src="{{ st.src }}" aria-label="{{ st.alt }}" preload="metadata" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block"></video></sc-if>
+                <sc-if value="{{ st.isImg }}" hint-placeholder-val="{{ true }}"><img src="{{ st.src }}" alt="{{ st.alt }}" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block"></sc-if>
+              </div>
+              <div style="position:absolute;top:-7px;left:-7px;width:22px;height:22px;border-left:2px solid #FFC43D;border-top:2px solid #FFC43D;pointer-events:none;z-index:3"></div><div style="position:absolute;top:-7px;right:-7px;width:22px;height:22px;border-right:2px solid #FFC43D;border-top:2px solid #FFC43D;pointer-events:none;z-index:3"></div><div style="position:absolute;bottom:-7px;left:-7px;width:22px;height:22px;border-left:2px solid #FFC43D;border-bottom:2px solid #FFC43D;pointer-events:none;z-index:3"></div><div style="position:absolute;bottom:-7px;right:-7px;width:22px;height:22px;border-right:2px solid #FFC43D;border-bottom:2px solid #FFC43D;pointer-events:none;z-index:3"></div>
+              <span style="position:absolute;left:50%;top:-14px;margin-left:-14px;width:28px;height:28px;display:grid;place-items:center;z-index:4"><span style="position:absolute;inset:4px;background:#FFC43D;border:2px solid #0B1424;transform:rotate(45deg)"></span><span style="position:relative;font:700 10px 'JetBrains Mono',monospace;color:#0B1424">{{ st.num }}</span></span>
+            </div>
+            <div style="direction:ltr;display:flex;flex-direction:column;gap:16px;max-width:600px">
+              <span style="font:600 13px 'JetBrains Mono',monospace;letter-spacing:.14em;color:#FFC43D">STEP {{ st.num }} · {{ st.tag }}</span>
+              <h3 style="margin:0;font:700 40px/1.1 'Chakra Petch',sans-serif;text-transform:uppercase;color:#fff;text-wrap:balance">{{ st.title }}</h3>
+              <p style="margin:0;font:400 19px/1.65 'Instrument Sans',sans-serif;color:#DCE4F5;text-wrap:pretty">{{ st.t }}</p>
+            </div>
+          </div>
+          <sc-if value="{{ st.hasNext }}" hint-placeholder-val="{{ true }}">
+            <svg data-conn="" width="1344" height="140" viewBox="0 0 1344 140" aria-hidden="true" style="display:block;overflow:visible;position:relative;z-index:5;pointer-events:none">
+              <defs><mask id="cs-dm{{ st.num }}" maskUnits="userSpaceOnUse" x="-40" y="-40" width="1424" height="220"><path data-rev="" d="{{ st.conn }}" pathLength="100" style="fill:none;stroke:#fff;stroke-width:10;stroke-dasharray:100 100;stroke-dashoffset:{{ st.off0 }}"></path></mask></defs>
+              <path d="{{ st.conn }}" transform="translate(0 7)" style="fill:none;stroke:#000;stroke-width:38;stroke-linecap:butt;opacity:.28"></path>
+              <path d="{{ st.conn }}" style="fill:none;stroke:rgba(255,196,61,.32);stroke-width:38;stroke-linecap:butt"></path>
+              <path d="{{ st.conn }}" style="fill:none;stroke:#0D1733;stroke-width:34;stroke-linecap:butt"></path>
+              <path d="{{ st.conn }}" style="fill:none;stroke:rgba(255,255,255,.04);stroke-width:22;stroke-linecap:butt"></path>
+              <path d="{{ st.conn }}" style="fill:none;stroke:#FFC43D;stroke-width:2;stroke-dasharray:8 9;stroke-linecap:round;opacity:.16"></path>
+              <path data-track="" d="{{ st.conn }}" mask="url(#cs-dm{{ st.num }})" style="fill:none;stroke:#FFC43D;stroke-width:2.5;stroke-dasharray:8 9;stroke-linecap:round"></path>
+              <g data-jun="" transform="scale(0)"><ellipse cx="0" cy="2" rx="20" ry="4" style="fill:#000;opacity:.35"></ellipse><image href="{{ d.rider }}" x="-31" y="-77" width="62" height="79"></image></g>
+            </svg>
+          </sc-if>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+  </sc-if>
+
+  <!-- systems -->
+  <sc-if value="{{ d.hasSys }}" hint-placeholder-val="{{ false }}">
+  <section ref="{{ secSys }}" style="padding:96px 48px 0;display:flex;flex-direction:column">
+    <span style="font:600 12px 'JetBrains Mono',monospace;letter-spacing:.14em;color:#FFC43D">{{ d.sysNo }} · SYSTEMS</span>
+    <h2 style="margin:12px 0 0;font:700 44px/1.05 'Chakra Petch',sans-serif;text-transform:uppercase;color:#fff;white-space:nowrap">Systems I built</h2>
+    <p style="margin:20px 0 0;max-width:65ch;font:400 16px/1.7 'Instrument Sans',sans-serif;color:#DCE4F5;text-wrap:pretty">{{ d.sysIntro }}</p>
+    <div style="display:flex;flex-direction:column;gap:12px;margin-top:36px">
+      <sc-for list="{{ sys }}" as="c" hint-placeholder-count="5">
+        <div style="display:flex;flex-direction:column;background:{{ c.cardBg }};box-shadow:0 0 0 1px {{ c.bd }};transition:box-shadow 320ms ease-out,background 320ms ease-out">
+          <button onClick="{{ c.toggle }}" aria-expanded="{{ c.exp }}" style="display:grid;grid-template-columns:44px 176px minmax(0,1fr) 36px;gap:24px;align-items:center;width:100%;padding:16px 24px 16px 20px;border:0;background:transparent;color:inherit;text-align:left;cursor:pointer;transition:background 200ms ease-out" style-hover="background:rgba(255,196,61,.05)">
+            <span style="font:700 14px 'JetBrains Mono',monospace;color:#FFC43D">{{ c.num }}</span>
+            <span style="position:relative;display:block;width:176px;aspect-ratio:16/9;background:{{ c.thumbBg }};overflow:hidden;box-shadow:0 0 0 1px rgba(255,196,61,.25)"><img src="{{ c.thumb }}" alt="" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:{{ c.thumbFit }};display:block"></span>
+            <span style="display:flex;flex-direction:column;gap:6px;min-width:0">
+              <span style="font:600 22px/1.2 'Chakra Petch',sans-serif;letter-spacing:.04em;text-transform:uppercase;color:#fff">{{ c.title }}</span>
+              <span style="font:400 16px/1.55 'Instrument Sans',sans-serif;color:#AEB8CC;text-wrap:pretty">{{ c.line }}</span>
+            </span>
+            <span aria-hidden="true" style="width:34px;height:34px;display:grid;place-items:center;border:1px solid #FFC43D;background:{{ c.signBg }};transition:background 320ms ease-out"><span style="position:relative;width:12px;height:12px;transform:rotate({{ c.rot }});transition:transform 420ms cubic-bezier(.22,1,.36,1)"><span style="position:absolute;left:0;right:0;top:5px;height:2px;background:{{ c.signFg }}"></span><span style="position:absolute;top:0;bottom:0;left:5px;width:2px;background:{{ c.signFg }}"></span></span></span>
+          </button>
+          <div aria-hidden="{{ c.hid }}" style="display:grid;grid-template-rows:{{ c.rows }};transition:grid-template-rows 520ms cubic-bezier(.22,1,.36,1)">
+            <div style="min-height:0;overflow:hidden">
+              <div style="display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:40px;padding:12px 24px 32px 88px;opacity:{{ c.o }};transform:translateY({{ c.ty }});transition:opacity 360ms ease-out {{ c.dl }},transform 520ms cubic-bezier(.22,1,.36,1)">
+                <div style="display:flex;flex-direction:column;gap:12px">
+                  <div style="position:relative;aspect-ratio:16/10;background:#1C1E22;box-shadow:0 0 0 1px rgba(255,196,61,.35);overflow:hidden">
+                    <sc-for list="{{ c.shotList }}" as="sh" hint-placeholder-count="1">
+                      <img src="{{ sh.src }}" alt="{{ sh.alt }}" aria-hidden="{{ sh.hid }}" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain;display:block;opacity:{{ sh.o }};transition:opacity 360ms ease-out">
+                    </sc-for>
+                    <sc-if value="{{ c.multi }}" hint-placeholder-val="{{ false }}">
+                      <button onClick="{{ c.prev }}" aria-label="Previous image" style="position:absolute;left:12px;top:50%;margin-top:-20px;width:40px;height:40px;border-radius:50%;border:1px solid rgba(255,255,255,.25);background:rgba(8,14,28,.7);color:#fff;font:600 14px 'Chakra Petch',sans-serif;cursor:pointer;transition:background 150ms ease-out" style-hover="background:#FFC43D;border-color:#FFC43D;color:#0B1424">◀</button>
+                      <button onClick="{{ c.next }}" aria-label="Next image" style="position:absolute;right:12px;top:50%;margin-top:-20px;width:40px;height:40px;border-radius:50%;border:1px solid rgba(255,255,255,.25);background:rgba(8,14,28,.7);color:#fff;font:600 14px 'Chakra Petch',sans-serif;cursor:pointer;transition:background 150ms ease-out" style-hover="background:#FFC43D;border-color:#FFC43D;color:#0B1424">▶</button>
+                    </sc-if>
+                  </div>
+                  <div style="display:flex;align-items:center;justify-content:space-between;gap:16px">
+                    <div style="display:flex;align-items:baseline;gap:12px;min-width:0">
+                      <span style="font:600 12px 'JetBrains Mono',monospace;letter-spacing:.08em;color:#FFC43D;white-space:nowrap">{{ c.count }}</span>
+                      <span style="font:500 13px 'JetBrains Mono',monospace;color:#AEB8CC;letter-spacing:.04em">{{ c.cap }}</span>
+                    </div>
+                    <sc-if value="{{ c.multi }}" hint-placeholder-val="{{ false }}">
+                      <div style="display:flex;gap:8px;flex-shrink:0">
+                        <sc-for list="{{ c.shotList }}" as="sh" hint-placeholder-count="2">
+                          <button onClick="{{ sh.pick }}" aria-label="{{ sh.cap }}" aria-current="{{ sh.cur }}" style="position:relative;width:72px;aspect-ratio:16/10;padding:0;border:0;background:#1C1E22;outline:2px solid {{ sh.ol }};outline-offset:2px;opacity:{{ sh.to }};cursor:pointer;overflow:hidden;transition:opacity 160ms ease-out,outline-color 160ms ease-out" style-hover="opacity:1"><img src="{{ sh.src }}" alt="" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block"></button>
+                        </sc-for>
+                      </div>
+                    </sc-if>
+                  </div>
+                </div>
+                <div style="display:flex;flex-direction:column;gap:16px">
+                  <sc-for list="{{ c.paras }}" as="p" hint-placeholder-count="2">
+                    <p style="margin:0;max-width:60ch;font:400 16px/1.7 'Instrument Sans',sans-serif;color:#DCE4F5;text-wrap:pretty">{{ p.t }}</p>
+                  </sc-for>
+                  <div style="display:flex;flex-direction:column;gap:10px;margin-top:8px">
+                    <span style="font:600 11px 'JetBrains Mono',monospace;letter-spacing:.14em;color:#8E9AB3">KEY PIECES</span>
+                    <div style="display:flex;flex-wrap:wrap;gap:8px">
+                      <sc-for list="{{ c.pieceList }}" as="k" hint-placeholder-count="3">
+                        <span style="font:500 12px 'JetBrains Mono',monospace;color:#F2F4F8;border:1px solid #3A4766;padding:4px 8px">{{ k.t }}</span>
+                      </sc-for>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+    <sc-if value="{{ d.hasHonors }}" hint-placeholder-val="{{ false }}">
+      <div style="display:flex;flex-direction:column;gap:20px;margin-top:40px">
+        <div style="display:flex;align-items:center;gap:16px">
+          <span style="font:600 12px 'JetBrains Mono',monospace;letter-spacing:.14em;color:#FFC43D;white-space:nowrap">HONORABLE MENTIONS</span>
+          <span style="flex:1;height:1px;background:linear-gradient(90deg,rgba(255,196,61,.45),rgba(255,196,61,0))"></span>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat({{ d.honorCols }},minmax(0,1fr));gap:1px;background:rgba(255,196,61,.18);box-shadow:0 0 0 1px rgba(255,196,61,.18)">
+          <sc-for list="{{ d.honorList }}" as="hm" hint-placeholder-count="8">
+            <div style="display:flex;gap:12px;align-items:flex-start;padding:18px 20px;background:#0B1A3A;transition:background 200ms ease-out" style-hover="background:#0E1E44">
+              <span style="flex-shrink:0;width:8px;height:8px;margin-top:7px;background:#FFC43D;transform:rotate(45deg)"></span>
+              <span style="display:flex;flex-direction:column;gap:4px;min-width:0">
+                <span style="font:600 16px/1.3 'Chakra Petch',sans-serif;letter-spacing:.06em;text-transform:uppercase;color:#fff">{{ hm.t }}</span>
+                <span style="font:400 14px/1.5 'Instrument Sans',sans-serif;color:#AEB8CC;text-wrap:pretty">{{ hm.n }}</span>
+              </span>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </sc-if>
+  </section>
+  </sc-if>
+
+  <sc-if value="{{ d.hasDivider }}" hint-placeholder-val="{{ false }}"><div aria-hidden="true" style="padding:72px 48px 0">{{ divider2 }}</div></sc-if>
+  <!-- media -->
+  <section ref="{{ secMedia }}" style="padding:96px 48px 120px;display:grid;grid-template-columns:minmax(0,1fr) 720px;gap:64px;align-items:stretch">
+    <div style="display:flex;flex-direction:column;padding-top:6px">
+      <span style="font:600 12px 'JetBrains Mono',monospace;letter-spacing:.14em;color:#FFC43D">{{ d.mediaNo }} · MEDIA</span>
+      <h2 style="margin:12px 0 0;font:700 44px/1.05 'Chakra Petch',sans-serif;text-transform:uppercase;color:#fff;white-space:nowrap">In engine</h2>
+      <div style="display:flex;flex-direction:column;gap:8px;margin-top:24px">
+        <span style="font:600 13px 'JetBrains Mono',monospace;letter-spacing:.08em;color:#FFC43D">{{ gv.count }}</span>
+        <p style="margin:0;max-width:34ch;font:600 20px/1.45 'Instrument Sans',sans-serif;color:#fff;text-wrap:balance">{{ gv.cap }}</p>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-top:28px;max-width:440px">
+        <sc-for list="{{ gthumbs }}" as="t" hint-placeholder-count="4">
+          <button onClick="{{ t.pick }}" aria-label="{{ t.cap }}" aria-current="{{ t.cur }}" style="position:relative;width:100%;aspect-ratio:16/9;padding:0;border:0;outline:2px solid {{ t.ol }};outline-offset:3px;background:#060B17;cursor:pointer;opacity:{{ t.o }};transition:opacity 160ms ease-out,outline-color 160ms ease-out" style-hover="opacity:1">
+            <sc-if value="{{ t.isVideo }}" hint-placeholder-val="{{ false }}"><video src="{{ t.src }}" muted="{{ true }}" preload="metadata" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;pointer-events:none"></video><span style="position:absolute;right:6px;bottom:6px;font:700 10px/1 'JetBrains Mono',monospace;white-space:nowrap;background:#0B1424;color:#FFC43D;padding:3px 5px">▶ VIDEO</span></sc-if>
+            <sc-if value="{{ t.isImg }}" hint-placeholder-val="{{ true }}"><img src="{{ t.src }}" alt="" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;background:{{ t.bg }}"></sc-if>
+          </button>
+        </sc-for>
+      </div>
+      <a href="Work.dc.html" style="align-self:flex-start;margin-top:40px;display:flex;align-items:center;gap:10px;font:600 13px 'JetBrains Mono',monospace;letter-spacing:.08em;color:#AEB8CC">◀ BACK TO WORK</a>
+    </div>
+    <div onMouseEnter="{{ mOn }}" onMouseLeave="{{ mOff }}" style="cursor:{{ d.cursor }};position:relative;display:flex;flex-direction:column;box-shadow:0 0 0 1px rgba(255,196,61,.4),0 30px 60px rgba(0,0,0,.45)">
+      <div style="position:absolute;top:-7px;left:-7px;width:22px;height:22px;border-left:2px solid #FFC43D;border-top:2px solid #FFC43D;pointer-events:none;z-index:3"></div>
+      <div style="position:absolute;top:-7px;right:-7px;width:22px;height:22px;border-right:2px solid #FFC43D;border-top:2px solid #FFC43D;pointer-events:none;z-index:3"></div>
+      <div style="position:absolute;bottom:-7px;left:-7px;width:22px;height:22px;border-left:2px solid #FFC43D;border-bottom:2px solid #FFC43D;pointer-events:none;z-index:3"></div>
+      <div style="position:absolute;bottom:-7px;right:-7px;width:22px;height:22px;border-right:2px solid #FFC43D;border-bottom:2px solid #FFC43D;pointer-events:none;z-index:3"></div>
+      <div style="position:relative;flex:1;min-height:405px;background:#060B17;overflow:hidden">
+        <sc-for list="{{ gstack }}" as="g" hint-placeholder-count="1">
+          <div aria-hidden="{{ g.hid }}" style="position:absolute;inset:0;opacity:{{ g.o }};transition:opacity 700ms ease-out">
+            <sc-if value="{{ g.isVideo }}" hint-placeholder-val="{{ false }}"><video data-autoplay="" src="{{ g.src }}" aria-label="{{ g.alt }}" preload="metadata" style="position:absolute;inset:0;width:100%;height:100%;object-fit:{{ g.fit }};display:block;background:{{ g.bg }}"></video></sc-if>
+            <sc-if value="{{ g.isImg }}" hint-placeholder-val="{{ true }}"><img src="{{ g.src }}" alt="{{ g.alt }}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:{{ g.fit }};display:block;background:{{ g.bg }}"></sc-if>
+          </div>
+        </sc-for>
+        {{ gBar }}
+        {{ gFx }}
+        <button onClick="{{ gPrev }}" aria-label="Previous" style="position:absolute;left:16px;top:50%;margin-top:-22px;z-index:2;width:44px;height:44px;border-radius:50%;border:1px solid rgba(255,255,255,.25);background:rgba(8,14,28,.6);color:#fff;font:600 16px 'Chakra Petch',sans-serif;cursor:pointer;transition:background 150ms ease-out" style-hover="background:#FFC43D;border-color:#FFC43D;color:#0B1424">◀</button>
+        <button onClick="{{ gNext }}" aria-label="Next" style="position:absolute;right:16px;top:50%;margin-top:-22px;z-index:2;width:44px;height:44px;border-radius:50%;border:1px solid rgba(255,255,255,.25);background:rgba(8,14,28,.6);color:#fff;font:600 16px 'Chakra Petch',sans-serif;cursor:pointer;transition:background 150ms ease-out" style-hover="background:#FFC43D;border-color:#FFC43D;color:#0B1424">▶</button>
+      </div>
+    </div>
+  </section>
+<dc-import name="SiteFooter" current="{{ footCur }}" hint-size="100%,420px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;project&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;ab&quot;,&quot;oink&quot;,&quot;fr&quot;,&quot;en&quot;,&quot;nf&quot;],&quot;default&quot;:&quot;ab&quot;,&quot;tsType&quot;:&quot;'ab' | 'oink' | 'fr' | 'en' | 'nf'&quot;}}">
+class Component extends DCLogic {
+  state = { prog: 0, passed: [], cpl: [], mapIn: false, pos: 50, drag: false, gi: 0, act: 0, progHov: null, tab: 'map', mHover: false, mVis: false, sysOpen: null, sysShot: 0, charMode: 'img', objStep: null, objOpen: false, objNew: false, objManual: false };
+  followRef = React.createRef(); fy = 0; fv = 0;
+  OBJ = ['Grab the resume', 'Get in touch', 'Optional · Find the hole in the level'];
+  charCanvas = React.createRef(); titleRef = React.createRef(); statRef = React.createRef(); crateLayer = React.createRef(); droneRef = React.createRef(); survRef = React.createRef(); vigRef = React.createRef();
+  CROSS = 'url("data:image/svg+xml,' + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32"><g fill="none" stroke="#FFC43D" stroke-width="2"><circle cx="16" cy="16" r="9"/><path d="M16 1v8M16 23v8M1 16h8M23 16h8"/></g><circle cx="16" cy="16" r="1.6" fill="#FF4D4D"/></svg>') + '") 16 16, crosshair';
+  gEl = 0; gCycle = 0;
+  secTop = React.createRef(); secLevel = React.createRef(); secMedia = React.createRef(); secDev = React.createRef(); secSys = React.createRef();
+  mapRef = React.createRef(); pathRef = React.createRef(); dotRef = React.createRef(); frameRef = React.createRef();
+
+  // Adding a project = add an entry here (+ a two-line wrapper page)
+  DATA = {
+    ab: {
+      heroFx: 'brightness(1.6) contrast(1.05)', smoke: true, lamps: [[78.5, 46.4]], divider: 'conveyor', fanTimer: true,
+      keyColors: ['#4C8DF6', '#E04FA0', '#FFC43D', '#4CC38A'], keyNames: ['Blue key', 'Pink key', 'Gold key', 'Finish'],
+      title: 'A-B Factory Level', kicker: 'Level design · Individual · Fall 2022',
+      goal: 'Create a level leading & challenging players going A → B.',
+      sub: 'Factory level built with techniques taught by Rich Wilson (Level & Quest Designer on Dishonored and Prey). Keys, moving platforms, conveyor belts and hazards.',
+      hero: 'assets/ab/hero-bg.png', heroAlt: 'A-B Factory Level: dark factory hall under heavy ceiling beams and hanging lamps',
+      stats: [['Role', 'Level Designer'], ['Team', 'Solo'], ['Duration', '1 month'], ['Platform', 'Windows PC'], ['Tools', 'Unity · ProBuilder · C#']],
+      overview: [
+        'Built from concept to finished level in my Level Design course, taught by Rich Wilson (Level & Quest Designer on Dishonored and Prey). The goal: guide players from A to B by showing rather than telling, using a kit of keys, moving platforms, conveyor belts, physics objects, locked doors and buttons.',
+        'The level is built around the experience of moving through a factory. Lights, props and mechanics all drive that fantasy: turbines, conveyors and moving platforms, every puzzle themed to fit. Grounding the space in a single idea kept it cohesive instead of a string of disjointed puzzles, and let me focus aesthetics on one narrative.',
+      ],
+      mapNote: 'The first pass was a paper sketch: start in a room, loop around, and end where you started. The second pass, in Photoshop, refined hazard and mechanic placement so the challenge ramps up the further you go, and added a secret area for explorers. With time tight, I swapped the original closing platforming section for a final key hunt. That freed up more time to design the earlier sections.',
+      sliderNote: 'In Unity I extruded the walls from the revised layout with ProBuilder and ran the bare level for scale and pacing, then layered in moving platforms, buttons, keys, locked doors and leading coins. Post-processing, lighting and details like the conveyor loop sold the factory motif.',
+      map: {
+        src: 'assets/ab/map-final.jpg', alt: 'A-B Factory final map layout with keys, locked doors, hazards and checkpoints', W: 1920, H: 1920,
+        caption: 'Final map layout · route + callouts layered for the site',
+        path: 'M835 1470 L872 1420 L872 1330 C872 1100 880 900 980 860 L1255 830 L760 800 L620 860 L520 900 L455 960 L455 1775 L1000 1775 L1000 1600 L1000 1775 L1160 1800 L1505 1800 L1505 1620 L1680 1560 L1680 830 L1700 800 L1440 800 L1105 800 L1105 420',
+        callouts: [[835,1450,'Start','l'],[1255,762,'Blue key','d'],[738,790,'Blue door','r'],[690,700,'Ladder · chests','l'],[455,1300,'Moving platforms','r'],[200,1200,'Moving platform','u'],[700,1775,'Conveyor','u'],[960,1580,'Pink key','l'],[1000,1665,'Checkpoint','r'],[1335,1640,'Spinning fan','u'],[1680,1300,'Moving platforms','l'],[1700,780,'Gold key','d'],[1440,790,'Pink door','d'],[1105,745,'Gold door','u'],[1095,368,'Finish','u']],
+      },
+      slider: { title: '1st pass → final', a: 'assets/ab/map-sketch.jpg', aAlt: 'First-pass notebook sketch of the factory level', aLabel: '1ST PASS · NOTEBOOK', b: 'assets/ab/map-final.jpg', bAlt: 'Final A-B map layout', bLabel: 'FINAL LAYOUT' },
+      gallery: [
+        { type: 'video', src: 'assets/ab/conveyor.mp4', alt: 'Conveyor belt section in play', cap: 'Conveyor belt · in play', span: 'span 2' },
+        { src: 'assets/ab/shot-01.png', alt: 'View out of the secret area: a tiled shaft with a gold leading coin', cap: 'Secret area view · leading coins' },
+        { src: 'assets/ab/shot-02.png', alt: 'Key on a lit plinth beside a locked gate', cap: 'Key + locked gate' },
+        { src: 'assets/ab/overview.png', alt: 'In-engine top-down view of the whole factory level', cap: 'Map view · the final level in its entirety', span: 'span 2' },
+      ],
+    },
+    nf: {
+      title: 'Night Forest', kicker: 'Individual project · Fall 2022',
+      goal: 'Guide players without forcing a rigid path.',
+      sub: 'A short forest level built as a test of how far I’d come: leading players with terrain, lighting and landmarks instead of a rigid path.',
+      hero: 'assets/nf/bg.png', heroAlt: 'Night Forest: moonlit pine forest with a path winding past a glowing mushroom', heroFx: 'brightness(1.25)', fireflies: true,
+      stats: [['Role', 'Level Designer'], ['Team', 'Solo'], ['Duration', '2 weeks'], ['Platform', 'Windows PC'], ['Tools', 'Unity']],
+      overview: [
+        'I created this level, although short, in the fall of 2022 as an exercise and a test of my skills, to gauge how far I’d come.',
+        'The goal was to test how accurately I could guide players without forcing them down a rigid path, using level design tactics like leading terrain, lighting and landmarks ("weenies"). To that end I skipped a map layout and worked free-flow.',
+      ],
+      goalsLabel: 'LEVEL DESIGN PROCESS',
+      goals: [
+        'Sculpted the terrain first: the big features, landmarks and the path. The path sits lower than its surroundings and uses a different material, so it reads as the way forward.',
+        { t: 'Dressed the forest with Lowpoly Environment by Polytope Studio, rotating and scaling assets to break up repetition.', links: [{ label: 'Lowpoly Environment · Unity Asset Store', href: 'https://assetstore.unity.com/packages/3d/environments/low-poly-environment-nature-free-lowpoly-medieval-fantasy-series-187052' }] },
+        { t: 'Finished with post-processing, a new skybox (Fantasy Skybox by Render Knight), updated lighting and firefly particles.', links: [{ label: 'Fantasy Skybox · Unity Asset Store', href: 'https://assetstore.unity.com/packages/2d/textures-materials/sky/fantasy-skybox-free-18353' }] },
+      ],
+      map: null, slider: null,
+      imgTabs: [
+        { label: 'Map view', src: 'assets/nf/full.png', alt: 'Bird’s-eye view of the full Night Forest level', bg: '#1A2216', cap: 'Full level · top-down', noteLabel: 'MAP NOTES',
+          note: 'A bird’s-eye view of the final map in its entirety. With no layout drawn first, the route is carried by the terrain itself: a lowered, differently painted path between the landmarks.' },
+        { label: 'The cabin', src: 'assets/nf/shot-04.png', alt: 'The cabin in the woods at the end of the level', bg: '#081226', cap: 'End of level', noteLabel: 'CABIN NOTES',
+          note: 'The cabin in the woods marks the end of the level, lit to pull players through the trees towards it.' },
+      ],
+      gallery: [
+        { type: 'video', src: 'assets/nf/video.mp4', alt: 'Night Forest walkthrough', cap: 'Walkthrough' },
+        { src: 'assets/nf/shot-01.png', alt: 'Forest path at night with a glowing mushroom', cap: 'The path' },
+        { src: 'assets/nf/shot-02.png', alt: 'Clearing among tall pines under a moonlit sky', cap: 'Clearing' },
+        { src: 'assets/nf/shot-03.png', alt: 'Pine forest with a rocky rise', cap: 'Leading terrain' },
+        { src: 'assets/nf/screenshot.png', alt: 'Cabin and forest edge with red mushrooms', cap: 'Approaching the cabin' },
+      ],
+    },
+    en: {
+      title: 'Endless Nightmare', kicker: 'Individual project · Unity Learn mod',
+      goal: 'Create & modify a 3rd-person isometric Unity shooter.',
+      sub: 'A tense 3D isometric third-person wave shooter. Battle waves of cuddly toy enemies, gather new weapons, pick up ammo and survive as long as you can.',
+      hero: '', cutout: 'assets/en/scene-cut.png', cutoutAlt: 'The player in a nightcap facing a horde of cuddly toy enemies', cut: { r: '24px', b: '10%', h: '74%' }, textW: '540px',
+      health: true, waves: true, crosshair: true, noPanel: true,
+      stats: [['Role', 'Game Designer · Systems & Tools Designer'], ['Team', 'Solo'], ['Duration', '1 month'], ['Platform', 'Windows PC'], ['Tools', 'Unity · C# · Visual Studio']],
+      overview: [
+        'Endless Nightmare is a tense 3D isometric third-person wave shooter built in Unity: battle waves of cuddly toy enemies, gather new weapons, pick up ammo and survive as long as you can.',
+        'It started as a Unity Learn tutorial base project. As a class we drew up a list of mechanics and systems, graded from Super Easy to Extremely Hard, and each picked which to build; our picks determined our grade.',
+      ],
+      goals: ['Provide a tense strategy shooter for players', 'Implement chosen design decisions', 'Experiment with new techniques and ideas', 'Implement effective, modular wave and weapon systems'],
+      contrib: 'As Game Designer and Systems + Tools Designer I was responsible for the project’s architecture, codebase, game feel and design decisions.',
+      lego: { title: 'Programming is like building a Lego set', img: 'assets/en/character-cutout.png', lesson: 'Don’t be afraid to delete, start over, or refactor your codebase.',
+        body: ['You don’t open the box to a finished Death Star, just the pieces and the picture on the box. Choose the problem you want to solve, open your code editor, sort out the pieces that make it up, then set up the blueprint for how they fit together.',
+          'Lego reuses the same piece in lots of places, maybe in a new colour or slightly modified, just like componentized scripts. Before writing anything I break the problem into its smallest components, which shows where systems overlap and what can be reused.'] },
+      map: null, slider: null,
+      sysIntro: 'The systems I designed and built on top of the tutorial base, each kept modular so new waves, weapons and enemies drop in without new code.',
+      honors: [
+        { t: 'Enemy Spawning Patterns', n: 'Where and how each wave arrives' },
+        { t: 'Pickups', n: 'Weapons and ammunition' },
+      ],
+      systems: [
+        { title: 'Wave System', line: 'Waves defined as data, run by a spawn manager.', thumb: 'assets/en/wave-so.jpg', ui: true,
+          shots: [{ src: 'assets/en/wave-so.jpg', alt: 'Unity inspector: Wave scriptable object', cap: 'Wave · scriptable object' }, { src: 'assets/en/wave-spawn.jpg', alt: 'Unity inspector: Wave Spawn Manager component', cap: 'Wave Spawn Manager' }],
+          body: ['Each wave is a scriptable object, so designing a new wave means filling in data rather than writing code.', 'A Wave Spawn Manager reads those assets and runs them in sequence, handling spawn points and the pacing between waves.'],
+          pieces: ['Wave (ScriptableObject)', 'Wave Spawn Manager', 'Spawn points'] },
+        { title: 'Combat + Weapon Types', line: 'Improved shooting with distinct weapon types.', thumb: 'assets/en/shot-01.png',
+          shots: [{ src: 'assets/en/shot-01.png', alt: 'Gameplay: aiming laser and ammo counter on the HUD', cap: 'Aim laser · ammo HUD' }, { src: 'assets/en/shot-02.png', alt: 'Gameplay: muzzle flash while firing', cap: 'Firing · muzzle flash' }],
+          body: ['I reworked the tutorial’s combat and added new weapon types, each with its own feel, ammo and fire behaviour.', 'An aim laser and ammo readout keep the player informed when the screen gets crowded.'],
+          pieces: ['Weapon types', 'Ammo', 'Aim laser'] },
+        { title: 'Enemy Types', line: 'Melee, ranged, armored and invisible cuddly toys.', thumb: 'assets/en/scene-cut.png', ui: true,
+          shots: [{ src: 'assets/en/scene-cut.png', alt: 'The cast of cuddly toy enemies', cap: 'The cuddly toy horde' }, { src: 'assets/en/shot-03.png', alt: 'Top-down gameplay in a dark arena', cap: 'In the arena' }],
+          body: ['Four enemy types force different answers: melee rushers, ranged attackers, armored tanks and invisible stalkers.', 'Mixing them across waves is what turns survival into strategy.'],
+          pieces: ['Melee', 'Ranged', 'Armored', 'Invisible'] },
+        { title: 'UI/UX + Game Feel', line: 'Menus, HUD and feedback that sell the nightmare.', thumb: 'assets/en/title-screen.png',
+          shots: [{ src: 'assets/en/title-screen.png', alt: 'Endless Nightmare title screen with Play, Options and Exit', cap: 'Title screen' }, { src: 'assets/en/knightmare.png', alt: 'Alternate title screen', cap: 'Title screen · alternate' }],
+          body: ['I designed the menus and HUD, and tuned the overall game feel: readable health, ammo and score at a glance, and feedback that keeps fights tense.'],
+          pieces: ['Title + menus', 'HUD', 'Feedback'] },
+      ],
+      gallery: [
+        { type: 'video', src: 'assets/en/recording-01.mp4', alt: 'Completed gameplay with all modifications', cap: 'Gameplay · all new modifications' },
+        { src: 'assets/en/before.png', alt: 'Endless Nightmare at the end of the tutorial series, before modification', cap: 'Before · end of the tutorial series' },
+        { src: 'assets/en/shot-04.jpg', alt: 'Isometric gameplay in a dark room with glowing boundary lines', cap: 'In play' },
+        { src: 'assets/en/shot-02.png', alt: 'Gameplay: muzzle flash while firing', cap: 'Firing' },
+      ],
+    },
+    oink: {
+      neon: true, divider: 'neon', holo: true, combo: true, rain: true, ledger: true, drone: true, lanterns: true, eyes: [[45.22, 13.84], [46.75, 14.98]],
+      title: 'Oinkyuza Collection', kicker: 'Narrative level design · Individual · Fall 2022',
+      goal: 'Create a level around a twisted narrative premise.',
+      sub: 'The Three Little Pigs reimagined: play as the Big Bad Wolf, a loan shark collecting from three hog brothers in a cyberpunk city.',
+      hook: 'A fairy tale told through the level, not cutscenes.',
+      hero: 'assets/oinkyuza-hero.png', heroAlt: "Neon plaza in Oinkyuza: an 'Always Watching' billboard of the three hog brothers looms over a statue and guards",
+      stats: [['Role', 'Level Designer'], ['Team', 'Solo'], ['Duration', '1 month'], ['Market districts', '4'], ['Platform', 'Windows PC'], ['Tools', 'Unity · ProBuilder · C#']],
+      overview: [
+        'Built from concept to finished level in my Level Design course, taught by Rich Wilson (Level & Quest Designer on Dishonored and Prey).',
+        'Go through the streets and alleyways of a Blade Runner-esque Japan as the Big Bad Wolf, working as a loan shark. Make your way through the city streets, alleyways and the market, feeling confident on your way to the resort. Fight enemies, talk with NPCs, and collect trinkets and codes along the way.',
+      ],
+      mapNote: 'The map started in Photoshop. The first pass was a rough block-out: players begin in an alleyway that opens into a cul-de-sac square, with a monolithic building in the distance as a goal to move towards. The second pass refined the blocks and placed mechanics, enemy paths and market districts, ramping up challenge and NPC density the further players go.',
+      map: {
+        src: 'assets/oink/map-pass-02.png', alt: 'Oinkyuza level map pass 02: streets, shopping district, roundabout and resort with elevation colours', W: 743, H: 742,
+        caption: 'Level map · pass 02 · callouts layered for the site',
+        path: 'M455 688 L478 668 L487 640 L487 612 L430 606 C420 636 400 648 380 646 C360 644 350 628 350 610 C350 588 365 572 385 570 C405 568 414 545 412 520 C410 492 395 466 375 458 C360 455 356 480 360 505 C364 530 368 552 362 568 C355 585 345 600 330 607 L300 610 C285 614 262 615 245 612 C225 608 212 595 214 578 C216 562 232 554 250 552 L262 540 L262 532 L298 524 C310 500 328 490 318 486 C305 488 300 505 290 522 L262 528 L258 480 L235 470 L232 420 L380 414 L384 345', ghost: true, walk: false,
+        callouts: [[455,690,'Start','r'],[487,608,'Gun','r'],[385,608,'Roundabout','d'],[410,556,'Enemies','r'],[300,500,'Shopping district','r'],[228,462,'Locked gate · combo','l'],[500,410,'Tram blocks path','u'],[384,350,'Resort · end','u']],
+      },
+      slider: { title: 'Pass 01 → pass 02', a: 'assets/oink/map-pass-01.png', aAlt: 'Oinkyuza level map, pass 01: rough block-out of shapes and layout', aLabel: 'PASS 01 · BLOCK-OUT', b: 'assets/oink/map-pass-02.png', bAlt: 'Oinkyuza level map, pass 02: refined blocks with mechanics, enemy paths and market districts', bLabel: 'PASS 02 · REFINED' },
+      sliderNote: 'Pass 01 was a rough block-out of the basic shapes and layout. Pass 02 refined the blocks and placed the mechanics, enemy paths and market districts, then in Unity I extruded the walls with ProBuilder, ran the bare level for scale and pacing, and layered in NPCs, pathing, weapons, ammo, keys, locked doors and leading coins.',
+      gallery: [
+        { src: 'assets/oink/shot-01.png', alt: 'Bird’s-eye view of the whole city leading to the glowing resort', cap: 'Map view · the final level in its entirety', span: 'span 2' },
+        { src: 'assets/oink/shot-02.png', alt: 'Market area with NPCs, waypoints, enemies and pickups', cap: 'Marketplace · NPCs + waypoints (final area)' },
+        { src: 'assets/oink/map-pass-01.png', alt: 'Oinkyuza level map, first pass', cap: 'Level map · pass 01' },
+      ],
+    },
+    fr: {
+      title: 'Free Rider', kicker: 'Capstone · Team of 5 · Lead Programmer',
+      sub: 'A relaxing third-person skating game. Play as Jun, a red panda, rolling through an alternate San Francisco.',
+      logo: 'assets/fr/logo.png', cutout: 'assets/fr/jun-cut.png', rider: 'assets/fr/jun-cut.png', cutoutAlt: 'Jun, the red panda, on roller skates',
+      hero: 'assets/fr/chinatown.jpg', heroAlt: 'Free Rider: Chinatown gate entrance at golden hour',
+      quote: { t: 'Create a chill & relaxing skating experience centered around free skates.', by: 'Ethan Murchison', role: 'Creative Lead' },
+      stats: [['Role', 'Lead Programmer · Level Designer'], ['Team', '5'], ['Duration', '10 months'], ['Platform', 'Windows PC'], ['Tools', 'Unity · C# · Visual Studio · Trello · Unity DevOps']],
+      overview: [
+        'Free Rider is a relaxing 3D third-person game with elements of exploration, built in Unity as my capstone project.',
+        'You play as Jun, a red panda, skating through an alternate San Francisco-inspired city. Players explore the streets and alleyways, dodging hazards, collecting items and talking with friends.',
+      ],
+      goals: ['Create a free-flowing, physics-based movement system using Unity’s physics engine', 'Demonstrate skills in programming, level design, team management, systems design and world building', 'Provide a relaxing, explorative experience for players'],
+      contrib: 'As Lead Programmer I was responsible for tools, features, game feel and team management, working with art and animation to design and maintain a relaxing, chill player experience.',
+      character: { label: 'MEET JUN · COSTUMES', src: 'assets/fr/jun-costumes.gif', alt: 'Jun the red panda spinning on skates, cycling through her different costumes' },
+      map: null, slider: null,
+      imgTabs: [
+        { label: 'City map', src: 'assets/fr/map.jpg', alt: 'Top-down view of the full Free Rider city level', bg: '#474747', cap: 'Full level · top-down', noteLabel: 'CITY NOTES',
+          note: 'An alternate, San Francisco-inspired city. Players skate from the streets and alleyways of Chinatown up winding Lombard-style roads, dodging hazards (leaves, rubble, oil, water and sand), collecting items and talking with friends.' },
+        { label: 'Tutorial level', src: 'assets/fr/tutorial-overview.png', alt: 'Top-down view of the tutorial level: city blocks around a parking lot', bg: '#6A635B', cap: 'Tutorial level · top-down', noteLabel: 'TUTORIAL NOTES',
+          note: 'I built the tutorial level from the building blocks assembled over the project: movement, hazards, interactable props, NPCs and objectives, arranged around a parking lot in a few compact city blocks.' },
+      ],
+      devTitle: 'Twin stick to Freeform',
+      devIntro: 'Free Rider started as a twin-stick simulation, one stick per foot, inspired by QWOP. Realistic physics and relaxation didn’t mesh, so the next approach chased the feel of Mario Kart: fluid, fun, intuitive, on a single stick.',
+      dev: [
+        { tag: 'PROTOTYPE', title: 'Twin-stick movement test', src: 'assets/fr/test-twin-stick.jpg', alt: 'Two white cubes as feet on a green test track', t: 'Each foot was assigned to a different stick on the controller. Combined with scripting and physics issues, it showed realism and relaxation pulling in opposite directions, so the approach was dropped.' },
+        { tag: 'SYSTEM', title: 'Keeping the player upright', src: 'assets/fr/test-upright-spring.jpg', alt: 'Test cube held above a checkerboard track by spring forces', t: 'The Upright System uses spring physics and forces to hold the player upright at a set height above the ground, even when knocked by other physics bodies.' },
+        { tag: 'MOVEMENT', title: 'First preview of Freeform', src: 'assets/fr/test-single-stick.jpg', alt: 'Capsule player on a grey test area with yellow cube pickups', t: 'The area where the fluid, momentum-based Freeform movement was concepted and built, along with the beginnings of the hazard detection and crouch systems.' },
+        { tag: 'HAZARDS', title: 'Hazard system in play', type: 'video', src: 'assets/fr/explosion-system.mp4', alt: 'Hazard system gameplay clip', t: 'Leaves, rubble, oil, water and sand each apply their own effects to the player’s Movement and Status systems.' },
+        { tag: 'LEVEL', title: 'The tutorial level', src: 'assets/fr/jun-parking.png', alt: 'Jun skating beside the tutorial parking lot at sunset', t: 'Everything comes together in the tutorial level, built from the systems assembled over the project’s creation.' },
+      ],
+      sysIntro: 'I build around simplified modularity: systems that are intuitive, easy to understand and work like components, so they can be combined into emergent designs.',
+      honors: [
+        { t: 'Input Manager', n: 'One place every system reads player input from' },
+        { t: 'Hazard Detection', n: 'Leaves, rubble, oil, water and sand' },
+        { t: 'Status', n: 'Hazard effects applied to the player' },
+        { t: 'Camera Control', n: 'Movement and control built with Cinemachine' },
+        { t: 'Canvas Management', n: 'UI canvases spawned at runtime' },
+        { t: 'Audio Management', n: 'Pooled audio types and mixer groups' },
+        { t: 'Respawn System', n: 'Getting players back on track' },
+        { t: 'Objective System', n: 'Guiding players through the level' },
+      ],
+      systems: [
+        { title: 'Movement', line: 'Momentum-based Freeform movement, kept upright by spring forces.', thumb: 'assets/fr/lombard.jpg',
+          shots: [{ src: 'assets/fr/lombard.jpg', alt: 'Winding Lombard-style road lined with low-poly trees', cap: 'Lombard area · hill roads' }, { src: 'assets/fr/test-upright-spring.jpg', alt: 'Upright spring test', cap: 'Upright System test' }],
+          body: ['The Upright System uses spring physics and forces to keep Jun upright and at a set height above the ground, even when hit by other physics bodies. That made the world interactable: skate into trash cans or cars and keep rolling.', 'On top of it sits Freeform, the momentum-based movement I built and refined over the project, with slope detection, hazard detection and interaction with objects.'],
+          pieces: ['Player_Movement', 'Player_Status', 'Hazard Detector', 'Player_Ragdoll'] },
+        { title: 'Interaction', line: 'A sphere trigger that finds anything on the Interactable layer.', thumb: 'assets/fr/interaction-system.jpg', ui: true,
+          shots: [{ src: 'assets/fr/interaction-system.jpg', alt: 'Unity inspector: Player Character with Player_Interaction component', cap: 'Player_Interaction · inspector' }],
+          body: ['Player_Interaction tracks the colliders inside an interaction-area sphere collider, filtered to the Interactable layer, and reads the interact input through the Input Reader.', 'NPCs, props and pickups all plug into the same system.'],
+          pieces: ['Player_Interaction', 'Input Reader', 'Interactable layer'] },
+        { title: 'NPC Interaction', line: 'NPCs that bring up their own UI canvas when you interact.', thumb: 'assets/fr/npc-interactable.jpg', ui: true,
+          shots: [{ src: 'assets/fr/npc-interactable.jpg', alt: 'Unity inspector: Regional Performer script on the Tutorial Bird NPC', cap: 'Regional Performer · Tutorial Bird NPC' }, { src: 'assets/fr/canvas-object.jpg', alt: 'Unity inspector: Canvas Object asset for Canvas Audio', cap: 'Canvas Object · spawned at runtime' }],
+          body: ['Each NPC carries a behaviour such as Regional Performer, which references its NPC data, tracks a coin amount and points to its interaction canvas.', 'Canvas Objects describe a UI canvas to be spawned at runtime, so the canvas tools can bring up any NPC’s UI.'],
+          pieces: ['RegionalPerformer', 'NPC', 'Canvas Object', 'NPC_UI_Canvas'] },
+        { title: 'Physics Object Props', line: 'Props that react with sound and particles when you hit them.', thumb: 'assets/fr/trash-interactable.jpg', ui: true,
+          shots: [{ src: 'assets/fr/trash-interactable.jpg', alt: 'Unity hierarchy and inspector for the trash can prefab', cap: 'Trash can prefab · Play Sound On Interact' }, { src: 'assets/fr/audio-type.jpg', alt: 'Unity inspector: On Trash Bag Hit audio type', cap: 'Audio Type · pool, clip set, mixer group' }, { src: 'assets/fr/coin-interactable.jpg', alt: 'Unity inspector: Collectible script', cap: 'Collectible · coins reuse Audio Type' }],
+          body: ['Props like the trash can are built from small parts: an Interactable child with a collider and Play Sound On Interact, plus a particle system.', 'Sounds are Audio Type assets: a pooled audio source, a clip set and a mixer group. The same asset drops into props and collectibles like coins.'],
+          pieces: ['PlaySoundOnInteract', 'Audio Type', 'Audio Effect Pool', 'Collectible'] },
+        { title: 'Tutorial Level', line: 'A compact level built from the project’s building blocks.', thumb: 'assets/fr/tutorial-side.png',
+          shots: [{ src: 'assets/fr/tutorial-side.png', alt: 'Angled overview of the tutorial level city blocks and parking lot', cap: 'Tutorial level · side overview' }, { src: 'assets/fr/parking-lot.png', alt: 'Jun skating past the parking lot with leading coins and painted arrows', cap: 'Parking lot · leading coins + painted arrows' }],
+          body: ['I built the tutorial level from the building blocks assembled over the project, putting movement, hazards, interactable props, NPCs and objectives into a few compact city blocks.'],
+          pieces: ['Objective System', 'Respawn System', 'Hazards', 'NPCs'] },
+      ],
+      gallery: [
+        { type: 'video', src: 'assets/fr/front-end.mp4', alt: 'Free Rider front end: title screen and menus', cap: 'Front end · title + menus' },
+        { src: 'assets/fr/alleyway.jpg', alt: 'Chinatown alleyway with red lanterns and dumpsters', cap: 'Chinatown alleyway' },
+        { src: 'assets/fr/lombard.jpg', alt: 'Winding Lombard-style road lined with low-poly trees', cap: 'Lombard area' },
+        { src: 'assets/fr/chinatown.jpg', alt: 'Chinatown gate entrance at golden hour', cap: 'Chinatown entrance' },
+      ],
+    },
+  };
+
+
+  get d() { return this.DATA[this.props.project] || this.DATA.ab; }
+  get doc() { return document.scrollingElement || document.documentElement; }
+
+  // Overview / Route / Iteration share the level panel; offsets keep each checkpoint distinct
+  tabDefs() {
+    const D = this.d;
+    if (D.noPanel) return [{ id: 'none', label: '', cap: '', noteLabel: '', note: '' }];
+    if (D.imgTabs) return D.imgTabs.map((t, i) => ({ id: 'img' + i, label: t.label, cap: t.cap || '', noteLabel: t.noteLabel, note: t.note }));
+    return [{ id: 'map', label: 'Route map', cap: 'Route + callouts', noteLabel: 'ROUTE NOTES', note: D.mapNote }]
+      .concat(D.slider ? [{ id: 'iter', label: D.slider.title, cap: 'Drag the handle · ← → keys', noteLabel: 'ITERATION NOTES', note: D.sliderNote }] : []);
+  }
+  railSecs() {
+    const D = this.d, s = [{ label: 'Top', ref: this.secTop, off: 0 }, { label: 'Overview', ref: this.secLevel, off: 0 }];
+    if (!D.noPanel) this.tabDefs().forEach((t, i) => s.push({ label: D.imgTabs ? t.label : (i ? 'Iteration' : 'Route'), ref: this.secLevel, off: 100 * (i + 1), tab: t.id }));
+    if (D.dev) s.push({ label: 'Dev path', ref: this.secDev, off: 0 });
+    if (D.systems) s.push({ label: 'Systems', ref: this.secSys, off: 0 });
+    return s.concat([{ label: 'Media', ref: this.secMedia, off: 0 }]);
+  }
+  targets() {
+    const doc = this.doc, max = Math.max(1, doc.scrollHeight - window.innerHeight);
+    return { max, t: this.railSecs().map((it, i) => { const el = it.ref.current; if (i === 0 || !el) return 0; return Math.min(max, Math.max(0, el.getBoundingClientRect().top + doc.scrollTop - 96 + it.off)); }) };
+  }
+  // Scroll-driven one-shots: wave pop, ledger flash, SURVIVED stamp, red vignette (compares against our own previous values)
+  fxCheck(prog, act, passed) {
+    const D = this.d, P = this._fx || { prog, act, n: passed.filter(Boolean).length }, n = passed.filter(Boolean).length;
+    this._fx = { prog, act, n };
+    if (this.reduced) { if (this.vigRef.current) this.vigRef.current.style.opacity = '0'; }
+    if (D.waves && act !== P.act && !this.reduced) {
+      const el = document.querySelector('[data-wave="1"]');
+      if (el && el.animate) el.animate([{ color: '#FF4D4D', textShadow: '0 0 12px rgba(255,77,77,.9)', transform: 'scale(1.25)' }, { color: '#F2F4F8', textShadow: 'none', transform: 'scale(1)' }], { duration: 650, easing: 'cubic-bezier(.34,1.56,.64,1)' });
+    }
+    if (D.ledger && n > P.n && !this.reduced) {
+      const el = document.querySelector('[data-ledger="1"]');
+      if (el && el.animate) el.animate([{ color: '#FF5FD2', textShadow: '0 0 12px rgba(255,79,200,.9)', transform: 'scale(1.08)' }, { color: '#F2F4F8', textShadow: 'none', transform: 'scale(1)' }], { duration: 700, easing: 'ease-out' });
+    }
+    if (D.health) {
+      const v = this.vigRef.current;
+      if (v && !this.reduced) v.style.opacity = String(0.65 * Math.pow(Math.min(1, Math.max(0, prog)), 1.3));
+      if (prog < 0.9) this.survived = false;
+      if (!this.survived && P.prog < 0.97 && prog >= 0.97) {
+        this.survived = true; const el = this.survRef.current;
+        if (el && el.animate) el.animate(this.reduced ? [{ opacity: 1 }, { opacity: 1, offset: .85 }, { opacity: 0 }] : [
+          { opacity: 0, transform: 'translate(-50%,-50%) scale(.7)' },
+          { opacity: 1, transform: 'translate(-50%,-50%) scale(1.08)', offset: .1 },
+          { opacity: .15, transform: 'translate(-50%,-50%) scale(1)', offset: .16 },
+          { opacity: 1, offset: .22 }, { opacity: .25, offset: .28 }, { opacity: 1, offset: .34 },
+          { opacity: 1, transform: 'translate(-50%,-50%) scale(1)', offset: .8 },
+          { opacity: 0, transform: 'translate(-50%,-50%) scale(1.06)' }], { duration: 1800, easing: 'linear' });
+      }
+    }
+  }
+  // Objective companion: pops open at the end of sections, trails scroll on a spring
+  objScroll() {
+    const y = this.doc.scrollTop, vh = window.innerHeight;
+    if (this.lastY != null && !this.reduced) this.fv -= (y - this.lastY) * 0.18;
+    this.lastY = y;
+    let step = null;
+    [[this.secLevel, 0], [this.secDev, 0], [this.secSys, 0], [this.secMedia, 1]].forEach(([r, s]) => { const el = r.current; if (!el) return; const bt = el.getBoundingClientRect().bottom; if (bt > vh * 0.3 && bt < vh * 1.08) step = s; });
+    if (y + vh >= this.doc.scrollHeight - 60) step = this.OBJ.length - 1;
+    if (step !== null && step !== this.state.objStep) {
+      this.setState({ objStep: step, objNew: true });
+      clearTimeout(this.ft); this.ft = setTimeout(() => this.setState({ objNew: false }), 1800);
+    }
+    const open = step !== null || this.state.objManual;
+    if (open !== this.state.objOpen) this.setState({ objOpen: open });
+  }
+  follow(now) {
+    const el = this.followRef.current; if (!el) return;
+    this.fv += -0.1 * this.fy; this.fv *= 0.82; this.fy = Math.max(-70, Math.min(70, this.fy + this.fv));
+    const bob = this.reduced ? 0 : Math.sin(now / 650) * 3, tilt = Math.max(-5, Math.min(5, this.fv * 0.8));
+    el.style.transform = 'translate(0,' + (this.fy + bob).toFixed(2) + 'px) rotate(' + tilt.toFixed(2) + 'deg)';
+  }
+  objClick = (e) => {
+    e.preventDefault();
+    window.QSAch && QSAch.unlock('fairy');
+    if (!this.state.objOpen) {
+      this.setState({ objManual: true, objOpen: true });
+      clearTimeout(this.mt); this.mt = setTimeout(() => { this.setState({ objManual: false }, () => this.objScroll()); }, 4000);
+      return;
+    }
+    const step = this.state.objStep ?? 0;
+    if (step === 0) {
+      const r = document.querySelector('[data-resume]');
+      if (r && r.animate) r.animate([{ boxShadow: '0 0 0 0 rgba(255,196,61,0)' }, { boxShadow: '0 0 0 4px rgba(255,196,61,.8)', color: '#FFC43D' }, { boxShadow: '0 0 0 0 rgba(255,196,61,0)' }], { duration: 700, iterations: 2, easing: 'ease-out' });
+    } else if (step === this.OBJ.length - 1) {
+      window.QSAch && QSAch.unlock('quest');
+      const a = document.createElement('a'); a.href = 'Portfolio Home.dc.html#find-the-hole'; document.body.appendChild(a); a.click(); a.remove();
+    } else window.location.href = 'About.dc.html#contact';
+  };
+  onScroll = () => {
+    this.objScroll();
+    const doc = this.doc, { max, t } = this.targets();
+    const prog = Math.min(1, Math.max(0, doc.scrollTop / max));
+    const cpl = t.slice(1).map(x => x / max * 100);
+    const passed = t.slice(1).map(x => doc.scrollTop >= x - 2);
+    let act = 0; t.forEach((x, i) => { if (i > 0 && doc.scrollTop >= x - 2) act = i; });
+    this.fxCheck(prog, act, passed);
+    if (window.QSAch) {
+      if (this.props.project === 'en' && prog >= 0.985) QSAch.unlock('survived');
+      if (this.props.project === 'oink' && passed.filter(Boolean).length - 1 >= 3) QSAch.unlock('debt');
+    }
+    const key = Math.round(prog * 200) + '|' + passed.join() + '|' + cpl.map(Math.round).join() + '|' + act;
+    if (key !== this.sk) { this.sk = key; this.setState({ prog, passed, cpl, act }); }
+  };
+  go(i) {
+    const it = this.railSecs()[i]; if (!it) return;
+    if (it.tab) this.setTab(it.tab);
+    this.doc.scrollTo({ top: this.targets().t[i], behavior: this.reduced ? 'auto' : 'smooth' });
+  }
+  setTab(tab) { if (!this.tabDefs().some(t => t.id === tab)) return; this.setState({ tab }); }
+  onKey = (e) => {
+    if (this.tabDefs().length < 2 || e.metaKey || e.ctrlKey || e.altKey) return;
+    const tg = e.target; if (tg && (tg.isContentEditable || /INPUT|TEXTAREA|SELECT/.test(tg.tagName))) return;
+    const k = (e.key || '').toLowerCase(); if (k !== 'q' && k !== 'e') return;
+    const el = this.secLevel.current; if (!el) return;
+    const r = el.getBoundingClientRect(); if (r.bottom < 90 || r.top > window.innerHeight) return;
+    const ids = this.tabDefs().map(t => t.id), cur = Math.max(0, ids.indexOf(this.state.tab));
+    e.preventDefault(); window.QSAch && QSAch.unlock('hotkeys');
+    this.setTab(ids[(cur + (k === 'q' ? -1 : 1) + ids.length) % ids.length]);
+  };
+  setGi(i) { const n = this.d.gallery.length; this.gEl = 0; this.gCycle++; this.setState({ gi: (i + n) % n }, () => { this.startVideos(); this.holoIn(); }); }
+  holoIn() {
+    if (!this.d.holo || this.reduced) return;
+    const sec = this.secMedia.current; if (!sec) return;
+    const el = sec.querySelector('[aria-hidden="false"] img, [aria-hidden="false"] video'); if (!el || !el.animate) return;
+    el.animate([{ opacity: 0, filter: 'hue-rotate(80deg) saturate(1.8) brightness(1.4)' }, { opacity: .7, offset: .12 }, { opacity: .25, offset: .18 }, { opacity: .9, offset: .3 }, { opacity: .6, filter: 'hue-rotate(30deg) saturate(1.3) brightness(1.15)', offset: .45 }, { opacity: 1, filter: 'none' }], { duration: 1000, easing: 'linear' });
+  }
+  // A single 3D belt per divider; belt 1 runs right→left, belt 2 left→right. Cargo is simulated on a page-level layer (crateTick)
+  CRATES = [[34, 30, '#B98A4E'], [28, 40, 'turret'], [26, 24, '#A57640'], [40, 32, '#C29458'], [30, 26, '#B07F45']];
+  conveyorEl(n) {
+    const h = React.createElement, rtl = n === 1;
+    const x = rtl ? 16 : -48, w = 1376, anim = 'csBeltX .436s linear infinite' + (rtl ? ' reverse' : '');
+    const strip = (k, bg, extra) => h('span', { key: k, style: Object.assign({ position: 'absolute', overflow: 'hidden' }, extra) },
+      h('span', { 'data-anim': '', style: { position: 'absolute', top: 0, bottom: 0, left: 0, width: 'calc(100% + 48px)', background: bg, animation: anim, willChange: 'transform', backfaceVisibility: 'hidden' } }));
+    const legs = [];
+    for (let lx = 70; lx < w - 40; lx += 180) legs.push(
+      h('span', { key: 'lf' + lx, style: { position: 'absolute', left: lx + 'px', top: '34px', width: '10px', height: '20px', background: 'linear-gradient(90deg,#2A3756,#1A2440)' } }),
+      h('span', { key: 'ls' + lx, style: { position: 'absolute', left: (lx + 10) + 'px', top: '34px', width: '6px', height: '20px', background: '#111829', transform: 'skewY(-45deg)', transformOrigin: '0 0' } }));
+    const cap = (k, side) => h('span', { key: k, style: { position: 'absolute', [side]: '-8px', top: '18px', width: '16px', height: '16px', borderRadius: '50%', background: 'radial-gradient(circle at 40% 35%, #6A7799 0%, #3A4766 45%, #1A2440 100%)', boxShadow: 'inset 0 0 0 1px rgba(0,0,0,.35)' } },
+      h('span', { style: { position: 'absolute', left: '5px', top: '5px', width: '6px', height: '6px', borderRadius: '50%', background: '#FFC43D', boxShadow: '0 0 0 1px #0B1424' } }));
+    return h('div', { key: 'belt' + n, style: { position: 'relative', height: '56px' } },
+      h('span', { key: 'b', style: { position: 'absolute', left: x + 'px', width: w + 'px', top: '0', height: '56px' } }, legs.concat([
+        strip('top', 'repeating-linear-gradient(90deg, #3A4766 0 22px, #222C47 22px 24px, #445174 24px 46px, #222C47 46px 48px)', { left: 0, width: w + 'px', top: '8px', height: '12px', transform: 'skewX(-45deg)', transformOrigin: '0 100%', boxShadow: 'inset 0 1px 0 rgba(255,255,255,.18), inset 0 -2px 0 rgba(0,0,0,.25)' }),
+        h('span', { key: 'rail', style: { position: 'absolute', left: '12px', width: w + 'px', top: '6px', height: '2px', background: 'rgba(255,196,61,.45)' } }),
+        h('span', { key: 'front', style: { position: 'absolute', left: 0, width: w + 'px', top: '20px', height: '14px', background: 'linear-gradient(180deg,#26324F 0%,#151D32 60%,#0B111F 100%)', borderTop: '1px solid rgba(255,196,61,.6)', boxShadow: '0 6px 10px rgba(0,0,0,.35)' } }),
+        strip('roll', 'repeating-linear-gradient(90deg, rgba(255,196,61,0) 0 18px, rgba(255,196,61,.55) 18px 24px)', { left: '8px', width: (w - 16) + 'px', top: '24px', height: '6px', borderRadius: '3px' }),
+        h('span', { key: 'endR', style: { position: 'absolute', left: w + 'px', top: '8px', width: '12px', height: '26px', background: '#0E1424', transform: 'skewY(-45deg)', transformOrigin: '0 100%', clipPath: 'polygon(0 46%, 100% 0, 100% 54%, 0 100%)' } }),
+        cap('cl', 'left'), cap('cr', 'right'),
+        h('span', { key: 'm', 'data-belt': String(n), style: { position: 'absolute', left: '6px', width: w + 'px', top: '14px', height: 0 } }),
+      ])));
+  }
+  cargoEl([w, ch, c], k) {
+    const h = React.createElement;
+    if (c === 'turret') {
+      const head = 26, hw = w, legTop = head - 2, legH = ch - legTop;
+      const chamfer = 'polygon(4px 0, calc(100% - 4px) 0, 100% 4px, 100% calc(100% - 4px), calc(100% - 4px) 100%, 4px 100%, 0 calc(100% - 4px), 0 4px)';
+      const seams = 'linear-gradient(90deg, transparent 47%, rgba(80,86,98,.55) 48% 52%, transparent 53%), linear-gradient(0deg, transparent 47%, rgba(80,86,98,.5) 48% 52%, transparent 53%)';
+      return h('span', { key: k, 'data-crate': '', style: { position: 'absolute', left: 0, top: 0, width: w + 'px', height: ch + 'px', opacity: 0, willChange: 'transform' } }, [
+        // Portal-style tripod: two splayed front legs + one rear leg, thin and angular, meeting under the body
+        h('span', { key: 'lr', style: { position: 'absolute', left: (hw / 2 - 1.5) + 'px', top: legTop + 'px', width: '3px', height: (legH * 0.92) + 'px', background: 'linear-gradient(90deg,#7E8590,#5F6670)', transform: 'translateX(5px) rotate(-8deg)', transformOrigin: '50% 0' } }),
+        h('span', { key: 'l1', style: { position: 'absolute', left: (hw / 2 - 2) + 'px', top: legTop + 'px', width: '4px', height: (legH * 1.1) + 'px', background: 'linear-gradient(90deg,#E2E5E9,#A9AFB8)', clipPath: 'polygon(0 0, 100% 0, 100% 55%, 75% 100%, 0 100%)', transform: 'rotate(26deg)', transformOrigin: '50% 0' } }),
+        h('span', { key: 'l2', style: { position: 'absolute', left: (hw / 2 - 2) + 'px', top: legTop + 'px', width: '4px', height: (legH * 1.1) + 'px', background: 'linear-gradient(90deg,#CDD1D7,#959CA7)', clipPath: 'polygon(0 0, 100% 0, 100% 100%, 25% 100%, 0 55%)', transform: 'rotate(-26deg)', transformOrigin: '50% 0' } }),
+        h('span', { key: 'hip', style: { position: 'absolute', left: (hw / 2 - 4) + 'px', top: (legTop - 1) + 'px', width: '8px', height: '4px', borderRadius: '2px', background: '#8D949F' } }),
+        h('span', { key: 'top', style: { position: 'absolute', left: '2px', top: '-7px', width: (hw - 4) + 'px', height: '7px', background: 'linear-gradient(90deg,#DCE0E4,#EEF0F2)', backgroundImage: 'linear-gradient(90deg, transparent 47%, rgba(80,86,98,.4) 48% 52%, transparent 53%)', boxShadow: 'inset 0 0 0 1px rgba(80,86,98,.3)', transform: 'skewX(-45deg)', transformOrigin: '0 100%', borderRadius: '3px 3px 0 0' } }),
+        h('span', { key: 'side', style: { position: 'absolute', left: hw + 'px', top: '2px', width: '7px', height: (head - 4) + 'px', background: 'linear-gradient(180deg,#A3AAB4,#848B96)', backgroundImage: 'linear-gradient(0deg, transparent 47%, rgba(60,66,78,.45) 48% 52%, transparent 53%)', boxShadow: 'inset 0 0 0 1px rgba(60,66,78,.3)', transform: 'skewY(-45deg)', transformOrigin: '0 0' } }),
+        h('span', { key: 'front', style: { position: 'absolute', left: 0, top: 0, width: hw + 'px', height: head + 'px', clipPath: chamfer, background: '#BEC3CA', backgroundImage: seams } }),
+        h('span', { key: 'recess', style: { position: 'absolute', left: '5px', top: '5px', width: (hw - 10) + 'px', height: (head - 10) + 'px', background: '#E9ECEF', backgroundImage: seams, boxShadow: 'inset 2px 2px 0 #8E959F, inset -2px -2px 0 #F7F8F9, 0 0 0 1px rgba(80,86,98,.4)' } }),
+        h('span', { key: 'barrel', style: { position: 'absolute', left: (hw + 3) + 'px', top: '6px', width: '17px', height: '10px', borderRadius: '2px', background: 'linear-gradient(180deg,#8A919C 0%,#E8EBEE 38%,#B4BAC2 70%,#6E7580 100%)' } },
+          h('span', { style: { position: 'absolute', inset: 0, background: 'repeating-linear-gradient(90deg, transparent 0 3px, rgba(70,76,90,.35) 3px 4px)' } })),
+        h('span', { key: 'rim', style: { position: 'absolute', left: (hw + 19) + 'px', top: '5px', width: '3px', height: '12px', borderRadius: '1px', background: 'linear-gradient(180deg,#9AA1AC,#F1F3F5,#7E8590)' } }),
+        h('span', { key: 'muzzle', style: { position: 'absolute', left: (hw + 22) + 'px', top: '8px', width: '6px', height: '6px', borderRadius: '1px', background: 'linear-gradient(180deg,#8E959F,#E4E7EA,#767D88)' } }),
+      ]);
+    }
+    return h('span', { key: k, 'data-crate': '', style: { position: 'absolute', left: 0, top: 0, width: w + 'px', height: ch + 'px', opacity: 0, willChange: 'transform' } }, [
+      h('span', { key: 'top', style: { position: 'absolute', left: 0, top: '-8px', width: w + 'px', height: '8px', background: 'linear-gradient(90deg,#D3A86E,#E0BC88)', boxShadow: 'inset 0 0 0 1px rgba(60,35,10,.35)', transform: 'skewX(-45deg)', transformOrigin: '0 100%' } }),
+      h('span', { key: 'side', style: { position: 'absolute', left: w + 'px', top: 0, width: '8px', height: ch + 'px', background: 'linear-gradient(180deg,#8A6233,#6E4C26)', boxShadow: 'inset 0 0 0 1px rgba(40,22,6,.4)', transform: 'skewY(-45deg)', transformOrigin: '0 0' } }),
+      h('span', { key: 'front', style: { position: 'absolute', inset: 0, background: c, boxShadow: 'inset 0 0 0 2px rgba(60,35,10,.55), inset 0 0 0 4px rgba(255,220,170,.12)', backgroundImage: 'linear-gradient(45deg, transparent 46%, rgba(60,35,10,.45) 47% 53%, transparent 54%), linear-gradient(-45deg, transparent 46%, rgba(60,35,10,.45) 47% 53%, transparent 54%)' } }),
+    ]);
+  }
+  crateLayerEl() {
+    return React.createElement('div', { key: 'crates', ref: this.crateLayer, 'aria-hidden': true, style: { position: 'absolute', inset: 0, pointerEvents: 'none', zIndex: 6 } },
+      this.CRATES.map((c, k) => this.cargoEl(c, k)));
+  }
+  // Physics (velocity is continuous at every hand-off): drop in from the top onto belt 1, ride left, tip off and fall down the gutter onto belt 2, ride right, fall off the page, repeat
+  crateTick(now) {
+    const layer = this.crateLayer.current;
+    if (!layer || this.reduced) return;
+    const dt = Math.min(0.05, this.cLast ? (now - this.cLast) / 1000 : 0); this.cLast = now;
+    const b1 = document.querySelector('[data-belt="1"]'), b2 = document.querySelector('[data-belt="2"]');
+    if (!b1 || !b2) return;
+    const L = layer.getBoundingClientRect(), r1 = b1.getBoundingClientRect(), r2 = b2.getBoundingClientRect();
+    const Y1 = r1.top - L.top, Y2 = r2.top - L.top, X1L = r1.left - L.left, X2R = r2.right - L.left, PH = L.height;
+    const V = 110, G = 2600, K = 3, els = layer.querySelectorAll('[data-crate]');
+    if (!this.cs) this.cs = this.CRATES.map((c, k) => ({ ph: 'wait', t: k * 3.2, x: 0, y: -100, vx: 0, vy: 0, r: 0, tl: 9, o: 0, bounce: 0 }));
+    const toward = (v, target, rate) => v + (target - v) * Math.min(1, dt * rate);
+    this.cs.forEach((c, k) => {
+      const [w, ch] = this.CRATES[k], el = els[k]; if (!el) return;
+      let origin = '50% 100%', sy = 1, sx = 1;
+      const land1 = Y1 - ch, land2 = Y2 - ch;
+      if (c.ph === 'wait') {
+        c.t -= dt; c.o = 0;
+        if (c.t <= 0) Object.assign(c, { ph: 'f0', x: 1416 - w, y: -ch - 60, vx: 0, vy: 0, r: (k % 2 ? -1 : 1) * 14, o: 1, bounce: 0 });
+      } else if (c.ph === 'f0') {
+        c.vy += G * dt; c.y += c.vy * dt; c.r *= Math.pow(0.2, dt);
+        if (c.y >= land1) { c.y = land1; c.r = 0; c.tl = 0; c.vy = -c.vy * 0.16; c.bounce = 1; c.ph = 'hop1'; }
+      } else if (c.ph === 'hop1' || c.ph === 'hop2') {
+        const land = c.ph === 'hop1' ? land1 : land2;
+        c.vy += G * dt; c.y += c.vy * dt;
+        if (c.y >= land) { c.y = land; c.tl = 0; if (Math.abs(c.vy) > 260 && c.bounce < 2) { c.vy = -c.vy * 0.22; c.bounce++; } else { c.vy = 0; c.ph = c.ph === 'hop1' ? 'b1' : 'b2'; } }
+        if (c.y >= land - 1) c.vx = toward(c.vx, c.ph === 'hop1' || c.ph === 'b1' ? -V : V, 6);
+        c.x += c.vx * dt;
+      } else if (c.ph === 'b1') {
+        c.vx = toward(c.vx, -V, 6); c.x += c.vx * dt; c.y = land1; c.r = 0;
+        if (c.x + w * 0.5 < X1L) { c.ph = 'f1'; c.vy = 0; c.y0 = c.y; c.x0 = c.x; c.ft = 0; c.v0 = c.vx; c.bounce = 0; }
+      } else if (c.ph === 'f1') {
+        c.ft += dt; c.vy += G * dt; c.y += c.vy * dt;
+        c.x = c.x0 + (c.v0 / K) * (1 - Math.exp(-K * c.ft)); c.vx = c.v0 * Math.exp(-K * c.ft);
+        const p = Math.max(0, Math.min(1, (c.y - c.y0) / Math.max(1, land2 - c.y0)));
+        c.r = -34 * Math.sin(Math.min(1, p * 1.15) * Math.PI); origin = '0% 100%';
+        if (c.y >= land2) { c.y = land2; c.r = 0; c.tl = 0; c.vy = -c.vy * 0.16; c.bounce = 1; c.ph = 'hop2'; }
+      } else if (c.ph === 'b2') {
+        c.vx = toward(c.vx, V, 6); c.x += c.vx * dt; c.y = land2; c.r = 0;
+        if (c.x + w * 0.5 > X2R) { c.ph = 'f2'; c.vy = 0; c.y0 = c.y; c.x0 = c.x; c.ft = 0; c.v0 = c.vx; }
+      } else if (c.ph === 'f2') {
+        c.ft += dt; c.vy += G * dt; c.y += c.vy * dt;
+        c.x = Math.min(1436 - w, c.x0 + (c.v0 / K) * (1 - Math.exp(-K * c.ft)));
+        c.r = 34 * Math.sin(Math.min(1, (c.y - c.y0) / 260) * Math.PI / 2); origin = '100% 100%';
+        if (c.y > PH + 80) Object.assign(c, { ph: 'wait', t: 0.4 + Math.random() * 0.8, o: 0 });
+      }
+      c.tl += dt;
+      if (c.tl < 0.2) { const q = 1 - c.tl / 0.2; sy = 1 - 0.14 * q; sx = 1 + 0.1 * q; origin = '50% 100%'; }
+      el.style.transformOrigin = origin;
+      el.style.transform = 'translate(' + c.x.toFixed(2) + 'px,' + c.y.toFixed(2) + 'px) rotate(' + c.r.toFixed(2) + 'deg) scale(' + sx.toFixed(3) + ',' + sy.toFixed(3) + ')';
+      el.style.opacity = String(c.o);
+    });
+  }
+  ledgerCount() { const p = this.state.passed || []; return Math.max(0, Math.min(3, p.filter(Boolean).length - 1)); }
+  // Oinkyuza banner: rain streaks, puddle ripples and the billboard pig's eyes (pupils follow the cursor)
+  bannerFxEl() {
+    const h = React.createElement, D = this.d;
+    if (!this.RAIN) { let s = 7; const rnd = () => (s = (s * 9301 + 49297) % 233280) / 233280; this.RAIN = Array.from({ length: 40 }, () => [rnd() * 112, 0.7 + rnd() * 0.6, -rnd() * 2, 12 + rnd() * 16, 0.14 + rnd() * 0.2]); this.RIP = Array.from({ length: 7 }, (_, k) => [8 + rnd() * 84, 86 + rnd() * 10, 1.6 + rnd() * 1.6, -rnd() * 3, 18 + rnd() * 26]); }
+    const kids = [];
+    if (D.rain) {
+      kids.push(h('span', { key: 'rain', style: { position: 'absolute', inset: 0, overflow: 'hidden' } }, this.RAIN.map(([x, dur, dl, len, o], k) =>
+        h('span', { key: k, 'data-anim': '', style: { position: 'absolute', left: x + '%', top: 0, width: '1px', height: len + 'px', background: 'linear-gradient(180deg, rgba(190,225,255,0), rgba(190,225,255,' + o + '))', animation: 'csRain ' + dur + 's linear ' + dl + 's infinite' } }))));
+      kids.push(h('span', { key: 'rip', style: { position: 'absolute', inset: 0 } }, this.RIP.map(([x, y, dur, dl, w], k) =>
+        h('span', { key: k, 'data-anim': '', style: { position: 'absolute', left: x + '%', top: y + '%', width: w + 'px', height: (w * 0.28) + 'px', marginLeft: (-w / 2) + 'px', borderRadius: '50%', border: '1px solid rgba(160,240,255,.55)', boxShadow: '0 0 6px rgba(120,230,255,.5)', animation: 'csRipple ' + dur + 's ease-out ' + dl + 's infinite' } }))));
+    }
+    if (D.fireflies) {
+      if (!this.FLIES) { let s = 11; const rnd = () => (s = (s * 9301 + 49297) % 233280) / 233280; this.FLIES = Array.from({ length: 28 }, () => [4 + rnd() * 92, 28 + rnd() * 64, 2.5 + rnd() * 2.5, 6 + rnd() * 7, -rnd() * 10, (rnd() - .5) * 60, -10 - rnd() * 40]); }
+      kids.push(h('span', { key: 'flies', style: { position: 'absolute', inset: 0 } }, this.FLIES.map(([x, y, sz, dur, dl, fx, fy], k) =>
+        h('span', { key: k, 'data-anim': '', style: { position: 'absolute', left: x + '%', top: y + '%', width: sz + 'px', height: sz + 'px', borderRadius: '50%', background: '#F2FFB0', boxShadow: '0 0 6px #E8FF7A, 0 0 14px rgba(214,255,90,.7), 0 0 26px rgba(214,255,90,.35)', '--fx': fx + 'px', '--fy': fy + 'px', animation: 'csFly ' + dur + 's ease-in-out ' + dl + 's infinite' } }))));
+    }
+    (D.eyes || []).forEach(([x, y], k) => kids.push(h('span', { key: 'eye' + k, style: { position: 'absolute', left: x + '%', top: y + '%', width: 0, height: 0 } },
+      h('span', { 'data-eye': '', style: { position: 'absolute', left: '-3px', top: '-3px', width: '6px', height: '6px', borderRadius: '50%', background: '#E6FBFF', boxShadow: '0 0 4px #7FE8FF, 0 0 10px #3FA0FF, 0 0 18px rgba(63,160,255,.7)', transition: 'transform 140ms ease-out, box-shadow 200ms ease-out' } }))));
+    return h('div', { key: 'bfx', 'aria-hidden': true, style: { position: 'absolute', inset: 0, pointerEvents: 'none', zIndex: 1 } }, kids);
+  }
+  onEyes = (e) => {
+    const els = document.querySelectorAll('[data-eye]'); if (!els.length) return;
+    els.forEach(el => {
+      const r = el.parentNode.getBoundingClientRect(), dx = e.clientX - r.left, dy = e.clientY - r.top, d = Math.hypot(dx, dy) || 1, m = Math.min(3, d / 60);
+      el.style.transform = 'translate(' + (dx / d * m).toFixed(2) + 'px,' + (dy / d * m).toFixed(2) + 'px)';
+      el.style.boxShadow = d < 260 ? '0 0 5px #A6F2FF, 0 0 14px #3FA0FF, 0 0 28px rgba(63,160,255,.9)' : '0 0 4px #7FE8FF, 0 0 10px #3FA0FF, 0 0 18px rgba(63,160,255,.7)';
+    });
+  };
+  // Surveillance drone: crosses the viewport every so often, searchlight sweeping
+  droneEl() {
+    const h = React.createElement;
+    return h('div', { key: 'drone', ref: this.droneRef, 'aria-hidden': true, style: { position: 'fixed', left: 0, top: 0, zIndex: 40, pointerEvents: 'none', opacity: 0 } },
+      h('div', { style: { position: 'relative', width: '70px', height: '30px', animation: 'csBob 1.6s ease-in-out infinite' } }, [
+        h('span', { key: 'beam', style: { position: 'absolute', left: '35px', top: '18px', width: 0, height: 0, animation: 'csBeam 3.2s ease-in-out infinite', transformOrigin: '0 0' } },
+          h('span', { style: { position: 'absolute', left: '-90px', top: 0, width: '180px', height: '260px', background: 'radial-gradient(ellipse 50% 100% at 50% 0%, rgba(150,240,255,.28), rgba(150,240,255,0) 80%)', clipPath: 'polygon(48% 0, 52% 0, 100% 100%, 0 100%)' } })),
+        h('span', { key: 'arm', style: { position: 'absolute', left: '6px', right: '6px', top: '9px', height: '3px', background: '#3A4766', borderRadius: '2px' } }),
+        h('span', { key: 'r1', style: { position: 'absolute', left: '0', top: '4px', width: '22px', height: '3px', background: 'rgba(200,210,230,.7)', borderRadius: '2px', animation: 'csRotor .08s linear infinite alternate' } }),
+        h('span', { key: 'r2', style: { position: 'absolute', right: '0', top: '4px', width: '22px', height: '3px', background: 'rgba(200,210,230,.7)', borderRadius: '2px', animation: 'csRotor .08s linear infinite alternate-reverse' } }),
+        h('span', { key: 'body', style: { position: 'absolute', left: '23px', top: '7px', width: '24px', height: '12px', borderRadius: '6px 6px 8px 8px', background: 'linear-gradient(180deg,#4A5674,#1C2438)', boxShadow: 'inset 0 1px 0 rgba(255,255,255,.2)' } }),
+        h('span', { key: 'lens', style: { position: 'absolute', left: '31px', top: '14px', width: '8px', height: '6px', borderRadius: '0 0 4px 4px', background: '#9FF0FF', boxShadow: '0 0 8px #6FE0FF' } }),
+        h('span', { key: 'led', style: { position: 'absolute', left: '44px', top: '6px', width: '4px', height: '4px', borderRadius: '50%', background: '#FF3B5C', boxShadow: '0 0 6px #FF3B5C', animation: 'csBlink 1s steps(1,end) infinite' } }),
+      ]));
+  }
+  droneTick(now) {
+    const el = this.droneRef.current; if (!el || this.reduced || document.hidden) return;
+    if (!this.droneNext) this.droneNext = now + 6000;
+    if (now < this.droneNext || this.droneBusy) return;
+    this.droneBusy = true;
+    const vw = window.innerWidth, vh = window.innerHeight, ltr = Math.random() > 0.4, y = vh * (0.22 + Math.random() * 0.3);
+    const a = el.animate([{ transform: 'translate(' + (ltr ? -120 : vw + 60) + 'px,' + y + 'px)', opacity: 1 }, { transform: 'translate(' + (vw * 0.5 - 35) + 'px,' + (y + 24) + 'px)', opacity: 1, offset: 0.5 }, { transform: 'translate(' + (ltr ? vw + 60 : -120) + 'px,' + (y - 10) + 'px)', opacity: 1 }], { duration: 11000, easing: 'ease-in-out' });
+    a.onfinish = () => { el.style.opacity = 0; this.droneBusy = false; this.droneNext = performance.now() + 14000 + Math.random() * 10000; };
+  }
+  neonEl() {
+    const tube = (k, c, top, anim) => React.createElement('span', { key: k, 'data-anim': '', style: { position: 'absolute', left: '12%', right: '12%', top: top + 'px', height: '2px', borderRadius: '2px', background: '#fff', boxShadow: '0 0 4px ' + c + ', 0 0 10px ' + c + ', 0 0 22px ' + c + ', 0 0 40px ' + c, animation: anim } });
+    const lan = this.d.lanterns ? [18, 33, 50, 67, 82].map((x, k) => React.createElement('span', { key: 'lan' + k, 'data-anim': '', style: { position: 'absolute', left: x + '%', top: '17px', width: 0, height: 0, transformOrigin: '0 0', animation: 'csSway ' + (3.4 + k * 0.45) + 's ease-in-out ' + (-k * 0.7) + 's infinite' } }, [
+      React.createElement('span', { key: 's', style: { position: 'absolute', left: '-0.5px', top: 0, width: '1px', height: (14 + (k % 2) * 10) + 'px', background: 'rgba(200,210,230,.5)' } }),
+      React.createElement('span', { key: 'l', style: { position: 'absolute', left: '-13px', top: (14 + (k % 2) * 10) + 'px', width: '26px', height: '32px', borderRadius: '45%', background: 'radial-gradient(ellipse at 50% 45%, #FF9A5A 0%, #E8402E 55%, #9E1F1A 100%)', boxShadow: '0 0 16px rgba(255,110,60,.55), 0 0 36px rgba(255,80,40,.25)', backgroundImage: 'repeating-linear-gradient(180deg, rgba(90,10,0,0) 0 6px, rgba(90,10,0,.28) 6px 7px), radial-gradient(ellipse at 50% 45%, #FF9A5A 0%, #E8402E 55%, #9E1F1A 100%)' } }),
+      React.createElement('span', { key: 'c1', style: { position: 'absolute', left: '-7px', top: (12 + (k % 2) * 10) + 'px', width: '14px', height: '4px', borderRadius: '2px', background: '#2A1A14' } }),
+      React.createElement('span', { key: 'c2', style: { position: 'absolute', left: '-7px', top: (44 + (k % 2) * 10) + 'px', width: '14px', height: '4px', borderRadius: '2px', background: '#2A1A14' } }),
+      React.createElement('span', { key: 't', style: { position: 'absolute', left: '-1px', top: (48 + (k % 2) * 10) + 'px', width: '2px', height: '10px', background: '#E8402E' } }),
+    ])) : [];
+    return React.createElement('div', { key: 'neon', style: { position: 'relative', height: this.d.lanterns ? '96px' : '24px' } }, lan.concat([
+      tube('p', 'rgba(255,79,200,.9)', 6, 'csNeonA 7s linear infinite'),
+      tube('c', 'rgba(80,230,255,.85)', 16, 'csNeonB 9s linear infinite'),
+      React.createElement('span', { key: 'cl', style: { position: 'absolute', left: 'calc(12% - 10px)', top: '3px', width: '6px', height: '18px', background: '#26365E' } }),
+      React.createElement('span', { key: 'cr', style: { position: 'absolute', right: 'calc(12% - 10px)', top: '3px', width: '6px', height: '18px', background: '#26365E' } }),
+    ]));
+  }
+  // Oinkyuza stat bar: numbers tumble 1-30 like a combo dial, land, then the letters slot in one at a time
+  comboTick() {
+    if (this.comboDone || !this.d.combo) return;
+    const bar = this.statRef.current; if (!bar) return;
+    const r = bar.getBoundingClientRect(); if (r.bottom < 0 || r.top > window.innerHeight * 0.95) return;
+    this.comboDone = true;
+    if (this.reduced) return;
+    bar.querySelectorAll('[data-tumble="1"]').forEach((el, idx) => {
+      const final = el.textContent, m = final.match(/^(\d+)(.*)$/); if (!m) return;
+      const n = m[1], rest = m[2]; let k = 1, t = 0;
+      el.textContent = '1';
+      const step = () => {
+        if (k < 30) { k++; el.textContent = String(k); t = 22 + Math.pow(k / 30, 3) * 70; setTimeout(step, t); return; }
+        el.textContent = n; if (el.animate) el.animate([{ transform: 'translateY(-4px)' }, { transform: 'translateY(0)' }], { duration: 180, easing: 'cubic-bezier(.34,1.8,.64,1)' });
+        let j = 0; const slot = () => { j++; el.textContent = n + rest.slice(0, j); if (j < rest.length) setTimeout(slot, 70); };
+        if (rest.length) setTimeout(slot, 220);
+      };
+      setTimeout(step, 250 + idx * 300);
+    });
+  }
+  // auto-advance every 5s; pauses on hover, off-screen, hidden tab or reduced motion
+  galleryTick(now) {
+    const dt = this.gLast ? now - this.gLast : 0; this.gLast = now;
+    if (!this.io2 && this.secMedia.current && window.IntersectionObserver) {
+      this.io2 = new IntersectionObserver(([en]) => { if (en.isIntersecting !== this.state.mVis) this.setState({ mVis: en.isIntersecting }); }, { threshold: 0.3 });
+      this.io2.observe(this.secMedia.current);
+    }
+    if (this.gPaused() || this.d.gallery.length < 2) return;
+    this.gEl += dt;
+    if (this.gEl >= 5000) this.setGi(this.state.gi + 1);
+  }
+  gPaused() { return this.state.mHover || !this.state.mVis || this.reduced || document.hidden; }
+
+  // Plays the costume GIF on a canvas with its baked-in black background keyed out (flood fill from the edges, so dark clothing stays opaque)
+  async initChar() {
+    const ch = this.d.character;
+    if (!ch || this.charDec || typeof window.ImageDecoder !== 'function') return;
+    try {
+      const res = await fetch(ch.src);
+      const dec = new ImageDecoder({ data: await res.arrayBuffer(), type: 'image/gif' });
+      await dec.tracks.ready; await dec.completed;
+      this.charDec = dec; this.charN = dec.tracks.selectedTrack.frameCount; this.charI = 0; this.charNext = 0;
+      this.setState({ charMode: 'canvas' });
+    } catch (e) { this.charDec = null; }
+  }
+  keyFrame(ctx, w, h) {
+    const id = ctx.getImageData(0, 0, w, h), px = id.data, seen = new Uint8Array(w * h), stack = new Int32Array(w * h);
+    let sp = 0;
+    const dark = (i) => { const o = i * 4; return px[o] <= 30 && px[o + 1] <= 30 && px[o + 2] <= 30; };
+    const push = (i) => { if (!seen[i] && dark(i)) { seen[i] = 1; stack[sp++] = i; } };
+    for (let x = 0; x < w; x++) { push(x); push((h - 1) * w + x); }
+    for (let y = 0; y < h; y++) { push(y * w); push(y * w + w - 1); }
+    while (sp) {
+      const i = stack[--sp], x = i % w;
+      px[i * 4 + 3] = 0;
+      if (x > 0) push(i - 1); if (x < w - 1) push(i + 1); if (i >= w) push(i - w); if (i < w * (h - 1)) push(i + w);
+    }
+    ctx.putImageData(id, 0, 0);
+  }
+  // Dev path: each connector draws with scroll while Jun pops out of one card, rides the line and pops into the next
+  devTick() {
+    const sec = this.secDev.current; if (!sec) return;
+    const vh = window.innerHeight, start = vh * 0.8, end = vh * 0.45;
+    const svgs = [...sec.querySelectorAll('[data-conn]')];
+    const ps = svgs.map(svg => { const r = svg.getBoundingClientRect(); const p = (start - r.top) / (start - end + r.height); return this.reduced ? 1 : Math.max(0, Math.min(1, p)); });
+    const rider = ps.findIndex(p => p > 0 && p < 1); // only one Jun on the road at a time
+    svgs.forEach((svg, i) => {
+      const p = ps[i], on = i === rider, key = p.toFixed(4) + on;
+      if (svg._k === key) return; svg._k = key;
+      const rev = svg.querySelector('[data-rev]'), path = svg.querySelector('[data-track]'), jun = svg.querySelector('[data-jun]');
+      if (rev) rev.style.strokeDashoffset = String(100 * (1 - p));
+      if (!path || !jun) return;
+      if (!on || this.reduced) { jun.setAttribute('transform', 'scale(0)'); return; }
+      const L = path._L || (path._L = path.getTotalLength());
+      const pt = path.getPointAtLength(L * p), pt2 = path.getPointAtLength(Math.min(L, L * p + 3));
+      const dx = pt2.x - pt.x, dl = Math.hypot(dx, pt2.y - pt.y) || 1;
+      const ease = (t) => 1 - Math.pow(1 - t, 3), pop = 0.12;
+      const sc = p < pop ? ease(p / pop) : p > 1 - pop ? ease((1 - p) / pop) : 1;
+      const bob = Math.sin(p * Math.PI * 10) * 1.5;
+      jun.setAttribute('transform', 'translate(' + pt.x.toFixed(1) + ' ' + (pt.y + bob).toFixed(1) + ') rotate(' + (dx / dl * 12).toFixed(1) + ') scale(' + (dx < 0 ? -sc : sc).toFixed(3) + ' ' + sc.toFixed(3) + ')');
+    });
+  }
+  charTick(now) {
+    const cv = this.charCanvas.current;
+    if (!this.charDec || !cv || this.charBusy || now < this.charNext || document.hidden) return;
+    const r = cv.getBoundingClientRect(); if (r.bottom < 0 || r.top > window.innerHeight) return;
+    this.charBusy = true;
+    this.charDec.decode({ frameIndex: this.charI }).then(({ image }) => {
+      const ctx = this.charCtx || (this.charCtx = cv.getContext('2d', { willReadFrequently: true }));
+      ctx.clearRect(0, 0, cv.width, cv.height); ctx.drawImage(image, 60, 0, 380, 281, 0, 0, cv.width, cv.height);
+      this.keyFrame(ctx, cv.width, cv.height);
+      this.charNext = performance.now() + Math.max(20, (image.duration || 40000) / 1000);
+      image.close(); this.charI = (this.charI + 1) % this.charN; this.charBusy = false;
+    }).catch(() => { this.charBusy = false; this.charDec = null; this.setState({ charMode: 'img' }); });
+  }
+
+  // Oinkyuza: neon sign flicker on the title, then an occasional buzz; map labels flicker on as they pop in
+  startNeon() {
+    const el = this.titleRef.current;
+    if (!this.d.neon || !el || !el.animate || this.reduced) return;
+    el.animate([{ opacity: .1 }, { opacity: 1, offset: .08 }, { opacity: .25, offset: .14 }, { opacity: 1, offset: .22 }, { opacity: .55, offset: .4 }, { opacity: 1, offset: .46 }, { opacity: 1 }], { duration: 1400, delay: 350, fill: 'backwards' });
+    const buzz = () => { this.neonT = setTimeout(() => {
+      const r = el.getBoundingClientRect();
+      if (r.bottom > 0 && r.top < window.innerHeight && !document.hidden) el.animate([{ opacity: 1 }, { opacity: .3, offset: .2 }, { opacity: 1, offset: .35 }, { opacity: .6, offset: .6 }, { opacity: 1 }], { duration: 420 });
+      buzz(); }, 5000 + Math.random() * 5000); };
+    buzz();
+  }
+  neonChips() {
+    const map = this.mapRef.current;
+    if (!this.d.neon || !map || this.reduced) return;
+    map.querySelectorAll('[data-chip]').forEach((c, i) => c.animate && c.animate([{ opacity: 0 }, { opacity: 1, offset: .12 }, { opacity: .2, offset: .2 }, { opacity: 1, offset: .32 }, { opacity: .5, offset: .5 }, { opacity: 1, offset: .58 }, { opacity: 1 }], { duration: 900, delay: 300 + i * 90, fill: 'backwards' }));
+  }
+
+  componentDidMount() {
+    this.initChar();
+    this.startNeon();
+    if (this.d.eyes) window.addEventListener('mousemove', this.onEyes, { passive: true });
+    this.reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    document.addEventListener('scroll', this.onScroll, { passive: true, capture: true });
+    window.addEventListener('resize', this.onScroll);
+    window.addEventListener('keydown', this.onKey);
+    requestAnimationFrame(this.onScroll);
+    this.startVideos();
+    const loop = (now) => { this.frame(now); this.galleryTick(now); this.charTick(now); this.devTick(); this.comboTick(); this.crateTick(now); this.follow(now); if (this.d.drone) this.droneTick(now); this.raf = requestAnimationFrame(loop); };
+    this.raf = requestAnimationFrame(loop);
+  }
+  componentDidUpdate(prev) {
+    if (prev.project !== this.props.project) { this.setState({ gi: 0, tab: this.tabDefs()[0].id, sysOpen: null }); this.len = null; this.tStart = performance.now() + 1900; this.startVideos(); requestAnimationFrame(this.onScroll); }
+  }
+  componentWillUnmount() {
+    document.removeEventListener('scroll', this.onScroll, { capture: true });
+    window.removeEventListener('resize', this.onScroll);
+    window.removeEventListener('keydown', this.onKey);
+    clearTimeout(this.neonT); clearTimeout(this.ft); clearTimeout(this.mt);
+    window.removeEventListener('mousemove', this.onEyes);
+    if (this.io) this.io.disconnect(); if (this.io2) this.io2.disconnect();
+    cancelAnimationFrame(this.raf);
+  }
+  startVideos() {
+    setTimeout(() => document.querySelectorAll('video[data-autoplay]').forEach(v => {
+      v.muted = true; v.loop = true; v.playsInline = true; v.setAttribute('playsinline', '');
+      const p = v.play(); if (p && p.catch) p.catch(() => {});
+    }), 50);
+  }
+
+  // Q token walks the route; callouts light up as it passes. Pauses off-screen.
+  frame(now) {
+    const map = this.mapRef.current;
+    if (map) {
+      const r = map.getBoundingClientRect(), vh = window.innerHeight;
+      const vis = r.height > 0 && (Math.min(r.bottom, vh) - Math.max(r.top, 0)) > Math.min(r.height, vh) * 0.25;
+      this.mapVisible = vis;
+      if (vis && !this.state.mapIn && !this.mapInPending) { this.mapInPending = true; this.setState({ mapIn: true }, () => this.neonChips()); this.tStart = performance.now() + 2000; }
+    }
+    const p = this.pathRef.current, dot = this.dotRef.current;
+    if (!p || !dot || !this.state.mapIn || this.reduced || !this.d.map || this.d.map.walk === false) return;
+    if (!this.mapVisible) { if (this.pauseAt == null) this.pauseAt = now; return; }
+    if (this.pauseAt != null) { this.tStart += now - this.pauseAt; this.pauseAt = null; }
+    const m = this.d.map, L = this.len || (this.len = p.getTotalLength());
+    const T = 18000, H = 1400, el = now - this.tStart;
+    if (el < 0) { dot.style.opacity = 0; return; }
+    const t = el % (T + H), u = Math.min(1, t / T);
+    const pt = p.getPointAtLength(L * u);
+    const hop = u < 1 ? -Math.abs(Math.sin(now / 1000 * Math.PI * 6)) * m.W * 0.004 : -Math.abs(Math.sin((t - T) / H * Math.PI * 2)) * m.W * 0.012;
+    dot.setAttribute('transform', 'translate(' + pt.x + ' ' + (pt.y + hop) + ')');
+    dot.style.opacity = t > T + H - 300 ? Math.max(0, (T + H - t) / 300) : (el < 300 ? el / 300 : 1);
+    const rad = m.W * 0.045;
+    map.querySelectorAll('[data-co]').forEach(n => {
+      const dx = +n.dataset.x - pt.x, dy = +n.dataset.y - pt.y, on = dx * dx + dy * dy < rad * rad;
+      if (n._on === on) return; n._on = on;
+      const chip = n.querySelector('[data-chip]');
+      if (chip) { chip.style.background = on ? '#FFC43D' : 'rgba(8,14,28,.94)'; chip.style.color = on ? '#0B1424' : '#fff'; }
+    });
+  }
+
+  sDown = (e) => { this.setState({ drag: true }); if (e.currentTarget.setPointerCapture) e.currentTarget.setPointerCapture(e.pointerId); this.sMove(e, true); };
+  sMove = (e, force) => {
+    if (!this.state.drag && force !== true) return;
+    const f = this.frameRef.current; if (!f) return;
+    const r = f.getBoundingClientRect();
+    this.setState({ pos: Math.max(0, Math.min(100, (e.clientX - r.left) / r.width * 100)) });
+  };
+  sUp = () => this.setState({ drag: false });
+  sKey = (e) => {
+    const step = e.shiftKey ? 10 : 4;
+    if (e.key === 'ArrowLeft') { e.preventDefault(); this.setState(s => ({ pos: Math.max(0, s.pos - step) })); }
+    if (e.key === 'ArrowRight') { e.preventDefault(); this.setState(s => ({ pos: Math.min(100, s.pos + step) })); }
+  };
+
+
+  railVals() {
+    const RAILSTATE = ['Email','LinkedIn','itch.io','Resume'].map((k, i) => { const on = this.state.railHov === k; return ['rail' + i, { enter: () => this.setState({ railHov: k }), leave: () => this.setState(s => s.railHov === k ? { railHov: null } : null), sc: on ? 1 : .55, op: on ? 1 : 0, bd: on ? '#FFC43D' : 'rgba(255,196,61,.4)', bg: on ? 'rgba(255,196,61,.12)' : 'transparent' }]; });
+    return Object.fromEntries(RAILSTATE);
+  }
+  renderVals() {
+    const D = this.d, m = D.map || { W: 1, H: 1, callouts: [], path: 'M0 0', src: '', alt: '', walk: false }, s = this.state, on = s.mapIn || this.reduced;
+    const side = {
+      r: { cl: '14px', cr: 'auto', ct: '-12px', cb: 'auto' },
+      l: { cl: 'auto', cr: '14px', ct: '-12px', cb: 'auto' },
+      u: { cl: '0', cr: 'auto', ct: 'auto', cb: '14px' },
+      d: { cl: '0', cr: 'auto', ct: '14px', cb: 'auto' },
+    };
+    const callouts = m.callouts.map(([x, y, label, sd], i) => {
+      const c = side[sd] || side.r, center = sd === 'u' || sd === 'd';
+      return { x, y, label, l: (x / m.W * 100) + '%', t: (y / m.H * 100) + '%', ...c,
+        glow: D.neon ? '0 0 12px rgba(255,196,61,.55), inset 0 0 6px rgba(255,196,61,.22)' : 'none', tr: (center ? 'translateX(-50%) ' : '') + 'scale(' + (on ? 1 : 0.5) + ')', o: on ? 1 : 0, d: on ? (300 + i * 90) + 'ms' : '0ms' };
+    });
+    const secs = this.railSecs();
+    const kc = (i) => D.keyColors ? D.keyColors[i % D.keyColors.length] : '#FFC43D';
+    const cps = secs.slice(1).map((it, i) => ({ label: it.label + (D.keyNames && D.keyNames[i] ? ' · ' + D.keyNames[i] : ''), left: (s.cpl[i] ?? (i + 1) * 20) + '%', bg: s.passed[i] ? kc(i) : '#0B1A3A', bc: kc(i), ks: s.passed[i] || !D.keyColors ? 1 : .8, glow: s.passed[i] && D.keyColors ? '0 0 10px ' + kc(i) : 'none', sz: s.progHov === i ? '14px' : '10px', lo: s.progHov === i ? 1 : 0, ly: s.progHov === i ? '0px' : '-6px', fg: s.passed[i] ? '#0B1424' : '#fff', lbg: s.passed[i] ? kc(i) : 'rgba(8,14,28,.96)', enter: () => this.setState({ progHov: i }), go: (e) => { e.preventDefault(); this.go(i + 1); } }));
+    const tabDefs = this.tabDefs(), tab = tabDefs.some(t => t.id === s.tab) ? s.tab : tabDefs[0].id, curTab = tabDefs.find(t => t.id === tab);
+    const item = (g, i) => ({ ...g, fit: g.fit || (/map/.test(g.src) || g.type === 'video' ? 'contain' : 'cover'), bg: g.bg || '#060B17', isVideo: g.type === 'video', isImg: g.type !== 'video', num: String(i + 1).padStart(2, '0') });
+    return {
+      ...this.railVals(), footCur: this.props.project || '',
+      d: {
+        ...D, hasHook: !!D.hook, hasSlider: !!D.slider, multiTab: tabDefs.length > 1,
+        hasGoal: !!D.goal, hasLogo: !!D.logo, noLogo: !D.logo, hasCutout: !!D.cutout, hasQuote: !!D.quote, quote: D.quote || {},
+        hasGoals: !!D.goals, goalsLabel: D.goalsLabel || 'DESIGN GOALS', goalsList: (D.goals || []).map(t => typeof t === 'string' ? { t, links: [], hasLinks: false } : { ...t, hasLinks: !!(t.links && t.links.length) }), hasContrib: !!D.contrib, hasChar: !!D.character, character: D.character || {}, hasDev: !!D.dev, hasStage: !D.noPanel, hasLego: !!D.lego, legoParas: D.lego ? D.lego.body.map(t => ({ t })) : [], hasHero: !!D.hero, heroBox: D.hero ? '#080E1C' : 'transparent',
+        cut: D.cut || { r: '72px', b: '-6%', h: '104%' }, textW: D.textW || 'none', cursor: D.crosshair ? this.CROSS : 'auto', health: !!D.health, waves: !!D.waves, hasDivider: !!D.divider, heroFx: D.heroFx || 'none', titleGlow: D.neon ? '0 0 4px rgba(255,255,255,.6), 0 0 14px rgba(255,79,200,.85), 0 0 34px rgba(255,79,200,.55), 0 0 70px rgba(255,79,200,.3)' : 'none', rider: D.rider || D.cutout || '', hasSys: !!D.systems, hasHonors: !!D.honors, honorCols: Math.min(4, (D.honors || []).length || 1), honorList: D.honors || [],
+        colPos: D.goals ? 'static' : 'sticky', devNo: '02', sysNo: D.dev ? '03' : '02', mediaNo: '0' + (2 + (D.dev ? 1 : 0) + (D.systems ? 1 : 0)),
+        stats: D.stats.map(([k, v]) => ({ k: k.toUpperCase(), v: v || 'TBD', c: v ? '#F2F4F8' : '#6F7C99', tum: D.combo && /^\d/.test(v || '') ? '1' : '', led: k === 'Wolf’s ledger' ? '1' : '' })),
+        overview: D.overview.map(t => ({ t })),
+        map: { ...m, srcOk: m.src || 'data:image/gif;base64,R0lGODlhAQABAAAAACw=', ar: m.W + '/' + m.H, vb: '0 0 ' + m.W + ' ' + m.H, mw: m.W / 50, sw: m.ghost ? m.W / 420 : m.W / 260, sw2: m.ghost ? m.W / 200 : m.W / 110, o1: m.ghost ? .7 : 1, o2: m.ghost ? .25 : .55, dash: m.ghost ? (m.W / 160) + ' ' + (m.W / 120) : (m.W / 110) + ' ' + (m.W / 170), r: m.W / 75, rs: m.W / 320, wd: m.walk === false ? 'none' : 'inline' },
+        slider: D.slider ? { ...D.slider, aOk: D.slider.a, bOk: D.slider.b } : { aOk: 'data:image/gif;base64,R0lGODlhAQABAAAAACw=', bOk: 'data:image/gif;base64,R0lGODlhAQABAAAAACw=' },
+      },
+      tabs: {
+        items: tabDefs.map((t) => { const sel = t.id === tab; return { label: t.label, sel: sel ? 'true' : 'false', pick: () => this.setTab(t.id), bg: sel ? '#FFC43D' : 'transparent', fg: sel ? '#0B1424' : '#C9D1E0' }; }),
+        cap: curTab.cap, mapD: tab === 'map' ? 'block' : 'none', iterD: tab === 'iter' ? 'block' : 'none',
+        imgs: (D.imgTabs || []).map((t, i) => ({ ...t, d: tab === 'img' + i ? 'block' : 'none', bg: t.bg || '#060B17' })),
+      },
+      colNote: { label: curTab.noteLabel, t: curTab.note },
+      callouts, cps,
+      smoke: D.smoke || D.lamps ? React.createElement('div', { key: 'smoke', 'aria-hidden': true, style: { position: 'absolute', inset: 0, overflow: 'hidden', pointerEvents: 'none' } },
+        [[6, 17, 0, 40], [20, 21, -6, -30], [34, 15, -11, 30], [50, 19, -3, -50], [63, 23, -14, 20], [77, 16, -8, -20], [90, 20, -17, 40]].map(([l, dur, dl, dx], k) =>
+          React.createElement('span', { key: k, 'data-anim': '', style: { position: 'absolute', left: l + '%', bottom: '-22%', width: '420px', height: '420px', marginLeft: '-210px', borderRadius: '50%',
+            background: 'radial-gradient(circle, rgba(214,222,236,.30) 0%, rgba(214,222,236,.12) 40%, rgba(214,222,236,0) 70%)', filter: 'blur(14px)', opacity: .25,
+            '--dx': dx + 'px', animation: 'csSmoke ' + dur + 's linear ' + dl + 's infinite', willChange: 'transform, opacity' } })).filter(() => D.smoke).concat((D.lamps || []).map(([lx, ly], k) =>
+          React.createElement('span', { key: 'lamp' + k, 'data-anim': '', style: { position: 'absolute', left: lx + '%', top: ly + '%', width: 0, height: 0, animation: 'csLamp 6.5s steps(1,end) infinite', mixBlendMode: 'screen' } }, [
+            React.createElement('span', { key: 'g', style: { position: 'absolute', left: '-90px', top: '-90px', width: '180px', height: '180px', borderRadius: '50%', background: 'radial-gradient(circle, rgba(255,246,220,.95) 0%, rgba(255,226,160,.45) 18%, rgba(255,210,130,.12) 45%, rgba(255,210,130,0) 70%)' } }),
+            React.createElement('span', { key: 'c', style: { position: 'absolute', left: '-110px', top: '4px', width: '220px', height: '300px', background: 'radial-gradient(ellipse 50% 100% at 50% 0%, rgba(255,232,180,.24), rgba(255,232,180,0) 78%)', clipPath: 'polygon(49% 0, 51% 0, 92% 100%, 8% 100%)' } }),
+          ])))) : null,
+      bannerFx: (D.rain || D.eyes || D.fireflies) && !this.reduced ? this.bannerFxEl() : null,
+      droneEl: D.drone && !this.reduced ? this.droneEl() : null,
+      followRef: this.followRef, objClick: this.objClick,
+      obj: (() => { const t = this.OBJ[s.objStep ?? 0], fresh = s.objNew && s.objOpen;
+        return { text: t, aria: 'Objective: ' + t, ps: s.objOpen ? 'scale(1)' : 'scale(.55)', po: s.objOpen ? 1 : 0, pe: s.objOpen ? 'auto' : 'none',
+          bg: fresh ? 'rgba(60,46,8,.96)' : 'rgba(8,14,28,.92)', tagT: fresh ? 'scale(1)' : 'scale(.5)', tagO: fresh ? 1 : 0 }; })(),
+      objDiamond: React.createElement('span', { style: { position: 'relative', width: 10, height: 10, display: 'inline-block' } },
+        React.createElement('span', { 'data-anim': '', style: { position: 'absolute', inset: 0, border: '1.5px solid #FFC43D', transform: 'rotate(45deg)', animation: 'qsPulse 1.8s ease-out infinite' } }),
+        React.createElement('span', { 'data-anim': '', style: { position: 'absolute', inset: 0, background: '#FFC43D', transform: 'rotate(45deg)', animation: 'qsGlow 1.8s ease-in-out infinite' } })),
+      ledger: (() => { const n = this.ledgerCount(); return { text: '¥ ' + n + ' / 3', aria: 'Wolf’s ledger: ' + n + ' of 3 debts collected',
+        pips: [0, 1, 2].map(i => ({ bg: i < n ? '#FF5FD2' : 'transparent', glow: i < n ? '0 0 8px rgba(255,79,200,.8)' : 'none' })) }; })(),
+      divider1: D.divider === 'conveyor' ? this.conveyorEl(1) : D.divider === 'neon' ? this.neonEl() : null,
+      divider2: D.divider === 'conveyor' ? this.conveyorEl(2) : D.divider === 'neon' ? this.neonEl() : null,
+      crateLayer: D.divider === 'conveyor' && !this.reduced ? this.crateLayerEl() : null,
+      gFx: React.createElement(React.Fragment, { key: 'gfx' }, [
+        D.fanTimer && D.gallery.length > 1 && !this.reduced ? React.createElement('span', { key: 'fan', style: { position: 'absolute', right: '14px', bottom: '14px', zIndex: 3, width: '34px', height: '34px', borderRadius: '50%', background: 'rgba(8,14,28,.75)', border: '1px solid rgba(255,196,61,.6)', display: 'grid', placeItems: 'center' } },
+          React.createElement('span', { key: 'b' + s.gi + '-' + this.gCycle, style: { width: '24px', height: '24px', borderRadius: '50%', background: 'radial-gradient(circle, #0B1424 0 18%, transparent 19%), conic-gradient(#FFC43D 0 18%, transparent 0 25%, #FFC43D 0 43%, transparent 0 50%, #FFC43D 0 68%, transparent 0 75%, #FFC43D 0 93%, transparent 0)', animation: 'csFan 5000ms cubic-bezier(.55,0,.9,.5) forwards', animationPlayState: this.gPaused() ? 'paused' : 'running' } })) : null,
+        D.holo && !this.reduced ? React.createElement('span', { key: 'holo' + s.gi + '-' + this.gCycle, style: { position: 'absolute', inset: 0, zIndex: 1, pointerEvents: 'none', overflow: 'hidden' } }, [
+          React.createElement('span', { key: 'l', style: { position: 'absolute', inset: 0, background: 'repeating-linear-gradient(0deg, rgba(120,240,255,.16) 0 1px, rgba(0,0,0,0) 1px 4px)', mixBlendMode: 'screen', animation: 'csScanLines 1100ms ease-out forwards' } }),
+          React.createElement('span', { key: 'b', style: { position: 'absolute', left: 0, right: 0, top: 0, height: '30%', background: 'linear-gradient(180deg, rgba(0,0,0,0), rgba(110,240,255,.22) 45%, rgba(255,90,210,.28) 55%, rgba(0,0,0,0))', mixBlendMode: 'screen', animation: 'csScanBar 900ms cubic-bezier(.4,0,.2,1) forwards' } }),
+        ]) : null,
+      ]),
+      dev: (D.dev || []).map((st, i, a) => ({ ...st, num: String(i + 1).padStart(2, '0'), dir: i % 2 ? 'rtl' : 'ltr', isVideo: st.type === 'video', isImg: st.type !== 'video', hasNext: i < a.length - 1,
+        conn: i % 2 ? 'M1064 0 C1064 90 280 50 280 140' : 'M280 0 C280 90 1064 50 1064 140', off0: this.reduced ? 0 : 100 })),
+      sys: (D.systems || []).map((c, i) => { const open = s.sysOpen === i; return { ...c, num: String(i + 1).padStart(2, '0'), open, closed: !open, exp: open ? 'true' : 'false',
+        rows: open ? '1fr' : '0fr', o: open ? 1 : 0, ty: open ? '0px' : '-8px', dl: open ? '120ms' : '0ms', hid: open ? 'false' : 'true', rot: open ? '135deg' : '0deg',
+        cardBg: open ? '#0A1428' : '#080E1C', signBg: open ? '#FFC43D' : 'transparent', signFg: open ? '#0B1424' : '#FFC43D', bd: open ? '#FFC43D' : 'rgba(255,196,61,.25)', thumbFit: c.ui ? 'contain' : 'cover', thumbBg: c.ui ? '#282828' : '#060B17',
+        paras: c.body.map(t => ({ t })), pieceList: c.pieces.map(t => ({ t })), multi: c.shots.length > 1,
+        shotList: c.shots.map((sh, j) => { const on = j === (open ? s.sysShot : 0) % c.shots.length; return { ...sh, o: on ? 1 : 0, hid: on ? 'false' : 'true', cur: on ? 'true' : 'false', ol: on ? '#FFC43D' : 'transparent', to: on ? 1 : .55, pick: () => this.setState({ sysShot: j }) }; }),
+        count: String(((open ? s.sysShot : 0) % c.shots.length) + 1).padStart(2, '0') + ' / ' + String(c.shots.length).padStart(2, '0'), cap: c.shots[(open ? s.sysShot : 0) % c.shots.length].cap,
+        prev: () => this.setState(st => ({ sysShot: (st.sysShot - 1 + c.shots.length) % c.shots.length })), next: () => this.setState(st => ({ sysShot: (st.sysShot + 1) % c.shots.length })),
+        toggle: () => this.setState(st => ({ sysOpen: st.sysOpen === i ? null : i, sysShot: 0 })) }; }),
+      progOff: () => this.setState({ progHov: null }),
+      gv: (() => { const g = D.gallery[s.gi] || D.gallery[0]; return { ...g, count: String(s.gi + 1).padStart(2, '0') + ' / ' + String(D.gallery.length).padStart(2, '0') }; })(),
+      gthumbs: D.gallery.map((g, i) => { const cur = i === s.gi; return { ...item(g, i), pick: () => this.setGi(i), cur: cur ? 'true' : 'false', ol: cur ? '#FFC43D' : 'transparent', o: cur ? 1 : .55 }; }),
+      gstack: D.gallery.map((g, i) => ({ ...item(g, i), o: i === s.gi ? 1 : 0, hid: i === s.gi ? 'false' : 'true' })),
+      gBar: D.gallery.length > 1 && !this.reduced ? React.createElement('span', { key: 'bar' + s.gi + '-' + this.gCycle, style: { position: 'absolute', left: 0, bottom: 0, height: '3px', background: '#FFC43D', zIndex: 2, animation: 'csBar 5000ms linear forwards', animationPlayState: this.gPaused() ? 'paused' : 'running' } }) : null,
+      mOn: () => this.setState({ mHover: true }), mOff: () => this.setState({ mHover: false }),
+      gPrev: () => this.setGi(s.gi - 1), gNext: () => this.setGi(s.gi + 1),
+      secTop: this.secTop, secLevel: this.secLevel, secMedia: this.secMedia, secDev: this.secDev, secSys: this.secSys, charCanvas: this.charCanvas, titleRef: this.titleRef, statRef: this.statRef,
+      charFx: { cv: s.charMode === 'canvas' ? 'block' : 'none', im: s.charMode === 'canvas' ? 'none' : 'block' },
+      mapFx: { dash: on ? 0 : 100 },
+      prog: (() => {
+        if (!D.health) return { w: (s.prog * 100) + '%', pct: Math.round(s.prog * 100) + '%', label: 'LEVEL PROGRESS', labelC: '#8E9AB3', bg: '#FFC43D', glow: 'none', pctC: '#FFC43D', l: '0', r: 'auto' };
+        const hp = Math.max(6, Math.round(100 - s.prog * 94)), c = hp > 60 ? '#4CC38A' : hp > 30 ? '#FFC43D' : '#FF4D4D', done = s.prog >= 0.985;
+        return { w: hp + '%', pct: done ? 'SURVIVED' : 'HP ' + hp, label: 'HEALTH', labelC: c, bg: c, glow: '0 0 8px ' + c, pctC: done ? '#7CFFB2' : c, l: 'auto', r: '0' };
+      })(),
+      wave: (() => { const total = secs.length, n = Math.min(total, s.act + 1); return { text: n + ' / ' + total, aria: 'Wave ' + n + ' of ' + total }; })(),
+      survRef: this.survRef, vigRef: this.vigRef,
+      sl: { clip: 'inset(0 ' + (100 - s.pos) + '% 0 0)', left: s.pos + '%' },
+      mapRef: this.mapRef, pathRef: this.pathRef, dotRef: this.dotRef, frameRef: this.frameRef,
+      sDown: this.sDown, sMove: this.sMove, sUp: this.sUp, sKey: this.sKey,
+    };
+  }
+}
+</script>
+</body>
+</html>

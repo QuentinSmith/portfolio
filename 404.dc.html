@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<script src="device.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&family=Chakra+Petch:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+body{margin:0;background-color:#0B1A3A;background-image:linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px),radial-gradient(ellipse 1500px 1100px at 50% 0,rgba(27,62,134,.6),rgba(27,62,134,0) 70%);background-size:20px 20px,20px 20px,100% 100%;background-repeat:repeat,repeat,no-repeat;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+a:hover{color:#FFC43D}
+@keyframes qsPulse{0%{transform:rotate(45deg) scale(1);opacity:.75}70%,100%{transform:rotate(45deg) scale(2.8);opacity:0}}
+@keyframes qsTape{from{background-position:0 0}to{background-position:56px 0}}
+@media (prefers-reduced-motion: reduce){[data-anim]{animation:none !important}}
+</style>
+<script src="skeleton.js"></script>
+<script src="transition.js"></script>
+<script src="achievements.js"></script>
+</helmet>
+<div data-screen-label="404" style="width:1440px;margin:0 auto;color:#F2F4F8;font-family:'Instrument Sans',sans-serif;overflow:clip">
+<nav aria-label="Get in touch" style="position:fixed;left:max(0px, calc(50vw - 796px));top:50%;transform:translateY(-50%) translateX(max(-54px, min(0px, calc(50vw - 796px))));z-index:45;display:flex;flex-direction:column;align-items:center;gap:12px;padding:12px 10px;background:rgba(8,14,28,.9);backdrop-filter:blur(8px);border:1px solid rgba(255,196,61,.35);border-right:3px solid #FFC43D;transition:transform 240ms cubic-bezier(.2,.8,.2,1)" style-hover="transform:translateY(-50%) translateX(0)" style-focus-within="transform:translateY(-50%) translateX(0)">
+  <div style="position:relative" onMouseEnter="{{ rail0.enter }}" onMouseLeave="{{ rail0.leave }}" onFocus="{{ rail0.enter }}" onBlur="{{ rail0.leave }}">
+      <a href="mailto:QuentinSmith.GD@gmail.com" target="_self" aria-label="Email" style="display:flex;align-items:center;justify-content:center;width:44px;height:44px;box-sizing:border-box;border:1px solid {{ rail0.bd }};background:{{ rail0.bg }};text-decoration:none;transition:all 160ms ease-out"><img src="assets/icons/gmail.png" alt="" style="display:block;width:22px;height:auto;filter:none"></a>
+      <span aria-hidden="true" style="position:absolute;left:58px;top:50%;display:flex;align-items:center;gap:12px;padding:11px 16px;white-space:nowrap;background:rgba(8,14,28,.94);border:1px solid rgba(255,196,61,.5);box-shadow:0 10px 30px rgba(0,0,0,.35);font:600 14px 'JetBrains Mono',monospace;letter-spacing:.04em;color:#E8ECF4;pointer-events:none;transform-origin:left center;transform:translateY(-50%) scale({{ rail0.sc }});opacity:{{ rail0.op }};transition:transform 220ms cubic-bezier(.34,1.56,.64,1),opacity 160ms ease-out"><span style="color:#FFC43D;font-weight:700;letter-spacing:.1em;text-transform:uppercase">Email</span><span>QuentinSmith.GD@gmail.com</span></span>
+    </div>
+    <div style="position:relative" onMouseEnter="{{ rail1.enter }}" onMouseLeave="{{ rail1.leave }}" onFocus="{{ rail1.enter }}" onBlur="{{ rail1.leave }}">
+      <a href="https://www.linkedin.com/in/quentin-t-smith/" target="_blank" aria-label="LinkedIn" style="display:flex;align-items:center;justify-content:center;width:44px;height:44px;box-sizing:border-box;border:1px solid {{ rail1.bd }};background:{{ rail1.bg }};text-decoration:none;transition:all 160ms ease-out"><img src="assets/icons/linkedin-white.png" alt="" style="display:block;width:21px;height:auto;filter:none"></a>
+      <span aria-hidden="true" style="position:absolute;left:58px;top:50%;display:flex;align-items:center;gap:12px;padding:11px 16px;white-space:nowrap;background:rgba(8,14,28,.94);border:1px solid rgba(255,196,61,.5);box-shadow:0 10px 30px rgba(0,0,0,.35);font:600 14px 'JetBrains Mono',monospace;letter-spacing:.04em;color:#E8ECF4;pointer-events:none;transform-origin:left center;transform:translateY(-50%) scale({{ rail1.sc }});opacity:{{ rail1.op }};transition:transform 220ms cubic-bezier(.34,1.56,.64,1),opacity 160ms ease-out"><span style="color:#FFC43D;font-weight:700;letter-spacing:.1em;text-transform:uppercase">LinkedIn</span><span>quentin-t-smith</span></span>
+    </div>
+    <div style="position:relative" onMouseEnter="{{ rail2.enter }}" onMouseLeave="{{ rail2.leave }}" onFocus="{{ rail2.enter }}" onBlur="{{ rail2.leave }}">
+      <a href="https://slothdev-gd.itch.io/" target="_blank" aria-label="itch.io" style="display:flex;align-items:center;justify-content:center;width:44px;height:44px;box-sizing:border-box;border:1px solid {{ rail2.bd }};background:{{ rail2.bg }};text-decoration:none;transition:all 160ms ease-out"><img src="assets/icons/itch-white.png" alt="" style="display:block;width:23px;height:auto;filter:none"></a>
+      <span aria-hidden="true" style="position:absolute;left:58px;top:50%;display:flex;align-items:center;gap:12px;padding:11px 16px;white-space:nowrap;background:rgba(8,14,28,.94);border:1px solid rgba(255,196,61,.5);box-shadow:0 10px 30px rgba(0,0,0,.35);font:600 14px 'JetBrains Mono',monospace;letter-spacing:.04em;color:#E8ECF4;pointer-events:none;transform-origin:left center;transform:translateY(-50%) scale({{ rail2.sc }});opacity:{{ rail2.op }};transition:transform 220ms cubic-bezier(.34,1.56,.64,1),opacity 160ms ease-out"><span style="color:#FFC43D;font-weight:700;letter-spacing:.1em;text-transform:uppercase">itch.io</span><span>slothdev-gd</span></span>
+    </div>
+    <div style="position:relative" onMouseEnter="{{ rail3.enter }}" onMouseLeave="{{ rail3.leave }}" onFocus="{{ rail3.enter }}" onBlur="{{ rail3.leave }}">
+      <a href="assets/resume/Quentin_Smith_-_Resume_ATS.pdf" download="Quentin_Smith_-_Resume.pdf" aria-label="Download resume" style="display:flex;align-items:center;justify-content:center;width:44px;height:44px;box-sizing:border-box;border:1px solid {{ rail3.bd }};background:{{ rail3.bg }};text-decoration:none;transition:all 160ms ease-out"><img src="assets/icons/document.svg" alt="" style="display:block;width:24px;height:auto;filter:brightness(0) invert(1)"></a>
+      <span aria-hidden="true" style="position:absolute;left:58px;top:50%;display:flex;align-items:center;gap:12px;padding:11px 16px;white-space:nowrap;background:rgba(8,14,28,.94);border:1px solid rgba(255,196,61,.5);box-shadow:0 10px 30px rgba(0,0,0,.35);font:600 14px 'JetBrains Mono',monospace;letter-spacing:.04em;color:#E8ECF4;pointer-events:none;transform-origin:left center;transform:translateY(-50%) scale({{ rail3.sc }});opacity:{{ rail3.op }};transition:transform 220ms cubic-bezier(.34,1.56,.64,1),opacity 160ms ease-out"><span style="color:#FFC43D;font-weight:700;letter-spacing:.1em;text-transform:uppercase">Resume</span><span>Download (.pdf)</span></span>
+    </div>
+</nav>
+
+  <nav style="position:sticky;top:0;z-index:50;height:64px;display:flex;align-items:center;justify-content:space-between;padding:0 40px;background:rgba(8,14,28,.94);border-bottom:1px solid rgba(255,196,61,.35)">
+    <a href="Portfolio Home.dc.html" aria-label="Quentin Smith — home"><span style="width:30px;height:30px;background:#FFC43D;color:#0B1424;display:grid;place-items:center;font:700 13px 'Chakra Petch',sans-serif;clip-path:polygon(50% 0,100% 50%,50% 100%,0 50%)">QS</span></a>
+    <div data-navkeys="" style="display:flex;align-items:center;gap:8px;font:600 15px 'Chakra Petch',sans-serif;letter-spacing:.1em;text-transform:uppercase">
+      <span aria-hidden="true" title="Press Q" style="font:700 11px 'JetBrains Mono',monospace;color:#AEB8CC;min-width:22px;height:22px;box-sizing:border-box;display:inline-grid;place-items:center;border:1px solid #4A5878;border-bottom-width:3px;border-radius:4px;margin-right:10px">Q</span>
+      <a href="Portfolio Home.dc.html" style="padding:8px 16px;color:#C9D1E0">Home</a>
+      <a href="Work.dc.html" style="padding:8px 16px;color:#C9D1E0">Work</a>
+      <a href="About.dc.html" style="padding:8px 16px;color:#C9D1E0">About</a>
+      <a href="Resume.dc.html" style="padding:8px 16px;color:#C9D1E0">Resume</a>
+      <a href="About.dc.html#contact" style="padding:8px 16px;color:#C9D1E0">Contact</a>
+      <span aria-hidden="true" title="Press E" style="font:700 11px 'JetBrains Mono',monospace;color:#AEB8CC;min-width:22px;height:22px;box-sizing:border-box;display:inline-grid;place-items:center;border:1px solid #4A5878;border-bottom-width:3px;border-radius:4px;margin-left:10px">E</span>
+    </div>
+  </nav>
+<main style="position:relative;z-index:1;min-height:max(800px, calc(100vh - 64px));box-sizing:border-box;display:grid;grid-template-columns:400px minmax(0,1fr);gap:40px;align-items:start;padding:72px 72px 120px">
+        <div style="display:flex;flex-direction:column;gap:18px">
+          <span style="font:700 14px 'JetBrains Mono',monospace;letter-spacing:.16em;color:#FFC43D">ERROR 404 · OUT OF BOUNDS</span>
+          <h2 style="margin:0;font:700 64px/.95 'Chakra Petch',sans-serif;text-transform:uppercase;color:#fff">Jump your way home</h2>
+          <p style="margin:0;font:400 18px/1.55 'Instrument Sans',sans-serif;color:#DCE4F5;text-wrap:pretty">This page doesn't exist, but the level does. Make it across to the Home door. Fall in and I'll file the bug.</p>
+          <div style="display:flex;align-items:center;gap:10px;font:500 13px 'JetBrains Mono',monospace;color:#AEB8CC"><span style="padding:4px 8px;border:1px solid #3A4766">←</span><span style="padding:4px 8px;border:1px solid #3A4766">→</span>move<span style="padding:4px 8px;border:1px solid #3A4766;margin-left:8px">Space</span>jump</div>
+          <button type="button" onClick="{{ skip }}" style="align-self:flex-start;display:flex;align-items:center;gap:10px;padding:12px 18px;background:transparent;border:1.5px dashed #FFC43D;color:#FFC43D;font:700 14px 'Chakra Petch',sans-serif;letter-spacing:.08em;text-transform:uppercase;cursor:pointer">Report bug &amp; skip to Home →</button>
+          <div style="display:flex;flex-direction:column;gap:10px;margin-top:6px">
+            <span style="font:700 12px 'JetBrains Mono',monospace;letter-spacing:.14em;color:#FFC43D">BUG TRACKER · {{ openCount }} OPEN</span>
+            <div ref="{{ ticketsRef }}" style="display:flex;flex-direction:column;gap:8px;min-height:180px">
+              <sc-for list="{{ tickets }}" as="t" hint-placeholder-count="0">
+                <div style="display:flex;flex-direction:column;gap:4px;padding:10px 12px;background:rgba(8,14,28,.8);border:1px solid #26365E;border-left:3px solid {{ t.c }}">
+                  <span style="display:flex;justify-content:space-between;gap:10px;font:700 12px 'JetBrains Mono',monospace;letter-spacing:.06em"><span style="color:#FFC43D">BUG #404-{{ t.id }}{{ t.rep }}</span><span style="color:{{ t.c }}">{{ t.sev }}</span></span>
+                  <span style="font:500 14px/1.4 'Instrument Sans',sans-serif;color:#F2F4F8">{{ t.title }}</span>
+                  <sc-if value="{{ t.hasRepro }}" hint-placeholder-val="{{ false }}"><span style="font:500 12px 'JetBrains Mono',monospace;color:#8E9AB3">{{ t.repro }}</span></sc-if>
+                  <span style="font:500 12px 'JetBrains Mono',monospace;color:#AEB8CC">Assigned: Quentin · {{ t.status }}</span>
+                </div>
+              </sc-for>
+              <sc-if value="{{ noTickets }}" hint-placeholder-val="{{ true }}"><span style="font:500 13px 'JetBrains Mono',monospace;color:#6F7C99">No bugs yet. Suspicious.</span></sc-if>
+            </div>
+          </div>
+        </div>
+        <div style="position:sticky;top:96px;display:flex;flex-direction:column;gap:12px">
+          <div ref="{{ stageRef }}" tabindex="0" onPointerDown="{{ arm }}" aria-label="Playable 404 level. Arrow keys to move, Space to jump." style="position:relative;width:856px;height:560px;overflow:hidden;outline:none;border:1.5px solid #26365E;border-top:3px solid #FFC43D;background:radial-gradient(ellipse 70% 60% at 50% 40%,rgba(27,62,134,.45),rgba(8,14,28,.6) 70%),linear-gradient(180deg,rgba(8,14,28,0) 70%,rgba(3,6,14,.95) 100%);cursor:pointer" style-focus="border-color:#FFC43D">
+            <div style="position:absolute;left:14px;top:12px;display:flex;gap:18px;font:700 12px 'JetBrains Mono',monospace;letter-spacing:.12em;color:#AEB8CC;z-index:2"><span>404.level</span><span>FALLS <span style="color:#FFC43D">{{ falls }}</span></span></div>
+            <div style="position:absolute;left:0;top:360px;width:130px;height:200px;box-sizing:border-box;border:2px solid #FFC43D;border-left:0;background:repeating-linear-gradient(135deg,rgba(255,196,61,.08) 0 10px,rgba(255,196,61,.02) 10px 20px)"></div>
+            <span style="position:absolute;left:16px;top:370px;font:700 11px 'JetBrains Mono',monospace;letter-spacing:.12em;color:#FFC43D">SPAWN</span>
+            <div style="position:absolute;left:680px;top:400px;width:176px;height:160px;box-sizing:border-box;border:2px solid #FFC43D;border-right:0;background:repeating-linear-gradient(135deg,rgba(255,196,61,.08) 0 10px,rgba(255,196,61,.02) 10px 20px)"></div>
+            <sc-for list="{{ blocks }}" as="b" hint-placeholder-count="0">
+              <div style="position:absolute;left:{{ b.x }}px;top:{{ b.y }}px;width:22px;height:22px;box-sizing:border-box;border:1.5px solid #FFC43D;background:rgba(255,196,61,.16)"></div>
+            </sc-for>
+            <div ref="{{ dynRef }}" style="position:absolute;left:510px;top:286px;width:22px;height:22px;box-sizing:border-box;border:1.5px solid #FFC43D;background:rgba(255,196,61,.16);will-change:transform"></div>
+            <div style="position:absolute;left:770px;top:320px;width:48px;height:80px;box-sizing:border-box;border:2px solid #FFC43D;border-bottom:0;background:linear-gradient(180deg,rgba(255,196,61,.3),rgba(255,196,61,.08));display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px"><span style="width:12px;height:12px;background:#FFC43D;transform:rotate(45deg)"></span><span style="font:700 10px 'JetBrains Mono',monospace;letter-spacing:.12em;color:#FFC43D">HOME</span></div>
+            <div style="position:absolute;left:0;right:0;top:536px;border-top:2px dashed #FF5A5A"></div>
+            <span style="position:absolute;right:14px;top:540px;font:700 11px 'JetBrains Mono',monospace;letter-spacing:.12em;color:#FF5A5A">KILL Z · −404</span>
+            <div ref="{{ capRef }}" style="position:absolute;left:0;top:0;width:22px;height:44px;border-radius:11px;background:linear-gradient(90deg,#8C94A6,#DCE1EA 45%,#8C94A6);box-shadow:0 6px 12px rgba(0,0,0,.45);transform:translate(50px,316px);z-index:3"></div>
+            <sc-if value="{{ showHint }}" hint-placeholder-val="{{ true }}"><div style="position:absolute;left:50%;top:150px;transform:translateX(-50%);padding:10px 16px;background:rgba(8,14,28,.9);border:1px solid #FFC43D;font:700 13px 'JetBrains Mono',monospace;letter-spacing:.1em;color:#FFC43D;white-space:nowrap;z-index:4;pointer-events:none">← → MOVE · SPACE JUMP</div></sc-if>
+            <sc-if value="{{ won }}" hint-placeholder-val="{{ false }}"><div style="position:absolute;inset:0;display:grid;place-items:center;background:rgba(8,14,28,.75);z-index:5"><span style="padding:16px 24px;background:#FFC43D;color:#0B1424;font:700 24px 'Chakra Petch',sans-serif;letter-spacing:.08em;text-transform:uppercase">{{ wonText }}</span></div></sc-if>
+          </div>
+          <div style="display:flex;gap:10px;justify-content:flex-end">
+            <button type="button" aria-label="Move left" onPointerDown="{{ padL }}" onPointerUp="{{ padUp }}" onPointerLeave="{{ padUp }}" style="width:64px;height:52px;border:1.5px solid #FFC43D;background:rgba(8,14,28,.8);color:#FFC43D;font:700 20px 'Chakra Petch',sans-serif;cursor:pointer;touch-action:none">◀</button>
+            <button type="button" aria-label="Move right" onPointerDown="{{ padR }}" onPointerUp="{{ padUp }}" onPointerLeave="{{ padUp }}" style="width:64px;height:52px;border:1.5px solid #FFC43D;background:rgba(8,14,28,.8);color:#FFC43D;font:700 20px 'Chakra Petch',sans-serif;cursor:pointer;touch-action:none">▶</button>
+            <button type="button" aria-label="Jump" onPointerDown="{{ padJ }}" style="height:52px;padding:0 22px;border:0;background:#FFC43D;color:#0B1424;font:700 16px 'Chakra Petch',sans-serif;letter-spacing:.1em;cursor:pointer;touch-action:none">JUMP</button>
+          </div>
+        </div>
+      </main>
+<dc-import name="SiteFooter" current="" hint-size="100%,420px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  // ---- 2a playable 404 ----
+  B = 22;
+  BLOCKS = (() => {
+    const four = [], zero = [], B = 22, top = 286;
+    for (let r = 0; r < 4; r++) four.push([0, r]); for (let c = 0; c < 5; c++) four.push([c, 3]); for (let r = 0; r < 7; r++) four.push([3, r]);
+    for (let c = 0; c < 5; c++) { zero.push([c, 0]); zero.push([c, 6]); } for (let r = 1; r < 6; r++) { zero.push([0, r]); zero.push([4, r]); }
+    const out = [], seen = new Set();
+    [[four, 170], [zero, 340], [four, 510]].forEach(([cells, ox]) => cells.forEach(([c, r]) => { const k = ox + ':' + c + ':' + r; if (seen.has(k)) return; seen.add(k); out.push({ x: ox + c * B, y: top + r * B }); }));
+    return out;
+  })();
+  SOLIDS = [{ x: 0, y: 360, w: 130, h: 200 }, { x: 680, y: 400, w: 176, h: 160 }].concat(this.BLOCKS.filter(b => !(b.x === 384 && (b.y === 286 || b.y === 418)) && !(b.x === 510 && b.y === 286)).map(b => ({ x: b.x, y: b.y, w: 22, h: 22 })));
+  BUGS = [
+    ["01", "MINOR", "Player fell. The level takes full responsibility.", "Investigating"],
+    ["02", "COSMETIC", "Hero is still a placeholder capsule. Art says \"next sprint.\"", "Backlog"],
+    ["03", "LOW", "Jump might be a hair short. Designer insists it's \"tuned.\"", "Disputed"],
+    ["04", "READABILITY", "The 0 is hollow and doesn't telegraph it. Readability pass scheduled.", "In progress"],
+    ["05", "MODERATE", "No coyote time. The coyote has filed a grievance.", "In progress"],
+    ["06", "MINOR", "Kill Z set to -404. Thematically perfect. Practically unforgiving.", "Won't fix"],
+    ["07", "LOW", "The 4's crossbar is narrower than it looks. Sorry about that.", "Tuning"],
+    ["08", "HIGH", "Gap after Spawn may be one tile too ambitious.", "Self-assigned"],
+    ["09", "IRONIC", "Page not found. Floor also not found.", "Closed"],
+    ["10", "LOW", "Jump buffer window may be too tight. Widening it.", "In progress"],
+    ["11", "CRITICAL (EGO)", "Level designer also fell in his own level during playtest.", "Reopened"],
+    ["12", "FEATURE REQUEST", "Player tried a wall-jump. Honestly? Great instinct.", "Considering it"],
+    ["13", "COSMETIC", "Home door has no handle. Unclear how anyone has ever gone home.", "Backlog"],
+    ["14", "BLOCKER", "\"Four-oh-four\" or \"four-zero-four\"? Team divided. Productivity: 0.", "Blocked"],
+    ["15", "SEVERE", "Physics and player disagree on where the edge is. Siding with the player.", "Investigating"],
+    ["16", "LOW", "Second 4 identical to the first 4. Accused of copy-paste.", "Duplicate"],
+    ["17", "MODERATE", "Falls went 4, then 0, then 4 again. Level may be self-aware.", "Monitoring"],
+    ["18", "WORKS ON MY MACHINE", "Platforming feels perfect in the editor.", "Closed"],
+    ["19", "HIGH", "Jump arc is a perfect parabola. Landing zones could be friendlier.", "Needs polish"],
+    ["20", "MINOR", "Capsule has no feet. Somehow still trips.", "Can't explain"],
+    ["21", "EXISTENTIAL", "If this page doesn't exist, what are we standing on?", "Design review"],
+    ["22", "MODERATE", "Gravity set to 9.81. Considering 4.04 for this level only.", "Under review"],
+    ["23", "LOW", "Kill plane is dashed, which implies it's optional. It is not.", "Needs UX pass"],
+    ["24", "HIGH", "Falls counter keeps going up. Adding a moral support counter.", "Scoping"],
+    ["25", "COSMETIC", "One tile on the first 4 is 1px off. Nobody can see it. Designer can't unsee it.", "Haunting me"],
+    ["26", "PUN INTENDED", "Thanks for falling for this level. It's falling for you too.", "Closed"],
+    ["27", "CRITICAL", "Bug tracker now has more content than the actual website.", "Prioritized"],
+    ["28", "SPEEDRUN", "Skip button bypasses the whole level. Valid route. Fully endorsed.", "Working as intended"],
+    ["29", "FEATURE", "Players who make it home get no credits. They deserve credits.", "Backlog"],
+    ["30", "LEGENDARY", "30 falls. That's dedication. Skip button's right there whenever you want it.", "Escalated"],
+    ["31", "NOBODY EXPECTED THIS", "Jump tuning requires the airspeed velocity of an unladen capsule. African or European?", "Clarifying requirements"],
+  ];
+  sevColor(s) {
+    if (/CRITICAL|BLOCKER|SEVERE|HIGH/.test(s)) return '#FF5A5A';
+    if (/MODERATE/.test(s)) return '#FF8A5A';
+    if (/LOW|MINOR/.test(s)) return '#FFD27A';
+    if (/COSMETIC|READABILITY/.test(s)) return '#6FB4FF';
+    if (/LEGENDARY/.test(s)) return '#FFC43D';
+    if (/SHORTCUT|SPEEDRUN|FEATURE/.test(s)) return '#5BE39B';
+    return '#B48CFF';
+  }
+  used = new Set();
+  fileFall(n, cause) {
+    let row; const repro = cause ? cause.repro : '';
+    const pick = (id) => this.used.has(id) ? null : this.BUGS.find(b => b[0] === id);
+    if (n === 30) row = pick('30');
+    else {
+      const ok = (b) => !this.used.has(b[0]) && b[0] !== '30' && b[0] !== '31';
+      const rand = (a) => a[Math.floor(Math.random() * a.length)];
+      const match = cause ? this.BUGS.filter(b => ok(b) && cause.ids.includes(b[0])) : [];
+      const near = cause ? this.BUGS.filter(b => ok(b) && cause.alt.includes(b[0])) : [];
+      const pool = this.BUGS.filter(ok);
+      row = match.length ? rand(match) : near.length ? rand(near) : pool.length ? rand(pool) : pick('31');
+    }
+    if (row) { this.used.add(row[0]); return this.fileBug(row, String(n).padStart(2, '0'), repro); }
+    this.setState(s => { const t = s.tickets.find(x => x.key === '31'); if (!t) return null; const r = (t.n || 1) + 1; return { tickets: [{ ...t, n: r, rep: ' ×' + r }, ...s.tickets.filter(x => x !== t)] }; }, () => this.flashTop());
+  }
+  flashTop() { const el = this.ticketsRef.current && this.ticketsRef.current.firstElementChild; if (el && el.animate) el.animate([{ opacity: 0, transform: 'translateX(-16px)' }, { opacity: 1, transform: 'none' }], { duration: 320, easing: 'cubic-bezier(.2,.8,.2,1)' }); }
+  dynRef = React.createRef();
+  dyn = { x: 510, y: 286, w: 22, h: 22, vy: 0, rot: 0, st: 'idle', t: 0 };
+  resetDyn() { Object.assign(this.dyn, { y: 286, vy: 0, rot: 0, st: 'idle', t: 0 }); const el = this.dynRef.current; if (el) { el.style.transform = 'none'; el.animate && el.animate([{ opacity: 0, transform: 'scale(.6)' }, { opacity: 1, transform: 'none' }], { duration: 260, easing: 'ease-out' }); } }
+  capRef = React.createRef(); stageRef = React.createRef(); ticketsRef = React.createRef();
+  g = { x: 50, y: 316, vx: 0, vy: 0, ground: false, coyote: 0, buf: 0, L: false, R: false, dead: false };
+  fileBug(row, num, repro) {
+    this.setState(s => ({ bugN: s.bugN + 1, tickets: [{ repro: repro ? 'Repro: player ' + repro : '', hasRepro: !!repro, id: num || row[0], key: row[0], sev: row[1], title: row[2], status: row[3], c: this.sevColor(row[1]), rep: '' }, ...s.tickets] }), () => this.flashTop());
+  }
+  goHome(text) { if (this.state.won) return; this.setState({ won: true, wonText: text }); setTimeout(() => { location.href = 'Portfolio Home.dc.html'; }, 1100); }
+  respawn() { Object.assign(this.g, { x: 50, y: 316, vx: 0, vy: 0, dead: false, on: 'spawn', hole: false, wall: false, jumped: false, crumble: false }); this.resetDyn(); }
+  surf(s) { if (s.x === 0 && s.w === 130) return 'spawn'; if (s.x === 680) return 'door'; if (s.x < 300) return '4a'; if (s.x < 480) return '0'; return '4b'; }
+  // Work out how the player fell, then pick reports that match.
+  cause() {
+    const g = this.g, CAUSES = {
+      wall: { ids: ['12'], repro: 'tried a wall-jump' },
+      crumble: { ids: ['15', '21', '20', '22'], repro: 'rode a falling block into the void' },
+      hole: { ids: ['04', '21', '09', '17'], repro: 'fell through the middle of the 0' },
+      spawn: { ids: ['08', '03', '05', '01'], repro: 'missed the gap after Spawn' },
+      '4a': { ids: ['07', '25', '11', '15'], repro: 'fell off the first 4' },
+      '0': { ids: ['04', '17', '20', '15'], repro: 'slipped off the 0' },
+      '4b': { ids: ['16', '17', '13', '19'], repro: 'fell off the second 4' },
+      door: { ids: ['13', '29', '06'], repro: 'fell short of the Home door' },
+    };
+    const where = g.wall ? 'wall' : g.crumble ? 'crumble' : g.hole ? 'hole' : (g.on === '4b' && g.lastX > 560) ? 'door' : (g.on || 'spawn');
+    const how = g.jumped ? { ids: ['03', '10', '19', '22'], tag: 'jumped short' } : { ids: ['15', '20', '05', '23'], tag: 'walked off the edge' };
+    const c = CAUSES[where] || CAUSES.spawn;
+    return { ids: c.ids, alt: how.ids, repro: c.repro + (['wall', 'hole', 'crumble'].includes(where) ? '' : ' (' + how.tag + ')') };
+  }
+  step = (t) => {
+    this.raf = requestAnimationFrame(this.step);
+    const g = this.g, dt = Math.min(0.033, (t - (this.lt || t)) / 1000); this.lt = t;
+    if (!this.armed || this.state.won) return;
+    const W = 22, H = 44, GR = 2200, SP = 270, JV = 760;
+    const dir = (g.R ? 1 : 0) - (g.L ? 1 : 0);
+    g.vx = dir * SP; g.vy = Math.min(1400, g.vy + GR * dt);
+    g.coyote = g.ground ? 0.09 : Math.max(0, g.coyote - dt); g.buf = Math.max(0, g.buf - dt);
+    if (g.buf > 0 && g.coyote > 0) { g.vy = -JV; g.buf = 0; g.coyote = 0; g.ground = false; g.jumped = true; }
+    const IN = 5; // narrower collision body than the drawn capsule so it can drop through a single-tile gap
+    const D = this.dyn;
+    if (D.st === 'shake') { D.t += dt; if (D.t > 0.35) D.st = 'fall'; }
+    if (D.st === 'fall') { D.vy = Math.min(1200, D.vy + GR * 0.8 * dt); D.y += D.vy * dt; D.rot += 160 * dt; if (D.y > 620) D.st = 'gone'; }
+    if (this.dynRef.current) { const sx = D.st === 'shake' ? (Math.random() - .5) * 3 : 0; this.dynRef.current.style.transform = D.st === 'idle' ? 'none' : `translate(${sx.toFixed(1)}px,${(D.y - 286).toFixed(1)}px) rotate(${D.rot.toFixed(1)}deg)`; }
+    const SOL = D.st === 'gone' ? this.SOLIDS : this.SOLIDS.concat([D]);
+    const hit = (x, y) => SOL.find(s => x + IN < s.x + s.w && x + W - IN > s.x && y < s.y + s.h && y + H > s.y);
+    g.x = Math.max(0, Math.min(856 - W, g.x + g.vx * dt));
+    let s = hit(g.x, g.y); if (s) { g.x = g.vx > 0 ? s.x - W + IN : g.vx < 0 ? s.x + s.w - IN : g.x; if (!g.ground && g.buf > 0) g.wall = true; if (s === D && D.st === 'idle') D.st = 'shake'; }
+    const py = g.y; g.y += g.vy * dt; g.ground = false;
+    const cx = g.x + W / 2; if (cx > 384 && cx < 406 && [286, 418].some(ty => py + H <= ty + 2 && g.y + H > ty)) g.hole = true;
+    s = hit(g.x, g.y);
+    if (s) {
+      if (g.vy > 0) { g.y = s.y - H; g.ground = true; g.jumped = false; g.wall = false; g.on = this.surf(s); g.lastX = g.x; }
+      else { g.y = s.y + s.h; }
+      if (s === D) { if (D.st === 'idle') D.st = 'shake'; if (D.st === 'fall') g.crumble = true; }
+      g.vy = s === D && D.st === 'fall' ? D.vy : 0;
+    }
+    const tilt = g.ground ? 0 : Math.max(-14, Math.min(14, g.vx / 20));
+    if (this.capRef.current) this.capRef.current.style.transform = `translate(${g.x.toFixed(1)}px,${g.y.toFixed(1)}px) rotate(${tilt}deg)`;
+    if (g.x + W > 770 && g.x < 818 && g.y + H > 320 && g.y < 400) this.goHome('Level complete · Respawning at Home…');
+    if (g.y > 536 && !g.dead) { g.dead = true; this.fallN = (this.fallN || 0) + 1; const n = this.fallN; this.setState({ falls: n }); this.fileFall(n, this.cause()); window.QSAch && QSAch.unlock('bug'); Object.assign(g, { hole: false, wall: false, jumped: false }); setTimeout(() => this.respawn(), 450); }
+  };
+  key = (e, down) => {
+    const k = e.key; if (!this.armed || /INPUT|TEXTAREA|SELECT/.test((e.target && e.target.tagName) || '')) return;
+    if (down && this.state.showHint && ['ArrowLeft', 'ArrowRight', 'ArrowUp', ' ', 'a', 'd', 'w', 'A', 'D', 'W'].includes(k)) this.setState({ showHint: false });
+    if (['ArrowLeft', 'ArrowRight', 'ArrowUp', ' ', 'a', 'd', 'w', 'A', 'D', 'W'].includes(k)) e.preventDefault();
+    if (k === 'ArrowLeft' || k === 'a' || k === 'A') this.g.L = down;
+    if (k === 'ArrowRight' || k === 'd' || k === 'D') this.g.R = down;
+    if (down && (k === ' ' || k === 'ArrowUp' || k === 'w' || k === 'W')) this.g.buf = 0.12;
+  };
+  kd = (e) => this.key(e, true); ku = (e) => this.key(e, false);
+  arm = () => { if (!this.armed) { this.armed = true; this.setState({ showHint: false }); } this.stageRef.current && this.stageRef.current.focus({ preventScroll: true }); };
+
+  state = { falls: 0, bugN: 0, tickets: [], showHint: true, won: false, wonText: '', hov: null };
+  componentDidMount() { this.armed = true; this.raf = requestAnimationFrame(this.step); addEventListener('keydown', this.kd); addEventListener('keyup', this.ku); }
+  componentWillUnmount() { cancelAnimationFrame(this.raf); removeEventListener('keydown', this.kd); removeEventListener('keyup', this.ku); }
+  renderVals() {
+    const RAILSTATE = ['Email','LinkedIn','itch.io','Resume'].map((k, i) => { const on = this.state.hov === k; return ['rail' + i, { enter: () => this.setState({ hov: k }), leave: () => this.setState(s => s.hov === k ? { hov: null } : null), sc: on ? 1 : .55, op: on ? 1 : 0, bd: on ? '#FFC43D' : 'rgba(255,196,61,.4)', bg: on ? 'rgba(255,196,61,.12)' : 'transparent' }]; });
+    const s = this.state;
+    const pad = (fn) => (e) => { e.preventDefault(); this.arm(); fn(); };
+    return {
+      blocks: this.BLOCKS.map((b, i) => i === 5 ? { x: b.x + 1, y: b.y } : b).filter(b => !(b.x === 510 && b.y === 286)), dynRef: this.dynRef, capRef: this.capRef, stageRef: this.stageRef, ticketsRef: this.ticketsRef, arm: this.arm,
+      falls: String(s.falls), tickets: s.tickets, noTickets: s.tickets.length === 0, openCount: String(s.bugN), showHint: s.showHint, won: s.won, wonText: s.wonText,
+      padL: pad(() => { this.g.L = true; }), padR: pad(() => { this.g.R = true; }), padJ: pad(() => { this.g.buf = 0.12; }), padUp: () => { this.g.L = false; this.g.R = false; },
+      skip: () => { this.fileBug(['SKIP', 'SHORTCUT', 'Player requested a shortcut home. Granted.', 'Closed']); setTimeout(() => this.goHome('Bug filed · Respawning at Home…'), 500); },
+      ...Object.fromEntries(RAILSTATE),
+    };
+  }
+}
+</script>
+</body>
+</html>

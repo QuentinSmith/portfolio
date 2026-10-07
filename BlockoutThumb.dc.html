@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<div style="position:absolute;inset:0;overflow:hidden;pointer-events:none;container-type:inline-size;background-color:#1B3E86;background-image:linear-gradient(rgba(255,255,255,.08) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.08) 1px,transparent 1px);background-size:5% 8.889%;opacity:{{ shell }};transition:opacity 160ms ease-out">
+  <sc-for list="{{ rooms }}" as="r" hint-placeholder-count="0">
+    <div style="position:absolute;left:{{ r.l }};top:{{ r.t }};width:{{ r.w }};height:{{ r.h }};box-sizing:border-box;background:#4A5468;border:1.5px solid #8A93A7;border-radius:{{ r.rad }};opacity:{{ r.o }};transform:{{ r.s }};transition:opacity 160ms ease-out {{ r.d }},transform 300ms cubic-bezier(.34,1.56,.64,1) {{ r.d }}"></div>
+  </sc-for>
+  <sc-for list="{{ opens }}" as="r" hint-placeholder-count="0">
+    <div style="position:absolute;left:{{ r.l }};top:{{ r.t }};width:{{ r.w }};height:{{ r.h }};box-sizing:border-box;background:#4A5468;border-style:solid;border-color:#8A93A7;border-width:{{ r.bw }};opacity:{{ r.o }};transition:opacity 160ms ease-out {{ r.d }}"></div>
+  </sc-for>
+  <sc-for list="{{ props }}" as="r" hint-placeholder-count="0">
+    <div style="position:absolute;left:{{ r.l }};top:{{ r.t }};width:{{ r.w }};height:{{ r.h }};box-sizing:border-box;background:{{ r.bg }};border:{{ r.bd }};border-radius:{{ r.rad }};opacity:{{ r.o }};transform:{{ r.s }};transition:opacity 160ms ease-out {{ r.d }},transform 280ms cubic-bezier(.34,1.56,.64,1) {{ r.d }}"></div>
+  </sc-for>
+  <svg viewBox="0 0 320 180" preserveAspectRatio="none" style="position:absolute;inset:0;width:100%;height:100%;display:block">
+    <defs>
+      <mask id="{{ mid }}a" maskUnits="userSpaceOnUse" x="0" y="0" width="320" height="180">
+        <path d="{{ p1 }}" pathLength="100" style="fill:none;stroke:#fff;stroke-width:10;stroke-dasharray:100 100;stroke-dashoffset:{{ dash }};transition:{{ pathT }}"></path>
+      </mask>
+      <mask id="{{ mid }}b" maskUnits="userSpaceOnUse" x="0" y="0" width="320" height="180">
+        <path d="{{ p2 }}" pathLength="100" style="fill:none;stroke:#fff;stroke-width:10;stroke-dasharray:100 100;stroke-dashoffset:{{ dash }};transition:{{ pathT }}"></path>
+      </mask>
+    </defs>
+    <path d="{{ p1 }}" mask="{{ maskA }}" style="fill:none;stroke:#FFC43D;stroke-width:2.5;stroke-dasharray:6 5;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke"></path>
+    <path d="{{ p2 }}" mask="{{ maskB }}" style="fill:none;stroke:#F2F4F8;stroke-width:2.5;stroke-dasharray:6 5;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke"></path>
+  </svg>
+  <sc-for list="{{ marks }}" as="m" hint-placeholder-count="0">
+    <div style="position:absolute;left:{{ m.l }};top:{{ m.t }};width:{{ m.size }};aspect-ratio:1;box-sizing:border-box;background:{{ m.bg }};border:{{ m.bd }};border-radius:{{ m.rad }};clip-path:{{ m.clip }};opacity:{{ m.o }};transform:{{ m.s }};transition:opacity 160ms ease-out {{ m.d }},transform 300ms cubic-bezier(.34,1.56,.64,1) {{ m.d }}"></div>
+  </sc-for>
+  <sc-for list="{{ labels }}" as="t" hint-placeholder-count="0">
+    <span style="position:absolute;left:{{ t.l }};top:{{ t.t }};font:600 clamp(7px,2.3cqw,11px)/1.2 'JetBrains Mono',monospace;letter-spacing:.06em;color:#F2F4F8;background:rgba(11,20,36,.78);padding:1px 4px;white-space:nowrap;opacity:{{ t.o }};transition:opacity 200ms ease-out {{ t.d }}">{{ t.text }}</span>
+  </sc-for>
+  <span style="position:absolute;right:8px;top:6px;font:600 clamp(7px,2cqw,10px) 'JetBrains Mono',monospace;letter-spacing:.12em;color:#FFC43D">{{ label }}</span>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:460,&quot;height&quot;:259},&quot;variant&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;default&quot;:0,&quot;min&quot;:0,&quot;max&quot;:4,&quot;tsType&quot;:&quot;number&quot;},&quot;active&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;},&quot;label&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;BLOCKOUT&quot;,&quot;tsType&quot;:&quot;string&quot;}}">
+class Component extends DCLogic {
+  mid = 'bt' + Math.random().toString(36).slice(2, 8);
+  // Designed blockouts per project, 320×180 units.
+  // rooms [x,y,w,h] · open [x,y,w,h,axis] doorways/corridors cut through walls ('h' walls top+bottom, 'v' left+right, 'o' open)
+  // props [x,y,w,h,kind] · marks [x,y,kind] (centre) · labels [x,y,text] · paths [gold, white]
+  L = [
+    { // Insanitation — family home; Cat & Keeper teams funnel through the hall into the living room
+      rooms: [[16,16,96,72],[208,16,96,72],[72,104,176,64]],
+      open: [[108,44,104,24,'h'],[148,64,24,44,'v']],
+      props: [],
+      marks: [[64,52,'spawn'],[256,60,'spawn2'],[160,140,'zone']],
+      labels: [[22,22,'CAT SPAWN'],[214,22,'KEEPER SPAWN'],[78,110,'CONTESTED'],[120,32,'HALL · CHOKE']],
+      paths: ['M64 52 L156 52 L156 136', 'M256 60 L164 60 L164 136'],
+    },
+    { // Free Rider — skate loop: alley → back street → plaza → main → switchback hill
+      rooms: [[16,72,288,32],[64,40,24,32],[64,16,152,24],[216,16,88,56],[168,104,136,64]],
+      open: [[68,68,16,8,'o'],[68,36,16,8,'o'],[212,20,8,16,'o'],[228,68,64,8,'o'],[180,100,112,8,'o']],
+      props: [],
+      marks: [[28,88,'spawn'],[196,158,'goal']],
+      labels: [[20,108,'START'],[22,50,'ALLEY →'],[222,22,'PLAZA · NPCS'],[60,140,'SWITCHBACK HILL →']],
+      paths: ['M28 88 L76 88 L76 28 L252 28 L252 120 L180 120 L180 140 L292 140 L292 158 L196 158', ''],
+    },
+    { // Oinkyuza — from Level Map Pass 02 (rotated 90° CW so the run reads left → right)
+      rooms: [[30,128,32,42],[62,144,22,14],[72,118,12,28],[56,78,44,44,'round'],[76,8,86,72],[100,88,102,24],[165,0,18,180],[202,34,86,132]],
+      open: [[58,146,8,10,'o'],[73,140,10,8,'o'],[73,114,10,8,'o'],[74,72,22,12,'o'],[96,92,8,16,'o'],[160,14,8,16,'o'],[164,89,20,22,'o'],[198,92,8,16,'o']],
+      props: [[72,94,12,12,'island'],[84,14,14,12,'pillar'],[130,12,16,13,'pillar'],[130,48,16,14,'pillar'],[104,62,14,12,'pillar'],[159,18,8,8,'lockGold']],
+      marks: [[44,150,'spawn'],[78,152,'key'],[245,100,'goal']],
+      labels: [[33,131,'START'],[86,147,'GUN'],[4,96,'ROUNDABOUT'],[2,44,'SHOPPING DISTRICT'],[92,1,'LOCKED GATE · COMBO'],[186,170,'TRAM BLOCKS PATH'],[206,38,'RESORT · END']],
+      paths: ['M44 150 L78 151 L78 122 C64 118 60 92 78 80 L88 62 L120 40 L150 22 L174 22 L174 100 L245 100', ''],
+    },
+    { // A-B Factory — from the final map layout: blue key → moving platforms → conveyor → pink key → fan → moving platforms → gold key → finish
+      rooms: [[138,51,78,79],[138,124,18,13],[166,8,24,42],[135,16,31,35],[71,43,62,10],[89,53,47,17],[71,53,16,45],[92,73,28,87],[58,98,74,9],[89,161,98,9],[160,135,13,26],[187,136,36,32,'round'],[221,52,36,96]],
+      open: [[143,121,10,12,'o'],[172,46,12,8,'o'],[132,54,10,10,'o'],[212,54,12,10,'o'],[130,44,8,8,'o'],[96,66,20,10,'o'],[92,97,28,11,'o'],[96,156,20,8,'o'],[161,157,11,8,'o'],[183,160,8,10,'o'],[218,138,8,10,'o'],[84,54,8,12,'o']],
+      props: [[163,76,28,34,'pillar'],[96,82,16,4,'plat'],[104,95,16,4,'plat'],[199,146,12,12,'fan'],[226,120,12,4,'plat'],[240,100,12,4,'plat'],[226,80,12,4,'plat'],[133,55,7,7,'lockBlue'],[214,55,7,7,'lockPink'],[174,48,7,7,'lockGold']],
+      marks: [[147,131,'spawn'],[194,58,'keyBlue'],[166,146,'keyPink'],[243,58,'keyGold'],[132,67,'check'],[168,154,'check'],[178,20,'goal']],
+      labels: [[140,139,'START'],[36,80,'MOVING PLATFORMS'],[230,150,'MOVING PLATFORMS'],[190,171,'SPINNING FAN'],[62,32,'LADDER CLIMB ↘'],[176,128,'✓ CHECKPOINTS'],[192,10,'FINISH'],[228,40,'KEYS + LOCKS']],
+      paths: ['M147 131 L147 112 L150 66 L194 62 L137 60 L128 64 L106 72 L106 165 L166 165 L166 146 L166 165 L196 165 C212 165 222 158 228 142 L238 62 L243 58 L178 58 L178 20', ''],
+    },
+    { // Endless Nightmare — open arena, four enemy gates, cover at the corners, kite loop through the middle
+      rooms: [[80,24,160,132],[144,4,32,16],[40,72,36,36],[244,72,36,36],[144,160,32,16]],
+      open: [[148,16,24,12,'v'],[148,152,24,12,'v'],[72,80,12,20,'h'],[236,80,12,20,'h']],
+      props: [[100,44,16,16,'pillar'],[204,44,16,16,'pillar'],[100,120,16,16,'pillar'],[204,120,16,16,'pillar']],
+      marks: [[160,12,'enemy'],[58,90,'enemy'],[262,90,'enemy'],[160,168,'enemy'],[160,90,'spawn']],
+      labels: [[180,6,'ENEMY GATE'],[100,30,'COVER'],[84,140,'KITE LOOP']],
+      paths: ['M160 90 L160 58 C190 58 200 72 200 90 C200 108 190 122 160 122 C130 122 120 108 120 90 C120 72 130 58 160 58', ''],
+    },
+  ];
+
+  renderVals() {
+    const L = this.L[Math.abs(this.props.variant ?? 0) % this.L.length], on = !!this.props.active;
+    const pct = (x, y, w, h) => ({ l: (x / 3.2) + '%', t: (y / 1.8) + '%', w: (w / 3.2) + '%', h: (h / 1.8) + '%' });
+    const ms = (t) => on ? t + 'ms' : '0ms';
+    const R = L.rooms.length, tOpen = R * 70, tProps = tOpen + 120, tPath = tProps + L.props.length * 40 + 80;
+    const rooms = L.rooms.map(([x, y, w, h, sh], i) => ({ ...pct(x, y, w, h), rad: sh === 'round' ? '50%' : '0', o: on ? 1 : 0, s: on ? 'scale(1)' : 'scale(.55)', d: ms(i * 70) }));
+    const bw = { h: '1.5px 0', v: '0 1.5px', o: '0' };
+    const opens = L.open.map(([x, y, w, h, a]) => ({ ...pct(x, y, w, h), bw: bw[a], o: on ? 1 : 0, d: ms(tOpen) }));
+    const PK = {
+      pillar: { bg: '#6A7489', bd: '1.5px solid #9AA3B5', rad: '0' },
+      pit: { bg: '#141C36', bd: '1.5px dashed #8A93A7', rad: '0' },
+      plat: { bg: '#AEB8CC', bd: '1.5px solid #0B1424', rad: '1px' },
+      lock: { bg: '#E5484D', bd: '1.5px solid #0B1424', rad: '2px' },
+      island: { bg: '#6A7489', bd: '1.5px solid #9AA3B5', rad: '50%' },
+      hazard: { bg: 'repeating-linear-gradient(45deg,#E5484D 0 3px,#0B1424 3px 6px)', bd: '1px solid #0B1424', rad: '0' },
+      fan: { bg: 'conic-gradient(#E5484D 0 25%,#0B1424 0 50%,#E5484D 0 75%,#0B1424 0)', bd: '1.5px solid #0B1424', rad: '50%' },
+      lockBlue: { bg: '#4C8DF6', bd: '1.5px solid #0B1424', rad: '2px' },
+      lockPink: { bg: '#E04FA0', bd: '1.5px solid #0B1424', rad: '2px' },
+      lockGold: { bg: '#FFC43D', bd: '1.5px solid #0B1424', rad: '2px' },
+    };
+    const props = L.props.map(([x, y, w, h, k], i) => ({ ...pct(x, y, w, h), ...PK[k], o: on ? 1 : 0, s: on ? 'scale(1)' : 'scale(.4)', d: ms(tProps + i * 40) }));
+    const MK = {
+      spawn: { size: '3.6%', bg: '#FFC43D', bd: '2px solid #0B1424', rad: '50%', clip: 'none' },
+      spawn2: { size: '3.6%', bg: '#F2F4F8', bd: '2px solid #0B1424', rad: '50%', clip: 'none' },
+      enemy: { size: '3.6%', bg: '#E5484D', bd: '0', rad: '0', clip: 'polygon(50% 0,100% 90%,0 90%)' },
+      key: { size: '3.2%', bg: '#FFC43D', bd: '1.5px solid #0B1424', rad: '0', clip: 'none', rot: ' rotate(45deg)' },
+      goal: { size: '4.2%', bg: 'rgba(255,196,61,.25)', bd: '2px solid #FFC43D', rad: '50%', clip: 'none' },
+      coin: { size: '2.8%', bg: '#FFC43D', bd: '1.5px solid #0B1424', rad: '50%', clip: 'none' },
+      keyBlue: { size: '3.2%', bg: '#4C8DF6', bd: '1.5px solid #0B1424', rad: '0', clip: 'none', rot: ' rotate(45deg)' },
+      keyPink: { size: '3.2%', bg: '#E04FA0', bd: '1.5px solid #0B1424', rad: '0', clip: 'none', rot: ' rotate(45deg)' },
+      keyGold: { size: '3.2%', bg: '#FFC43D', bd: '1.5px solid #0B1424', rad: '0', clip: 'none', rot: ' rotate(45deg)' },
+      check: { size: '2.8%', bg: '#4CC38A', bd: '1.5px solid #0B1424', rad: '50%', clip: 'none' },
+      zone: { size: '13%', bg: 'rgba(242,244,248,.06)', bd: '1.5px dashed #F2F4F8', rad: '50%', clip: 'none' },
+    };
+    const marks = L.marks.map(([x, y, k], i) => { const m = MK[k];
+      return { l: (x / 3.2) + '%', t: (y / 1.8) + '%', size: m.size, bg: m.bg, bd: m.bd, rad: m.rad, clip: m.clip,
+        o: on ? 1 : 0, s: 'translate(-50%,-50%) scale(' + (on ? 1 : 0.3) + ')' + (m.rot || ''), d: ms(tPath + 200 + i * 50) }; });
+    const labels = L.labels.map(([x, y, text], i) => ({ l: (x / 3.2) + '%', t: (y / 1.8) + '%', text, o: on ? 1 : 0, d: ms(tPath + 380 + i * 50) }));
+    return {
+      rooms, opens, props, marks, labels, mid: this.mid,
+      p1: L.paths[0] || 'M0 0', p2: L.paths[1] || 'M0 0',
+      maskA: 'url(#' + this.mid + 'a)', maskB: 'url(#' + this.mid + 'b)',
+      shell: on ? 1 : 0, dash: on ? 0 : 100,
+      pathT: on ? 'stroke-dashoffset 600ms cubic-bezier(.45,.05,.35,1) ' + tPath + 'ms' : 'none',
+      label: this.props.label ?? 'BLOCKOUT',
+    };
+  }
+}
+</script>
+</body>
+</html>

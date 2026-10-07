@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<script src="device.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0B1A3A">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@500;700&family=Chakra+Petch:wght@600;700&display=swap" rel="stylesheet">
+<style>
+html,body{margin:0;background:#0B1A3A;-webkit-font-smoothing:antialiased;-webkit-tap-highlight-color:transparent;overscroll-behavior-y:none}
+a{color:#FFC43D;text-decoration:none}
+a:hover{color:#FFFFFF}
+[data-shelf]{scrollbar-width:none}
+[data-shelf]::-webkit-scrollbar{display:none}
+@keyframes qsPulse{0%{transform:rotate(45deg) scale(1);opacity:.75}70%,100%{transform:rotate(45deg) scale(2.8);opacity:0}}
+@media (prefers-reduced-motion: reduce){[data-anim]{animation:none !important}}
+</style>
+<script src="skeleton.js"></script>
+<script src="transition.js"></script>
+</helmet>
+<div data-screen-label="Work · mobile" style="min-height:100vh;color:#F2F4F8;font-family:'Instrument Sans',sans-serif;background-color:#0B1A3A;background-image:linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);background-size:20px 20px;overflow-x:clip">
+  <dc-import name="MobileChrome" current="work" label="Library · 6 titles" obj="{{ objText }}" on-obj="{{ objTap }}" hint-size="100%,56px"></dc-import>
+
+  <main style="display:flex;flex-direction:column;gap:12px;padding:24px 0 calc(150px + env(safe-area-inset-bottom))">
+    <div style="display:flex;flex-direction:column;gap:6px;padding:0 24px;max-width:640px;width:100%;box-sizing:border-box;margin:0 auto">
+      <span style="font:700 12px 'JetBrains Mono',monospace;letter-spacing:.14em;color:#FFC43D">SELECT A TITLE</span>
+      <h1 style="margin:0;font:700 44px/1 'Chakra Petch',sans-serif;text-transform:uppercase;color:#FFFFFF">Work</h1>
+    </div>
+
+    <div ref="{{ ringRef }}" role="listbox" aria-label="Projects" style="position:relative;height:calc(min(62vw,300px) * 4 / 3 + 44px);perspective:760px;perspective-origin:50% 38%;touch-action:pan-y;user-select:none;-webkit-user-select:none;cursor:grab;overflow:hidden">
+      <div aria-hidden="true" style="position:absolute;left:50%;bottom:-40px;width:150%;height:120px;margin-left:-75%;background:radial-gradient(closest-side,rgba(255,196,61,.16),rgba(255,196,61,0));pointer-events:none"></div>
+      <div style="position:absolute;inset:0;transform-style:preserve-3d">
+      <sc-for list="{{ boxes }}" as="b" hint-placeholder-count="6">
+        <a href="{{ b.href }}" onClick="{{ b.click }}" aria-label="{{ b.title }}" data-box="" draggable="false" style="position:absolute;left:50%;top:12px;width:min(62vw,300px);aspect-ratio:3/4;margin-left:calc(min(62vw,300px) / -2);display:block;color:#F2F4F8;will-change:transform;transform-style:preserve-3d;-webkit-user-drag:none">
+          <div data-face="" style="position:absolute;top:3px;bottom:3px;left:0;width:16px;transform-origin:0 50%;transform:rotateY(90deg);background:linear-gradient(90deg,#0A1530,#182B5C);box-shadow:inset 0 3px 0 #FFC43D"></div>
+          <div data-face="" style="position:absolute;top:3px;bottom:3px;right:0;width:16px;transform-origin:100% 50%;transform:rotateY(-90deg);background:linear-gradient(90deg,#182B5C,#0A1530);box-shadow:inset 0 3px 0 #FFC43D"></div>
+          <div data-face="" style="position:absolute;inset:0;overflow:hidden;border-radius:4px;background:repeating-linear-gradient(135deg,#16244A 0 12px,#1B2B55 12px 24px);box-shadow:0 26px 50px rgba(0,0,0,.6),inset 0 0 0 1px rgba(255,255,255,.12);-webkit-box-reflect:below 8px linear-gradient(transparent 78%,rgba(255,255,255,.22))">
+            {{ b.imgEl }}
+            <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(8,14,28,.72) 0%,rgba(8,14,28,0) 24%,rgba(8,14,28,0) 50%,rgba(8,14,28,.94) 100%)"></div>
+            <div style="position:absolute;left:0;right:0;top:0;display:flex;justify-content:space-between;gap:8px;padding:9px 12px;background:#FFC43D;color:#0B1424;font:700 11px 'JetBrains Mono',monospace;letter-spacing:.08em;white-space:nowrap"><span>QS · {{ b.disc }}</span><span>{{ b.partyShort }}</span></div>
+            <div style="position:absolute;left:16px;right:16px;bottom:16px;display:flex;flex-direction:column;gap:6px">
+              <span style="align-self:flex-start;font:700 11px 'JetBrains Mono',monospace;letter-spacing:.1em;color:{{ b.sc }};background:{{ b.sbg }};padding:{{ b.spad }}">{{ b.status }}</span>
+              <span style="font:700 28px/1 'Chakra Petch',sans-serif;text-transform:uppercase;color:#FFFFFF">{{ b.title }}</span>
+            </div>
+            <div data-sheen="" style="position:absolute;inset:0;background:linear-gradient(105deg,rgba(255,255,255,0) 38%,rgba(255,255,255,.16) 50%,rgba(255,255,255,0) 62%);background-size:300% 100%;background-position:50% 0;pointer-events:none;mix-blend-mode:screen"></div>
+            <div data-dim="" style="position:absolute;inset:0;background:#081330;opacity:0;pointer-events:none"></div>
+          </div>
+        </a>
+      </sc-for>
+      </div>
+      <div aria-hidden="true" style="position:absolute;left:16px;right:16px;bottom:20px;height:2px;background:linear-gradient(90deg,rgba(255,196,61,0),rgba(255,196,61,.6) 20%,rgba(255,196,61,.6) 80%,rgba(255,196,61,0));pointer-events:none"></div>
+    </div>
+
+    <div style="display:flex;justify-content:center;align-items:center;gap:0">
+      <button type="button" onClick="{{ prev }}" aria-label="Previous project" style="width:40px;height:40px;padding:0;border:0;background:transparent;display:grid;place-items:center;cursor:pointer"><span style="width:28px;height:28px;display:grid;place-items:center;border:1px solid rgba(255,196,61,.5);color:#FFC43D;font:700 11px 'Chakra Petch',sans-serif">◀</span></button>
+      <sc-for list="{{ dots }}" as="d" hint-placeholder-count="6">
+        <button type="button" onClick="{{ d.go }}" aria-label="{{ d.aria }}" style="width:18px;height:40px;padding:0;border:0;background:transparent;display:grid;place-items:center;cursor:pointer"><span style="width:{{ d.size }};height:{{ d.size }};transform:rotate(45deg);background:{{ d.bg }};border:1px solid #FFC43D;transition:all 200ms ease-out"></span></button>
+      </sc-for>
+      <button type="button" onClick="{{ next }}" aria-label="Next project" style="width:40px;height:40px;padding:0;border:0;background:transparent;display:grid;place-items:center;cursor:pointer"><span style="width:28px;height:28px;display:grid;place-items:center;border:1px solid rgba(255,196,61,.5);color:#FFC43D;font:700 11px 'Chakra Petch',sans-serif">▶</span></button>
+    </div>
+
+    <div style="padding:0 20px;max-width:640px;width:100%;box-sizing:border-box;margin:8px auto 0">
+      <div ref="{{ detailsRef }}" style="display:flex;flex-direction:column;gap:18px;padding:20px;background:rgba(8,14,28,.88);border:1px solid rgba(255,196,61,.4);border-top:3px solid #FFC43D">
+        <div style="display:flex;align-items:baseline;gap:12px;min-width:0">
+          <span style="font:700 16px 'Chakra Petch',sans-serif;color:#FFC43D;flex-shrink:0">{{ sel.n }}</span>
+          <h2 style="margin:0;font:700 26px/1.05 'Chakra Petch',sans-serif;text-transform:uppercase;color:#FFFFFF;min-width:0">{{ sel.title }}</h2>
+        </div>
+        <p style="margin:0;font:600 18px/1.4 'Instrument Sans',sans-serif;color:#FFFFFF;text-wrap:pretty">“{{ sel.hook }}”</p>
+        <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px 16px;padding:14px 0;border-top:1px solid #26365E;border-bottom:1px solid #26365E">
+          <sc-for list="{{ sel.stats }}" as="st" hint-placeholder-count="4">
+            <div style="grid-column:{{ st.span }};display:flex;flex-direction:column;gap:4px;min-width:0">
+              <span style="font:700 11px 'JetBrains Mono',monospace;letter-spacing:.14em;color:#FFC43D;text-transform:uppercase">{{ st.k }}</span>
+              <span style="font:500 15px/1.35 'Instrument Sans',sans-serif;color:#F2F4F8">{{ st.v }}</span>
+            </div>
+          </sc-for>
+        </div>
+        <p style="margin:0;font:400 16px/1.6 'Instrument Sans',sans-serif;color:#DCE4F5;text-wrap:pretty">{{ sel.pitch }}</p>
+        <a href="{{ sel.href }}" style="display:flex;align-items:center;justify-content:center;gap:10px;min-height:50px;background:#FFC43D;color:#0B1424;font:700 15px 'Chakra Petch',sans-serif;letter-spacing:.08em;text-transform:uppercase">Open case study →</a>
+      </div>
+    </div>
+  </main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;: {&quot;width&quot;: 393, &quot;height&quot;: 852}}">
+class Component extends DCLogic {
+  state = { sel: 0, obj: 0 };
+  ringRef = React.createRef(); detailsRef = React.createRef();
+  P = [
+    { title: 'Insanitation', href: 'Case Study - Insanitation - Mobile.dc.html', img: 'assets/ins/keyart-2400.jpg', pos: '30% center', dev: true, role: 'Programmer + Lead Level Designer', party: 'Team of 8', len: 'Ongoing', tools: 'Unity · C#', disc: 'LEVEL + SYSTEMS',
+      hook: 'Every room is a tug-of-war between mess and clean.', pitch: 'A chaotic party battle game for family & friends, in development in the Unity game engine. Play as a Cat spreading fur, mayhem & hairballs, or a Keeper racing to clean up the mess before Chaos takes over.' },
+    { title: 'Free Rider', href: 'Case Study - Free Rider - Mobile.dc.html', img: 'assets/fr/chinatown.jpg', pos: 'center', role: 'Lead Programmer & Level Designer', party: 'Team of 5', len: '10 months', tools: 'Unity · C# · Cinemachine', disc: 'LEVEL + SYSTEMS',
+      hook: 'A physics skate system built to feel like Mario Kart, not QWOP.', pitch: 'A relaxing 3D third person game with elements of exploration built in the Unity game engine. Explore the alternate San-Francisco inspired city as Jun, a red panda, skating through on her free skates.' },
+    { title: 'Oinkyuza', href: 'Case Study - Oinkyuza - Mobile.dc.html', img: 'assets/oinkyuza-hero.png', pos: 'center', role: 'Narrative Level Design', party: 'Solo', len: '1 month', tools: 'Unity · ProBuilder · C#', disc: 'LEVEL DESIGN',
+      hook: 'A fairy tale told through the level, not cutscenes.', pitch: 'A narrative-driven 3D level retelling The Three Little Pigs, built in the Unity game engine. Play as the Big Bad Wolf, a loan shark collecting debts from three hog brothers across a neon cyberpunk city.' },
+    { title: 'A-B Factory', href: 'Case Study - A-B Factory - Mobile.dc.html', img: 'assets/ab/hero-bg.png', pos: 'center', role: 'Level Designer', party: 'Solo', len: '1 month', tools: 'Unity · ProBuilder · C#', disc: 'LEVEL DESIGN',
+      hook: 'Keys, moving platforms, conveyors and hazards from A to B.', pitch: 'A 3D platforming level built in the Unity game engine using techniques taught by Rich Wilson (Dishonored, Prey). Make your way from A to B through a dangerous factory of keys, moving platforms, conveyor belts & hazards.' },
+    { title: 'Night Forest', href: 'Case Study - Night Forest - Mobile.dc.html', img: 'assets/nf/bg.png', pos: 'center', role: 'Level Designer', party: 'Solo', len: '2 weeks', tools: 'Unity', disc: 'LEVEL DESIGN',
+      hook: 'Guide players without forcing a rigid path.', pitch: 'A short, atmospheric 3D exploration level built in the Unity game engine. Find your way through a moonlit forest, guided by terrain, lighting & landmarks instead of a set path.' },
+    { title: 'Endless Nightmare', href: 'Case Study - Endless Nightmare - Mobile.dc.html', img: 'assets/en/scene-cut.png', pos: 'center bottom', role: 'Systems & Tools Designer', party: 'Solo', len: '1 month', tools: 'Unity · C# · Visual Studio', disc: 'SYSTEMS',
+      hook: 'Wave, weapon and enemy systems for a cuddly-horror shooter.', pitch: 'A tense 3D isometric wave shooter with RPG elements built in the Unity game engine. Fight against the hordes of cuddly creatures & try to survive the night.' },
+  ];
+  pos = 0; target = 0; drag = null; moved = false;
+  n() { return this.P.length; }
+  wrap(d) { const n = this.n(); return ((d % n) + n + n / 2) % n - n / 2; }
+  componentDidMount() {
+    const el = this.ringRef.current; if (!el) return;
+    const loop = () => {
+      if (!this.drag) this.pos += (this.target - this.pos) * .16;
+      this.layout(); this.raf = requestAnimationFrame(loop);
+    };
+    this.raf = requestAnimationFrame(loop);
+    el.addEventListener('pointerdown', this.down = (e) => { this.drag = { x: e.clientX, y: e.clientY, p: this.pos, t: performance.now(), v: 0, lx: e.clientX, axis: null }; this.moved = false; });
+    addEventListener('pointermove', this.move = (e) => {
+      const d = this.drag; if (!d) return;
+      const dx = e.clientX - d.x, dy = e.clientY - d.y;
+      if (!d.axis && Math.hypot(dx, dy) > 6) d.axis = Math.abs(dx) > Math.abs(dy) ? 'x' : 'y';
+      if (d.axis === 'y') { this.drag = null; this.target = Math.round(this.pos); return; }
+      if (d.axis !== 'x') return;
+      this.moved = true; el.style.cursor = 'grabbing';
+      const now = performance.now(), w = this.boxW();
+      d.v = (e.clientX - d.lx) / Math.max(1, now - d.t); d.lx = e.clientX; d.t = now;
+      this.pos = d.p - dx / (w * .62);
+    });
+    addEventListener('pointerup', this.up = () => {
+      const d = this.drag; if (!d) return; this.drag = null; el.style.cursor = 'grab';
+      if (this.moved) this.target = Math.round(this.pos - d.v * 6 / (this.boxW() * .62) * 40);
+      else this.target = Math.round(this.pos);
+    });
+    addEventListener('pointercancel', this.up);
+    this.onScroll = () => { const o = innerHeight + scrollY >= document.documentElement.scrollHeight - 80 ? 1 : 0; if (o !== this.state.obj) this.setState({ obj: o }); };
+    addEventListener('scroll', this.onScroll, { passive: true });
+  }
+  componentWillUnmount() { cancelAnimationFrame(this.raf); removeEventListener('pointermove', this.move); removeEventListener('pointerup', this.up); removeEventListener('pointercancel', this.up); removeEventListener('scroll', this.onScroll); }
+  componentDidUpdate(_, prev) {
+    if (prev.sel !== this.state.sel && this.detailsRef.current && !matchMedia('(prefers-reduced-motion: reduce)').matches)
+      [...this.detailsRef.current.children].forEach((c, i) => c.animate([{ opacity: 0, transform: 'translateY(8px)' }, { opacity: 1, transform: 'none' }], { duration: 260, delay: i * 50, easing: 'cubic-bezier(.2,.8,.2,1)', fill: 'backwards' }));
+  }
+  boxW() { const b = this.ringRef.current && this.ringRef.current.querySelector('[data-box]'); return b ? b.offsetWidth : 240; }
+  layout() {
+    const el = this.ringRef.current; if (!el) return;
+    const w = this.boxW(), R = (w / 2) / Math.tan(20 * Math.PI / 180) + 28;
+    el.querySelectorAll('[data-box]').forEach((k, i) => {
+      const d = this.wrap(i - this.pos), a = d * 40, ad = Math.abs(d);
+      const rad = a * Math.PI / 180;
+      k.style.transform = `translate3d(${(R * Math.sin(rad)).toFixed(1)}px,0,${(R * (Math.cos(rad) - 1)).toFixed(1)}px) rotateY(${a.toFixed(2)}deg)`;
+      const op = String(Math.max(0, Math.min(1, 2.3 - ad)));
+      k.querySelectorAll('[data-face]').forEach(fc => { fc.style.opacity = op; });
+      k.style.visibility = ad > 2.3 ? 'hidden' : 'visible';
+      const sh = k.querySelector('[data-sheen]'); if (sh) sh.style.backgroundPosition = (50 - d * 45).toFixed(1) + '% 0';
+      k.style.pointerEvents = ad > 1.6 ? 'none' : 'auto';
+      const dim = k.querySelector('[data-dim]'); if (dim) dim.style.opacity = String(Math.min(ad, 1.5) * .45);
+    });
+    const sel = ((Math.round(this.pos) % this.n()) + this.n()) % this.n();
+    if (sel !== this.state.sel) this.setState({ sel });
+  }
+  goTo(i) { this.target = Math.round(this.pos) + Math.round(this.wrap(i - Math.round(this.pos))); }
+  renderVals() {
+    const s = this.state, h = React.createElement;
+    const all = this.P.map((p, i) => ({ ...p, n: String(i + 1).padStart(2, '0'),
+      imgEl: h('img', { src: p.img, alt: '', loading: i < 2 ? 'eager' : 'lazy', style: { position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', objectPosition: p.pos, display: 'block' } }),
+      partyShort: p.party === 'Solo' ? 'SOLO' : p.party.toUpperCase(),
+      status: p.dev ? '◆ IN DEVELOPMENT' : '✓ QUEST COMPLETE', sc: p.dev ? '#0B1424' : '#C9D1E0', sbg: p.dev ? '#FFC43D' : 'transparent', spad: p.dev ? '4px 8px' : '0',
+      stats: [{ k: 'Role', v: p.role, span: '1 / -1' }, { k: 'Team', v: p.party, span: 'auto' }, { k: p.dev ? 'Status' : 'Length', v: p.dev ? 'In development' : p.len, span: 'auto' }, { k: 'Tools', v: p.tools, span: '1 / -1' }],
+      click: (e) => { if (this.moved) { e.preventDefault(); this.moved = false; return; } if (i !== s.sel) { e.preventDefault(); this.goTo(i); } } }));
+    return {
+      ringRef: this.ringRef, prev: () => { this.target = Math.round(this.target) - 1; }, next: () => { this.target = Math.round(this.target) + 1; }, detailsRef: this.detailsRef, boxes: all, sel: all[s.sel] || all[0],
+      dots: all.map((b, i) => ({ aria: 'Show ' + b.title, size: i === s.sel ? '8px' : '5px', bg: i === s.sel ? '#FFC43D' : 'transparent', go: () => this.goTo(i) })),
+      objText: s.obj ? 'Get in touch' : 'Open a case study',
+      objTap: () => { if (s.obj) dispatchEvent(new Event('qs-open-contact')); else { const d = this.detailsRef.current; if (d) scrollTo({ top: d.getBoundingClientRect().top + scrollY - 70, behavior: 'smooth' }); } },
+    };
+  }
+}
+</script>
+</body>
+</html>

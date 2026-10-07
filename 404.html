@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Page not found · Quentin Smith</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script>
+(async () => {
+  try { const p = JSON.parse(localStorage.getItem('qs-ach-progress') || '{}'); const r = new Set(p.allroutes || []); r.add('url'); p.allroutes = [...r]; localStorage.setItem('qs-ach-progress', JSON.stringify(p)); } catch (e) {}
+  // Find the site root: works for user sites (/) and project sites (/repo/), from any broken URL depth.
+  const seg = location.pathname.split('/').filter(Boolean);
+  const tries = [];
+  try { const saved = localStorage.getItem('qs-site-root'); if (saved) tries.push(saved); } catch (e) {}
+  for (let i = seg.length; i >= 0; i--) tries.push('/' + seg.slice(0, i).join('/') + (i ? '/' : ''));
+  for (const base of [...new Set(tries)]) {
+    try { const r = await fetch(base + '404.dc.html', { method: 'HEAD', cache: 'no-store' }); if (r.ok) { location.replace(base + '404.dc.html'); return; } } catch (e) {}
+  }
+  location.replace('/404.dc.html');
+})();
+</script>
+<style>body{margin:0;background:#0B1A3A;color:#F2F4F8;font:16px system-ui,sans-serif;display:grid;place-items:center;min-height:100vh}a{color:#FFC43D}</style>
+</head>
+<body><a href="/">Page not found. Head home →</a></body>
+</html>

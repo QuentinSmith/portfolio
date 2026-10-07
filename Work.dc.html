@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<script src="device.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&family=Chakra+Petch:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+body{margin:0;background-color:#0B1A3A;background-image:linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px),radial-gradient(ellipse 1500px 1100px at 50% 0,rgba(27,62,134,.6),rgba(27,62,134,0) 70%);background-size:20px 20px,20px 20px,100% 100%;background-repeat:repeat,repeat,no-repeat;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+a:hover{color:#FFC43D}
+@keyframes qsPulse{0%{transform:rotate(45deg) scale(1);opacity:.75}70%,100%{transform:rotate(45deg) scale(2.8);opacity:0}}
+@keyframes qsTape{from{background-position:0 0}to{background-position:56px 0}}
+@media (prefers-reduced-motion: reduce){[data-anim]{animation:none !important}}
+</style>
+<script src="skeleton.js"></script>
+<script src="transition.js"></script>
+<script src="achievements.js"></script>
+</helmet>
+<div data-screen-label="Work" style="width:1440px;margin:0 auto;color:#F2F4F8;font-family:'Instrument Sans',sans-serif;overflow:clip">
+<div aria-hidden="true" style="position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden">
+  <div style="position:absolute;inset:-80px;filter:blur(48px) saturate(1.2);transform:scale(1.05)"><img src="assets/fr/chinatown.jpg" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;display:block;opacity:{{ pvB.fr }};transition:opacity 600ms ease-out"><img src="assets/oinkyuza-hero.png" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;display:block;opacity:{{ pvB.oink }};transition:opacity 600ms ease-out"><img src="assets/ab/hero-bg.png" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;display:block;opacity:{{ pvB.ab }};transition:opacity 600ms ease-out"><img src="assets/nf/bg.png" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;display:block;opacity:{{ pvB.nf }};transition:opacity 600ms ease-out"><img src="assets/en/scene-cut.png" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center bottom;display:block;opacity:{{ pvB.en }};transition:opacity 600ms ease-out"></div>
+  <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(11,26,58,.78) 0%,rgba(11,26,58,.86) 60%,rgba(8,19,48,.94) 100%)"></div>
+  <div style="position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);background-size:20px 20px"></div>
+</div>
+<nav aria-label="Get in touch" style="position:fixed;left:max(0px, calc(50vw - 796px));top:50%;transform:translateY(-50%) translateX(max(-54px, min(0px, calc(50vw - 796px))));z-index:45;display:flex;flex-direction:column;align-items:center;gap:12px;padding:12px 10px;background:rgba(8,14,28,.9);backdrop-filter:blur(8px);border:1px solid rgba(255,196,61,.35);border-right:3px solid #FFC43D;transition:transform 240ms cubic-bezier(.2,.8,.2,1)" style-hover="transform:translateY(-50%) translateX(0)" style-focus-within="transform:translateY(-50%) translateX(0)">
+  <div style="position:relative" onMouseEnter="{{ rail0.enter }}" onMouseLeave="{{ rail0.leave }}" onFocus="{{ rail0.enter }}" onBlur="{{ rail0.leave }}">
+      <a href="mailto:QuentinSmith.GD@gmail.com" target="_self" aria-label="Email" style="display:flex;align-items:center;justify-content:center;width:44px;height:44px;box-sizing:border-box;border:1px solid {{ rail0.bd }};background:{{ rail0.bg }};text-decoration:none;transition:all 160ms ease-out"><img src="assets/icons/gmail.png" alt="" style="display:block;width:22px;height:auto;filter:none"></a>
+      <span aria-hidden="true" style="position:absolute;left:58px;top:50%;display:flex;align-items:center;gap:12px;padding:11px 16px;white-space:nowrap;background:rgba(8,14,28,.94);border:1px solid rgba(255,196,61,.5);box-shadow:0 10px 30px rgba(0,0,0,.35);font:600 14px 'JetBrains Mono',monospace;letter-spacing:.04em;color:#E8ECF4;pointer-events:none;transform-origin:left center;transform:translateY(-50%) scale({{ rail0.sc }});opacity:{{ rail0.op }};transition:transform 220ms cubic-bezier(.34,1.56,.64,1),opacity 160ms ease-out"><span style="color:#FFC43D;font-weight:700;letter-spacing:.1em;text-transform:uppercase">Email</span><span>QuentinSmith.GD@gmail.com</span></span>
+    </div>
+    <div style="position:relative" onMouseEnter="{{ rail1.enter }}" onMouseLeave="{{ rail1.leave }}" onFocus="{{ rail1.enter }}" onBlur="{{ rail1.leave }}">
+      <a href="https://www.linkedin.com/in/quentin-t-smith/" target="_blank" aria-label="LinkedIn" style="display:flex;align-items:center;justify-content:center;width:44px;height:44px;box-sizing:border-box;border:1px solid {{ rail1.bd }};background:{{ rail1.bg }};text-decoration:none;transition:all 160ms ease-out"><img src="assets/icons/linkedin-white.png" alt="" style="display:block;width:21px;height:auto;filter:none"></a>
+      <span aria-hidden="true" style="position:absolute;left:58px;top:50%;display:flex;align-items:center;gap:12px;padding:11px 16px;white-space:nowrap;background:rgba(8,14,28,.94);border:1px solid rgba(255,196,61,.5);box-shadow:0 10px 30px rgba(0,0,0,.35);font:600 14px 'JetBrains Mono',monospace;letter-spacing:.04em;color:#E8ECF4;pointer-events:none;transform-origin:left center;transform:translateY(-50%) scale({{ rail1.sc }});opacity:{{ rail1.op }};transition:transform 220ms cubic-bezier(.34,1.56,.64,1),opacity 160ms ease-out"><span style="color:#FFC43D;font-weight:700;letter-spacing:.1em;text-transform:uppercase">LinkedIn</span><span>quentin-t-smith</span></span>
+    </div>
+    <div style="position:relative" onMouseEnter="{{ rail2.enter }}" onMouseLeave="{{ rail2.leave }}" onFocus="{{ rail2.enter }}" onBlur="{{ rail2.leave }}">
+      <a href="https://slothdev-gd.itch.io/" target="_blank" aria-label="itch.io" style="display:flex;align-items:center;justify-content:center;width:44px;height:44px;box-sizing:border-box;border:1px solid {{ rail2.bd }};background:{{ rail2.bg }};text-decoration:none;transition:all 160ms ease-out"><img src="assets/icons/itch-white.png" alt="" style="display:block;width:23px;height:auto;filter:none"></a>
+      <span aria-hidden="true" style="position:absolute;left:58px;top:50%;display:flex;align-items:center;gap:12px;padding:11px 16px;white-space:nowrap;background:rgba(8,14,28,.94);border:1px solid rgba(255,196,61,.5);box-shadow:0 10px 30px rgba(0,0,0,.35);font:600 14px 'JetBrains Mono',monospace;letter-spacing:.04em;color:#E8ECF4;pointer-events:none;transform-origin:left center;transform:translateY(-50%) scale({{ rail2.sc }});opacity:{{ rail2.op }};transition:transform 220ms cubic-bezier(.34,1.56,.64,1),opacity 160ms ease-out"><span style="color:#FFC43D;font-weight:700;letter-spacing:.1em;text-transform:uppercase">itch.io</span><span>slothdev-gd</span></span>
+    </div>
+    <div style="position:relative" onMouseEnter="{{ rail3.enter }}" onMouseLeave="{{ rail3.leave }}" onFocus="{{ rail3.enter }}" onBlur="{{ rail3.leave }}">
+      <a href="assets/resume/Quentin_Smith_-_Resume_ATS.pdf" download="Quentin_Smith_-_Resume.pdf" aria-label="Download resume" style="display:flex;align-items:center;justify-content:center;width:44px;height:44px;box-sizing:border-box;border:1px solid {{ rail3.bd }};background:{{ rail3.bg }};text-decoration:none;transition:all 160ms ease-out"><img src="assets/icons/document.svg" alt="" style="display:block;width:24px;height:auto;filter:brightness(0) invert(1)"></a>
+      <span aria-hidden="true" style="position:absolute;left:58px;top:50%;display:flex;align-items:center;gap:12px;padding:11px 16px;white-space:nowrap;background:rgba(8,14,28,.94);border:1px solid rgba(255,196,61,.5);box-shadow:0 10px 30px rgba(0,0,0,.35);font:600 14px 'JetBrains Mono',monospace;letter-spacing:.04em;color:#E8ECF4;pointer-events:none;transform-origin:left center;transform:translateY(-50%) scale({{ rail3.sc }});opacity:{{ rail3.op }};transition:transform 220ms cubic-bezier(.34,1.56,.64,1),opacity 160ms ease-out"><span style="color:#FFC43D;font-weight:700;letter-spacing:.1em;text-transform:uppercase">Resume</span><span>Download (.pdf)</span></span>
+    </div>
+</nav>
+
+  <nav style="position:sticky;top:0;z-index:50;height:64px;display:flex;align-items:center;justify-content:space-between;padding:0 40px;background:rgba(8,14,28,.94);border-bottom:1px solid rgba(255,196,61,.35)">
+    <a href="Portfolio Home.dc.html" aria-label="Quentin Smith — home"><span style="width:30px;height:30px;background:#FFC43D;color:#0B1424;display:grid;place-items:center;font:700 13px 'Chakra Petch',sans-serif;clip-path:polygon(50% 0,100% 50%,50% 100%,0 50%)">QS</span></a>
+    <div data-navkeys="" style="display:flex;align-items:center;gap:8px;font:600 15px 'Chakra Petch',sans-serif;letter-spacing:.1em;text-transform:uppercase">
+      <span aria-hidden="true" title="Press Q" style="font:700 11px 'JetBrains Mono',monospace;color:#AEB8CC;min-width:22px;height:22px;box-sizing:border-box;display:inline-grid;place-items:center;border:1px solid #4A5878;border-bottom-width:3px;border-radius:4px;margin-right:10px">Q</span>
+      <a href="Portfolio Home.dc.html" style="padding:8px 16px;color:#C9D1E0">Home</a>
+      <a href="Work.dc.html" aria-current="page" style="padding:8px 16px;background:#FFC43D;color:#0B1424">Work</a>
+      <a href="About.dc.html" style="padding:8px 16px;color:#C9D1E0">About</a>
+      <a href="Resume.dc.html" style="padding:8px 16px;color:#C9D1E0">Resume</a>
+      <a href="About.dc.html#contact" style="padding:8px 16px;color:#C9D1E0">Contact</a>
+    <span aria-hidden="true" title="Press E" style="font:700 11px 'JetBrains Mono',monospace;color:#AEB8CC;min-width:22px;height:22px;box-sizing:border-box;display:inline-grid;place-items:center;border:1px solid #4A5878;border-bottom-width:3px;border-radius:4px;margin-left:10px">E</span>
+    </div>
+  </nav>
+<main style="position:relative;z-index:1;min-height:max(860px, calc(100vh - 64px));box-sizing:border-box;display:grid;grid-template-columns:500px minmax(0,1fr);gap:48px;padding:48px">
+          <div style="display:flex;flex-direction:column;gap:22px;min-height:0">
+            <div style="display:flex;flex-direction:column;gap:8px">
+              <span style="font:600 13px 'JetBrains Mono',monospace;letter-spacing:.14em;color:#FFC43D">SELECT MISSION</span>
+              <h2 style="margin:0;font:700 56px/1 'Chakra Petch',sans-serif;text-transform:uppercase;color:#fff">Work</h2>
+            </div>
+            <div style="display:flex;flex-direction:column;border-top:1px solid #26365E">
+              <sc-for list="{{ listB }}" as="p" hint-placeholder-count="6">
+                <a href="{{ p.href }}" onMouseEnter="{{ p.enter }}" onFocus="{{ p.enter }}" style="display:grid;grid-template-columns:44px minmax(0,1fr) auto;align-items:center;gap:16px;padding:18px 18px 18px 20px;border-bottom:1px solid #26365E;border-left:3px solid {{ p.rowBd }};background:{{ p.rowBg }};color:#F2F4F8;transition:background 160ms ease-out,border-color 160ms ease-out">
+                  <span style="font:700 18px 'Chakra Petch',sans-serif;color:#FFC43D">{{ p.n }}</span>
+                  <span style="display:flex;flex-direction:column;gap:4px;min-width:0"><span style="font:700 24px/1.1 'Chakra Petch',sans-serif;text-transform:uppercase">{{ p.title }}</span><span style="font:500 13px 'JetBrains Mono',monospace;color:#AEB8CC;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ p.role }}</span></span>
+                  <span style="display:flex;align-items:center;gap:8px;font:700 12px 'JetBrains Mono',monospace;letter-spacing:.08em;color:{{ p.pillFg }};background:{{ p.pillBg }};padding:{{ p.pillPad }};white-space:nowrap"><sc-if value="{{ p.dev }}" hint-placeholder-val="{{ false }}"><span style="position:relative;width:8px;height:8px;display:inline-block"><span data-anim="" style="position:absolute;inset:0;border:1.5px solid #0B1424;transform:rotate(45deg);animation:qsPulse 1.8s ease-out infinite"></span><span style="position:absolute;inset:0;background:#0B1424;transform:rotate(45deg)"></span></span></sc-if>{{ p.statusShort }}</span>
+                </a>
+              </sc-for>
+            </div>
+          </div>
+          <div style="position:relative;display:grid;grid-template-columns:340px minmax(0,1fr);gap:44px;align-items:center;padding:36px 40px;background:radial-gradient(ellipse 60% 70% at 25% 50%,#1D3266 0%,#0F1E44 70%);border:1.5px solid #26365E;border-top:3px solid #FFC43D;border-radius:4px;box-shadow:0 24px 60px rgba(0,0,0,.4)">
+            <div aria-hidden="true" style="position:absolute;inset:0;overflow:hidden;border-radius:4px;pointer-events:none">
+              <div style="position:absolute;top:0;right:0;bottom:0;width:70%;opacity:.15;-webkit-mask-image:linear-gradient(90deg,transparent 0%,#000 55%);mask-image:linear-gradient(90deg,transparent 0%,#000 55%)"><img src="assets/fr/chinatown.jpg" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;display:block;opacity:{{ pvB.fr }};transition:opacity 600ms ease-out"><img src="assets/oinkyuza-hero.png" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;display:block;opacity:{{ pvB.oink }};transition:opacity 600ms ease-out"><img src="assets/ab/hero-bg.png" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;display:block;opacity:{{ pvB.ab }};transition:opacity 600ms ease-out"><img src="assets/nf/bg.png" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;display:block;opacity:{{ pvB.nf }};transition:opacity 600ms ease-out"><img src="assets/en/scene-cut.png" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center bottom;display:block;opacity:{{ pvB.en }};transition:opacity 600ms ease-out"></div>
+            </div>
+            <div ref="{{ sealRef }}" role="img" aria-label="Seal of approval" style="position:absolute;top:-30px;right:-22px;z-index:3;width:96px;height:96px;transform:rotate(-12deg);filter:drop-shadow(0 10px 18px rgba(0,0,0,.45))">
+              <div style="position:absolute;inset:0;background:#FFC43D;clip-path:polygon(50.0% 0.0%,56.9% 6.5%,65.5% 2.4%,70.0% 10.8%,79.4% 9.5%,81.1% 18.9%,90.5% 20.6%,89.2% 30.0%,97.6% 34.5%,93.5% 43.1%,100.0% 50.0%,93.5% 56.9%,97.6% 65.5%,89.2% 70.0%,90.5% 79.4%,81.1% 81.1%,79.4% 90.5%,70.0% 89.2%,65.5% 97.6%,56.9% 93.5%,50.0% 100.0%,43.1% 93.5%,34.5% 97.6%,30.0% 89.2%,20.6% 90.5%,18.9% 81.1%,9.5% 79.4%,10.8% 70.0%,2.4% 65.5%,6.5% 56.9%,0.0% 50.0%,6.5% 43.1%,2.4% 34.5%,10.8% 30.0%,9.5% 20.6%,18.9% 18.9%,20.6% 9.5%,30.0% 10.8%,34.5% 2.4%,43.1% 6.5%)"></div>
+              <div style="position:absolute;inset:14px;border-radius:50%;border:2px solid #0B1424;box-sizing:border-box;display:grid;place-items:center">
+                <svg width="34" height="34" viewBox="0 0 24 24" aria-hidden="true" style="display:block"><path d="M5 12.5l4.2 4.2L19 7" fill="none" stroke="#0B1424" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+              </div>
+            </div>
+            <div style="position:relative;z-index:1;height:500px;perspective:1400px">
+              <div aria-hidden="true" style="position:absolute;left:-40px;top:20px;width:420px;height:420px;border-radius:50%;background:{{ selB.tint }};opacity:.32;filter:blur(90px);transition:background-color 600ms ease-out;pointer-events:none"></div>
+              <div ref="{{ boxRef }}" onMouseMove="{{ boxMove }}" onMouseLeave="{{ boxLeave }}" style="position:absolute;left:20px;top:20px;width:300px;height:400px;transform-style:preserve-3d;transform:rotateY(-24deg) rotateX(4deg);transition:transform 500ms cubic-bezier(.2,.8,.2,1)" style-hover="transform:rotateY(-8deg) rotateX(2deg)">
+                <div style="position:absolute;left:0;top:0;width:34px;height:400px;transform-origin:left center;transform:rotateY(90deg);background:linear-gradient(90deg,#0B1424,#16244A);border-left:3px solid #FFC43D;display:flex;align-items:center;justify-content:center"><span style="writing-mode:vertical-rl;transform:rotate(180deg);font:700 14px 'Chakra Petch',sans-serif;letter-spacing:.12em;text-transform:uppercase;color:#FFC43D;white-space:nowrap">{{ selB.title }}</span></div>
+                <div aria-hidden="true" style="position:absolute;inset:0;transform:rotateY(180deg);backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:4px;background-color:#0F1E44;background-image:linear-gradient(rgba(255,196,61,.08) 1px,transparent 1px),linear-gradient(90deg,rgba(255,196,61,.08) 1px,transparent 1px);background-size:20px 20px;box-shadow:inset 0 0 0 2px #FFC43D;display:grid;place-items:center">
+                  <span style="width:64px;height:64px;background:#FFC43D;color:#0B1424;display:grid;place-items:center;font:700 22px 'Chakra Petch',sans-serif;clip-path:polygon(50% 0,100% 50%,50% 100%,0 50%)">QS</span>
+                </div>
+                <div style="position:absolute;inset:0;overflow:hidden;border-radius:4px;backface-visibility:hidden;-webkit-backface-visibility:hidden;background:repeating-linear-gradient(135deg,#16244A 0 12px,#1B2B55 12px 24px);box-shadow:30px 40px 60px rgba(0,0,0,.6),inset 0 0 0 1px rgba(255,255,255,.14)">
+                  <span style="position:absolute;inset:0;display:grid;place-items:center;font:500 13px 'JetBrains Mono',monospace;color:#AEB8CC;opacity:{{ pvB.none }}">[ cover art coming ]</span>
+                  <div style="position:absolute;inset:0;overflow:hidden;opacity:{{ pvB.oob }};transition:opacity 260ms ease-out;background:#05080F">
+                    <div style="position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);background-size:20px 20px"></div>
+                    <div style="position:absolute;left:0;right:0;top:38%;height:22px;background:#FF5A5A;opacity:.18;transform:translateX(18px)"></div>
+                    <div style="position:absolute;left:0;right:0;top:61%;height:8px;background:#5BC8FF;opacity:.22;transform:translateX(-26px)"></div>
+                    <div style="position:absolute;left:42%;top:44%;width:56px;height:56px;background:#000;border:1px dashed #FF5A5A"></div>
+                    <div style="position:absolute;inset:0;background:repeating-linear-gradient(0deg,rgba(255,255,255,.05) 0 1px,transparent 1px 3px)"></div>
+                    <span style="position:absolute;left:0;right:0;top:24%;text-align:center;font:700 58px/1 'Chakra Petch',sans-serif;color:#5BC8FF;opacity:.6;transform:translateX(-3px)">???</span>
+                    <span style="position:absolute;left:0;right:0;top:24%;text-align:center;font:700 58px/1 'Chakra Petch',sans-serif;color:#FF5A5A;opacity:.6;transform:translateX(3px)">???</span>
+                    <span style="position:absolute;left:0;right:0;top:24%;text-align:center;font:700 58px/1 'Chakra Petch',sans-serif;color:#F2F4F8">???</span>
+                  </div>
+                  <img src="assets/fr/chinatown.jpg" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;opacity:{{ pvB.fr }};transition:opacity 260ms ease-out">
+                  <img src="assets/oinkyuza-hero.png" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;opacity:{{ pvB.oink }};transition:opacity 260ms ease-out">
+                  <img src="assets/ab/hero-bg.png" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;opacity:{{ pvB.ab }};transition:opacity 260ms ease-out">
+                  <img src="assets/nf/bg.png" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;opacity:{{ pvB.nf }};transition:opacity 260ms ease-out">
+                  <img src="assets/en/scene-cut.png" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center bottom;display:block;opacity:{{ pvB.en }};transition:opacity 260ms ease-out">
+                  <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(8,14,28,.7) 0%,rgba(8,14,28,0) 24%,rgba(8,14,28,0) 50%,rgba(8,14,28,.94) 100%)"></div>
+                  <div style="position:absolute;left:0;right:0;top:0;display:flex;justify-content:space-between;gap:8px;padding:11px 12px;background:#FFC43D;color:#0B1424;font:700 11px 'JetBrains Mono',monospace;letter-spacing:.06em;white-space:nowrap"><span>QS · {{ selB.disc }}</span><span>{{ selB.partyShort }}</span></div>
+                  <div style="position:absolute;left:18px;right:18px;bottom:18px;display:flex;flex-direction:column;gap:6px"><span style="font:700 12px 'JetBrains Mono',monospace;letter-spacing:.1em;color:{{ selB.sc }}">{{ selB.status }}</span><span style="font:700 34px/1 'Chakra Petch',sans-serif;text-transform:uppercase;color:#fff">{{ selB.title }}</span></div>
+                  <sc-if value="{{ selB.dev }}" hint-placeholder-val="{{ false }}"><div data-anim="" style="position:absolute;left:-60px;right:-60px;top:46%;height:40px;transform:rotate(-14deg);display:grid;place-items:center;background:repeating-linear-gradient(45deg,#FFC43D 0 14px,#0B1424 14px 28px);background-size:56px 40px;animation:qsTape 1.6s linear infinite;box-shadow:0 8px 20px rgba(0,0,0,.5)"><span style="padding:5px 12px;background:#0B1424;color:#FFC43D;font:700 13px 'JetBrains Mono',monospace;letter-spacing:.16em;white-space:nowrap">WORK IN PROGRESS</span></div></sc-if>
+                  <div ref="{{ holoRef }}" aria-hidden="true" style="position:absolute;inset:0;pointer-events:none;background:linear-gradient(115deg,transparent 18%,rgba(255,60,200,.55) 32%,rgba(60,240,255,.55) 44%,rgba(255,240,90,.55) 56%,rgba(120,255,140,.45) 66%,transparent 80%);background-size:300% 300%;background-position:var(--hx,50%) var(--hy,50%);mix-blend-mode:color-dodge;opacity:var(--ho,0);transition:opacity 260ms ease-out"></div>
+                  <div aria-hidden="true" style="position:absolute;inset:0;pointer-events:none;background:radial-gradient(circle at var(--gx,50%) var(--gy,50%),rgba(255,255,255,.38) 0%,rgba(255,255,255,0) 45%);mix-blend-mode:overlay;opacity:var(--ho,0);transition:opacity 260ms ease-out"></div>
+                </div>
+              </div>
+              <div style="position:absolute;left:0;right:0;top:436px;height:2px;background:linear-gradient(90deg,rgba(255,196,61,0),rgba(255,196,61,.6) 30%,rgba(255,196,61,.6) 70%,rgba(255,196,61,0))"></div>
+            </div>
+            <div ref="{{ detailsRef }}" style="position:relative;z-index:1;display:flex;flex-direction:column;gap:18px;min-width:0">
+              <span style="font:700 13px 'JetBrains Mono',monospace;letter-spacing:.1em;color:#FFC43D">{{ selB.n }} · BACK OF THE BOX</span>
+              <sc-if value="{{ selB.dev }}" hint-placeholder-val="{{ false }}"><div style="display:flex;align-items:center;gap:14px;padding:12px 16px;border:1.5px dashed #FFC43D;background:rgba(255,196,61,.08)"><span style="position:relative;width:10px;height:10px;flex-shrink:0;display:inline-block"><span data-anim="" style="position:absolute;inset:0;border:1.5px solid #FFC43D;transform:rotate(45deg);animation:qsPulse 1.8s ease-out infinite"></span><span style="position:absolute;inset:0;background:#FFC43D;transform:rotate(45deg)"></span></span><span style="display:flex;flex-direction:column;gap:3px"><span style="font:700 13px 'JetBrains Mono',monospace;letter-spacing:.12em;color:#FFC43D">ACTIVE QUEST · IN DEVELOPMENT</span><span style="font:500 15px 'Instrument Sans',sans-serif;color:#DCE4F5">Still in development. Demo on Steam; case study updated as it grows.</span></span></div></sc-if>
+              <p style="margin:0;font:600 24px/1.35 'Instrument Sans',sans-serif;color:#fff;text-wrap:pretty">“{{ selB.hook }}”</p>
+              <p style="margin:0;font:400 17px/1.55 'Instrument Sans',sans-serif;color:#DCE4F5;text-wrap:pretty">{{ selB.pitch }}</p>
+              <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px 20px;padding:16px 0;border-top:1px solid #26365E;border-bottom:1px solid #26365E">
+                <sc-for list="{{ selB.stats }}" as="st" hint-placeholder-count="4">
+                  <span style="display:flex;flex-direction:column;gap:5px;min-width:0"><span style="font:700 12px 'JetBrains Mono',monospace;letter-spacing:.14em;color:#FFC43D;text-transform:uppercase">{{ st.k }}</span><span style="font:500 14px/1.35 'JetBrains Mono',monospace;color:#DCE4F5">{{ st.v }}</span></span>
+                </sc-for>
+              </div>
+              <a href="{{ selB.href }}" aria-disabled="{{ selB.ariaDis }}" style="align-self:flex-start;display:flex;align-items:center;gap:10px;padding:14px 20px;background:{{ selB.ctaBg }};color:{{ selB.ctaFg }};border:1.5px {{ selB.ctaBd }} #FFC43D;pointer-events:{{ selB.ctaPe }};font:700 15px 'Chakra Petch',sans-serif;letter-spacing:.08em;text-transform:uppercase"><span aria-hidden="true" style="position:relative;flex-shrink:0;width:15px;height:21px;box-sizing:border-box;border:1.5px solid #0B1424;border-radius:8px;overflow:hidden;display:inline-block"><span style="position:absolute;left:0;top:0;width:50%;height:8px;background:#0B1424"></span><span style="position:absolute;left:0;right:0;top:8px;height:1.5px;background:#0B1424"></span></span>{{ selB.cta }}</a>
+              <div style="display:flex;align-items:center;gap:16px;margin-top:6px;padding:12px 16px;background:rgba(8,14,28,.7);border-top:1px solid rgba(255,196,61,.35);border-bottom:1px solid rgba(255,196,61,.35)">
+                <span style="font:700 12px 'JetBrains Mono',monospace;letter-spacing:.16em;color:#FFC43D">ENGINE</span>
+                <span style="width:1px;height:20px;background:rgba(255,196,61,.35)"></span>
+                <img src="assets/icons/trim-unity.png" alt="Unity" style="display:block;height:24px;width:auto;filter:invert(1) hue-rotate(180deg)">
+              </div>
+            </div>
+          </div>
+        </main>
+<dc-import name="SiteFooter" current="work" hint-size="100%,420px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { fb: 'All', sb: 1, hov: null };
+  detailsRef = React.createRef(); sealRef = React.createRef(); boxRef = React.createRef(); holoRef = React.createRef();
+  boxMove = (e) => { const el = e.currentTarget, r = el.getBoundingClientRect(), x = (e.clientX - r.left) / r.width, y = (e.clientY - r.top) / r.height;
+    el.style.setProperty('--hx', (x * 100).toFixed(1) + '%'); el.style.setProperty('--hy', (y * 100).toFixed(1) + '%');
+    el.style.setProperty('--gx', (x * 100).toFixed(1) + '%'); el.style.setProperty('--gy', (y * 100).toFixed(1) + '%'); el.style.setProperty('--ho', '1'); };
+  boxLeave = (e) => { e.currentTarget.style.setProperty('--ho', '0'); };
+  TINT = { '???': '#FF5A5A', 'Insanitation': '#3FD3A0', 'Free Rider': '#F2A03D', 'Oinkyuza': '#FF3FA4', 'A-B Factory': '#FFB347', 'Night Forest': '#5B8CFF', 'Endless Nightmare': '#9B6BFF' };
+  componentDidMount() { this._lastSb = this.state.sb; }
+  componentDidUpdate() {
+    if (this._lastSb === this.state.sb) return;
+    this._lastSb = this.state.sb;
+    if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const d = this.detailsRef.current, s = this.sealRef.current;
+    if (d) [...d.children].forEach((el, i) => el.animate([{ opacity: 0, transform: 'translateY(10px)' }, { opacity: 1, transform: 'none' }], { duration: 260, delay: i * 40, easing: 'cubic-bezier(.2,.8,.2,1)', fill: 'backwards' }));
+    const b = this.boxRef.current, h = this.holoRef.current;
+    if (b) b.animate([{ transform: 'rotateY(-204deg) rotateX(4deg)' }, { transform: 'rotateY(-24deg) rotateX(4deg)' }], { duration: 640, easing: 'cubic-bezier(.2,.8,.2,1)' });
+    if (h) h.animate([{ opacity: 0, backgroundPosition: '0% 0%' }, { opacity: .9, offset: .5 }, { opacity: 0, backgroundPosition: '100% 100%' }], { duration: 900, delay: 380, easing: 'ease-in-out' });
+    if (s) s.animate([{ opacity: 0, transform: 'rotate(-34deg) scale(1.9)' }, { opacity: 1, transform: 'rotate(-12deg) scale(.9)', offset: .65 }, { opacity: 1, transform: 'rotate(-12deg) scale(1)' }], { duration: 420, delay: 120, easing: 'cubic-bezier(.3,0,.4,1)', fill: 'backwards' });
+  }
+  F = ['All', 'Level Design', 'Systems & Programming', 'Team', 'Solo'];
+  P = [
+    { title: 'Insanitation', href: 'Case Study - Insanitation.dc.html', dev: true, role: 'Programmer + Lead Level Designer', party: 'Team of 8', len: 'Ongoing', tools: 'Unity · C#', disc: 'LEVEL + SYSTEMS', tags: ['Level Design', 'Systems & Programming', 'Team'],
+      hook: 'Every room is a tug-of-war between mess and clean.', pitch: 'A chaotic party battle game for family & friends, in development in the Unity game engine. Play as a Cat spreading fur, mayhem & hairballs, or a Keeper racing to clean up the mess before Chaos takes over.' },
+    { title: 'Free Rider', href: 'Case Study - Free Rider.dc.html', img: 'assets/fr/chinatown.jpg', alt: 'Free Rider: Chinatown gate at golden hour', role: 'Lead Programmer & Level Designer', party: 'Team of 5', len: '10 months', tools: 'Unity · C# · Cinemachine', disc: 'LEVEL + SYSTEMS', tags: ['Level Design', 'Systems & Programming', 'Team'],
+      hook: 'A physics skate system built to feel like Mario Kart, not QWOP.', pitch: 'A relaxing 3D third person game with elements of exploration built in the Unity game engine. Explore the alternate San-Francisco inspired city as Jun, a red panda, skating through on her free skates.' },
+    { title: 'Oinkyuza', href: 'Case Study - Oinkyuza.dc.html', img: 'assets/oinkyuza-hero.png', alt: 'Neon plaza in Oinkyuza', role: 'Narrative Level Design', party: 'Solo', len: '1 month', tools: 'Unity · ProBuilder · C#', disc: 'LEVEL DESIGN', tags: ['Level Design', 'Solo'],
+      hook: 'A fairy tale told through the level, not cutscenes.', pitch: 'A narrative-driven 3D level retelling The Three Little Pigs, built in the Unity game engine. Play as the Big Bad Wolf, a loan shark collecting debts from three hog brothers across a neon cyberpunk city.' },
+    { title: 'A-B Factory', href: 'Case Study - A-B Factory.dc.html', img: 'assets/ab/hero-bg.png', alt: 'Dark factory hall under ceiling beams', role: 'Level Designer', party: 'Solo', len: '1 month', tools: 'Unity · ProBuilder · C#', disc: 'LEVEL DESIGN', tags: ['Level Design', 'Solo'],
+      hook: 'Keys, moving platforms, conveyors and hazards from A to B.', pitch: 'A 3D platforming level built in the Unity game engine using techniques taught by Rich Wilson (Dishonored, Prey). Make your way from A to B through a dangerous factory of keys, moving platforms, conveyor belts & hazards.' },
+    { title: 'Night Forest', href: 'Case Study - Night Forest.dc.html', img: 'assets/nf/bg.png', alt: 'Moonlit pine forest with a winding path', role: 'Level Designer', party: 'Solo', len: '2 weeks', tools: 'Unity', disc: 'LEVEL DESIGN', tags: ['Level Design', 'Solo'],
+      hook: 'Guide players without forcing a rigid path.', pitch: 'A short, atmospheric 3D exploration level built in the Unity game engine. Find your way through a moonlit forest, guided by terrain, lighting & landmarks instead of a set path.' },
+    { title: 'Endless Nightmare', href: 'Case Study - Endless Nightmare.dc.html', img: 'assets/en/scene-cut.png', cut: true, alt: 'Player in a nightcap facing cuddly toy enemies', role: 'Systems & Tools Designer', party: 'Solo', len: '1 month', tools: 'Unity · C# · Visual Studio', disc: 'SYSTEMS', tags: ['Systems & Programming', 'Solo'],
+      hook: 'Wave, weapon and enemy systems for a cuddly-horror shooter.', pitch: 'A tense 3D isometric wave shooter with RPG elements built in the Unity game engine. Fight against the hordes of cuddly creatures & try to survive the night.' },
+    { title: '???', href: '404.dc.html', oob: true, role: 'Out of bounds', party: '???', len: '∞', tools: 'Noclip', disc: 'OUT OF BOUNDS', tags: [],
+      hook: 'This level isn’t on the map. You found it anyway.', pitch: 'Somewhere past the edge of the grid, the floor stops existing. Nobody built this level on purpose, and nobody is sure what happens if you walk in. Proceed at your own risk.' },
+  ];
+  match(p, f) { return f === 'All' || p.tags.includes(f); }
+  chips(key, reset) {
+    return this.F.map(f => { const on = this.state[key] === f; return { t: f, n: this.P.filter(p => this.match(p, f)).length,
+      bd: on ? '#FFC43D' : 'rgba(255,196,61,.35)', bg: on ? '#FFC43D' : 'transparent', fg: on ? '#0B1424' : '#DCE4F5',
+      click: () => this.setState({ [key]: f, ...(reset ? { [reset]: 0 } : {}) }) }; });
+  }
+  deco(p) {
+    const im = (fit) => p.img ? React.createElement('img', { src: p.img, alt: fit ? (p.alt || '') : '', loading: 'lazy', style: { position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: fit ? (p.cut ? 'contain' : 'cover') : 'cover', objectPosition: fit ? 'center' : (p.cut ? 'center bottom' : 'center'), display: 'block' } }) : null;
+    return { ...p, imgEl: im(false), imgFit: im(true), dev: !!p.dev,
+      pillBg: p.oob ? '#FF5A5A' : p.dev ? '#FFC43D' : 'transparent', pillFg: p.oob || p.dev ? '#0B1424' : '#AEB8CC', pillPad: p.oob || p.dev ? '6px 10px' : '0',
+      ctaBg: p.oob ? '#FF5A5A' : p.dev ? 'transparent' : '#FFC43D', ctaFg: p.dev && !p.oob ? '#FFC43D' : '#0B1424', ctaBd: p.dev ? 'dashed' : 'solid', ctaPe: 'auto', ariaDis: 'false', href: p.href || '#', n: String(this.P.indexOf(p) + 1).padStart(2, '0'), hasImg: !!p.img, noImg: !p.img, fit: p.cut ? 'contain' : 'cover',
+      pos: p.cut ? 'center bottom' : 'center', status: p.oob ? '⚠ SIGNAL LOST' : p.dev ? '◆ IN DEVELOPMENT' : '✓ QUEST COMPLETE', statusShort: p.oob ? '???' : p.dev ? 'IN DEV' : '✓ DONE',
+      sc: p.oob ? '#FF5A5A' : p.dev ? '#FFC43D' : '#AEB8CC', cta: p.oob ? 'Noclip →' : 'Open case study →', partyShort: p.party === 'Solo' ? 'SOLO' : p.party.toUpperCase(),
+      stats: [{ k: 'Role', v: p.role }, { k: 'Team', v: p.party }, { k: 'Length', v: p.len }, { k: 'Tools', v: p.tools }] };
+  }
+  renderVals() {
+    const s = this.state;
+    const RAILSTATE = ['Email','LinkedIn','itch.io','Resume'].map((k, i) => { const on = this.state.hov === k; return ['rail' + i, { enter: () => this.setState({ hov: k }), leave: () => this.setState(s => s.hov === k ? { hov: null } : null), sc: on ? 1 : .55, op: on ? 1 : 0, bd: on ? '#FFC43D' : 'rgba(255,196,61,.4)', bg: on ? 'rgba(255,196,61,.12)' : 'transparent' }]; });
+    const f = this.P.filter(p => this.match(p, s.fb)), i = Math.max(0, Math.min(s.sb, f.length - 1));
+    const listB = f.map((p, k) => ({ ...this.deco(p), rowBd: k === i ? '#FFC43D' : 'transparent', rowBg: k === i ? 'rgba(255,196,61,.1)' : 'transparent', enter: () => this.setState({ sb: k }) }));
+    const im = (f[i] && f[i].img) || '';
+    return {
+      ...Object.fromEntries(RAILSTATE),
+      listB, selB: { ...(listB[i] || this.deco(this.P[0])), tint: this.TINT[(listB[i] || this.P[0]).title] || '#FFC43D' }, detailsRef: this.detailsRef, sealRef: this.sealRef, boxRef: this.boxRef, holoRef: this.holoRef, boxMove: this.boxMove, boxLeave: this.boxLeave,
+      pvB: { oob: f[i] && f[i].oob ? 1 : 0, none: im || (f[i] && f[i].oob) ? 0 : 1, fr: im.includes('fr/') ? 1 : 0, oink: im.includes('oinkyuza') ? 1 : 0, ab: im.includes('ab/') ? 1 : 0, nf: im.includes('nf/') ? 1 : 0, en: im.includes('en/') ? 1 : 0 },
+    };
+  }
+}
+</script>
+</body>
+</html>
