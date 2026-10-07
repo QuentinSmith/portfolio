@@ -34,4 +34,15 @@
   const go = (target) => { const keep = new URLSearchParams(location.search); keep.delete('device'); const s = keep.toString(); location.replace(encodeURI(target) + (s ? '?' + s : '') + location.hash); };
   if (mode === 'mobile' && MAP[file]) go(MAP[file]);
   else if (mode === 'desktop' && REV[file]) go(REV[file]);
+  // Desktop pages reflow from 1440px up; narrower windows scale the 1440 layout down to fit
+  if (mode === 'desktop') {
+    const MIN = 1440, de = document.documentElement; let sb = 0;
+    const fit = () => {
+      const z = parseFloat(de.style.zoom) || 1;
+      if (z === 1) sb = Math.max(0, innerWidth - de.clientWidth);
+      const w = innerWidth - sb, nz = w < MIN ? w / MIN : 1;
+      if (Math.abs(nz - z) > .002) de.style.zoom = nz < 1 ? String(nz) : '';
+    };
+    fit(); addEventListener('resize', fit); addEventListener('load', fit);
+  }
 })();
