@@ -11,7 +11,8 @@
   <a href="Portfolio Home - Mobile.dc.html" aria-label="Quentin Smith, home" style="display:flex;align-items:center;gap:12px;color:#F2F4F8">
     <span style="width:32px;height:32px;background:#FFC43D;color:#0B1424;display:grid;place-items:center;font:700 13px 'Chakra Petch',sans-serif;clip-path:polygon(50% 0,100% 50%,50% 100%,0 50%)">QS</span>
   </a>
-  <span style="font:700 12px 'JetBrains Mono',monospace;letter-spacing:.14em;color:#AEB8CC;text-transform:uppercase;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ label }}</span>
+  <span data-flair="{{ labelFlair }}" style="flex:1;min-width:0;text-align:right;font:700 12px 'JetBrains Mono',monospace;letter-spacing:.14em;color:#AEB8CC;text-transform:uppercase;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ label }}</span>
+  <dc-import name="RecruiterToggle" compact="{{ true }}" hint-size="120px,44px"></dc-import>
 </header>
 
 <div style="position:fixed;left:0;right:0;bottom:calc(72px + env(safe-area-inset-bottom));z-index:35;display:flex;align-items:flex-end;justify-content:space-between;gap:12px;padding:0 14px;pointer-events:none">
@@ -74,7 +75,7 @@ class Component extends DCLogic {
   renderVals() {
     const cur = this.props.current, c = this.state.contact;
     return {
-      label: this.props.label ?? '',
+      label: this.props.label ?? '', labelFlair: this.props.labelFlair ? '' : undefined,
       hasObj: !!this.props.obj, obj: this.props.obj || '', objRef: this.objRef,
       objTap: () => { if (this.props.onObj) this.props.onObj(); },
       tabs: this.TABS.map(([k, label, href]) => { const on = k === cur; return { label, href, cur: on ? 'page' : 'false', fg: on ? '#FFC43D' : '#AEB8CC', bar: on ? 1 : 0, dot: on ? '#FFC43D' : 'transparent', dotBd: on ? '#FFC43D' : '#5A6785' }; }),

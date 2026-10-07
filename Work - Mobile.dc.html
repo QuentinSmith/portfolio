@@ -26,13 +26,15 @@ a:hover{color:#FFFFFF}
 <script src="transition.js"></script>
 </helmet>
 <div data-screen-label="Work · mobile" style="min-height:100vh;color:#F2F4F8;font-family:'Instrument Sans',sans-serif;background-color:#0B1A3A;background-image:linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);background-size:20px 20px;overflow-x:clip">
-  <dc-import name="MobileChrome" current="work" label="Library · 6 titles" obj="{{ objText }}" on-obj="{{ objTap }}" hint-size="100%,56px"></dc-import>
+  <dc-import name="MobileChrome" current="work" label="Library · 6 titles" label-flair="{{ true }}" obj="{{ objText }}" on-obj="{{ objTap }}" hint-size="100%,56px"></dc-import>
 
   <main style="display:flex;flex-direction:column;gap:12px;padding:24px 0 calc(150px + env(safe-area-inset-bottom))">
     <div style="display:flex;flex-direction:column;gap:6px;padding:0 24px;max-width:640px;width:100%;box-sizing:border-box;margin:0 auto">
-      <span style="font:700 12px 'JetBrains Mono',monospace;letter-spacing:.14em;color:#FFC43D">SELECT A TITLE</span>
+      <span data-flair="" style="font:700 12px 'JetBrains Mono',monospace;letter-spacing:.14em;color:#FFC43D">SELECT A TITLE</span>
       <h1 style="margin:0;font:700 44px/1 'Chakra Petch',sans-serif;text-transform:uppercase;color:#FFFFFF">Work</h1>
     </div>
+    <div data-recruit=""><dc-import name="RecruiterBrief" mobile="{{ true }}" part="projects" hint-size="100%,560px"></dc-import></div>
+
 
     <div ref="{{ ringRef }}" role="listbox" aria-label="Projects" style="position:relative;height:calc(min(62vw,300px) * 4 / 3 + 44px);perspective:760px;perspective-origin:50% 38%;touch-action:pan-y;user-select:none;-webkit-user-select:none;cursor:grab;overflow:hidden">
       <div aria-hidden="true" style="position:absolute;left:50%;bottom:-40px;width:150%;height:120px;margin-left:-75%;background:radial-gradient(closest-side,rgba(255,196,61,.16),rgba(255,196,61,0));pointer-events:none"></div>

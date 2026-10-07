@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<sc-if value="{{ heroFacts }}" hint-placeholder-val="{{ false }}">
+<div style="display:flex;flex-direction:column;gap:26px">
+  <div style="display:flex;flex-direction:column;gap:10px">
+    <span style="font:600 12px 'JetBrains Mono',monospace;letter-spacing:.14em;color:#FFC43D">QUICK FACTS</span>
+    <h1 style="margin:0;font:700 68px/.95 'Chakra Petch',sans-serif;text-transform:uppercase;color:#FFFFFF">Quentin Smith</h1>
+    <span style="font:600 22px/1.3 'Instrument Sans',sans-serif;color:#FFFFFF">Technical Level Designer</span>
+  </div>
+  <dl style="margin:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px 28px;padding:20px 0;border-top:1px solid #26365E;border-bottom:1px solid #26365E">
+    <sc-for list="{{ facts }}" as="f" hint-placeholder-count="6">
+      <div style="display:flex;flex-direction:column;gap:4px;min-width:0">
+        <dt style="font:600 11px 'JetBrains Mono',monospace;letter-spacing:.12em;color:#8E9AB3;text-transform:uppercase">{{ f.k }}</dt>
+        <dd style="margin:0;font:500 16px/1.4 'Instrument Sans',sans-serif;color:#F2F4F8;text-wrap:pretty">{{ f.v }}</dd>
+      </div>
+    </sc-for>
+  </dl>
+  <div style="display:flex;flex-wrap:wrap;gap:10px">
+    <a href="assets/resume/Quentin_Smith_-_Resume_ATS.pdf" download="Quentin_Smith_-_Resume.pdf" style="display:flex;align-items:center;min-height:48px;padding:0 20px;background:#FFC43D;color:#0B1424;font:700 15px 'Chakra Petch',sans-serif;letter-spacing:.08em;text-transform:uppercase;white-space:nowrap">Resume (PDF) ↓</a>
+    <a href="mailto:QuentinSmith.GD@gmail.com" style="display:flex;align-items:center;min-height:48px;padding:0 20px;border:1.5px solid #4A5878;color:#F2F4F8;font:700 15px 'Chakra Petch',sans-serif;letter-spacing:.08em;text-transform:uppercase;white-space:nowrap">Email</a>
+    <a href="https://www.linkedin.com/in/quentin-t-smith/" target="_blank" rel="noopener" style="display:flex;align-items:center;min-height:48px;padding:0 20px;border:1.5px solid #4A5878;color:#F2F4F8;font:700 15px 'Chakra Petch',sans-serif;letter-spacing:.08em;text-transform:uppercase;white-space:nowrap">LinkedIn ↗</a>
+  </div>
+</div>
+</sc-if>
+
+<sc-if value="{{ deskProjects }}" hint-placeholder-val="{{ false }}">
+<section aria-label="Projects at a glance" style="position:relative;z-index:1;display:flex;flex-direction:column;gap:20px;padding:{{ pad }} max(48px, calc(50% - 752px));background:#080E1C;border-top:1px solid rgba(255,196,61,.35);border-bottom:1px solid rgba(255,196,61,.35)">
+  <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:24px">
+    <div style="display:flex;flex-direction:column;gap:8px">
+      <span style="font:600 12px 'JetBrains Mono',monospace;letter-spacing:.14em;color:#FFC43D">PROJECTS AT A GLANCE</span>
+      <h2 style="margin:0;font:700 36px/1 'Chakra Petch',sans-serif;text-transform:uppercase;color:#FFFFFF">{{ heading }}</h2>
+    </div>
+    <span style="font:500 14px 'Instrument Sans',sans-serif;color:#AEB8CC">Select a row for the full case study</span>
+  </div>
+  <div role="table" aria-label="Projects" style="display:flex;flex-direction:column;border:1px solid #26365E;background:#0B1424">
+    <div role="row" style="display:grid;grid-template-columns:minmax(0,1.7fr) minmax(0,1.4fr) minmax(0,.75fr) minmax(0,.85fr) minmax(0,1.25fr) 132px;gap:24px;padding:12px 22px;background:#0F1E44;border-bottom:1px solid #26365E;font:600 11px 'JetBrains Mono',monospace;letter-spacing:.12em;color:#8E9AB3">
+      <span role="columnheader">PROJECT</span><span role="columnheader">MY ROLE</span><span role="columnheader">TEAM</span><span role="columnheader">LENGTH</span><span role="columnheader">TOOLS</span><span role="columnheader"></span>
+    </div>
+    <sc-for list="{{ projects }}" as="p" hint-placeholder-count="6">
+      <a role="row" href="{{ p.href }}" style="display:grid;grid-template-columns:minmax(0,1.7fr) minmax(0,1.4fr) minmax(0,.75fr) minmax(0,.85fr) minmax(0,1.25fr) 132px;gap:24px;align-items:center;padding:16px 22px;border-top:{{ p.bt }};color:#F2F4F8;transition:background 150ms ease-out" style-hover="background:rgba(255,196,61,.07);color:#F2F4F8">
+        <span role="cell" style="display:grid;grid-template-columns:28px minmax(0,1fr);gap:12px;align-items:baseline;min-width:0">
+          <span style="font:700 13px 'JetBrains Mono',monospace;color:#FFC43D">{{ p.n }}</span>
+          <span style="display:flex;flex-direction:column;gap:4px;min-width:0"><span style="font:700 18px/1.15 'Chakra Petch',sans-serif;text-transform:uppercase;color:#FFFFFF">{{ p.title }}</span><span style="font:400 14px/1.4 'Instrument Sans',sans-serif;color:#AEB8CC;text-wrap:pretty;white-space:pre-line">{{ p.hook }}</span></span>
+        </span>
+        <span role="cell" style="font:500 15px/1.4 'Instrument Sans',sans-serif;text-wrap:pretty">{{ p.role }}</span>
+        <span role="cell" style="font:500 15px/1.4 'Instrument Sans',sans-serif">{{ p.team }}</span>
+        <span role="cell"><span style="display:inline-block;font:600 14px/1.3 'Instrument Sans',sans-serif;color:{{ p.lenC }};background:{{ p.lenBg }};padding:{{ p.lenPad }}">{{ p.len }}</span></span>
+        <span role="cell" style="font:400 14px/1.45 'JetBrains Mono',monospace;color:#C9D1E0;text-wrap:pretty">{{ p.tools }}</span>
+        <span role="cell" style="justify-self:end;font:700 13px 'JetBrains Mono',monospace;color:#FFC43D;white-space:nowrap">Case study →</span>
+      </a>
+    </sc-for>
+  </div>
+</section>
+</sc-if>
+
+<sc-if value="{{ mob }}" hint-placeholder-val="{{ false }}">
+<section aria-label="Recruiter summary" style="display:flex;flex-direction:column;gap:16px;margin:0 16px;padding:18px;background:#080E1C;border:1px solid rgba(255,196,61,.4)">
+  <sc-if value="{{ mFacts }}" hint-placeholder-val="{{ false }}">
+    <div style="display:flex;flex-direction:column;gap:6px">
+      <span style="font:700 12px 'JetBrains Mono',monospace;letter-spacing:.14em;color:#FFC43D">QUICK FACTS</span>
+      <span style="font:500 16px/1.4 'Instrument Sans',sans-serif;color:#DCE4F5">Technical Level Designer</span>
+    </div>
+    <dl style="margin:0;display:grid;grid-template-columns:auto minmax(0,1fr);gap:8px 14px;font:400 15px/1.45 'Instrument Sans',sans-serif">
+      <sc-for list="{{ facts }}" as="f" hint-placeholder-count="6">
+        <dt style="font:700 11px/1.9 'JetBrains Mono',monospace;letter-spacing:.1em;color:#8E9AB3;text-transform:uppercase;white-space:nowrap">{{ f.k }}</dt>
+        <dd style="margin:0;color:#F2F4F8;text-wrap:pretty">{{ f.v }}</dd>
+      </sc-for>
+    </dl>
+    <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px">
+      <a href="assets/resume/Quentin_Smith_-_Resume_ATS.pdf" download="Quentin_Smith_-_Resume.pdf" style="display:flex;align-items:center;justify-content:center;min-height:46px;background:#FFC43D;color:#0B1424;font:700 13px 'Chakra Petch',sans-serif;letter-spacing:.06em;text-transform:uppercase">Resume ↓</a>
+      <a href="mailto:QuentinSmith.GD@gmail.com" style="display:flex;align-items:center;justify-content:center;min-height:46px;border:1.5px solid #4A5878;color:#F2F4F8;font:700 13px 'Chakra Petch',sans-serif;letter-spacing:.06em;text-transform:uppercase">Email</a>
+      <a href="https://www.linkedin.com/in/quentin-t-smith/" target="_blank" rel="noopener" style="display:flex;align-items:center;justify-content:center;min-height:46px;border:1.5px solid #4A5878;color:#F2F4F8;font:700 13px 'Chakra Petch',sans-serif;letter-spacing:.06em;text-transform:uppercase">LinkedIn</a>
+    </div>
+  </sc-if>
+  <div style="display:flex;flex-direction:column;gap:8px">
+    <span style="font:700 12px 'JetBrains Mono',monospace;letter-spacing:.14em;color:#FFC43D">PROJECTS AT A GLANCE</span>
+    <sc-for list="{{ projects }}" as="p" hint-placeholder-count="6">
+      <a href="{{ p.href }}" style="display:flex;flex-direction:column;gap:4px;padding:12px 14px;border:1px solid #26365E;color:#F2F4F8">
+        <span style="display:flex;justify-content:space-between;align-items:baseline;gap:10px"><span style="font:700 16px/1.15 'Chakra Petch',sans-serif;text-transform:uppercase;color:#FFFFFF">{{ p.title }}</span><span style="font:700 12px 'JetBrains Mono',monospace;color:#FFC43D;white-space:nowrap">→</span></span>
+        <span style="font:500 14px/1.4 'Instrument Sans',sans-serif">{{ p.role }}</span>
+        <span style="font:400 13px/1.4 'JetBrains Mono',monospace;color:#AEB8CC">{{ p.team }} · {{ p.len }} · {{ p.tools }}</span>
+      </a>
+    </sc-for>
+  </div>
+</section>
+</sc-if>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1440,&quot;height&quot;:620},&quot;mobile&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;},&quot;part&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;all&quot;,&quot;facts&quot;,&quot;projects&quot;],&quot;default&quot;:&quot;all&quot;,&quot;tsType&quot;:&quot;'all' | 'facts' | 'projects'&quot;},&quot;pad&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;48px&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;heading&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;Projects&quot;,&quot;tsType&quot;:&quot;string&quot;}}">
+class Component extends DCLogic {
+  P = [
+    ['Insanitation', 'Case Study - Insanitation', 'Lead Level Designer + Programmer', 'Team of 8', 'In development', 'Unity · C#', 'Party battle game.\n15 of 16 levels + 2 core systems.'],
+    ['Free Rider', 'Case Study - Free Rider', 'Lead Programmer + Level Designer', 'Team of 5', '10 months', 'Unity · C# · Cinemachine', 'Physics skating system and tutorial level.'],
+    ['Oinkyuza', 'Case Study - Oinkyuza', 'Narrative Level Designer', 'Solo', '1 month', 'Unity · ProBuilder · C#', 'A fairy tale told through the level.'],
+    ['A-B Factory', 'Case Study - A-B Factory', 'Level Designer', 'Solo', '1 month', 'Unity · ProBuilder · C#', 'Platforming level: keys, conveyors, hazards.'],
+    ['Night Forest', 'Case Study - Night Forest', 'Level Designer', 'Solo', '2 weeks', 'Unity', 'Guiding players with terrain and light.'],
+    ['Endless Nightmare', 'Case Study - Endless Nightmare', 'Systems + Tools Designer', 'Solo', '1 month', 'Unity · C#', 'Modular wave, weapon and enemy systems.'],
+  ];
+  renderVals() {
+    const mob = !!this.props.mobile, part = this.props.part || 'all';
+    return {
+      heroFacts: !mob && part === 'facts', deskProjects: !mob && part !== 'facts', mob, mFacts: part !== 'projects',
+      pad: this.props.pad || '48px', heading: this.props.heading || 'Projects',
+      facts: [['Studio', 'Co-founder, If It Works Studio'], ['Based in', 'Austin, TX'], ['Focus', 'Level design, systems & tools design'], ['Engine', 'Unity · C# · ProBuilder'], ['Projects', '6, including Insanitation (beta on Steam)'], ['Education', 'AAS Game Development, Austin Community College']].map(([k, v]) => ({ k, v })),
+      projects: this.P.map(([title, file, role, team, len, tools, hook], i) => { const dev = len === 'In development';
+        return { n: String(i + 1).padStart(2, '0'), title, role, team, len, tools, hook, href: file + (mob ? ' - Mobile' : '') + '.dc.html', bt: i ? '1px solid #26365E' : '0',
+          lenC: dev ? '#0B1424' : '#F2F4F8', lenBg: dev ? '#FFC43D' : 'transparent', lenPad: dev ? '3px 8px' : '0' }; }),
+    };
+  }
+}
+</script>
+</body>
+</html>

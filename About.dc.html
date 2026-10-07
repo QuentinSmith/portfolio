@@ -41,15 +41,15 @@ a:hover{color:#FFC43D}
 </nav>
 
   <nav style="position:sticky;top:0;z-index:50;height:64px;display:flex;align-items:center;justify-content:space-between;padding:0 calc(max(48px, 50% - 752px) - 8px);background:rgba(8,14,28,.94);border-bottom:1px solid rgba(255,196,61,.35)">
-    <a href="Portfolio Home.dc.html" aria-label="Quentin Smith — home"><span style="width:30px;height:30px;background:#FFC43D;color:#0B1424;display:grid;place-items:center;font:700 13px 'Chakra Petch',sans-serif;clip-path:polygon(50% 0,100% 50%,50% 100%,0 50%)">QS</span></a>
+    <div style="display:flex;align-items:center;gap:24px"><a href="Portfolio Home.dc.html" aria-label="Quentin Smith — home"><span style="width:30px;height:30px;background:#FFC43D;color:#0B1424;display:grid;place-items:center;font:700 13px 'Chakra Petch',sans-serif;clip-path:polygon(50% 0,100% 50%,50% 100%,0 50%)">QS</span></a><dc-import name="RecruiterToggle" hint-size="170px,36px"></dc-import></div>
     <div data-navkeys="" style="display:flex;align-items:center;gap:8px;font:600 15px 'Chakra Petch',sans-serif;letter-spacing:.1em;text-transform:uppercase">
-      <span aria-hidden="true" title="Press Q" style="font:700 11px 'JetBrains Mono',monospace;color:#AEB8CC;min-width:22px;height:22px;box-sizing:border-box;display:inline-grid;place-items:center;border:1px solid #4A5878;border-bottom-width:3px;border-radius:4px;margin-right:10px">Q</span>
+      <span data-flair="" aria-hidden="true" title="Press Q" style="font:700 11px 'JetBrains Mono',monospace;color:#AEB8CC;min-width:22px;height:22px;box-sizing:border-box;display:inline-grid;place-items:center;border:1px solid #4A5878;border-bottom-width:3px;border-radius:4px;margin-right:10px">Q</span>
       <a href="Portfolio Home.dc.html" style="padding:8px 16px;color:#C9D1E0">Home</a>
       <a href="Work.dc.html" style="padding:8px 16px;color:#C9D1E0">Work</a>
       <a href="About.dc.html" aria-current="page" style="padding:8px 16px;background:#FFC43D;color:#0B1424">About</a>
       <a href="Resume.dc.html" style="padding:8px 16px;color:#C9D1E0">Resume</a>
-      <a href="#contact" style="padding:8px 16px;color:#C9D1E0">Contact</a>
-    <span aria-hidden="true" title="Press E" style="font:700 11px 'JetBrains Mono',monospace;color:#AEB8CC;min-width:22px;height:22px;box-sizing:border-box;display:inline-grid;place-items:center;border:1px solid #4A5878;border-bottom-width:3px;border-radius:4px;margin-left:10px">E</span>
+      <a href="Achievements.dc.html" data-flair="" style="padding:8px 16px;color:#C9D1E0">Achievements</a>
+    <span data-flair="" aria-hidden="true" title="Press E" style="font:700 11px 'JetBrains Mono',monospace;color:#AEB8CC;min-width:22px;height:22px;box-sizing:border-box;display:inline-grid;place-items:center;border:1px solid #4A5878;border-bottom-width:3px;border-radius:4px;margin-left:10px">E</span>
     </div>
   </nav>
 
@@ -66,7 +66,7 @@ a:hover{color:#FFC43D}
       </div>
       <div style="display:flex;flex-direction:column;gap:22px;margin-top:40px;max-width:66ch">
         <sc-for list="{{ bio }}" as="p" hint-placeholder-count="3">
-          <p style="margin:0;font:400 19px/1.75 'Instrument Sans',sans-serif;color:#DCE4F5;text-wrap:pretty">{{ p.t }}</p>
+          <p data-flair="{{ p.fl }}" style="margin:0;font:400 19px/1.75 'Instrument Sans',sans-serif;color:#DCE4F5;text-wrap:pretty">{{ p.t }}</p>
         </sc-for>
       </div>
       <div style="display:flex;gap:14px;margin-top:32px">
@@ -113,8 +113,8 @@ a:hover{color:#FFC43D}
       </div>
 
       <!-- favorite games -->
-      <h2 style="margin:64px 0 28px;padding-top:40px;border-top:1px solid rgba(255,196,61,.3);font:700 30px/1 'Chakra Petch',sans-serif;text-transform:uppercase">My top 3 games</h2>
-      <div style="display:flex;flex-direction:column;gap:32px">
+      <h2 data-flair="" style="margin:64px 0 28px;padding-top:40px;border-top:1px solid rgba(255,196,61,.3);font:700 30px/1 'Chakra Petch',sans-serif;text-transform:uppercase">My top 3 games</h2>
+      <div data-flair="" style="display:flex;flex-direction:column;gap:32px">
         <sc-for list="{{ favs }}" as="g" hint-placeholder-count="3">
           <div style="display:grid;grid-template-columns:56px minmax(0,1fr);gap:24px">
             <span style="width:44px;height:44px;display:grid;place-items:center;border:1px solid #FFC43D;font:700 18px 'Chakra Petch',sans-serif;color:#FFC43D">{{ g.num }}</span>
@@ -158,7 +158,7 @@ class Component extends DCLogic {
         'I’m a Technical Level Designer and one of the founding members of If It Works Studio. I create the actual playable spaces players go through: where the walls go, how the level flows, and what keeps you moving forward. Since I also program, I build the systems and tools behind those spaces too, and I like keeping them simple and modular so they’re easy to build on.',
         'My favorite part is watching other people play through something I made. I love seeing them enjoy it, and honestly, I love it just as much when they start nitpicking. Every project ships with a deadline, so I always know there are a few tweaks I’d still make, and it feels good when players notice them too. It means they’re paying attention, and it shows me what to do better next time.',
         'Outside of game design, I like spending time with friends and family, discovering new restaurants and places, traveling, taking photos, and relaxing with a cup of coffee and a good book.',
-      ].map(t => ({ t })),
+      ].map((t, i) => ({ t, fl: i === 2 ? '' : undefined })),
       timeline: [
         { when: 'EDUCATION', title: 'AAS Degree', sub: 'Game Development, Animation & Motion Graphics · Austin Community College' },
         { when: 'FALL 2022', title: 'Level Design', sub: 'A-B Factory, Oinkyuza and Night Forest' },

@@ -45,6 +45,18 @@
     };
     fit(); addEventListener('resize', fit); addEventListener('load', fit);
   }
+  // Recruiter mode (per visit): hides [data-flair] game flair, reveals [data-recruit] summaries; pages listen for 'qs-recruiter'
+  const RK = 'qs-recruiter', hde = document.documentElement;
+  const rst = document.createElement('style');
+  rst.textContent = 'html[data-recruiter] [data-flair]{display:none !important}html:not([data-recruiter]) [data-recruit]{display:none !important}';
+  (document.head || hde).appendChild(rst);
+  const applyR = (on) => { if (on) hde.dataset.recruiter = '1'; else delete hde.dataset.recruiter; };
+  // per-window value; preview frames (?qs-preview) keep their own setting instead of sharing the tab's sessionStorage
+  const rq = q.get('recruiter'), isolated = q.has('qs-preview') && (rq === '1' || rq === '0');
+  if (!isolated && (rq === '1' || rq === '0')) ss.set(RK, rq);
+  let rOn = isolated ? rq === '1' : ss.get(RK) === '1';
+  window.QSRecruiter = { get on() { return rOn; }, set(v) { rOn = !!v; if (!isolated) ss.set(RK, rOn ? '1' : '0'); applyR(rOn); dispatchEvent(new CustomEvent('qs-recruiter', { detail: rOn })); } };
+  applyR(rOn);
   // Session cache (sw.js): only on the published site, never in the editor preview or local dev
   const live = 'serviceWorker' in navigator && location.protocol === 'https:' && !/claudeusercontent|localhost|127\.0\.0\.1/.test(location.hostname);
   if (live) {

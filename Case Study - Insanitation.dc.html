@@ -53,15 +53,15 @@ a:hover{color:#FFC43D}
 </nav>
 
   <nav style="position:sticky;top:0;z-index:50;height:64px;display:flex;align-items:center;justify-content:space-between;padding:0 calc(max(48px, 50% - 752px) - 8px);background:#2E2A33;box-shadow:0 4px 0 #E8601C">
-    <a href="Portfolio Home.dc.html" aria-label="Quentin Smith — home" style="display:flex;align-items:center;gap:12px;text-decoration:none;color:#FFF6DE"><span style="width:32px;height:32px;background:#FFC43D;color:#2E2A33;display:grid;place-items:center;font:700 13px 'Fredoka',sans-serif;clip-path:polygon(50% 0,100% 50%,50% 100%,0 50%)">QS</span></a>
+    <div style="display:flex;align-items:center;gap:24px"><a href="Portfolio Home.dc.html" aria-label="Quentin Smith — home" style="display:flex;align-items:center;gap:12px;text-decoration:none;color:#FFF6DE"><span style="width:32px;height:32px;background:#FFC43D;color:#2E2A33;display:grid;place-items:center;font:700 13px 'Fredoka',sans-serif;clip-path:polygon(50% 0,100% 50%,50% 100%,0 50%)">QS</span></a><dc-import name="RecruiterToggle" hint-size="170px,36px"></dc-import></div>
     <div data-navkeys="" style="display:flex;align-items:center;gap:6px;font:700 16px 'Fredoka',sans-serif;letter-spacing:.06em;text-transform:uppercase">
-      <span aria-hidden="true" title="Press Q" style="font:700 11px 'JetBrains Mono',monospace;color:#FFF6DE;min-width:22px;height:22px;box-sizing:border-box;display:inline-grid;place-items:center;border:1px solid rgba(255,246,222,.5);border-bottom-width:3px;border-radius:4px;margin-right:10px">Q</span>
+      <span data-flair="" aria-hidden="true" title="Press Q" style="font:700 11px 'JetBrains Mono',monospace;color:#FFF6DE;min-width:22px;height:22px;box-sizing:border-box;display:inline-grid;place-items:center;border:1px solid rgba(255,246,222,.5);border-bottom-width:3px;border-radius:4px;margin-right:10px">Q</span>
       <a href="Portfolio Home.dc.html" style="padding:8px 16px;color:#FFF6DE;border:2px solid transparent;transition:color 160ms ease-out" style-hover="color:#FF9A6B">Home</a>
       <a href="Work.dc.html" aria-current="page" style="padding:8px 16px;background:#E8601C;color:#FFFFFF;border:2px solid #FFF6DE;border-radius:14px 4px 14px 4px">Work</a>
       <a href="About.dc.html" style="padding:8px 16px;color:#FFF6DE;border:2px solid transparent;transition:color 160ms ease-out" style-hover="color:#FF9A6B">About</a>
       <a href="Resume.dc.html" style="padding:8px 16px;color:#FFF6DE;border:2px solid transparent;transition:color 160ms ease-out" style-hover="color:#FF9A6B">Resume</a>
-      <a href="About.dc.html#contact" style="padding:8px 16px;color:#FFF6DE;border:2px solid transparent;transition:color 160ms ease-out" style-hover="color:#FF9A6B">Contact</a>
-      <span aria-hidden="true" title="Press E" style="font:700 11px 'JetBrains Mono',monospace;color:#FFF6DE;min-width:22px;height:22px;box-sizing:border-box;display:inline-grid;place-items:center;border:1px solid rgba(255,246,222,.5);border-bottom-width:3px;border-radius:4px;margin-left:10px">E</span>
+      <a href="Achievements.dc.html" data-flair="" style="padding:8px 16px;color:#FFF6DE;border:2px solid transparent;transition:color 160ms ease-out" style-hover="color:#FF9A6B">Achievements</a>
+      <span data-flair="" aria-hidden="true" title="Press E" style="font:700 11px 'JetBrains Mono',monospace;color:#FFF6DE;min-width:22px;height:22px;box-sizing:border-box;display:inline-grid;place-items:center;border:1px solid rgba(255,246,222,.5);border-bottom-width:3px;border-radius:4px;margin-left:10px">E</span>
     </div>
   </nav>
 <div style="position:relative;z-index:49;display:flex;justify-content:center;padding:14px 48px 34px;pointer-events:none">
@@ -106,6 +106,22 @@ a:hover{color:#FFC43D}
         </div>
         <div style="padding:56px max(48px, calc(50% - 752px)) 140px;display:flex;flex-direction:column;gap:44px">
           <p style="margin:0;font:500 22px/1.5 'Louis George Cafe',sans-serif;color:#2E2A33;max-width:900px;text-wrap:pretty"><strong style="font-weight:700">Fight clean, play dirty.</strong> A Chaos vs. Order party battle for family and friends. Every level I made starts with one question: where would you actually find a cat? The answer picks the setting, the setting decides what the level teaches, and there's a reason behind every choice.</p>
+          <sc-if value="{{ insSum.on }}" hint-placeholder-val="{{ false }}">
+          <section aria-label="Project summary" style="display:flex;flex-direction:column;gap:20px">
+            <div style="display:flex;justify-content:space-between;align-items:center;gap:24px">
+              <h2 style="margin:0;font:700 34px/1 'Fredoka',sans-serif;text-transform:uppercase;color:#2E2A33">At a glance</h2>
+              <button type="button" onClick="{{ insSum.toggle }}" aria-expanded="{{ insSum.exp }}" style="padding:12px 18px;background:#C2470A;color:#FFFFFF;border:2.5px solid #2E2A33;border-radius:14px 4px 14px 4px;box-shadow:4px 5px 0 #2E2A33;font:700 15px 'Fredoka',sans-serif;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;white-space:nowrap">{{ insSum.btn }}</button>
+            </div>
+            <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px;align-items:start">
+              <div style="display:flex;flex-direction:column;gap:10px;padding:22px 24px;background:#FFFFFF;border:2.5px solid #2E2A33;border-radius:22px 8px 24px 6px/8px 22px 6px 24px;box-shadow:5px 6px 0 #2E2A33;grid-column:1 / -1"><span style="font:700 13px 'Azeret Mono',monospace;letter-spacing:.14em;color:#A63B07">WHAT I DID</span><p style="margin:0;font:400 17px/1.55 'Louis George Cafe',sans-serif;color:#2E2A33;text-wrap:pretty">{{ insSum.did }}</p></div>
+              <div style="display:flex;flex-direction:column;gap:10px;padding:22px 24px;background:#FFFFFF;border:2.5px solid #2E2A33;border-radius:22px 8px 24px 6px/8px 22px 6px 24px;box-shadow:5px 6px 0 #2E2A33"><span style="font:700 13px 'Azeret Mono',monospace;letter-spacing:.14em;color:#A63B07">LEVELS I DESIGNED</span><ul style="margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:8px"><sc-for list="{{ insSum.levels }}" as="l" hint-placeholder-count="6"><li style="font:400 16px/1.45 'Louis George Cafe',sans-serif;color:#4A4350"><strong style="color:#2E2A33;font-weight:700">{{ l.n }}</strong> · teaches {{ l.t }}</li></sc-for></ul></div>
+              <div style="display:flex;flex-direction:column;gap:10px;padding:22px 24px;background:#FFFFFF;border:2.5px solid #2E2A33;border-radius:22px 8px 24px 6px/8px 22px 6px 24px;box-shadow:5px 6px 0 #2E2A33"><span style="font:700 13px 'Azeret Mono',monospace;letter-spacing:.14em;color:#A63B07">SYSTEMS I BUILT</span><ul style="margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:12px"><sc-for list="{{ insSum.sys }}" as="s" hint-placeholder-count="2"><li style="display:flex;flex-direction:column;gap:3px"><span style="font:700 18px/1.2 'Fredoka',sans-serif;text-transform:uppercase;color:#2E2A33">{{ s.title }}</span><span style="font:400 16px/1.5 'Louis George Cafe',sans-serif;color:#4A4350;text-wrap:pretty">{{ s.line }}</span></li></sc-for></ul></div>
+              <div style="display:flex;flex-direction:column;gap:10px;padding:22px 24px;background:#FFFFFF;border:2.5px solid #2E2A33;border-radius:22px 8px 24px 6px/8px 22px 6px 24px;box-shadow:5px 6px 0 #2E2A33"><span style="font:700 13px 'Azeret Mono',monospace;letter-spacing:.14em;color:#A63B07">PROCESS</span><p style="margin:0;font:400 17px/1.55 'Louis George Cafe',sans-serif;color:#2E2A33;text-wrap:pretty">{{ insSum.process }}</p></div>
+              <div style="display:flex;flex-direction:column;gap:10px;padding:22px 24px;background:#FFFFFF;border:2.5px solid #2E2A33;border-radius:22px 8px 24px 6px/8px 22px 6px 24px;box-shadow:5px 6px 0 #2E2A33"><span style="font:700 13px 'Azeret Mono',monospace;letter-spacing:.14em;color:#A63B07">PLAYTESTING</span><p style="margin:0;font:400 17px/1.55 'Louis George Cafe',sans-serif;color:#2E2A33;text-wrap:pretty">{{ insSum.playtest }}</p></div>
+            </div>
+          </section>
+          </sc-if>
+          <sc-if value="{{ insFull }}" hint-placeholder-val="{{ true }}">
           <div ref="{{ pawA }}" onMouseMove="{{ trailA }}" style="position:relative;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:16px;padding-top:44px">
             <sc-for list="{{ tabsA }}" as="t" hint-placeholder-count="5">
               <button type="button" onClick="{{ t.go }}" onMouseEnter="{{ t.enter }}" onMouseLeave="{{ t.leave }}" style="position:relative;padding:0;border:0;background:transparent;text-align:left;cursor:pointer;color:#2E2A33">
@@ -119,6 +135,7 @@ a:hover{color:#FFC43D}
             </sc-for>
           </div>
           <dc-import name="Insanitation Content v2" tab="{{ tabA }}" hint-size="100%,900px"></dc-import>
+          </sc-if>
         </div>
 
 <sc-if value="{{ w.playful }}" hint-placeholder-val="{{ false }}">
@@ -137,7 +154,7 @@ a:hover{color:#FFC43D}
       <p style="margin:0;font:400 17px/1.5 'Louis George Cafe',sans-serif;color:#E9DFC8;max-width:360px;text-wrap:pretty">Technical Level Designer and co-founder of If It Works Studio. Every level starts with a reason.</p>
       <a href="Resume.dc.html" style="align-self:flex-start;display:flex;align-items:center;gap:10px;margin-top:4px;padding:12px 18px;background:#E8601C;color:#FFFFFF;border:2.5px solid #FFF6DE;border-radius:16px 5px 16px 5px;box-shadow:4px 5px 0 #FFF6DE;font:700 16px 'Fredoka',sans-serif;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;transition:transform 160ms ease-out" style-hover="transform:translateY(-2px)">Resume ↓</a>
     </div>
-    <div style="display:flex;flex-direction:column;gap:12px"><span style="font:700 14px 'Azeret Mono',monospace;letter-spacing:.14em;color:#FF9A6B">SITE</span><a href="Portfolio Home.dc.html" style="font:500 17px/1.3 'Louis George Cafe',sans-serif;color:#FFF6DE;text-decoration:none;transition:color 160ms ease-out" style-hover="color:#FF9A6B">Home</a><a href="Work.dc.html" style="font:500 17px/1.3 'Louis George Cafe',sans-serif;color:#FFF6DE;text-decoration:none;transition:color 160ms ease-out" style-hover="color:#FF9A6B">Work</a><a href="About.dc.html" style="font:500 17px/1.3 'Louis George Cafe',sans-serif;color:#FFF6DE;text-decoration:none;transition:color 160ms ease-out" style-hover="color:#FF9A6B">About</a><a href="Resume.dc.html" style="font:500 17px/1.3 'Louis George Cafe',sans-serif;color:#FFF6DE;text-decoration:none;transition:color 160ms ease-out" style-hover="color:#FF9A6B">Resume</a><a href="About.dc.html#contact" style="font:500 17px/1.3 'Louis George Cafe',sans-serif;color:#FFF6DE;text-decoration:none;transition:color 160ms ease-out" style-hover="color:#FF9A6B">Contact</a><a href="Achievements.dc.html" style="font:500 17px/1.3 'Louis George Cafe',sans-serif;color:#FFF6DE;text-decoration:none;transition:color 160ms ease-out" style-hover="color:#FF9A6B">Achievements</a></div>
+    <div style="display:flex;flex-direction:column;gap:12px"><span style="font:700 14px 'Azeret Mono',monospace;letter-spacing:.14em;color:#FF9A6B">SITE</span><a href="Portfolio Home.dc.html" style="font:500 17px/1.3 'Louis George Cafe',sans-serif;color:#FFF6DE;text-decoration:none;transition:color 160ms ease-out" style-hover="color:#FF9A6B">Home</a><a href="Work.dc.html" style="font:500 17px/1.3 'Louis George Cafe',sans-serif;color:#FFF6DE;text-decoration:none;transition:color 160ms ease-out" style-hover="color:#FF9A6B">Work</a><a href="About.dc.html" style="font:500 17px/1.3 'Louis George Cafe',sans-serif;color:#FFF6DE;text-decoration:none;transition:color 160ms ease-out" style-hover="color:#FF9A6B">About</a><a href="Resume.dc.html" style="font:500 17px/1.3 'Louis George Cafe',sans-serif;color:#FFF6DE;text-decoration:none;transition:color 160ms ease-out" style-hover="color:#FF9A6B">Resume</a><a href="About.dc.html#contact" style="font:500 17px/1.3 'Louis George Cafe',sans-serif;color:#FFF6DE;text-decoration:none;transition:color 160ms ease-out" style-hover="color:#FF9A6B">Contact</a><a href="Achievements.dc.html" data-flair="" style="font:500 17px/1.3 'Louis George Cafe',sans-serif;color:#FFF6DE;text-decoration:none;transition:color 160ms ease-out" style-hover="color:#FF9A6B">Achievements</a></div>
     <div style="display:flex;flex-direction:column;gap:12px"><span style="font:700 14px 'Azeret Mono',monospace;letter-spacing:.14em;color:#FF9A6B">CASE STUDIES</span><span style="display:flex;align-items:center;gap:8px;font:700 17px/1.3 'Louis George Cafe',sans-serif;color:#FFC43D"><span style="width:8px;height:8px;background:#FFC43D;transform:rotate(45deg)"></span>Insanitation</span><a href="Case Study - Free Rider.dc.html" style="font:500 17px/1.3 'Louis George Cafe',sans-serif;color:#FFF6DE;text-decoration:none;transition:color 160ms ease-out" style-hover="color:#FF9A6B">Free Rider</a><a href="Case Study - Oinkyuza.dc.html" style="font:500 17px/1.3 'Louis George Cafe',sans-serif;color:#FFF6DE;text-decoration:none;transition:color 160ms ease-out" style-hover="color:#FF9A6B">Oinkyuza</a><a href="Case Study - A-B Factory.dc.html" style="font:500 17px/1.3 'Louis George Cafe',sans-serif;color:#FFF6DE;text-decoration:none;transition:color 160ms ease-out" style-hover="color:#FF9A6B">A-B Factory</a><a href="Case Study - Night Forest.dc.html" style="font:500 17px/1.3 'Louis George Cafe',sans-serif;color:#FFF6DE;text-decoration:none;transition:color 160ms ease-out" style-hover="color:#FF9A6B">Night Forest</a><a href="Case Study - Endless Nightmare.dc.html" style="font:500 17px/1.3 'Louis George Cafe',sans-serif;color:#FFF6DE;text-decoration:none;transition:color 160ms ease-out" style-hover="color:#FF9A6B">Endless Nightmare</a></div>
     <div style="display:flex;flex-direction:column;gap:12px"><span style="font:700 14px 'Azeret Mono',monospace;letter-spacing:.14em;color:#FF9A6B">ELSEWHERE</span><a href="https://store.steampowered.com/app/3590370/Insanitation/" target="_blank" rel="noopener" style="font:500 17px/1.3 'Louis George Cafe',sans-serif;color:#FFF6DE;text-decoration:none;transition:color 160ms ease-out" style-hover="color:#FF9A6B">Insanitation on Steam ↗</a><a href="https://slothdev-gd.itch.io/" target="_blank" rel="noopener" style="font:500 17px/1.3 'Louis George Cafe',sans-serif;color:#FFF6DE;text-decoration:none;transition:color 160ms ease-out" style-hover="color:#FF9A6B">itch.io ↗</a><a href="https://www.linkedin.com/in/quentin-t-smith/" target="_blank" rel="noopener" style="font:500 17px/1.3 'Louis George Cafe',sans-serif;color:#FFF6DE;text-decoration:none;transition:color 160ms ease-out" style-hover="color:#FF9A6B">LinkedIn ↗</a><a href="mailto:QuentinSmith.GD@gmail.com" style="font:500 17px/1.3 'Louis George Cafe',sans-serif;color:#FFF6DE;text-decoration:none;transition:color 160ms ease-out" style-hover="color:#FF9A6B">QuentinSmith.GD@gmail.com</a></div>
   </div>
@@ -150,7 +167,7 @@ a:hover{color:#FFC43D}
 </x-dc>
 <script type="text/x-dc" data-dc-script data-props="{&quot;whimsy&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;sprinkle&quot;,&quot;playful&quot;,&quot;chaos&quot;],&quot;default&quot;:&quot;chaos&quot;,&quot;tsType&quot;:&quot;string&quot;}}">
 class Component extends DCLogic {
-  state = { tA: 'overview', hA: null, hov: null, mp: .5, t: 180 };
+  state = { tA: 'overview', hA: null, hov: null, mp: .5, t: 180, rec: !!(window.QSRecruiter && window.QSRecruiter.on), full: false };
   rootRef = React.createRef();
   lvl() { const w = this.props.whimsy || 'chaos'; return w === 'sprinkle' ? 0 : w === 'playful' ? 1 : 2; }
   componentDidMount() {
@@ -159,8 +176,9 @@ class Component extends DCLogic {
       this.setState(s => ({ mp: Math.min(.82, Math.max(.18, s.mp + (Math.random() - .5) * step * 2 + (.5 - s.mp) * .12)), t: s.t <= 0 ? 180 : s.t - 1 }));
     }, 1000);
     this.scheduleFly();
+    this.onRec = () => this.setState({ rec: !!(window.QSRecruiter && window.QSRecruiter.on), full: false }); addEventListener('qs-recruiter', this.onRec); this.onRec();
   }
-  componentWillUnmount() { clearInterval(this.iv); clearTimeout(this.flyT); }
+  componentWillUnmount() { clearInterval(this.iv); clearTimeout(this.flyT); removeEventListener('qs-recruiter', this.onRec); }
   scheduleFly() { this.flyT = setTimeout(() => { this.fly(); this.scheduleFly(); }, 20000 + Math.random() * 20000); }
   fly() {
     if (document.hidden || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
@@ -222,7 +240,14 @@ class Component extends DCLogic {
       meter, decals, w: { playful: L >= 1, chaos: L >= 2 }, rootRef: this.rootRef, trailRoot: this.trailRoot, squeak: this.squeak,
       ...Object.fromEntries(RAILSTATE), toTop: (e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); },
       stats: [['ROLE', 'Lead Level Designer + Programmer'], ['TEAM', '8 · If It Works Studio'], ['STATUS', 'Beta · demo on Steam'], ['ENGINE', 'Unity · C#']].map(([k, v]) => ({ k, v })),
-      tabsA, tabA: s.tA, pawA: this.pawA, trailA: this.trailA,
+      tabsA, tabA: s.tA, pawA: this.pawA, trailA: this.trailA, insFull: !s.rec || s.full,
+      insSum: { on: !!this.state.rec, exp: this.state.full ? 'true' : 'false', btn: this.state.full ? 'Hide full breakdown ↑' : 'Show full breakdown ↓',
+        toggle: () => this.setState(st => ({ full: !st.full })),
+        did: 'Lead Level Designer and Programmer, split 50/50, on a team of 8 at If It Works Studio. I designed 15 of the game’s 16 levels, built and placed every interactable, wall and most props, and built two of its core systems.',
+        levels: [['Tutorial', 'both roles and the basic controls'], ['Crazy Cat Lady’s Apartment', 'the litterbox and the vacuum · 3 variants'], ['Basement', 'vents and bug spray · 3 variants'], ['Cat Cafe', 'raccoons and cages · 3 variants'], ['Outside', 'plants, hedges, mowing and watering'], ['Hotel', 'everything from the previous levels']].map(([n, t]) => ({ n, t })),
+        sys: [['Weighted level variant selection', 'Decides which version of a level loads, using weights, cooldowns and a pity timer so every variant gets played.'], ['Controller-aware input prompts', 'Button prompts follow each player’s controller (keyboard, Xbox or PlayStation), per player in couch co-op.']].map(([title, line]) => ({ title, line })),
+        process: 'Sketch → graybox in ProBuilder → playtest and iterate until it feels good → polish with Art.',
+        playtest: '40+ in-person couch co-op sessions. They led me to cut nearly every dead end in the Basement, and the Outside level was built from playtester input.' },
     };
   }
 }

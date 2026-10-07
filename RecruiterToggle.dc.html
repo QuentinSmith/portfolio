@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<button type="button" role="switch" aria-checked="{{ aria }}" aria-label="Recruiter mode" title="Recruiter mode: trims the game flair and shows a quick summary of each project" onClick="{{ toggle }}" style="display:flex;align-items:center;gap:10px;min-height:{{ h }};padding:0 4px;border:0;background:transparent;cursor:pointer;color:{{ fg }};white-space:nowrap;transition:color 160ms ease-out">
+  <span style="font:700 11px 'JetBrains Mono',monospace;letter-spacing:.12em;text-transform:uppercase">Recruiter<sc-if value="{{ full }}" hint-placeholder-val="{{ true }}"> mode</sc-if></span>
+  <span aria-hidden="true" style="position:relative;flex-shrink:0;width:36px;height:20px;box-sizing:border-box;border:1.5px solid {{ trackBd }};border-radius:999px;background:{{ trackBg }};transition:background 180ms ease-out,border-color 180ms ease-out">
+    <span style="position:absolute;left:2px;top:2px;width:13px;height:13px;border-radius:50%;background:{{ knobBg }};transform:translateX({{ knobX }});transition:transform 200ms cubic-bezier(.34,1.56,.64,1),background 180ms ease-out"></span>
+  </span>
+</button>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:220,&quot;height&quot;:60},&quot;compact&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;}}">
+class Component extends DCLogic {
+  state = { on: !!(window.QSRecruiter && window.QSRecruiter.on) };
+  componentDidMount() { this.h = () => this.setState({ on: !!(window.QSRecruiter && window.QSRecruiter.on) }); addEventListener('qs-recruiter', this.h); this.h(); }
+  componentWillUnmount() { removeEventListener('qs-recruiter', this.h); }
+  renderVals() {
+    const on = this.state.on, compact = !!this.props.compact;
+    return {
+      aria: on ? 'true' : 'false', full: !compact, h: compact ? '44px' : '36px',
+      toggle: () => { if (window.QSRecruiter) window.QSRecruiter.set(!on); },
+      fg: on ? '#FFC43D' : '#C9D1E0', trackBg: on ? '#FFC43D' : 'transparent', trackBd: on ? '#FFC43D' : '#6A7899', knobBg: on ? '#0B1424' : '#C9D1E0', knobX: on ? '16px' : '0px',
+    };
+  }
+}
+</script>
+</body>
+</html>

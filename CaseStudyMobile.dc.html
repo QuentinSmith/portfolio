@@ -31,7 +31,7 @@ a:hover{color:#FFFFFF}
 <div data-screen-label="Case study · mobile" style="min-height:100vh;color:#F2F4F8;font-family:'Instrument Sans',sans-serif;background-color:#0B1A3A;background-image:linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);background-size:20px 20px;overflow-x:clip">
   <dc-import name="MobileChrome" current="work" label="{{ chromeLabel }}" obj="{{ objText }}" on-obj="{{ objTap }}" hint-size="100%,56px"></dc-import>
 
-  <div style="position:sticky;top:calc(56px + env(safe-area-inset-top));z-index:29;display:flex;align-items:center;gap:12px;height:28px;padding:0 16px;background:rgba(8,14,28,.94);border-bottom:1px solid rgba(255,196,61,.3)">
+  <div data-flair="" style="position:sticky;top:calc(56px + env(safe-area-inset-top));z-index:29;display:flex;align-items:center;gap:12px;height:28px;padding:0 16px;background:rgba(8,14,28,.94);border-bottom:1px solid rgba(255,196,61,.3)">
     <span style="font:700 11px 'JetBrains Mono',monospace;letter-spacing:.12em;color:{{ prog.labelC }};white-space:nowrap">{{ prog.label }}</span>
     <div style="position:relative;flex:1;height:4px;background:#1E2C52">
       <div style="position:absolute;top:0;bottom:0;left:{{ prog.l }};right:{{ prog.r }};width:{{ prog.w }};background:{{ prog.bg }};box-shadow:{{ prog.glow }};transition:width 120ms linear,background 300ms ease-out"></div>
@@ -81,11 +81,23 @@ a:hover{color:#FFFFFF}
       </div>
     </section>
 
+    <sc-if value="{{ rs.on }}" hint-placeholder-val="{{ false }}">
+    <section aria-label="Project summary" style="display:flex;flex-direction:column;gap:12px;padding:0 16px">
+      <h2 style="margin:0;padding:0 4px 10px;font:700 26px/1 'Chakra Petch',sans-serif;text-transform:uppercase;color:#FFFFFF;border-bottom:1px solid rgba(255,196,61,.35)">At a glance</h2>
+      <div style="display:flex;flex-direction:column;gap:10px;padding:16px;background:#080E1C;border:1px solid #26365E"><span style="font:600 11px 'JetBrains Mono',monospace;letter-spacing:.14em;color:#FFC43D">WHAT I DID</span><p style="margin:0;font:400 15px/1.6 'Instrument Sans',sans-serif;color:#DCE4F5;text-wrap:pretty">{{ rs.did }}</p></div>
+      <div style="display:flex;flex-direction:column;gap:10px;padding:16px;background:#080E1C;border:1px solid #26365E"><span style="font:600 11px 'JetBrains Mono',monospace;letter-spacing:.14em;color:#FFC43D">{{ rs.goalsLabel }}</span><ul style="margin:0;padding-left:18px;display:flex;flex-direction:column;gap:6px;font:400 15px/1.5 'Instrument Sans',sans-serif;color:#DCE4F5"><sc-for list="{{ rs.goals }}" as="g" hint-placeholder-count="3"><li style="text-wrap:pretty">{{ g.t }}</li></sc-for></ul></div>
+      <sc-if value="{{ rs.hasSys }}" hint-placeholder-val="{{ false }}"><div style="display:flex;flex-direction:column;gap:10px;padding:16px;background:#080E1C;border:1px solid #26365E"><span style="font:600 11px 'JetBrains Mono',monospace;letter-spacing:.14em;color:#FFC43D">SYSTEMS I BUILT</span><ul style="margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:10px"><sc-for list="{{ rs.sys }}" as="s" hint-placeholder-count="4"><li style="display:flex;flex-direction:column;gap:2px"><span style="font:700 15px/1.3 'Chakra Petch',sans-serif;letter-spacing:.04em;text-transform:uppercase;color:#FFFFFF">{{ s.title }}</span><span style="font:400 14px/1.5 'Instrument Sans',sans-serif;color:#AEB8CC;text-wrap:pretty">{{ s.line }}</span></li></sc-for></ul></div></sc-if>
+      <sc-if value="{{ rs.hasDev }}" hint-placeholder-val="{{ false }}"><div style="display:flex;flex-direction:column;gap:10px;padding:16px;background:#080E1C;border:1px solid #26365E"><span style="font:600 11px 'JetBrains Mono',monospace;letter-spacing:.14em;color:#FFC43D">HOW IT DEVELOPED</span><ol style="margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:8px"><sc-for list="{{ rs.dev }}" as="st" hint-placeholder-count="5"><li style="display:grid;grid-template-columns:26px minmax(0,1fr);gap:8px;align-items:baseline"><span style="font:700 12px 'JetBrains Mono',monospace;color:#FFC43D">{{ st.n }}</span><span style="font:400 15px/1.45 'Instrument Sans',sans-serif;color:#DCE4F5">{{ st.title }}</span></li></sc-for></ol></div></sc-if>
+      <sc-if value="{{ rs.hasHon }}" hint-placeholder-val="{{ false }}"><div style="display:flex;flex-direction:column;gap:10px;padding:16px;background:#080E1C;border:1px solid #26365E"><span style="font:600 11px 'JetBrains Mono',monospace;letter-spacing:.14em;color:#FFC43D">ALSO BUILT</span><div style="display:flex;flex-wrap:wrap;gap:6px"><sc-for list="{{ rs.hon }}" as="hm" hint-placeholder-count="6"><span style="padding:5px 9px;border:1px solid #3A4766;font:500 13px 'Instrument Sans',sans-serif;color:#F2F4F8;white-space:nowrap">{{ hm.t }}</span></sc-for></div></div></sc-if>
+      <sc-if value="{{ rs.hasMore }}" hint-placeholder-val="{{ false }}"><button type="button" onClick="{{ rs.toggle }}" aria-expanded="{{ rs.exp }}" style="min-height:48px;border:1.5px solid #FFC43D;background:{{ rs.btnBg }};color:{{ rs.btnFg }};font:700 13px 'JetBrains Mono',monospace;letter-spacing:.06em;cursor:pointer">{{ rs.btn }}</button></sc-if>
+    </section>
+    </sc-if>
+
     <sc-if value="{{ d.hasDivider }}" hint-placeholder-val="{{ false }}"><div aria-hidden="true" style="margin:-16px 0;overflow:hidden">{{ divider1 }}</div></sc-if>
 
     <section ref="{{ secLevel }}" style="display:flex;flex-direction:column;gap:20px;padding:0 20px">
       <div style="display:flex;flex-direction:column;gap:8px">
-        <span style="font:700 12px 'JetBrains Mono',monospace;letter-spacing:.14em;color:#FFC43D">01 · BRIEFING</span>
+        <span data-flair="" style="font:700 12px 'JetBrains Mono',monospace;letter-spacing:.14em;color:#FFC43D">01 · BRIEFING</span>
         <h2 style="margin:0;font:700 30px/1 'Chakra Petch',sans-serif;text-transform:uppercase;color:#FFFFFF">Overview</h2>
       </div>
       <sc-if value="{{ d.hasQuote }}" hint-placeholder-val="{{ false }}">
@@ -193,10 +205,10 @@ a:hover{color:#FFFFFF}
       </section>
     </sc-if>
 
-    <sc-if value="{{ d.hasDev }}" hint-placeholder-val="{{ false }}">
+    <sc-if value="{{ showDev }}" hint-placeholder-val="{{ false }}">
       <section ref="{{ secDev }}" style="display:flex;flex-direction:column;gap:20px;padding:0 20px">
         <div style="display:flex;flex-direction:column;gap:8px">
-          <span style="font:700 12px 'JetBrains Mono',monospace;letter-spacing:.14em;color:#FFC43D">{{ d.devNo }} · DEV PATH</span>
+          <span data-flair="" style="font:700 12px 'JetBrains Mono',monospace;letter-spacing:.14em;color:#FFC43D">{{ d.devNo }} · DEV PATH</span>
           <h2 style="margin:0;font:700 30px/1.05 'Chakra Petch',sans-serif;text-transform:uppercase;color:#FFFFFF;text-wrap:balance">{{ d.devTitle }}</h2>
         </div>
         <p style="margin:0;font:400 16px/1.65 'Instrument Sans',sans-serif;color:#DCE4F5;text-wrap:pretty">{{ d.devIntro }}</p>
@@ -220,10 +232,10 @@ a:hover{color:#FFFFFF}
       </section>
     </sc-if>
 
-    <sc-if value="{{ d.hasSys }}" hint-placeholder-val="{{ false }}">
+    <sc-if value="{{ showSys }}" hint-placeholder-val="{{ false }}">
       <section ref="{{ secSys }}" style="display:flex;flex-direction:column;gap:18px;padding:0 16px">
         <div style="display:flex;flex-direction:column;gap:8px;padding:0 4px">
-          <span style="font:700 12px 'JetBrains Mono',monospace;letter-spacing:.14em;color:#FFC43D">{{ d.sysNo }} · SYSTEMS</span>
+          <span data-flair="" style="font:700 12px 'JetBrains Mono',monospace;letter-spacing:.14em;color:#FFC43D">{{ d.sysNo }} · SYSTEMS</span>
           <h2 style="margin:0;font:700 30px/1.05 'Chakra Petch',sans-serif;text-transform:uppercase;color:#FFFFFF">Systems I built</h2>
           <p style="margin:8px 0 0;font:400 16px/1.65 'Instrument Sans',sans-serif;color:#DCE4F5;text-wrap:pretty">{{ d.sysIntro }}</p>
         </div>
@@ -292,7 +304,7 @@ a:hover{color:#FFFFFF}
 
     <section ref="{{ secMedia }}" style="display:flex;flex-direction:column;gap:16px">
       <div style="display:flex;flex-direction:column;gap:8px;padding:0 20px">
-        <span style="font:700 12px 'JetBrains Mono',monospace;letter-spacing:.14em;color:#FFC43D">{{ d.mediaNo }} · MEDIA</span>
+        <span data-flair="" style="font:700 12px 'JetBrains Mono',monospace;letter-spacing:.14em;color:#FFC43D">{{ d.mediaNo }} · MEDIA</span>
         <h2 style="margin:0;font:700 30px/1 'Chakra Petch',sans-serif;text-transform:uppercase;color:#FFFFFF">In engine</h2>
       </div>
       <div ref="{{ galRef }}" data-snap="" onScroll="{{ galScroll }}" style="display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding:0 20px;padding:0 20px;overscroll-behavior-x:contain">
@@ -321,7 +333,7 @@ a:hover{color:#FFFFFF}
 </x-dc>
 <script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:393,&quot;height&quot;:852},&quot;project&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;ab&quot;,&quot;oink&quot;,&quot;fr&quot;,&quot;en&quot;,&quot;nf&quot;],&quot;default&quot;:&quot;fr&quot;,&quot;tsType&quot;:&quot;'ab' | 'oink' | 'fr' | 'en' | 'nf'&quot;}}">
 class Component extends DCLogic {
-  state = { prog: 0, tab: null, pos: 50, drag: false, sysOpen: null, gi: 0, mapIn: false, obj: 0 };
+  state = { prog: 0, tab: null, pos: 50, drag: false, sysOpen: null, gi: 0, mapIn: false, obj: 0, rec: !!(window.QSRecruiter && window.QSRecruiter.on), full: false };
   secTop = React.createRef(); secLevel = React.createRef(); secDev = React.createRef(); secSys = React.createRef(); secMedia = React.createRef();
   mapRef = React.createRef(); frameRef = React.createRef(); galRef = React.createRef(); titleRef = React.createRef(); vigRef = React.createRef(); survRef = React.createRef();
   DATA = {
@@ -564,13 +576,14 @@ class Component extends DCLogic {
   componentDidMount() {
     this.reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
     addEventListener('scroll', this.onScroll, { passive: true }); addEventListener('resize', this.onScroll);
+    this.onRec = () => this.setState({ rec: !!(window.QSRecruiter && window.QSRecruiter.on), full: false }); addEventListener('qs-recruiter', this.onRec); this.onRec();
     requestAnimationFrame(this.onScroll);
     setTimeout(() => this.watchVideos(), 100);
     const el = this.titleRef.current;
     if (this.d.neon && el && el.animate && !this.reduced) el.animate([{ opacity: .1 }, { opacity: 1, offset: .08 }, { opacity: .25, offset: .14 }, { opacity: 1, offset: .22 }, { opacity: .55, offset: .4 }, { opacity: 1, offset: .46 }, { opacity: 1 }], { duration: 1400, delay: 350, fill: 'backwards' });
   }
   componentDidUpdate() { this.watchVideos(); }
-  componentWillUnmount() { removeEventListener('scroll', this.onScroll); removeEventListener('resize', this.onScroll); if (this.vio) this.vio.disconnect(); }
+  componentWillUnmount() { removeEventListener('qs-recruiter', this.onRec); removeEventListener('scroll', this.onScroll); removeEventListener('resize', this.onScroll); if (this.vio) this.vio.disconnect(); }
   sDown = (e) => { this.setState({ drag: true }); this.sMove(e, true); };
   sMove = (e, force) => {
     if (!this.state.drag && force !== true) return;
@@ -621,8 +634,16 @@ class Component extends DCLogic {
     const stats = raw.map((x, i) => { let wide = x.wide; if (!wide) { if (col === 0 && (!raw[i + 1] || raw[i + 1].wide)) wide = true; else col = 1 - col; } return { ...x, span: wide ? '1 / -1' : 'auto' }; });
     const fullCut = !D.hero;
     const item = (g) => ({ ...g, fit: g.fit || (/map/.test(g.src) || g.type === 'video' ? 'contain' : 'cover'), bg: g.bg || '#060B17', isVideo: g.type === 'video', isImg: g.type !== 'video' });
-    const total = D.gallery.length;
+    const total = D.gallery.length, rec = s.rec, full = s.full || !rec;
+    const rs = { on: rec, hasMore: !!(D.dev || D.systems), exp: s.full ? 'true' : 'false', btn: s.full ? 'Hide full breakdown ↑' : 'Show full breakdown ↓', btnBg: s.full ? '#FFC43D' : 'transparent', btnFg: s.full ? '#0B1424' : '#FFC43D',
+      toggle: () => this.setState(st => ({ full: !st.full })),
+      did: D.contrib || D.overview[0], goalsLabel: D.goals ? (D.goalsLabel === 'LEVEL DESIGN PROCESS' ? 'PROCESS' : 'GOALS') : 'GOAL',
+      goals: (D.goals || [D.goal || (D.quote && D.quote.t) || '']).map(g => ({ t: typeof g === 'string' ? g : g.t })),
+      hasSys: !!D.systems, sys: (D.systems || []).map(c => ({ title: c.title, line: c.line })),
+      hasDev: !!D.dev, dev: (D.dev || []).map((st, i) => ({ n: String(i + 1).padStart(2, '0'), title: st.title })),
+      hasHon: !!D.honors, hon: (D.honors || []).map(h => ({ t: h.t })) };
     return {
+      rs, showDev: !!D.dev && full, showSys: !!D.systems && full,
       chromeLabel: 'Case study · ' + D.title.replace(/ (Level|Collection)$/, ''),
       objText: s.obj ? 'Get in touch' : 'See it in engine ↓',
       objTap: () => { if (s.obj) dispatchEvent(new Event('qs-open-contact')); else { const el = this.secMedia.current; if (el) scrollTo({ top: el.getBoundingClientRect().top + scrollY - 96, behavior: this.reduced ? 'auto' : 'smooth' }); } },

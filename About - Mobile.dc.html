@@ -38,7 +38,7 @@ a:hover{color:#FFFFFF}
       </div>
       <div style="display:flex;flex-direction:column;gap:16px">
         <sc-for list="{{ bio }}" as="p" hint-placeholder-count="3">
-          <p style="margin:0;font:400 17px/1.65 'Instrument Sans',sans-serif;color:#DCE4F5;text-wrap:pretty">{{ p.t }}</p>
+          <p data-flair="{{ p.fl }}" style="margin:0;font:400 17px/1.65 'Instrument Sans',sans-serif;color:#DCE4F5;text-wrap:pretty">{{ p.t }}</p>
         </sc-for>
       </div>
       <div style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:10px">
@@ -84,7 +84,7 @@ a:hover{color:#FFFFFF}
       </div>
     </section>
 
-    <section style="display:flex;flex-direction:column;gap:18px">
+    <section data-flair="" style="display:flex;flex-direction:column;gap:18px">
       <h2 style="margin:0;font:700 26px/1 'Chakra Petch',sans-serif;text-transform:uppercase;color:#FFFFFF;padding-bottom:12px;border-bottom:1px solid rgba(255,196,61,.3)">My top 3 games</h2>
       <sc-for list="{{ favs }}" as="g" hint-placeholder-count="3">
         <div style="display:grid;grid-template-columns:36px minmax(0,1fr);gap:14px;padding:16px;background:rgba(8,14,28,.6);border:1px solid #26365E;border-left:3px solid #FFC43D">
@@ -131,7 +131,7 @@ class Component extends DCLogic {
         'I’m a Technical Level Designer and one of the founding members of If It Works Studio. I create the actual playable spaces players go through: where the walls go, how the level flows, and what keeps you moving forward. Since I also program, I build the systems and tools behind those spaces too, and I like keeping them simple and modular so they’re easy to build on.',
         'My favorite part is watching other people play through something I made. I love seeing them enjoy it, and honestly, I love it just as much when they start nitpicking. Every project ships with a deadline, so I always know there are a few tweaks I’d still make, and it feels good when players notice them too. It means they’re paying attention, and it shows me what to do better next time.',
         'Outside of game design, I like spending time with friends and family, discovering new restaurants and places, traveling, taking photos, and relaxing with a cup of coffee and a good book.',
-      ].map(t => ({ t })),
+      ].map((t, i) => ({ t, fl: i === 2 ? '' : undefined })),
       timeline: [
         { when: 'EDUCATION', title: 'AAS Degree', sub: 'Game Development, Animation & Motion Graphics · Austin Community College' },
         { when: 'FALL 2022', title: 'Level Design', sub: 'A-B Factory, Oinkyuza and Night Forest' },

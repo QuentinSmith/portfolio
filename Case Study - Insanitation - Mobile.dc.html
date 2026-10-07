@@ -81,6 +81,18 @@ summary::-webkit-details-marker{display:none}
       </div>
     </section>
 
+    <sc-if value="{{ insSum.on }}" hint-placeholder-val="{{ false }}">
+    <section aria-label="Project summary" style="display:flex;flex-direction:column;gap:14px;padding:0 16px">
+      <h2 style="margin:0;font:700 26px/1 'Fredoka',sans-serif;text-transform:uppercase;color:#2E2A33">At a glance</h2>
+      <div style="display:flex;flex-direction:column;gap:8px;padding:16px;background:#FFFFFF;border:2px solid #2E2A33;border-radius:18px 6px 20px 6px/6px 18px 6px 20px;box-shadow:4px 5px 0 #2E2A33"><span style="font:700 12px 'Azeret Mono',monospace;letter-spacing:.14em;color:#A63B07">WHAT I DID</span><p style="margin:0;font:400 15px/1.55 'Louis George Cafe',sans-serif;color:#2E2A33;text-wrap:pretty">{{ insSum.did }}</p></div>
+      <div style="display:flex;flex-direction:column;gap:8px;padding:16px;background:#FFFFFF;border:2px solid #2E2A33;border-radius:18px 6px 20px 6px/6px 18px 6px 20px;box-shadow:4px 5px 0 #2E2A33"><span style="font:700 12px 'Azeret Mono',monospace;letter-spacing:.14em;color:#A63B07">LEVELS I DESIGNED</span><ul style="margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:6px"><sc-for list="{{ insSum.levels }}" as="l" hint-placeholder-count="6"><li style="font:400 15px/1.45 'Louis George Cafe',sans-serif;color:#4A4350"><strong style="color:#2E2A33;font-weight:700">{{ l.n }}</strong> · teaches {{ l.t }}</li></sc-for></ul></div>
+      <div style="display:flex;flex-direction:column;gap:8px;padding:16px;background:#FFFFFF;border:2px solid #2E2A33;border-radius:18px 6px 20px 6px/6px 18px 6px 20px;box-shadow:4px 5px 0 #2E2A33"><span style="font:700 12px 'Azeret Mono',monospace;letter-spacing:.14em;color:#A63B07">SYSTEMS I BUILT</span><ul style="margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:10px"><sc-for list="{{ insSum.sys }}" as="s" hint-placeholder-count="2"><li style="display:flex;flex-direction:column;gap:2px"><span style="font:700 16px/1.2 'Fredoka',sans-serif;text-transform:uppercase;color:#2E2A33">{{ s.title }}</span><span style="font:400 14px/1.5 'Louis George Cafe',sans-serif;color:#4A4350;text-wrap:pretty">{{ s.line }}</span></li></sc-for></ul></div>
+      <div style="display:flex;flex-direction:column;gap:8px;padding:16px;background:#FFFFFF;border:2px solid #2E2A33;border-radius:18px 6px 20px 6px/6px 18px 6px 20px;box-shadow:4px 5px 0 #2E2A33"><span style="font:700 12px 'Azeret Mono',monospace;letter-spacing:.14em;color:#A63B07">PROCESS</span><p style="margin:0;font:400 15px/1.55 'Louis George Cafe',sans-serif;color:#2E2A33;text-wrap:pretty">{{ insSum.process }}</p></div>
+      <div style="display:flex;flex-direction:column;gap:8px;padding:16px;background:#FFFFFF;border:2px solid #2E2A33;border-radius:18px 6px 20px 6px/6px 18px 6px 20px;box-shadow:4px 5px 0 #2E2A33"><span style="font:700 12px 'Azeret Mono',monospace;letter-spacing:.14em;color:#A63B07">PLAYTESTING</span><p style="margin:0;font:400 15px/1.55 'Louis George Cafe',sans-serif;color:#2E2A33;text-wrap:pretty">{{ insSum.playtest }}</p></div>
+      <button type="button" onClick="{{ insSum.toggle }}" aria-expanded="{{ insSum.exp }}" style="min-height:50px;background:#C2470A;color:#FFFFFF;border:2px solid #2E2A33;border-radius:16px 5px 16px 5px;box-shadow:4px 5px 0 #2E2A33;font:700 15px 'Fredoka',sans-serif;letter-spacing:.06em;text-transform:uppercase;cursor:pointer">{{ insSum.btn }}</button>
+    </section>
+    </sc-if>
+    <sc-if value="{{ insFull }}" hint-placeholder-val="{{ true }}">
     <div ref="{{ tabsRef }}" data-snap="" role="tablist" style="display:flex;gap:10px;overflow-x:auto;padding:84px 16px 16px;margin-top:-32px;scroll-margin-top:60px;overscroll-behavior-x:contain">
       <sc-for list="{{ tabs }}" as="t" hint-placeholder-count="0">
         <button type="button" role="tab" aria-selected="{{ t.sel }}" onClick="{{ t.go }}" style="position:relative;flex:0 0 auto;display:flex;flex-direction:column;align-items:flex-start;gap:2px;min-height:56px;padding:8px 14px 10px;background:{{ t.bg }};border:2px solid #2E2A33;border-radius:16px 5px 18px 5px/5px 16px 5px 18px;box-shadow:{{ t.sh }};transform:translateY({{ t.y }});transition:transform 200ms ease-out,background 200ms ease-out;color:#2E2A33;text-align:left;cursor:pointer">
@@ -353,6 +365,7 @@ summary::-webkit-details-marker{display:none}
         <button type="button" onClick="{{ goNext }}" style="display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:56px;margin-top:4px;padding:0 18px;background:#FFE9A8;border:2px solid #2E2A33;border-radius:16px 5px 18px 5px/5px 16px 5px 18px;box-shadow:4px 5px 0 #E8601C;color:#2E2A33;cursor:pointer"><span style="font:700 12px 'Azeret Mono',monospace;letter-spacing:.12em;color:#A63B07">NEXT</span><span style="font:700 18px 'Fredoka',sans-serif;text-transform:uppercase;white-space:nowrap">{{ nextLabel }} →</span></button>
       </sc-if>
     </div>
+    </sc-if>
 
     <section style="display:flex;flex-direction:column;align-items:center;gap:0;margin-top:8px;padding-top:12px;overflow:hidden">
       <div style="position:relative;z-index:1;margin:0 16px;padding:10px 16px;background:#FFFFFF;border:2px solid #2E2A33;border-radius:16px 5px 16px 5px;box-shadow:3px 4px 0 #2E2A33;transform:rotate(-2deg);font:700 17px/1.3 'Fredoka',sans-serif;text-align:center;text-wrap:balance">Thanks for reading! Now… who made this mess?</div>
@@ -372,7 +385,7 @@ summary::-webkit-details-marker{display:none}
 </x-dc>
 <script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:393,&quot;height&quot;:852}}">
 class Component extends DCLogic {
-  state = { tab: 'overview', seenSys: false, end: false, mp: .5, t: 180, misses: [0, 0, 0, 0], cd: [0, 0, 0, 0], rolls: 0, spinning: false, reel: 'Ready', landed: -1, pity: false, dev: 'xbox', log: 'Default: Xbox prompts' };
+  state = { rec: !!(window.QSRecruiter && window.QSRecruiter.on), full: false, tab: 'overview', seenSys: false, end: false, mp: .5, t: 180, misses: [0, 0, 0, 0], cd: [0, 0, 0, 0], rolls: 0, spinning: false, reel: 'Ready', landed: -1, pity: false, dev: 'xbox', log: 'Default: Xbox prompts' };
   tabsRef = React.createRef(); endRef = React.createRef(); vidRef = React.createRef(); trailerRef = React.createRef();
   TABS = [['overview', 'Overview', 'assets/ins/catcolor-sit-1.png'], ['levels', 'Levels', 'assets/ins/catcolor-sit-3.png'], ['systems', 'Systems', 'assets/ins/robocat-sit-1.png'], ['process', 'Process', 'assets/ins/catcolor-sit-2.png'], ['playtest', 'Playtesting', 'assets/ins/catcolor-sit-4.png']];
   E = [{ n: 'Base', w: .6, thr: 0, cdl: 0, c: '#C2470A', lc: '#FF8A5A' }, { n: 'Variant 1', w: .30, thr: 10, cdl: 1, c: '#08795B', lc: '#3FD3A0' }, { n: 'Variant 2', w: .25, thr: 15, cdl: 1, c: '#1F6FD1', lc: '#7FB2FF' }, { n: 'Variant 3', w: .15, thr: 20, cdl: 1, c: '#9A4A12', lc: '#FFB38A' }];
@@ -446,19 +459,28 @@ class Component extends DCLogic {
     this.iv = setInterval(() => this.setState(s => ({ mp: Math.min(.82, Math.max(.18, s.mp + (Math.random() - .5) * .4 + (.5 - s.mp) * .12)), t: s.t <= 0 ? 180 : s.t - 1 })), 1000);
     addEventListener('keydown', this.onKey); addEventListener('scroll', this.onScroll, { passive: true });
     this.raf = requestAnimationFrame(this.poll); this.kickTrailer(); this.kickVid();
+    this.onRec = () => this.setState({ rec: !!(window.QSRecruiter && window.QSRecruiter.on), full: false }); addEventListener('qs-recruiter', this.onRec); this.onRec();
   }
   componentDidUpdate() { this.kickTrailer(); this.kickVid(); }
-  componentWillUnmount() { clearInterval(this.iv); clearInterval(this.spin); cancelAnimationFrame(this.raf); removeEventListener('keydown', this.onKey); removeEventListener('scroll', this.onScroll); this.killTrailer(); if (this.vio) this.vio.disconnect(); }
+  componentWillUnmount() { removeEventListener('qs-recruiter', this.onRec); clearInterval(this.iv); clearInterval(this.spin); cancelAnimationFrame(this.raf); removeEventListener('keydown', this.onKey); removeEventListener('scroll', this.onScroll); this.killTrailer(); if (this.vio) this.vio.disconnect(); }
   renderVals() {
     const s = this.state, ti = this.TABS.findIndex(t => t[0] === s.tab), nx = this.TABS[ti + 1];
     const mp = s.mp, mm = Math.floor(s.t / 60), ss = String(s.t % 60).padStart(2, '0');
     const P = [['kbm-e', 'E key', 'xbox-a', 'Xbox A button', 'ps-cross', 'PlayStation Cross button', 'Clean up / trash it'], ['kbm-lmb', 'Left mouse button', 'xbox-x', 'Xbox X button', 'ps-square', 'PlayStation Square button', 'Use your tool'], ['kbm-esc', 'Escape key', 'xbox-menu', 'Xbox Menu button', 'ps-options', 'PlayStation Options button', 'Pause']];
     const stats = [['ROLE', 'Lead Level Design + Code'], ['TEAM', '8 · If It Works Studio'], ['STATUS', 'Beta · demo on Steam'], ['ENGINE', 'Unity · C#']].map(([k, v], i) => ({ k, v, br: i % 2 ? '0' : '1px solid #2E2A33', bb: i < 2 ? '1px solid #2E2A33' : '0' }));
     return {
-      objText: s.end || s.seenSys ? 'Get in touch' : 'Try the systems',
-      objTap: () => { if (s.end || s.seenSys) dispatchEvent(new Event('qs-open-contact')); else this.setTab('systems'); },
+      objText: s.end || s.seenSys || (s.rec && !s.full) ? 'Get in touch' : 'Try the systems',
+      objTap: () => { if (s.end || s.seenSys || (s.rec && !s.full)) dispatchEvent(new Event('qs-open-contact')); else this.setTab('systems'); },
       meter: { pct: (mp * 100).toFixed(1) + '%', pos: `calc(4px + ${mp.toFixed(3)} * (100% - 8px))`, rot: ((mp - .5) * 30).toFixed(1) + 'deg', time: mm + ':' + ss, aria: `Chaos ${Math.round(mp * 100)}% vs Order ${Math.round((1 - mp) * 100)}%` },
       bubbles: [[88, 1050, 22], [4, 1350, 18], [90, 2100, 26], [3, 2900, 20], [86, 3700, 18], [6, 4300, 24]].map(([x, y, z], i) => ({ x: x + '%', y: y + 'px', s: z + 'px', an: `insFloat ${4 + i % 3}s ease-in-out ${i * .4}s infinite` })),
+      insFull: !s.rec || s.full,
+      insSum: { on: !!this.state.rec, exp: this.state.full ? 'true' : 'false', btn: this.state.full ? 'Hide full breakdown ↑' : 'Show full breakdown ↓',
+        toggle: () => this.setState(st => ({ full: !st.full })),
+        did: 'Lead Level Designer and Programmer, split 50/50, on a team of 8 at If It Works Studio. I designed 15 of the game’s 16 levels, built and placed every interactable, wall and most props, and built two of its core systems.',
+        levels: [['Tutorial', 'both roles and the basic controls'], ['Crazy Cat Lady’s Apartment', 'the litterbox and the vacuum · 3 variants'], ['Basement', 'vents and bug spray · 3 variants'], ['Cat Cafe', 'raccoons and cages · 3 variants'], ['Outside', 'plants, hedges, mowing and watering'], ['Hotel', 'everything from the previous levels']].map(([n, t]) => ({ n, t })),
+        sys: [['Weighted level variant selection', 'Decides which version of a level loads, using weights, cooldowns and a pity timer so every variant gets played.'], ['Controller-aware input prompts', 'Button prompts follow each player’s controller (keyboard, Xbox or PlayStation), per player in couch co-op.']].map(([title, line]) => ({ title, line })),
+        process: 'Sketch → graybox in ProBuilder → playtest and iterate until it feels good → polish with Art.',
+        playtest: '40+ in-person couch co-op sessions. They led me to cut nearly every dead end in the Basement, and the Outside level was built from playtester input.' },
       stats, tabsRef: this.tabsRef, endRef: this.endRef, vidRef: this.vidRef, trailerRef: this.trailerRef,
       tabs: this.TABS.map(([id, label, cat], i) => { const on = s.tab === id; return { label, cat, n: String(i + 1).padStart(2, '0'), sel: on ? 'true' : 'false', bg: on ? '#FFE9A8' : '#FFFFFF', sh: on ? '4px 5px 0 #E8601C' : '3px 4px 0 #2E2A33', y: on ? '-4px' : '0px', catO: on ? 1 : 0, catY: on ? '0px' : '24px', go: () => this.setTab(id) }; }),
       isOverview: s.tab === 'overview', isLevels: s.tab === 'levels', isSystems: s.tab === 'systems', isProcess: s.tab === 'process', isPlaytest: s.tab === 'playtest',

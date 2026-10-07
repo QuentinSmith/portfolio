@@ -35,7 +35,7 @@
     { id: 'level', name: 'Level Select', desc: 'Open the Work page.', icon: 'level', rarity: 72.5 },
     { id: 'lore', name: 'Lore Hunter', desc: 'Read the About page.', icon: 'lore', rarity: 41.3 },
     { id: 'patch', name: 'Patch Notes', desc: 'Open every tab on the Insanitation case study.', icon: 'patch', rarity: 12.8, goal: 5 },
-    { id: 'hotkeys', name: 'Hotkeys', desc: 'Switch tabs with the Q and E keys.', icon: 'hotkeys', rarity: 5.9 },
+    { id: 'hotkeys', name: 'Hotkeys', desc: 'Use the Q and E keys to switch pages or tabs.', icon: 'hotkeys', rarity: 5.9 },
     { id: 'fairy', name: 'Follow the Fairy', desc: 'Click the Objective companion.', icon: 'fairy', rarity: 22.7 },
     { id: 'noclip', name: 'Noclip', desc: 'Enter the Konami code.', icon: 'noclip', rarity: 3.4, hidden: true },
     { id: 'allroutes', name: 'Out of Bounds', desc: 'Find all five ways off the map.', icon: 'allroutes', rarity: 0.8, hidden: true, goal: 5 },
@@ -66,7 +66,7 @@
   const queue = [];
   const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
   const pump = () => {
-    if (showing || !queue.length || !document.body) return;
+    if (showing || !queue.length || !document.body || document.documentElement.dataset.recruiter) return;
     showing = true;
     const id = queue.shift(), a = byId[id];
     const el = document.createElement('div');
@@ -150,8 +150,10 @@
     const local = [...document.querySelectorAll('[data-keys-local]')].some(el => { const r = el.getBoundingClientRect(); return r.height > 0 && r.bottom > 0 && r.top < innerHeight; });
     if (local) return;
     let i = ORDER.indexOf(page); if (i < 0) i = CASES[page] ? 1 : 0;
+    QSAch.unlock('hotkeys');
     const next = ORDER[(i + (k === 'q' ? -1 : 1) + ORDER.length) % ORDER.length];
     const l = document.createElement('a'); l.href = next; document.body.appendChild(l); l.click(); l.remove();
   });
+  addEventListener('qs-recruiter', () => setTimeout(pump, 400));
   dispatchEvent(new CustomEvent('qs-ach-ready'));
 })();

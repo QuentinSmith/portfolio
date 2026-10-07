@@ -22,6 +22,12 @@ svg[data-snap] *{transition:none !important}
 @keyframes qsTwinkle{0%,100%{transform:scale(0);opacity:0}50%{transform:scale(1);opacity:1}}
 @keyframes qsNudge{0%,100%{transform:translateX(0)}50%{transform:translateX(4px)}}
 @media (prefers-reduced-motion: reduce){[data-pulse],[data-anim]{animation:none !important}}
+html[data-recruiter] [data-rh="map"],html[data-recruiter] [data-rh="hdr"]{width:calc((100% - 2 * max(48px, 50% - 752px)) * .42) !important}
+html[data-recruiter] [data-rh="map"]{top:96px !important}
+html[data-recruiter] [data-rh="hdr"]{top:56px !important}
+html[data-recruiter] [data-rh="sp"]{display:none !important}
+html[data-recruiter] [data-rh="hero"]{min-height:calc(152px + (100vw - 2 * max(48px, 50vw - 752px)) * .42 * .78049) !important;padding:64px 0 56px;box-sizing:border-box}
+html[data-recruiter] [data-rh="hero"] > [data-recruit]{position:relative !important;top:auto !important}
 </style>
 <script src="skeleton.js"></script>
 <script src="transition.js"></script>
@@ -48,31 +54,32 @@ svg[data-snap] *{transition:none !important}
     </div>
 </nav>
         <nav style="position:sticky;top:0;z-index:50;height:64px;display:flex;align-items:center;justify-content:space-between;padding:0 calc(max(48px, 50% - 752px) - 8px);background:rgba(8,14,28,.94);border-bottom:1px solid rgba(255,196,61,.35)">
-          <a href="#" aria-label="Quentin Smith — home" style="display:flex;align-items:center;gap:12px;font:700 18px 'Chakra Petch',sans-serif;letter-spacing:.06em;text-transform:uppercase;color:#F2F4F8">
+          <div style="display:flex;align-items:center;gap:24px"><a href="#" aria-label="Quentin Smith — home" style="display:flex;align-items:center;gap:12px;font:700 18px 'Chakra Petch',sans-serif;letter-spacing:.06em;text-transform:uppercase;color:#F2F4F8">
             <span style="width:30px;height:30px;background:#FFC43D;color:#0B1424;display:grid;place-items:center;font:700 13px 'Chakra Petch',sans-serif;clip-path:polygon(50% 0,100% 50%,50% 100%,0 50%)">QS</span>
-          </a>
+          </a><dc-import name="RecruiterToggle" hint-size="170px,36px"></dc-import></div>
           <div data-navkeys="" style="display:flex;align-items:center;gap:8px;font:600 15px 'Chakra Petch',sans-serif;letter-spacing:.1em;text-transform:uppercase">
-            <span aria-hidden="true" title="Press Q" style="font:700 11px 'JetBrains Mono',monospace;color:#AEB8CC;min-width:22px;height:22px;box-sizing:border-box;display:inline-grid;place-items:center;border:1px solid #4A5878;border-bottom-width:3px;border-radius:4px;margin-right:10px">Q</span>
+            <span data-flair="" aria-hidden="true" title="Press Q" style="font:700 11px 'JetBrains Mono',monospace;color:#AEB8CC;min-width:22px;height:22px;box-sizing:border-box;display:inline-grid;place-items:center;border:1px solid #4A5878;border-bottom-width:3px;border-radius:4px;margin-right:10px">Q</span>
             <a href="Portfolio Home.dc.html" aria-current="page" style="padding:8px 16px;background:#FFC43D;color:#0B1424">Home</a>
             <a href="Work.dc.html" style="padding:8px 16px;color:#C9D1E0">Work</a>
             <a href="About.dc.html" style="padding:8px 16px;color:#C9D1E0">About</a>
             <a href="Resume.dc.html" ref="{{ resumeRef }}" style="padding:8px 16px;color:#C9D1E0">Resume</a>
-            <a href="About.dc.html#contact" style="padding:8px 16px;color:#C9D1E0">Contact</a>
-            <span aria-hidden="true" title="Press E" style="font:700 11px 'JetBrains Mono',monospace;color:#AEB8CC;min-width:22px;height:22px;box-sizing:border-box;display:inline-grid;place-items:center;border:1px solid #4A5878;border-bottom-width:3px;border-radius:4px;margin-left:10px">E</span>
+            <a href="Achievements.dc.html" data-flair="" style="padding:8px 16px;color:#C9D1E0">Achievements</a>
+            <span data-flair="" aria-hidden="true" title="Press E" style="font:700 11px 'JetBrains Mono',monospace;color:#AEB8CC;min-width:22px;height:22px;box-sizing:border-box;display:inline-grid;place-items:center;border:1px solid #4A5878;border-bottom-width:3px;border-radius:4px;margin-left:10px">E</span>
           </div>
         </nav>
 
-        <header ref="{{ heroRef }}" style="position:relative;min-height:780px;background-color:#1B3E86;background-image:linear-gradient(rgba(255,255,255,.09) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.09) 1px,transparent 1px);background-size:20px 20px">
-          <div aria-hidden="true" style="padding-top:calc(140px + (100% - 2 * max(48px, 50% - 752px) - 524px) * .78049)"></div>
+        <header data-rh="hero" ref="{{ heroRef }}" style="position:relative;min-height:780px;background-color:#1B3E86;background-image:linear-gradient(rgba(255,255,255,.09) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.09) 1px,transparent 1px);background-size:20px 20px">
+          <div data-rh="sp" aria-hidden="true" style="padding-top:calc(140px + (100% - 2 * max(48px, 50% - 752px) - 524px) * .78049)"></div>
+          <div data-recruit="" style="position:absolute;left:max(48px, calc(50% - 752px));top:64px;width:calc((100% - 2 * max(48px, 50% - 752px)) * .52);z-index:2;box-sizing:border-box;padding:40px 44px 44px;background:rgba(8,14,28,.93);border-top:3px solid #FFC43D;clip-path:polygon(22px 0,100% 0,100% calc(100% - 22px),calc(100% - 22px) 100%,0 100%,0 22px)"><dc-import name="RecruiterBrief" part="facts" hint-size="100%,480px"></dc-import></div>
           <!-- player panel -->
-          <div style="position:absolute;left:max(48px, calc(50% - 752px));top:64px;width:540px;z-index:2;background:rgba(8,14,28,.93);clip-path:polygon(22px 0,100% 0,100% calc(100% - 22px),calc(100% - 22px) 100%,0 100%,0 22px);padding:40px 44px 44px;display:flex;flex-direction:column;gap:24px;box-sizing:border-box;border-top:3px solid #FFC43D">
+          <div data-flair="" style="position:absolute;left:max(48px, calc(50% - 752px));top:64px;width:540px;z-index:2;background:rgba(8,14,28,.93);clip-path:polygon(22px 0,100% 0,100% calc(100% - 22px),calc(100% - 22px) 100%,0 100%,0 22px);padding:40px 44px 44px;display:flex;flex-direction:column;gap:24px;box-sizing:border-box;border-top:3px solid #FFC43D">
             <div style="position:absolute;left:14px;top:14px;border-left:2px solid #FFC43D;border-top:2px solid #FFC43D;width:18px;height:18px;z-index:3;pointer-events:none;transform:{{ hb.tl }};opacity:{{ hb.o }};transition:transform 380ms cubic-bezier(.34,1.56,.64,1) 0ms,opacity 180ms ease-out 0ms"></div><div style="position:absolute;right:14px;top:14px;border-right:2px solid #FFC43D;border-top:2px solid #FFC43D;width:18px;height:18px;z-index:3;pointer-events:none;transform:{{ hb.tr }};opacity:{{ hb.o }};transition:transform 380ms cubic-bezier(.34,1.56,.64,1) 40ms,opacity 180ms ease-out 40ms"></div><div style="position:absolute;left:14px;bottom:14px;border-left:2px solid #FFC43D;border-bottom:2px solid #FFC43D;width:18px;height:18px;z-index:3;pointer-events:none;transform:{{ hb.bl }};opacity:{{ hb.o }};transition:transform 380ms cubic-bezier(.34,1.56,.64,1) 80ms,opacity 180ms ease-out 80ms"></div><div style="position:absolute;right:14px;bottom:14px;border-right:2px solid #FFC43D;border-bottom:2px solid #FFC43D;width:18px;height:18px;z-index:3;pointer-events:none;transform:{{ hb.br }};opacity:{{ hb.o }};transition:transform 380ms cubic-bezier(.34,1.56,.64,1) 120ms,opacity 180ms ease-out 120ms"></div>
             <div style="display:flex;justify-content:space-between;font:600 12px 'JetBrains Mono',monospace;letter-spacing:.08em;color:#8E9AB3;text-transform:uppercase">
-              <span>Player 1 · If It Works Studio</span><span>Texas</span>
+              <span data-flair="">Player 1 · If It Works Studio</span><span>Texas</span>
             </div>
             <h1 style="margin:0;font:700 96px/0.9 'Chakra Petch',sans-serif;letter-spacing:-.01em;text-transform:uppercase;color:#FFFFFF">Quentin<br>Smith</h1>
             <div style="display:flex;flex-direction:column;gap:6px">
-              <span style="font:600 11px 'JetBrains Mono',monospace;letter-spacing:.14em;color:#FFC43D">CLASS</span>
+              <span data-flair="" style="font:600 11px 'JetBrains Mono',monospace;letter-spacing:.14em;color:#FFC43D">CLASS</span>
               <span style="font:600 30px 'Chakra Petch',sans-serif;color:#F2F4F8">Technical Level Designer</span>
             </div>
             <p style="margin:0;font:400 20px/1.5 'Instrument Sans',sans-serif;color:#C9D1E0;text-wrap:pretty">“I design levels players read instinctively — and build the systems that make them move.”</p>
@@ -83,12 +90,12 @@ svg[data-snap] *{transition:none !important}
           </div>
 
           <!-- map header -->
-          <div style="position:absolute;right:calc(max(48px, 50% - 752px) - 8px);top:22px;width:calc(100% - 2 * max(48px, 50% - 752px) - 524px);display:flex;justify-content:space-between;align-items:center;font:600 12px 'JetBrains Mono',monospace;letter-spacing:.08em;text-transform:uppercase;color:#DCE4F5">
-            <span style="display:flex;align-items:center;gap:12px;white-space:nowrap"><span>Module QS-1 · Level 01</span><span style="position:relative;width:120px;height:6px;background:rgba(8,14,28,.7);border:1px solid #4A5878"><span style="position:absolute;left:0;top:0;bottom:0;width:{{ bar.w }};background:#FFC43D;transition:{{ bar.t }}"></span></span><span style="color:#FFC43D">{{ C.mode }}</span></span>
+          <div data-rh="hdr" style="position:absolute;right:calc(max(48px, 50% - 752px) - 8px);top:22px;width:calc(100% - 2 * max(48px, 50% - 752px) - 524px);display:flex;justify-content:space-between;align-items:center;font:600 12px 'JetBrains Mono',monospace;letter-spacing:.08em;text-transform:uppercase;color:#DCE4F5">
+            <span style="display:flex;align-items:center;gap:12px;white-space:nowrap"><span data-flair="">Module QS-1 · Level 01</span><span style="position:relative;width:120px;height:6px;background:rgba(8,14,28,.7);border:1px solid #4A5878"><span style="position:absolute;left:0;top:0;bottom:0;width:{{ bar.w }};background:#FFC43D;transition:{{ bar.t }}"></span></span><span style="color:#FFC43D">{{ C.mode }}</span></span>
             <div style="display:flex;gap:8px;flex-shrink:0"><button onClick="{{ togglePause }}" aria-pressed="{{ pausedAria }}" style="background:rgba(8,14,28,.8);border:1px solid #4A5878;color:#DCE4F5;font:600 12px 'JetBrains Mono',monospace;padding:4px 10px;cursor:pointer;letter-spacing:.06em;min-width:92px;white-space:nowrap;transition:border-color 150ms ease-out,color 150ms ease-out" style-hover="border-color:#FFC43D;color:#FFC43D">{{ pauseLabel }}</button><button onClick="{{ replayC }}" style="white-space:nowrap;background:rgba(8,14,28,.8);border:1px solid #4A5878;color:#DCE4F5;font:600 12px 'JetBrains Mono',monospace;padding:4px 10px;cursor:pointer;letter-spacing:.06em;transition:border-color 150ms ease-out,color 150ms ease-out" style-hover="border-color:#FFC43D;color:#FFC43D">↻ REPLAY</button></div>
           </div>
 
-          <svg ref="{{ mapC }}" viewBox="0 0 820 640" width="820" height="640" style="position:absolute;right:calc(max(48px, 50% - 752px) - 8px);top:60px;display:block;width:calc(100% - 2 * max(48px, 50% - 752px) - 524px);height:auto;aspect-ratio:820/640" role="img" aria-label="Dungeon-module level map built in stages: blockout, inking, items, annotations, then a playtest run where the player token triggers a locked door, reads a note, clears a locked-down arena, opens the reward room and exits up the stairs">
+          <svg data-rh="map" ref="{{ mapC }}" viewBox="0 0 820 640" width="820" height="640" style="position:absolute;right:calc(max(48px, 50% - 752px) - 8px);top:60px;display:block;width:calc(100% - 2 * max(48px, 50% - 752px) - 524px);height:auto;aspect-ratio:820/640" role="img" aria-label="Dungeon-module level map built in stages: blockout, inking, items, annotations, then a playtest run where the player token triggers a locked door, reads a note, clears a locked-down arena, opens the reward room and exits up the stairs">
             <defs>
               <pattern id="c-grid" width="20" height="20" patternUnits="userSpaceOnUse"><rect width="20" height="20" style="fill:#F7F5EE"></rect><path d="M20 0H0V20" style="fill:none;stroke:#AFC2E6;stroke-width:1"></path></pattern>
               <pattern id="c-hatch" width="7" height="7" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="7" height="7" style="fill:#1B3E86"></rect><line x1="0" y1="0" x2="0" y2="7" style="stroke:#6F92D6;stroke-width:2"></line></pattern>
@@ -212,10 +219,11 @@ svg[data-snap] *{transition:none !important}
           </div>
         </header>
 
+        <div data-recruit=""><dc-import name="RecruiterBrief" part="projects" pad="56px" hint-size="100%,560px"></dc-import></div>
         <!-- featured work: level select -->
         <section ref="{{ featRef }}" data-screen-label="Featured Work" style="box-sizing:border-box;padding:110px max(48px, calc(50% - 752px)) 130px;background-color:#0B1A3A;background-image:linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);background-size:20px 20px;display:flex;flex-direction:column;gap:44px;color:#F2F4F8;font-family:'Instrument Sans',sans-serif">
         <div style="display:flex;flex-direction:column;gap:10px">
-          <span style="font:600 12px 'JetBrains Mono',monospace;letter-spacing:.14em;color:#FFC43D">QUEST LOG</span>
+          <span data-flair="" style="font:600 12px 'JetBrains Mono',monospace;letter-spacing:.14em;color:#FFC43D">QUEST LOG</span>
           <h2 style="margin:0;font:700 64px/1 'Chakra Petch',sans-serif;text-transform:uppercase;color:#fff">Featured Work</h2>
         </div>
         <div style="display:flex;flex-direction:column;gap:32px;perspective:1600px">
@@ -233,11 +241,11 @@ svg[data-snap] *{transition:none !important}
                 <sc-if value="{{ q.dev }}" hint-placeholder-val="{{ false }}">
                   <span style="display:flex;align-items:center;gap:12px;font:700 12px 'JetBrains Mono',monospace;letter-spacing:.12em;color:#FFC43D">
                     <span style="position:relative;width:10px;height:10px;display:inline-block"><span data-anim="" style="position:absolute;inset:0;border:1.5px solid #FFC43D;transform:rotate(45deg);animation:qsPulse 1.8s ease-out infinite"></span><span style="position:absolute;inset:0;background:#FFC43D;transform:rotate(45deg)"></span></span>
-                    ACTIVE QUEST · IN DEVELOPMENT
+                    <span data-flair="">ACTIVE QUEST · </span>IN DEVELOPMENT
                   </span>
                 </sc-if>
                 <sc-if value="{{ q.done }}" hint-placeholder-val="{{ true }}">
-                  <span style="font:600 12px 'JetBrains Mono',monospace;letter-spacing:.12em;color:#AEB8CC">✓ QUEST COMPLETE</span>
+                  <span style="font:600 12px 'JetBrains Mono',monospace;letter-spacing:.12em;color:#AEB8CC"><span data-flair="">✓ QUEST </span>COMPLETE</span>
                 </sc-if>
                 <h3 style="margin:0;font:700 40px/1 'Chakra Petch',sans-serif;text-transform:uppercase;color:#fff">{{ q.title }}</h3>
                 <div style="display:flex;gap:32px;flex-wrap:wrap">
